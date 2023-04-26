@@ -7,15 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08397EA729F18BAB008F8F14 /* AuthenticationRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EA629F18BAB008F8F14 /* AuthenticationRoutes.swift */; };
+		08397EA929F3DAAF008F8F14 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EA829F3DAAF008F8F14 /* NetworkError.swift */; };
 		08715A1D29EDEC7C002CB3F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08715A1C29EDEC7C002CB3F3 /* AppDelegate.swift */; };
 		08715A1F29EDEC7C002CB3F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08715A1E29EDEC7C002CB3F3 /* SceneDelegate.swift */; };
 		08715A2129EDEC7C002CB3F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08715A2029EDEC7C002CB3F3 /* ViewController.swift */; };
 		08715A2429EDEC7C002CB3F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08715A2229EDEC7C002CB3F3 /* Main.storyboard */; };
 		08715A2629EDEC7C002CB3F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08715A2529EDEC7C002CB3F3 /* Assets.xcassets */; };
 		08715A2929EDEC7C002CB3F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08715A2729EDEC7C002CB3F3 /* LaunchScreen.storyboard */; };
+		08715A3829EDF0F8002CB3F3 /* APIClientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08715A3729EDF0F8002CB3F3 /* APIClientType.swift */; };
+		08715A3A29EDF2AB002CB3F3 /* APIRouteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08715A3929EDF2AB002CB3F3 /* APIRouteType.swift */; };
+		08715A3C29EDF2DF002CB3F3 /* APIResponseConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08715A3B29EDF2DF002CB3F3 /* APIResponseConvertible.swift */; };
+		08715A3F29EEE568002CB3F3 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08715A3E29EEE568002CB3F3 /* AuthenticationService.swift */; };
+		E3D6E6151DD76F67454531CC /* Pods_Gardner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB88E5EC1BB0A076C6BFC5C /* Pods_Gardner.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08397EA629F18BAB008F8F14 /* AuthenticationRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRoutes.swift; sourceTree = "<group>"; };
+		08397EA829F3DAAF008F8F14 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		08715A1929EDEC7C002CB3F3 /* Gardner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gardner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08715A1C29EDEC7C002CB3F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08715A1E29EDEC7C002CB3F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +33,13 @@
 		08715A2529EDEC7C002CB3F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08715A2829EDEC7C002CB3F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08715A2A29EDEC7C002CB3F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08715A3729EDF0F8002CB3F3 /* APIClientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientType.swift; sourceTree = "<group>"; };
+		08715A3929EDF2AB002CB3F3 /* APIRouteType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouteType.swift; sourceTree = "<group>"; };
+		08715A3B29EDF2DF002CB3F3 /* APIResponseConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseConvertible.swift; sourceTree = "<group>"; };
+		08715A3E29EEE568002CB3F3 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		3B05354632B17C414B599867 /* Pods-Gardner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardner.debug.xcconfig"; path = "Target Support Files/Pods-Gardner/Pods-Gardner.debug.xcconfig"; sourceTree = "<group>"; };
+		7D2184E8DDC5FEBD0422E0D8 /* Pods-Gardner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardner.release.xcconfig"; path = "Target Support Files/Pods-Gardner/Pods-Gardner.release.xcconfig"; sourceTree = "<group>"; };
+		CBB88E5EC1BB0A076C6BFC5C /* Pods_Gardner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gardner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +47,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3D6E6151DD76F67454531CC /* Pods_Gardner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07B189001BA0014000D8CE09 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CBB88E5EC1BB0A076C6BFC5C /* Pods_Gardner.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		08397EA529F18B90008F8F14 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				08715A3E29EEE568002CB3F3 /* AuthenticationService.swift */,
+				08397EA629F18BAB008F8F14 /* AuthenticationRoutes.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		08715A1029EDEC7C002CB3F3 = {
 			isa = PBXGroup;
 			children = (
 				08715A1B29EDEC7C002CB3F3 /* Gardner */,
 				08715A1A29EDEC7C002CB3F3 /* Products */,
+				EEFE174929656FD049032B64 /* Pods */,
+				07B189001BA0014000D8CE09 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +92,10 @@
 		08715A1B29EDEC7C002CB3F3 /* Gardner */ = {
 			isa = PBXGroup;
 			children = (
+				08715A3D29EEE554002CB3F3 /* Services */,
+				08715A3229EDECA0002CB3F3 /* Repository */,
+				08715A3129EDEC94002CB3F3 /* Network */,
+				08715A3029EDEC86002CB3F3 /* Presentation */,
 				08715A1C29EDEC7C002CB3F3 /* AppDelegate.swift */,
 				08715A1E29EDEC7C002CB3F3 /* SceneDelegate.swift */,
 				08715A2029EDEC7C002CB3F3 /* ViewController.swift */,
@@ -67,6 +107,48 @@
 			path = Gardner;
 			sourceTree = "<group>";
 		};
+		08715A3029EDEC86002CB3F3 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		08715A3129EDEC94002CB3F3 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				08715A3729EDF0F8002CB3F3 /* APIClientType.swift */,
+				08715A3929EDF2AB002CB3F3 /* APIRouteType.swift */,
+				08715A3B29EDF2DF002CB3F3 /* APIResponseConvertible.swift */,
+				08397EA829F3DAAF008F8F14 /* NetworkError.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		08715A3229EDECA0002CB3F3 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		08715A3D29EEE554002CB3F3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				08397EA529F18B90008F8F14 /* Authentication */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		EEFE174929656FD049032B64 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B05354632B17C414B599867 /* Pods-Gardner.debug.xcconfig */,
+				7D2184E8DDC5FEBD0422E0D8 /* Pods-Gardner.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +156,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 08715A2D29EDEC7C002CB3F3 /* Build configuration list for PBXNativeTarget "Gardner" */;
 			buildPhases = (
+				01B60E8577D50CE7B97DDDFB /* [CP] Check Pods Manifest.lock */,
 				08715A1529EDEC7C002CB3F3 /* Sources */,
 				08715A1629EDEC7C002CB3F3 /* Frameworks */,
 				08715A1729EDEC7C002CB3F3 /* Resources */,
+				73CCF4C36CBDFB267F07B02F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,14 +217,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		01B60E8577D50CE7B97DDDFB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Gardner-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		73CCF4C36CBDFB267F07B02F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Gardner/Pods-Gardner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Gardner/Pods-Gardner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Gardner/Pods-Gardner-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		08715A1529EDEC7C002CB3F3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				08715A2129EDEC7C002CB3F3 /* ViewController.swift in Sources */,
+				08715A3A29EDF2AB002CB3F3 /* APIRouteType.swift in Sources */,
 				08715A1D29EDEC7C002CB3F3 /* AppDelegate.swift in Sources */,
+				08715A3C29EDF2DF002CB3F3 /* APIResponseConvertible.swift in Sources */,
 				08715A1F29EDEC7C002CB3F3 /* SceneDelegate.swift in Sources */,
+				08715A3829EDF0F8002CB3F3 /* APIClientType.swift in Sources */,
+				08397EA929F3DAAF008F8F14 /* NetworkError.swift in Sources */,
+				08715A3F29EEE568002CB3F3 /* AuthenticationService.swift in Sources */,
+				08397EA729F18BAB008F8F14 /* AuthenticationRoutes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +414,7 @@
 		};
 		08715A2E29EDEC7C002CB3F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B05354632B17C414B599867 /* Pods-Gardner.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -294,6 +427,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,6 +443,7 @@
 		};
 		08715A2F29EDEC7C002CB3F3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D2184E8DDC5FEBD0422E0D8 /* Pods-Gardner.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -321,6 +456,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
