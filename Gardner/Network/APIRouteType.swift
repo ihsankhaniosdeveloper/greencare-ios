@@ -24,7 +24,7 @@ protocol APIRouteType: URLRequestConvertible {
     var pathVariables: [String]? { get }
     var query: [String: String]? { get }
     var headers: [String: String] { get }
-    var body: Data? { get }
+    var body: [String: Any]? { get }
 }
 
 extension APIRouteType {
@@ -49,7 +49,7 @@ extension APIRouteType {
             urlRequest.setValue(value, forHTTPHeaderField: key)
         }
 
-        urlRequest.httpBody = self.body
+        urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: self.body ?? [:])
 
         return urlRequest
         
@@ -93,7 +93,11 @@ extension APIRouteType {
         return nil
     }
     
-    var body: Data? {
+    var body: [String: Any]? {
         return nil
+    }
+    
+    var headers: [String : String] {
+        return [:]
     }
 }

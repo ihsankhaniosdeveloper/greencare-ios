@@ -7,5 +7,11 @@ target 'Gardner' do
 
   # Pods for Gardner
   pod 'Alamofire'
+  pod 'IQKeyboardManagerSwift'
+  pod 'SKCountryPicker'
+  pod 'CHIOTPField', '0.1'
+  pod 'ProgressHUD'
+
+
 
 end

@@ -1,19 +1,18 @@
 //
-//  ViewController.swift
+//  ProfileViewController.swift
 //  Gardner
 //
-//  Created by Rashid Khan on 18/04/2023.
+//  Created by Rashid Khan on 26/04/2023.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
 
-
 }
-

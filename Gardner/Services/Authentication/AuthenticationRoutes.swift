@@ -18,25 +18,20 @@ extension AuthenticationRoutes: APIRouteType {
     }
     
     var url: URL {
-        return URL(string: "")!
+        return URL(string: "http://18.212.71.66:4000/api/v1/")!
     }
     
     var path: String {
         switch self {
-            case .sendOTP:   return "/v1/send_otp"
+            case .sendOTP:   return "auth/login"
             case .verifyOTP: return "/v1/verify_otp"
         }
     }
     
-    var body: Data? {
-        return nil
-//        switch self {
-//            case .sendOTP(let mobileNumber) : return User()
-//            case .verifyOTP(let otp)        : return User()
-//        }
-    }
-    
-    var headers: [String : String] {
-        return [:]
+    var body: [String: Any]? {
+        switch self {
+            case .sendOTP(let mobileNumber) : return ["contact": mobileNumber]
+            case .verifyOTP(let otp)        : return [:]
+        }
     }
 }
