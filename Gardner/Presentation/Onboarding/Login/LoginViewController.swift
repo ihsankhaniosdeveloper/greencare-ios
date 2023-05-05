@@ -58,13 +58,15 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginButtonTap(_ sender: Any) {
+        self.view.endEditing(true)
+        
         self.presenter.login(countryCode: self.lblCountryCode.text, mobileNumber: self.tfPhoneNumber.text)
     }
 }
 
 extension LoginViewController: LoginPresenterOutput {
     func loginPresenter(otpSendingFailedWith message: String) {
-        print("OTP failed >>> \(message)")
+        self.showSnackBar(message: message)
     }
     
     func loginPresenter(otpSendingSuccessWith message: String) {
@@ -73,7 +75,7 @@ extension LoginViewController: LoginPresenterOutput {
     }
     
     func loginPresenter(phoneNumberValidationFailed message: String) {
-        print("validation error >>> \(message)")
+        self.showSnackBar(message: message)
     }
     
     func hideLoader() {
