@@ -11,12 +11,12 @@ import IQKeyboardManagerSwift
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        
         IQKeyboardManager.shared.enable = true
+        self.decideRootViewController()
         
         return true
     }
@@ -38,5 +38,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    func decideRootViewController() {
+        if UserSession.instance.isValid {
+            let storyboard = UIStoryboard(name: "Main", bundle: .main)
+            let homeVC = storyboard.instantiateViewController(withIdentifier: "TabVC")
+            
+            window?.rootViewController = homeVC
+            window?.makeKeyAndVisible()
+            return
+        }
+        
+        let navigationController = UINavigationController(rootViewController: LoginViewController.make(presenter: LoginPresenter(authService: AuthenticationService(apiClient: APIClient(session: .default)))))
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+    }
 }
 

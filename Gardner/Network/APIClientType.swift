@@ -55,13 +55,17 @@ class APIClient: APIClientType {
     
     private struct APIResponse: APIResponseConvertible {
         let statusCode: Int
-        let message: String?
         let data: Data
 
-        init(code: Int, data: Data, message: String? = nil) {
+        init(code: Int, data: Data) {
             self.statusCode = code
             self.data = data
-            self.message = message
         }
     }
+}
+
+struct ServerReponse<T: Decodable>: Decodable {
+    let statusCode: Int
+    let message: String?
+    let data: T
 }

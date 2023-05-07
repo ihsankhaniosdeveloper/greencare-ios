@@ -69,8 +69,15 @@ extension LoginViewController: LoginPresenterOutput {
         self.showSnackBar(message: message)
     }
     
-    func loginPresenter(otpSendingSuccessWith message: String) {
-        let otpVC = OTPViewController(nibName: "OTPViewController", bundle: nil)
+    func loginPresenter(otpSendingSuccessWith message: String, mobileNumber: String) {
+        let otpVC = OTPViewController.make(
+            mobileNumber: mobileNumber,
+            presenter: OTPPresenter(
+                authService: AuthenticationService(
+                    apiClient: APIClient(session: .default)
+                )
+            )
+        )
         self.navigationController?.pushViewController(otpVC, animated: true)
     }
     

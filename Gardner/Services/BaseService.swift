@@ -8,6 +8,12 @@
 import Foundation
 
 class BaseService: ServiceType {
+    var apiClient: APIClientType
+    
+    init(apiClient: APIClientType) {
+        self.apiClient = apiClient
+    }
+    
     func request<T>(route: APIRouteType, completion: @escaping (T?, NetworkErrors?) -> Void) where T : Decodable {
         self.apiClient.request(route: route) { apiResponse in
             guard 200...299 ~= apiResponse.statusCode else {
@@ -16,18 +22,12 @@ class BaseService: ServiceType {
             }
             
             do {
-                let object: T = try self.decode(data: apiResponse.data)
-                completion(object, nil)
+                let object: ServerReponse<T> = try self.decode(data: apiResponse.data)
+                completion(object.data, nil)
             } catch {
-                
+                completion(nil, .parsingError(error))
             }
         }
-    }
-    
-    var apiClient: APIClientType
-    
-    init(apiClient: APIClientType) {
-        self.apiClient = apiClient
     }
     
     private func decode<T: Decodable>(data: Data) throws -> T {
@@ -36,7 +36,7 @@ class BaseService: ServiceType {
         let result = try decoder.decode(T.self, from: data)
         return result
     }
-    
+
     private var serverReadableDateTimeFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"

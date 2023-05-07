@@ -16,7 +16,7 @@ enum NetworkErrors: LocalizedError {
     case internalServerError(InternalServerError?)
     case serverError(Int, String)
     case authError(AuthError?)
-    case existingEmiratesID
+    case parsingError(Error)
     case unknown
 
     struct InternalServerError: Codable {
@@ -53,6 +53,8 @@ extension NetworkErrors {
         case .authError(let authError):
             if let authError = authError { return authError.error.message }
             else { return "Sorry, that doesn't look right." }
+        case .parsingError(let error):
+            return error.localizedDescription
         default: return "Looks like you're offline. Please reconnect and refresh to continue using App."
         }
     }
@@ -83,8 +85,6 @@ class NetworkErrorHandler {
             return .noInternet
         case -1001:
             return .requestTimedOut
-        case 1041:
-            return .existingEmiratesID
         default:
             return .unknown
         }

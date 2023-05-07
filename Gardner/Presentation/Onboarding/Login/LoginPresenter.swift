@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LoginPresenterOutput: AnyObject, LoadingState {
-    func loginPresenter(otpSendingSuccessWith message: String)
+    func loginPresenter(otpSendingSuccessWith message: String, mobileNumber: String)
     func loginPresenter(otpSendingFailedWith message: String)
     func loginPresenter(phoneNumberValidationFailed message: String)
 }
@@ -52,7 +52,7 @@ class LoginPresenter: LoginPresenterType {
             
             switch result {
             case .success(_):
-                self.outputs?.loginPresenter(otpSendingSuccessWith: "OTP sent successfully")
+                self.outputs?.loginPresenter(otpSendingSuccessWith: "OTP sent successfully", mobileNumber: mobileNumberCountryCode)
                 break
                 
             case .failure(let error):

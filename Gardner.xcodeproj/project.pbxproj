@@ -33,6 +33,8 @@
 		089E61ED2A045417003B2CAB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E61EC2A045417003B2CAB /* UIView+Extension.swift */; };
 		08AA55C92A05698500F3F8CD /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA55C82A05698500F3F8CD /* LoginPresenter.swift */; };
 		08AA55CB2A05AC3100F3F8CD /* UIViewController+Snackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA55CA2A05AC3100F3F8CD /* UIViewController+Snackbar.swift */; };
+		08AA55CD2A05B44000F3F8CD /* OTPPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA55CC2A05B44000F3F8CD /* OTPPresenter.swift */; };
+		08AA55D02A06E8E800F3F8CD /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA55CF2A06E8E800F3F8CD /* UserSession.swift */; };
 		E3D6E6151DD76F67454531CC /* Pods_Gardner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB88E5EC1BB0A076C6BFC5C /* Pods_Gardner.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +67,8 @@
 		089E61EC2A045417003B2CAB /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		08AA55C82A05698500F3F8CD /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		08AA55CA2A05AC3100F3F8CD /* UIViewController+Snackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Snackbar.swift"; sourceTree = "<group>"; };
+		08AA55CC2A05B44000F3F8CD /* OTPPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPPresenter.swift; sourceTree = "<group>"; };
+		08AA55CF2A06E8E800F3F8CD /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
 		3B05354632B17C414B599867 /* Pods-Gardner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardner.debug.xcconfig"; path = "Target Support Files/Pods-Gardner/Pods-Gardner.debug.xcconfig"; sourceTree = "<group>"; };
 		7D2184E8DDC5FEBD0422E0D8 /* Pods-Gardner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardner.release.xcconfig"; path = "Target Support Files/Pods-Gardner/Pods-Gardner.release.xcconfig"; sourceTree = "<group>"; };
 		CBB88E5EC1BB0A076C6BFC5C /* Pods_Gardner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gardner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +143,7 @@
 			children = (
 				08397EBC2A004563008F8F14 /* OTPViewController.swift */,
 				08397EBD2A004563008F8F14 /* OTPViewController.xib */,
+				08AA55CC2A05B44000F3F8CD /* OTPPresenter.swift */,
 			);
 			path = OTP;
 			sourceTree = "<group>";
@@ -164,6 +169,7 @@
 		08715A1B29EDEC7C002CB3F3 /* Gardner */ = {
 			isa = PBXGroup;
 			children = (
+				08AA55CE2A06E8D000F3F8CD /* Session */,
 				089E61EB2A0453FA003B2CAB /* Extensions */,
 				089E61E82A044FE2003B2CAB /* Theme */,
 				089E61DD2A01979F003B2CAB /* Components */,
@@ -244,6 +250,14 @@
 				08AA55CA2A05AC3100F3F8CD /* UIViewController+Snackbar.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		08AA55CE2A06E8D000F3F8CD /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				08AA55CF2A06E8E800F3F8CD /* UserSession.swift */,
+			);
+			path = Session;
 			sourceTree = "<group>";
 		};
 		EEFE174929656FD049032B64 /* Pods */ = {
@@ -390,6 +404,8 @@
 				08715A3F29EEE568002CB3F3 /* AuthenticationService.swift in Sources */,
 				08397EAF29F91761008F8F14 /* OrderListingViewController.swift in Sources */,
 				08397EA729F18BAB008F8F14 /* AuthenticationRoutes.swift in Sources */,
+				08AA55D02A06E8E800F3F8CD /* UserSession.swift in Sources */,
+				08AA55CD2A05B44000F3F8CD /* OTPPresenter.swift in Sources */,
 				08397EB229F97454008F8F14 /* ServiceType.swift in Sources */,
 				089E61DF2A0197C0003B2CAB /* CountryCodeView.swift in Sources */,
 				08AA55CB2A05AC3100F3F8CD /* UIViewController+Snackbar.swift in Sources */,

@@ -10,5 +10,4 @@ import Foundation
 protocol APIResponseConvertible: Codable {
     var statusCode: Int { get }
     var data: Data { get }
-    var message: String? { get }
 }

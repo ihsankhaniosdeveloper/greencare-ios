@@ -6,36 +6,133 @@
 //
 
 import UIKit
-//import CHIOTPFieldOne
 
 class OTPViewController: UIViewController {
+    // MARK: Outlets
+    @IBOutlet weak var otpViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var lblResendCode: UILabel!
+    @IBOutlet weak var otpView: UITextField!
     
-    @IBOutlet weak var fieldViewHeightConstraint: NSLayoutConstraint!
+    // MARK: Properties
+    private var presenter: OTPPreseneterType!
+    private var timer: Timer?
+    private let OTP_FIELDS_COUNT = 4
+    private var mobileNumber: String?
     
+    // MARK: Initliazations
+    static func make(mobileNumber: String?, presenter: OTPPreseneterType) -> OTPViewController {
+        let vc = OTPViewController(nibName: "OTPViewController", bundle: .main)
+        
+        vc.mobileNumber = mobileNumber
+        vc.presenter = presenter
+        
+        return vc
+    }
+    
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupOtpView()
+        (self.presenter as! OTPPresenter).outputs = self
         
-        self.view.backgroundColor = .red
+        self.otpView.becomeFirstResponder()
+        self.otpView.delegate = self
         
-        self.fieldViewHeightConstraint.constant = (self.view.frame.width - 88) / 6
+        self.lblResendCode.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(resendCodeTap(_ :))))
+        self.startTimer()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.timer?.invalidate()
+    }
+    
+    // MARK: Actions
+    @IBAction func backButtonTap(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func confirmButtonTap(_ sender: Any) {
+        self.presenter.verifyOTP(mobileNumber: self.mobileNumber, otp: self.otpView.text)
+    }
+    
+    @objc func resendCodeTap(_ sender: UIGestureRecognizer) {
+        self.presenter.resendOTP(mobileNumber: self.mobileNumber)
     }
 }
-// (
+
+// MARK: - Helpers
 private extension OTPViewController {
-    func setupOtpView(){
-//        otpView.backgroundColor = .red
-//        self.otpView.fieldsCount = 6
-//        self.otpView.fieldBorderWidth = 2
-//        self.otpView.defaultBorderColor = UIColor.black
-//        self.otpView.filledBorderColor = UIColor.green
-//        self.otpView.cursorColor = UIColor.red
-//        self.otpView.displayType = .square
-//        self.otpView.fieldSize = (self.otpView.bounds.width) / 6
-//        self.otpView.separatorSpace = 8
-//        self.otpView.shouldAllowIntermediateEditing = false
-////        self.otpView.delegate = self
-//        self.otpView.initializeUI()
+    func startTimer() {
+        var remainingSeconds = 59
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            remainingSeconds -= 1
+            
+            self.lblResendCode.text = "Resend Code: " + String(remainingSeconds)
+
+            if remainingSeconds == 0 {
+                timer.invalidate()
+                
+                self.lblResendCode.text = "Resend Code"
+            }
+        }
+
+        timer?.fire()
+    }
+}
+
+// MARK: - UITextField Delegates (Implemeted for OTP View)
+extension OTPViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text, let textRange = Range(range, in: text) {
+            let updatedText = text.replacingCharacters(in: textRange, with: string)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                if (self.otpView.text?.count ?? 0) == self.OTP_FIELDS_COUNT {
+                    self.otpView.resignFirstResponder()
+                }
+            }
+        }
+        
+        return true
+    }
+}
+
+// MARK: - Presenter Outputs
+extension OTPViewController: OTPPresenterOutput {
+    func otpPresenter(_otpVerificationSuccess loginResponse: LoginResponse) {
+        if #available(iOS 13.0, *) {
+            if let sceneDelegate = UIApplication.shared.connectedScenes.first!.delegate as? SceneDelegate {
+                sceneDelegate.decideRootViewController()
+            }
+
+        } else {
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.decideRootViewController()
+            }
+        }
+    }
+    
+    func otpPresenter(_otpVerificationFailed message: String) {
+        self.showSnackBar(message: message)
+    }
+    
+    func otpPresenter(_otpResendSuccess message: String) {
+        self.startTimer()
+    }
+    
+    func otpPresenter(_otpResendFailed message: String) {
+        self.showSnackBar(message: message)
+    }
+    
+    func showLoader() {
+        self.startLoader()
+    }
+    
+    func hideLoader() {
+        self.stopLoader()
     }
 }

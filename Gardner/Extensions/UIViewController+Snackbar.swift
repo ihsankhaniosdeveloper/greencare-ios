@@ -7,6 +7,7 @@
 
 import UIKit
 import TTGSnackbar
+import ProgressHUD
 
 extension UIViewController {
     func showSnackBar(message: String) {
@@ -14,4 +15,17 @@ extension UIViewController {
 
         snackbar.show()
     }
+    
+    func stopLoader() {
+        ProgressHUD.dismiss()
+    }
+    
+    func startLoader() {
+        
+        
+        
+        
+        ProgressHUD.show("Loading ... ")
+    }
+
 }

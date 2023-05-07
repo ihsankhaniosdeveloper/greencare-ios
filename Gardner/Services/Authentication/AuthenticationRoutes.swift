@@ -9,7 +9,7 @@ import Foundation
 
 enum AuthenticationRoutes {
     case sendOTP(mobileNumber: String)
-    case verifyOTP(otp: String)
+    case verifyOTP(mobileNumber: String, otp: String)
 }
 
 extension AuthenticationRoutes: APIRouteType {
@@ -24,14 +24,14 @@ extension AuthenticationRoutes: APIRouteType {
     var path: String {
         switch self {
             case .sendOTP:   return "auth/login"
-            case .verifyOTP: return "/v1/verify_otp"
+            case .verifyOTP: return "auth/verify-otp"
         }
     }
     
     var body: [String: Any]? {
         switch self {
-            case .sendOTP(let mobileNumber) : return ["contact": mobileNumber]
-            case .verifyOTP(let otp)        : return [:]
+            case .sendOTP(let mobileNumber): return ["contact": mobileNumber]
+            case .verifyOTP(let mobileNumber, let otp): return ["contact": mobileNumber, "otp": otp]
         }
     }
 }

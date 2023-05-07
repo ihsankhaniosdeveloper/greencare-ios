@@ -20,8 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        let navigationController = UINavigationController(rootViewController: LoginViewController.make(presenter: LoginPresenter(authService: AuthenticationService(apiClient: APIClient(session: .default)))))
-        window?.rootViewController = navigationController
+        self.decideRootViewController()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -53,5 +52,41 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
 
+    func decideRootViewController() {
+        if UserSession.instance.isValid {
+            let storyboard = UIStoryboard(name: "Main", bundle: .main)
+            let homeVC = storyboard.instantiateViewController(withIdentifier: "TabVC")
+            
+            window?.rootViewController = homeVC
+            window?.makeKeyAndVisible()
+            return
+        }
+        
+        let navigationController = UINavigationController(rootViewController: LoginViewController.make(presenter: LoginPresenter(authService: AuthenticationService(apiClient: APIClient(session: .default)))))
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+    }
 }
 
+// MARK: Future
+//
+//protocol Coordinator {
+//    var childCoordinators: [Coordinator] { get set }
+//    var navigationController: UINavigationController { get set }
+//
+//    func start()
+//}
+//
+//class MainCoordinator: Coordinator {
+//    var childCoordinators = [Coordinator]()
+//    var navigationController: UINavigationController
+//
+//    init(navigationController: UINavigationController) {
+//        self.navigationController = navigationController
+//    }
+//
+//    func start() {
+//        let vc = ViewController.instantiate()
+//        navigationController.pushViewController(vc, animated: false)
+//    }
+//}

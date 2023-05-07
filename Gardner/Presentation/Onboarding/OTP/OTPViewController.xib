@@ -12,7 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OTPViewController" customModule="Gardner" customModuleProvider="target">
             <connections>
-                <outlet property="fieldViewHeightConstraint" destination="R4E-XP-c2S" id="3hg-TP-GGj"/>
+                <outlet property="lblResendCode" destination="vKl-GG-0go" id="oou-bO-ydJ"/>
+                <outlet property="otpView" destination="PJ2-ja-Aeu" id="yHM-bI-mWT"/>
+                <outlet property="otpViewHeightConstraint" destination="R4E-XP-c2S" id="MkS-lK-mUJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -40,34 +42,48 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Your Mobile Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQR-qp-fnp">
                             <rect key="frame" x="24" y="250.5" width="327" height="14.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" name="blackColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7y-hN-6oG">
-                            <rect key="frame" x="24" y="398" width="327" height="50"/>
-                            <color key="backgroundColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="24" y="419" width="327" height="50"/>
+                            <color key="backgroundColor" name="primaryColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="q9a-R2-3a9"/>
                             </constraints>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Confirm">
+                                <color key="baseForegroundColor" name="whiteColor"/>
+                            </buttonConfiguration>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="7"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="confirmButtonTap:" destination="-1" eventType="touchUpInside" id="B5B-L2-d7T"/>
+                            </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resend Code: 59" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKl-GG-0go">
-                            <rect key="frame" x="72" y="373" width="231" height="17"/>
+                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resend Code: 59" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKl-GG-0go">
+                            <rect key="frame" x="132" y="381" width="111.5" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="Nnu-2s-pbQ"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" name="blackColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PJ2-ja-Aeu" customClass="CHIOTPFieldOne" customModule="CHIOTPField">
-                            <rect key="frame" x="24" y="273" width="327" height="50"/>
+                            <rect key="frame" x="75.5" y="281" width="224" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="R4E-XP-c2S"/>
+                                <constraint firstAttribute="width" constant="224" id="bJc-OA-khQ"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="numberOfDigits">
-                                    <integer key="value" value="6"/>
+                                    <integer key="value" value="4"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                     <real key="value" value="8"/>
@@ -77,9 +93,21 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </textField>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-frame" translatesAutoresizingMaskIntoConstraints="NO" id="2ep-Iy-KKK">
+                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-frame" translatesAutoresizingMaskIntoConstraints="NO" id="2ep-Iy-KKK">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="182"/>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0T-Nq-PbD">
+                            <rect key="frame" x="8" y="12" width="34" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="iUq-6x-zJw"/>
+                            </constraints>
+                            <color key="tintColor" name="primaryColor"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="backward_arrow_white" title=""/>
+                            <connections>
+                                <action selector="backButtonTap:" destination="-1" eventType="touchUpInside" id="aWK-sd-PQz"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
@@ -95,16 +123,16 @@
                         <constraint firstItem="o7y-hN-6oG" firstAttribute="leading" secondItem="BQR-qp-fnp" secondAttribute="leading" id="Stl-aD-2Ow"/>
                         <constraint firstItem="R3x-fU-jm4" firstAttribute="centerX" secondItem="hWr-GS-b6D" secondAttribute="centerX" id="U3I-8l-Z4a"/>
                         <constraint firstItem="2ep-Iy-KKK" firstAttribute="leading" secondItem="wbk-nb-V0x" secondAttribute="leading" id="XR6-YH-oJ5"/>
-                        <constraint firstItem="PJ2-ja-Aeu" firstAttribute="leading" secondItem="wbk-nb-V0x" secondAttribute="leading" constant="24" id="btl-eR-XkN"/>
                         <constraint firstItem="R3x-fU-jm4" firstAttribute="top" secondItem="hWr-GS-b6D" secondAttribute="bottom" constant="24" id="ciJ-bp-lf8"/>
                         <constraint firstItem="BQR-qp-fnp" firstAttribute="leading" secondItem="wbk-nb-V0x" secondAttribute="leading" constant="24" id="dVx-gI-Iht"/>
                         <constraint firstItem="R3x-fU-jm4" firstAttribute="top" secondItem="hWr-GS-b6D" secondAttribute="bottom" constant="24" id="fc0-b2-QCk"/>
-                        <constraint firstItem="o7y-hN-6oG" firstAttribute="trailing" secondItem="vKl-GG-0go" secondAttribute="trailing" constant="48" id="hHB-3q-2Or"/>
-                        <constraint firstItem="o7y-hN-6oG" firstAttribute="leading" secondItem="vKl-GG-0go" secondAttribute="leading" constant="-48" id="iGh-BI-Tmb"/>
-                        <constraint firstItem="PJ2-ja-Aeu" firstAttribute="top" secondItem="BQR-qp-fnp" secondAttribute="bottom" constant="8" id="iLH-Wb-qN7"/>
-                        <constraint firstAttribute="trailing" secondItem="PJ2-ja-Aeu" secondAttribute="trailing" constant="24" id="l4B-lX-2mm"/>
+                        <constraint firstItem="W0T-Nq-PbD" firstAttribute="leading" secondItem="wbk-nb-V0x" secondAttribute="leading" constant="8" id="hIf-f8-FlH"/>
+                        <constraint firstItem="PJ2-ja-Aeu" firstAttribute="centerX" secondItem="wbk-nb-V0x" secondAttribute="centerX" id="iCu-U9-Khh"/>
+                        <constraint firstItem="PJ2-ja-Aeu" firstAttribute="top" secondItem="BQR-qp-fnp" secondAttribute="bottom" constant="16" id="iLH-Wb-qN7"/>
                         <constraint firstItem="o7y-hN-6oG" firstAttribute="trailing" secondItem="BQR-qp-fnp" secondAttribute="trailing" id="l5x-ql-Iop"/>
                         <constraint firstItem="hWr-GS-b6D" firstAttribute="centerX" secondItem="wbk-nb-V0x" secondAttribute="centerX" id="nf3-9c-IuM"/>
+                        <constraint firstItem="W0T-Nq-PbD" firstAttribute="top" secondItem="wbk-nb-V0x" secondAttribute="top" constant="12" id="tjS-jC-nzH"/>
+                        <constraint firstItem="vKl-GG-0go" firstAttribute="centerX" secondItem="PJ2-ja-Aeu" secondAttribute="centerX" id="vEe-Si-vKl"/>
                     </constraints>
                 </view>
             </subviews>
@@ -126,10 +154,20 @@
         </designable>
     </designables>
     <resources>
+        <image name="backward_arrow_white" width="10" height="16"/>
         <image name="login-frame" width="393" height="215"/>
         <image name="logo" width="167" height="82.5"/>
         <namedColor name="GreyColor">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="blackColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryColor">
+            <color red="0.62745098039215685" green="0.73333333333333328" blue="0.29019607843137257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="whiteColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
