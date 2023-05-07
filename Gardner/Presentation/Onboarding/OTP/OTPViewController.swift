@@ -58,7 +58,9 @@ class OTPViewController: UIViewController {
     }
     
     @objc func resendCodeTap(_ sender: UIGestureRecognizer) {
-        self.presenter.resendOTP(mobileNumber: self.mobileNumber)
+        if self.timer?.isValid == false {
+            self.presenter.resendOTP(mobileNumber: self.mobileNumber)
+        }
     }
 }
 
@@ -70,7 +72,7 @@ private extension OTPViewController {
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             remainingSeconds -= 1
             
-            self.lblResendCode.text = "Resend Code: " + String(remainingSeconds)
+            self.lblResendCode.text = "Resend Code: 00:" + String(format: "%02d", remainingSeconds)
 
             if remainingSeconds == 0 {
                 timer.invalidate()
@@ -121,6 +123,7 @@ extension OTPViewController: OTPPresenterOutput {
     }
     
     func otpPresenter(_otpResendSuccess message: String) {
+        self.showSnackBar(message: message)
         self.startTimer()
     }
     
