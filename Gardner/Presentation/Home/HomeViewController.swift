@@ -31,7 +31,7 @@ struct Service: Decodable {
 class HomeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var model: [[Service]] = []
+    private var model: [SectionItemsData] = []
     private var presenter: HomePresenterType!
     
     override func viewDidLoad() {
@@ -57,13 +57,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.model[section].count
+        return self.model[section].data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServiceCollectionViewCell", for: indexPath) as! ServiceCollectionViewCell
         
-        cell.configure(service: self.model[indexPath.section][indexPath.row])
+        cell.configure(service: self.model[indexPath.section].data[indexPath.row])
         return cell
     }
     
@@ -72,6 +72,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         switch indexPath.section {
             case 0: return CGSize(width: (collectionView.frame.size.width - 68) / 2, height: 100)
             case 1: return CGSize(width: (collectionView.frame.size.width - 72) / 3, height: 80)
+            case 2: return CGSize(width: (collectionView.frame.size.width - 72) / 3, height: 80)
             default: return CGSize(width: 0, height: 0)
         }
     }
@@ -83,8 +84,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
             case UICollectionView.elementKindSectionHeader:
-                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(ServiceCollectionViewHeader.self)",for: indexPath)
+                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ServiceCollectionViewHeader",for: indexPath)
+            
                 guard let typedHeaderView = headerView as? ServiceCollectionViewHeader else { return headerView }
+            
+            typedHeaderView.configure(title: self.model[indexPath.section].title)
                 return typedHeaderView
             default:
                 assert(false, "Invalid element type")
@@ -92,7 +96,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let service = self.model[indexPath.section][indexPath.row]
+        let service = self.model[indexPath.section].data[indexPath.row]
         let serviceDetailsPresenter = ServiceDetailsPresenter(apiClient: APIClient(session: .default), service: service)
         let serviceDetailsVC = ServiceDetailsViewController.make(presenter: serviceDetailsPresenter)
         
@@ -102,7 +106,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 extension HomeViewController: HomePresenterOutput {
-    func homePresenter(homeDataFetchSuccess model: [[Service]]) {
+    func homePresenter(homeDataFetchSuccess model: [SectionItemsData]) {
         self.model = model
         self.collectionView.reloadData()
     }

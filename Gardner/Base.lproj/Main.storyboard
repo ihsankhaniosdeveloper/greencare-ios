@@ -144,6 +144,9 @@
                                         <constraint firstItem="JxB-p7-Wwg" firstAttribute="leading" secondItem="o1y-t0-G7R" secondAttribute="leadingMargin" constant="24" id="72S-I3-Jkg"/>
                                         <constraint firstItem="JxB-p7-Wwg" firstAttribute="centerY" secondItem="o1y-t0-G7R" secondAttribute="centerY" id="9NW-7Z-B6g"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="lblTitle" destination="JxB-p7-Wwg" id="l0R-Vi-Cg6"/>
+                                    </connections>
                                 </collectionReusableView>
                             </collectionView>
                         </subviews>
@@ -199,29 +202,32 @@
             </objects>
             <point key="canvasLocation" x="102" y="1468"/>
         </scene>
-        <!--View Controller-->
+        <!--Schedule Listing View Controller-->
         <scene sceneID="eAI-eO-dwN">
             <objects>
-                <viewController storyboardIdentifier="ProfileVC" id="cVj-cb-yCw" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileVC" id="cVj-cb-yCw" customClass="ScheduleListingViewController" customModule="Gardner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hkF-x8-clv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdR-dN-Ukg">
-                                <rect key="frame" x="129.5" y="273.5" width="61" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="UnB-Zv-s9o">
+                                <rect key="frame" x="0.0" y="44" width="320" height="475"/>
+                                <color key="backgroundColor" name="lightGreyColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="men-c5-5Y0"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="lightGreyColor"/>
                         <constraints>
-                            <constraint firstItem="XdR-dN-Ukg" firstAttribute="centerY" secondItem="hkF-x8-clv" secondAttribute="centerY" id="8P9-Rf-12r"/>
-                            <constraint firstItem="XdR-dN-Ukg" firstAttribute="centerX" secondItem="hkF-x8-clv" secondAttribute="centerX" id="zBI-l0-S62"/>
+                            <constraint firstItem="UnB-Zv-s9o" firstAttribute="leading" secondItem="men-c5-5Y0" secondAttribute="leading" id="2AK-bq-yQ3"/>
+                            <constraint firstItem="men-c5-5Y0" firstAttribute="trailing" secondItem="UnB-Zv-s9o" secondAttribute="trailing" id="QsA-fK-6tn"/>
+                            <constraint firstItem="UnB-Zv-s9o" firstAttribute="top" secondItem="men-c5-5Y0" secondAttribute="top" id="gYe-lp-1Fh"/>
+                            <constraint firstItem="men-c5-5Y0" firstAttribute="bottom" secondItem="UnB-Zv-s9o" secondAttribute="bottom" id="gff-ze-JhT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kmC-jO-Toz"/>
+                    <connections>
+                        <outlet property="tableView" destination="UnB-Zv-s9o" id="oYp-HF-sv5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q1c-7C-Oke" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -258,7 +264,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6O9-xw-MM7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -277,7 +283,7 @@
                     <tabBarItem key="tabBarItem" title="Orders" image="ic_cart" id="3lf-Cu-vbF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ywb-hO-st2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -346,7 +352,7 @@
                     <tabBarItem key="tabBarItem" title="Profile" image="ic_profile" id="TVT-Rc-WkB"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iym-DQ-dbS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -367,6 +373,9 @@
         <image name="ic_home" width="22.5" height="22.5"/>
         <image name="ic_profile" width="22.5" height="22.5"/>
         <image name="test" width="43" height="43"/>
+        <namedColor name="lightGreyColor">
+            <color red="0.96078431372549022" green="0.96862745098039216" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="primaryColor">
             <color red="0.62745098039215685" green="0.73333333333333328" blue="0.29019607843137257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

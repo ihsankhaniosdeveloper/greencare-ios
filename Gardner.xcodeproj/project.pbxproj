@@ -31,6 +31,13 @@
 		089E61E12A0197E2003B2CAB /* CountryCodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089E61E02A0197E2003B2CAB /* CountryCodeView.xib */; };
 		089E61EA2A044FF0003B2CAB /* ApplicationTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E61E92A044FF0003B2CAB /* ApplicationTheme.swift */; };
 		089E61ED2A045417003B2CAB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E61EC2A045417003B2CAB /* UIView+Extension.swift */; };
+		089E93832A0EA51A0034BA90 /* ScheduleAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E93812A0EA51A0034BA90 /* ScheduleAddViewController.swift */; };
+		089E93842A0EA51A0034BA90 /* ScheduleAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089E93822A0EA51A0034BA90 /* ScheduleAddViewController.xib */; };
+		089E93862A0EA55B0034BA90 /* ScheduleAddPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E93852A0EA55B0034BA90 /* ScheduleAddPresenter.swift */; };
+		089E938A2A0EDE350034BA90 /* ScheduleListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E93882A0EDE350034BA90 /* ScheduleListingViewController.swift */; };
+		089E938D2A0EDE470034BA90 /* ScheduleListingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E938C2A0EDE470034BA90 /* ScheduleListingPresenter.swift */; };
+		089E93912A0EDF0C0034BA90 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E938F2A0EDF0C0034BA90 /* ScheduleTableViewCell.swift */; };
+		089E93922A0EDF0C0034BA90 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089E93902A0EDF0C0034BA90 /* ScheduleTableViewCell.xib */; };
 		08AA55C92A05698500F3F8CD /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA55C82A05698500F3F8CD /* LoginPresenter.swift */; };
 		08AA55CB2A05AC3100F3F8CD /* UIViewController+Snackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA55CA2A05AC3100F3F8CD /* UIViewController+Snackbar.swift */; };
 		08AA55CD2A05B44000F3F8CD /* OTPPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA55CC2A05B44000F3F8CD /* OTPPresenter.swift */; };
@@ -84,6 +91,13 @@
 		089E61E02A0197E2003B2CAB /* CountryCodeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryCodeView.xib; sourceTree = "<group>"; };
 		089E61E92A044FF0003B2CAB /* ApplicationTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationTheme.swift; sourceTree = "<group>"; };
 		089E61EC2A045417003B2CAB /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		089E93812A0EA51A0034BA90 /* ScheduleAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleAddViewController.swift; sourceTree = "<group>"; };
+		089E93822A0EA51A0034BA90 /* ScheduleAddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleAddViewController.xib; sourceTree = "<group>"; };
+		089E93852A0EA55B0034BA90 /* ScheduleAddPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleAddPresenter.swift; sourceTree = "<group>"; };
+		089E93882A0EDE350034BA90 /* ScheduleListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListingViewController.swift; sourceTree = "<group>"; };
+		089E938C2A0EDE470034BA90 /* ScheduleListingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListingPresenter.swift; sourceTree = "<group>"; };
+		089E938F2A0EDF0C0034BA90 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		089E93902A0EDF0C0034BA90 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
 		08AA55C82A05698500F3F8CD /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		08AA55CA2A05AC3100F3F8CD /* UIViewController+Snackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Snackbar.swift"; sourceTree = "<group>"; };
 		08AA55CC2A05B44000F3F8CD /* OTPPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPPresenter.swift; sourceTree = "<group>"; };
@@ -232,10 +246,12 @@
 		08715A3029EDEC86002CB3F3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				089E93802A0EA4F40034BA90 /* ScheduleAdd */,
 				08AA56022A0C265500F3F8CD /* ServiceDetails */,
 				08AA55D12A07873300F3F8CD /* Home */,
 				08397EB529F97B3D008F8F14 /* Onboarding */,
 				08397EAD29F9174D008F8F14 /* Order */,
+				089E93872A0EDE1E0034BA90 /* ScheduleListing */,
 				08397EAA29F913E1008F8F14 /* Profile */,
 			);
 			path = Presentation;
@@ -295,6 +311,35 @@
 				08AA55E32A07D34C00F3F8CD /* UIColor+Hex.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		089E93802A0EA4F40034BA90 /* ScheduleAdd */ = {
+			isa = PBXGroup;
+			children = (
+				089E93812A0EA51A0034BA90 /* ScheduleAddViewController.swift */,
+				089E93822A0EA51A0034BA90 /* ScheduleAddViewController.xib */,
+				089E93852A0EA55B0034BA90 /* ScheduleAddPresenter.swift */,
+			);
+			path = ScheduleAdd;
+			sourceTree = "<group>";
+		};
+		089E93872A0EDE1E0034BA90 /* ScheduleListing */ = {
+			isa = PBXGroup;
+			children = (
+				089E938E2A0EDEE70034BA90 /* Cell */,
+				089E93882A0EDE350034BA90 /* ScheduleListingViewController.swift */,
+				089E938C2A0EDE470034BA90 /* ScheduleListingPresenter.swift */,
+			);
+			path = ScheduleListing;
+			sourceTree = "<group>";
+		};
+		089E938E2A0EDEE70034BA90 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				089E938F2A0EDF0C0034BA90 /* ScheduleTableViewCell.swift */,
+				089E93902A0EDF0C0034BA90 /* ScheduleTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		08AA55CE2A06E8D000F3F8CD /* Session */ = {
@@ -469,9 +514,11 @@
 				08AA55DC2A07C31B00F3F8CD /* ProfileTableViewHeader.xib in Resources */,
 				089E61E12A0197E2003B2CAB /* CountryCodeView.xib in Resources */,
 				08397EBA29F97B98008F8F14 /* LoginViewController.xib in Resources */,
+				089E93842A0EA51A0034BA90 /* ScheduleAddViewController.xib in Resources */,
 				08715A2929EDEC7C002CB3F3 /* LaunchScreen.storyboard in Resources */,
 				08AA56062A0C267F00F3F8CD /* ServiceDetailsViewController.xib in Resources */,
 				08AA55EE2A07E75C00F3F8CD /* Poppins-SemiBold.ttf in Resources */,
+				089E93922A0EDF0C0034BA90 /* ScheduleTableViewCell.xib in Resources */,
 				08715A2629EDEC7C002CB3F3 /* Assets.xcassets in Resources */,
 				08AA55E02A07CAD700F3F8CD /* ProfileTableViewCell.xib in Resources */,
 				08AA55FC2A08150600F3F8CD /* ServiceCollectionViewCell.xib in Resources */,
@@ -539,18 +586,23 @@
 				08AA56082A0C26B900F3F8CD /* ServiceDetailsPresenter.swift in Sources */,
 				08715A2129EDEC7C002CB3F3 /* HomeViewController.swift in Sources */,
 				08AA55DA2A07C31000F3F8CD /* ProfileTableViewHeader.swift in Sources */,
+				089E93832A0EA51A0034BA90 /* ScheduleAddViewController.swift in Sources */,
 				08AA56052A0C267F00F3F8CD /* ServiceDetailsViewController.swift in Sources */,
 				08715A3A29EDF2AB002CB3F3 /* APIRouteType.swift in Sources */,
 				08AA55F02A07FD6900F3F8CD /* HomePresenter.swift in Sources */,
+				089E93912A0EDF0C0034BA90 /* ScheduleTableViewCell.swift in Sources */,
 				08AA560B2A0D0A2600F3F8CD /* DetailsTableViewHeader.swift in Sources */,
 				08AA55C92A05698500F3F8CD /* LoginPresenter.swift in Sources */,
+				089E938D2A0EDE470034BA90 /* ScheduleListingPresenter.swift in Sources */,
 				089E61EA2A044FF0003B2CAB /* ApplicationTheme.swift in Sources */,
 				08AA55FB2A08150600F3F8CD /* ServiceCollectionViewCell.swift in Sources */,
 				08397EAC29F9140E008F8F14 /* ProfileViewController.swift in Sources */,
+				089E93862A0EA55B0034BA90 /* ScheduleAddPresenter.swift in Sources */,
 				08715A1D29EDEC7C002CB3F3 /* AppDelegate.swift in Sources */,
 				08715A3C29EDF2DF002CB3F3 /* APIResponseConvertible.swift in Sources */,
 				08715A1F29EDEC7C002CB3F3 /* SceneDelegate.swift in Sources */,
 				08AA55E22A07CD9100F3F8CD /* ProfilePresenter.swift in Sources */,
+				089E938A2A0EDE350034BA90 /* ScheduleListingViewController.swift in Sources */,
 				08715A3829EDF0F8002CB3F3 /* APIClientType.swift in Sources */,
 				08397EB429F9752B008F8F14 /* BaseService.swift in Sources */,
 				08397EA929F3DAAF008F8F14 /* NetworkError.swift in Sources */,

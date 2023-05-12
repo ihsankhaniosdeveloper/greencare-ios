@@ -59,6 +59,11 @@ extension ServiceDetailsViewController: UITableViewDelegate, UITableViewDataSour
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "DetailsTableViewHeader") as! DetailsTableViewHeader
         
         header.configure(service: self.service)
+        
+        header.continueButtonTap = { [weak self] in
+            let serviceAddVC = ScheduleAddViewController.make(presenter: ScheduleAddPresenter())
+            self?.navigationController?.pushViewController(serviceAddVC, animated: true)
+        }
         return header
     }
 }

@@ -36,6 +36,7 @@ extension ServicesAPIRoutes: APIRouteType {
 struct HomeDataResponse: Decodable {
     let recurringServices: [Service]?
     let oneTimeServices: [Service]?
+    let contactOnlyServices: [Service]?
     let sliders: [String]?
 }
 
@@ -62,8 +63,13 @@ protocol HomePresenterType {
     func getServices()
 }
 
+struct SectionItemsData {
+    let title: String
+    let data: [Service]
+}
+
 protocol HomePresenterOutput: AnyObject, LoadingState {
-    func homePresenter(homeDataFetchSuccess model: [[Service]])
+    func homePresenter(homeDataFetchSuccess model: [SectionItemsData])
     func homePresenter(homeDataFetchFail message: String)
 }
 
@@ -78,8 +84,7 @@ class HomePresenter: HomePresenterType {
     func getServices() {
         self.outputs?.showLoader()
         
-        let res = [[Service(id: nil, title: nil, description: nil, plants: nil, hours: nil, persons: nil, subType: nil, instructions: nil, type: nil, price: nil, promo: nil, isDeleted: nil, isActive: nil, image: nil, backgroundImage: nil, contactLink: nil, isContactOnly: nil, createdAt: nil, updatedAt: nil, v: nil)]]
-        self.outputs?.homePresenter(homeDataFetchSuccess: res)
+//        let res = [[Service(id: nil, title: nil, description: nil, plants: nil, hours: nil, persons: nil, subType: nil, instructions: nil, type: nil, price: nil, promo: nil, isDeleted: nil, isActive: nil, image: nil, backgroundImage: nil, contactLink: nil, isContactOnly: nil, createdAt: nil, updatedAt: nil, v: nil)]]
         
         homeService.getHomeData { (result: Result<HomeDataResponse, NetworkErrors>) in
             self.outputs?.showLoader()
@@ -87,16 +92,22 @@ class HomePresenter: HomePresenterType {
             switch result {
                 
             case .success(let homeDataResponse):
-                var result: [[Service]] = []
+                var result: [SectionItemsData] = []
                 
                 if let recuringServices = homeDataResponse.recurringServices {
-                    result.append(recuringServices)
+                    result.append(SectionItemsData(title: "Recuring Services", data: recuringServices))
                 }
                 
                 if let oneTimeServices = homeDataResponse.oneTimeServices {
-                    result.append(oneTimeServices)
+                    result.append(SectionItemsData(title: "One Time Services", data: oneTimeServices))
                 }
                 
+                if let contactOnlyServices = homeDataResponse.contactOnlyServices {
+                    result.append(SectionItemsData(title: "Contact Only Services", data: contactOnlyServices))
+                }
+                
+                
+                self.outputs?.homePresenter(homeDataFetchSuccess: result)
                 break
                 
             case .failure(let error):
