@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ServiceDetailsViewController" customModule="Gardner" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="eEO-5j-ruB" id="obT-lB-EJy"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewTableBG" destination="XhX-m6-5xg" id="JAK-VW-lt4"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FEN-hx-tmf">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0eZ-X2-Ihy">
+                            <rect key="frame" x="24" y="24" width="272" height="180"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mask Group 2" translatesAutoresizingMaskIntoConstraints="NO" id="a3s-ok-TAX">
+                                    <rect key="frame" x="0.0" y="0.0" width="272" height="180"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="8"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="a3s-ok-TAX" firstAttribute="leading" secondItem="0eZ-X2-Ihy" secondAttribute="leading" id="Clr-4e-XaM"/>
+                                <constraint firstAttribute="bottom" secondItem="a3s-ok-TAX" secondAttribute="bottom" id="frQ-K4-NG5"/>
+                                <constraint firstItem="a3s-ok-TAX" firstAttribute="top" secondItem="0eZ-X2-Ihy" secondAttribute="top" id="ik2-w3-ciS"/>
+                                <constraint firstAttribute="height" constant="180" id="irX-i7-tTC"/>
+                                <constraint firstAttribute="trailing" secondItem="a3s-ok-TAX" secondAttribute="trailing" id="jcZ-VX-dLQ"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XhX-m6-5xg">
+                            <rect key="frame" x="0.0" y="236" width="320" height="332"/>
+                            <subviews>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eEO-5j-ruB">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="332"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </tableView>
+                            </subviews>
+                            <color key="backgroundColor" name="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="eEO-5j-ruB" firstAttribute="top" secondItem="XhX-m6-5xg" secondAttribute="top" id="0lk-gK-zpH"/>
+                                <constraint firstAttribute="bottom" secondItem="eEO-5j-ruB" secondAttribute="bottom" id="fcd-YC-aKK"/>
+                                <constraint firstAttribute="trailing" secondItem="eEO-5j-ruB" secondAttribute="trailing" id="vLq-ej-aQ0"/>
+                                <constraint firstItem="eEO-5j-ruB" firstAttribute="leading" secondItem="XhX-m6-5xg" secondAttribute="leading" id="wAx-pD-RI8"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" name="lightGreyColor"/>
+                    <constraints>
+                        <constraint firstItem="0eZ-X2-Ihy" firstAttribute="leading" secondItem="FEN-hx-tmf" secondAttribute="leading" constant="24" id="GXr-fx-ISE"/>
+                        <constraint firstItem="XhX-m6-5xg" firstAttribute="leading" secondItem="FEN-hx-tmf" secondAttribute="leading" id="H7m-zs-nUp"/>
+                        <constraint firstAttribute="bottom" secondItem="XhX-m6-5xg" secondAttribute="bottom" id="LP4-Mm-a3M"/>
+                        <constraint firstAttribute="trailing" secondItem="0eZ-X2-Ihy" secondAttribute="trailing" constant="24" id="ZCf-fi-nJN"/>
+                        <constraint firstAttribute="trailing" secondItem="XhX-m6-5xg" secondAttribute="trailing" id="dVL-Su-ddK"/>
+                        <constraint firstItem="XhX-m6-5xg" firstAttribute="top" secondItem="0eZ-X2-Ihy" secondAttribute="bottom" constant="32" id="xEX-mb-m2G"/>
+                        <constraint firstItem="0eZ-X2-Ihy" firstAttribute="top" secondItem="FEN-hx-tmf" secondAttribute="top" constant="24" id="yEx-Xp-WGL"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="FEN-hx-tmf" secondAttribute="bottom" id="C57-g5-jNv"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="FEN-hx-tmf" secondAttribute="trailing" id="OBZ-l5-ik6"/>
+                <constraint firstItem="FEN-hx-tmf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="psl-VS-Snt"/>
+                <constraint firstItem="FEN-hx-tmf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="rTm-gI-fyb"/>
+            </constraints>
+            <point key="canvasLocation" x="140" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Mask Group 2" width="345" height="212"/>
+        <namedColor name="lightGreyColor">
+            <color red="0.96078431372549022" green="0.96862745098039216" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="whiteColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

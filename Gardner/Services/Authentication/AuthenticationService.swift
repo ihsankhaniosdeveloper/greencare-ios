@@ -22,8 +22,8 @@ struct LoginResponse: Decodable {
     let accessToken: String
     let contact: String
     let isVerified: Bool
-//    let createdAt: Date
-//    let updatedAt: Date
+    let createdAt: Date
+    let updatedAt: Date
 }
 
 protocol AuthenticationServiceType {

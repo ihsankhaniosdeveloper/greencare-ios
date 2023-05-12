@@ -25,24 +25,18 @@ class UserSession {
     }
     
     var token: String {
-        get {
-            return UserDefaults.standard.string(forKey: "token") ?? ""
-        }
+        return UserDefaults.standard.string(forKey: "token") ?? ""
     }
     
     var contact: String {
-        get {
-            return UserDefaults.standard.string(forKey: "contact") ?? ""
-        }
+        return UserDefaults.standard.string(forKey: "contact") ?? ""
     }
     
     var isVerified: Bool {
-        get {
-            return UserDefaults.standard.bool(forKey: "is.verified")
-        }
+        return UserDefaults.standard.bool(forKey: "is.verified")
     }
     
     var isValid: Bool {
-        return self.token != "" && self.contact != ""
+        return self.token != ""
     }
 }

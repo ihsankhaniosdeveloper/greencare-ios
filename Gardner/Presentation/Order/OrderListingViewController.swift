@@ -12,7 +12,6 @@ class OrderListingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        UserSession.instance.destroy()
     }
     
 

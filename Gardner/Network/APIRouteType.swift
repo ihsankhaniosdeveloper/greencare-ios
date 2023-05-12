@@ -49,7 +49,9 @@ extension APIRouteType {
             urlRequest.setValue(value, forHTTPHeaderField: key)
         }
 
-        urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: self.body ?? [:])
+        if self.method == .post {
+            urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: self.body ?? [:])
+        }
 
         return urlRequest
         

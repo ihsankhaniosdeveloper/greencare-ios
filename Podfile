@@ -12,7 +12,6 @@ target 'Gardner' do
   pod 'CHIOTPField', '0.1'
   pod 'ProgressHUD', '2.70'
   pod "TTGSnackbar"
-
-
+  pod 'SDWebImage'
 
 end
