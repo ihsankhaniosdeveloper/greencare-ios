@@ -26,6 +26,14 @@ struct Service: Decodable {
         case title, description, plants, hours, persons, subType, instructions, type, price, promo, isDeleted, isActive, image, backgroundImage, contactLink, isContactOnly, createdAt, updatedAt
         case v = "__v"
     }
+    
+    var priceWithAED: String? {
+        if let price = self.price {
+            return "AED " + String(price)
+        }
+        
+        return nil
+    }
 }
 
 class HomeViewController: UIViewController {
