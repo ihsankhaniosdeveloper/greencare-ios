@@ -24,7 +24,7 @@ class AddressListingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.title = "My Addresses"
         self.navigationController?.navigationBar.isHidden = false
         
@@ -32,6 +32,9 @@ class AddressListingViewController: UIViewController {
         self.tableView.dataSource = self
         
         self.tableView.register(UINib(nibName: "AddressTableViewCell", bundle: .main), forCellReuseIdentifier: "AddressTableViewCell")
+        
+        (self.presenter as! AddressListingPresenter).outputs = self
+        self.presenter.getAllAddresses()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -53,5 +56,16 @@ extension AddressListingViewController: UITableViewDataSource, UITableViewDelega
         cell.configure(address: self.addressList[indexPath.row])
         
         return cell
+    }
+}
+
+extension AddressListingViewController: AddressListingPresenterOutput {
+    func addressListingPresenter(addressesFetchingSuccess addresses: [Address]) {
+        self.addressList = addresses
+        self.tableView.reloadData()
+    }
+    
+    func addressListingPresenter(addressesFetchingFailed message: String) {
+        self.showSnackBar(message: message)
     }
 }
