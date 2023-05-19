@@ -73,8 +73,9 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             break
             
         case .myAddresses:
-            
-            break
+            let addressListingVC = AddressListingViewController.make(presenter: AddressListingPresenter(service: AddressService(apiClient: APIClient(session: .default))))
+            addressListingVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(addressListingVC, animated: true)
             
         case .settings:
             break
