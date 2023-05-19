@@ -39,10 +39,12 @@ class AddressListingViewController: UIViewController {
     }
     
     @objc func addAddressTap(_ sender: Any) {
-        let addressAddVC = AddAddressViewController(nibName: "AddAddressViewController", bundle: .main)
+        let addressAddPresenter = AddressAddPresenter(service: AddressService(apiClient: APIClient(session: .default)))
+        let addressAddVC = AddAddressViewController.make(presenter: addressAddPresenter)
         
         let navVC = UINavigationController(rootViewController: addressAddVC)
         navVC.modalPresentationStyle = .fullScreen
+        
         self.present(navVC, animated: true)
     }
 
