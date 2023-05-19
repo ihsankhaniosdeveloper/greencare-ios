@@ -27,6 +27,8 @@
 		08715A3A29EDF2AB002CB3F3 /* APIRouteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08715A3929EDF2AB002CB3F3 /* APIRouteType.swift */; };
 		08715A3C29EDF2DF002CB3F3 /* APIResponseConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08715A3B29EDF2DF002CB3F3 /* APIResponseConvertible.swift */; };
 		08715A3F29EEE568002CB3F3 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08715A3E29EEE568002CB3F3 /* AuthenticationService.swift */; };
+		0892BADF2A0FF7460074D5F3 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0892BADD2A0FF7460074D5F3 /* CartViewController.swift */; };
+		0892BAE02A0FF7460074D5F3 /* CartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0892BADE2A0FF7460074D5F3 /* CartViewController.xib */; };
 		089E61DF2A0197C0003B2CAB /* CountryCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E61DE2A0197C0003B2CAB /* CountryCodeView.swift */; };
 		089E61E12A0197E2003B2CAB /* CountryCodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089E61E02A0197E2003B2CAB /* CountryCodeView.xib */; };
 		089E61EA2A044FF0003B2CAB /* ApplicationTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E61E92A044FF0003B2CAB /* ApplicationTheme.swift */; };
@@ -38,6 +40,11 @@
 		089E938D2A0EDE470034BA90 /* ScheduleListingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E938C2A0EDE470034BA90 /* ScheduleListingPresenter.swift */; };
 		089E93912A0EDF0C0034BA90 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E938F2A0EDF0C0034BA90 /* ScheduleTableViewCell.swift */; };
 		089E93922A0EDF0C0034BA90 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089E93902A0EDF0C0034BA90 /* ScheduleTableViewCell.xib */; };
+		089E93952A0EECFB0034BA90 /* ServiceDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E93932A0EECFB0034BA90 /* ServiceDetailsTableViewCell.swift */; };
+		089E93962A0EECFB0034BA90 /* ServiceDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089E93942A0EECFB0034BA90 /* ServiceDetailsTableViewCell.xib */; };
+		089E93992A0F07A60034BA90 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E93982A0F07A60034BA90 /* Service.swift */; };
+		089E939C2A0FAC050034BA90 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E939B2A0FAC050034BA90 /* DropDownView.swift */; };
+		089E939E2A0FAC380034BA90 /* DropDownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089E939D2A0FAC380034BA90 /* DropDownView.xib */; };
 		08AA55C92A05698500F3F8CD /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA55C82A05698500F3F8CD /* LoginPresenter.swift */; };
 		08AA55CB2A05AC3100F3F8CD /* UIViewController+Snackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA55CA2A05AC3100F3F8CD /* UIViewController+Snackbar.swift */; };
 		08AA55CD2A05B44000F3F8CD /* OTPPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA55CC2A05B44000F3F8CD /* OTPPresenter.swift */; };
@@ -59,8 +66,9 @@
 		08AA56052A0C267F00F3F8CD /* ServiceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA56032A0C267F00F3F8CD /* ServiceDetailsViewController.swift */; };
 		08AA56062A0C267F00F3F8CD /* ServiceDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AA56042A0C267F00F3F8CD /* ServiceDetailsViewController.xib */; };
 		08AA56082A0C26B900F3F8CD /* ServiceDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA56072A0C26B900F3F8CD /* ServiceDetailsPresenter.swift */; };
-		08AA560B2A0D0A2600F3F8CD /* DetailsTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA560A2A0D0A2600F3F8CD /* DetailsTableViewHeader.swift */; };
-		08AA560D2A0D0A3300F3F8CD /* DetailsTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AA560C2A0D0A3300F3F8CD /* DetailsTableViewHeader.xib */; };
+		08E84DB32A16B61600DF8428 /* SlotListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E84DB12A16B61600DF8428 /* SlotListingViewController.swift */; };
+		08E84DB42A16B61600DF8428 /* SlotListingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08E84DB22A16B61600DF8428 /* SlotListingViewController.xib */; };
+		08E84DB62A16B62400DF8428 /* SlotListingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E84DB52A16B62400DF8428 /* SlotListingPresenter.swift */; };
 		E3D6E6151DD76F67454531CC /* Pods_Gardner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB88E5EC1BB0A076C6BFC5C /* Pods_Gardner.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +95,8 @@
 		08715A3929EDF2AB002CB3F3 /* APIRouteType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouteType.swift; sourceTree = "<group>"; };
 		08715A3B29EDF2DF002CB3F3 /* APIResponseConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseConvertible.swift; sourceTree = "<group>"; };
 		08715A3E29EEE568002CB3F3 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		0892BADD2A0FF7460074D5F3 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		0892BADE2A0FF7460074D5F3 /* CartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartViewController.xib; sourceTree = "<group>"; };
 		089E61DE2A0197C0003B2CAB /* CountryCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeView.swift; sourceTree = "<group>"; };
 		089E61E02A0197E2003B2CAB /* CountryCodeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryCodeView.xib; sourceTree = "<group>"; };
 		089E61E92A044FF0003B2CAB /* ApplicationTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationTheme.swift; sourceTree = "<group>"; };
@@ -98,6 +108,11 @@
 		089E938C2A0EDE470034BA90 /* ScheduleListingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListingPresenter.swift; sourceTree = "<group>"; };
 		089E938F2A0EDF0C0034BA90 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		089E93902A0EDF0C0034BA90 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
+		089E93932A0EECFB0034BA90 /* ServiceDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		089E93942A0EECFB0034BA90 /* ServiceDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceDetailsTableViewCell.xib; sourceTree = "<group>"; };
+		089E93982A0F07A60034BA90 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		089E939B2A0FAC050034BA90 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
+		089E939D2A0FAC380034BA90 /* DropDownView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownView.xib; sourceTree = "<group>"; };
 		08AA55C82A05698500F3F8CD /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		08AA55CA2A05AC3100F3F8CD /* UIViewController+Snackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Snackbar.swift"; sourceTree = "<group>"; };
 		08AA55CC2A05B44000F3F8CD /* OTPPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPPresenter.swift; sourceTree = "<group>"; };
@@ -119,8 +134,9 @@
 		08AA56032A0C267F00F3F8CD /* ServiceDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetailsViewController.swift; sourceTree = "<group>"; };
 		08AA56042A0C267F00F3F8CD /* ServiceDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceDetailsViewController.xib; sourceTree = "<group>"; };
 		08AA56072A0C26B900F3F8CD /* ServiceDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetailsPresenter.swift; sourceTree = "<group>"; };
-		08AA560A2A0D0A2600F3F8CD /* DetailsTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewHeader.swift; sourceTree = "<group>"; };
-		08AA560C2A0D0A3300F3F8CD /* DetailsTableViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsTableViewHeader.xib; sourceTree = "<group>"; };
+		08E84DB12A16B61600DF8428 /* SlotListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotListingViewController.swift; sourceTree = "<group>"; };
+		08E84DB22A16B61600DF8428 /* SlotListingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlotListingViewController.xib; sourceTree = "<group>"; };
+		08E84DB52A16B62400DF8428 /* SlotListingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotListingPresenter.swift; sourceTree = "<group>"; };
 		3B05354632B17C414B599867 /* Pods-Gardner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardner.debug.xcconfig"; path = "Target Support Files/Pods-Gardner/Pods-Gardner.debug.xcconfig"; sourceTree = "<group>"; };
 		7D2184E8DDC5FEBD0422E0D8 /* Pods-Gardner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardner.release.xcconfig"; path = "Target Support Files/Pods-Gardner/Pods-Gardner.release.xcconfig"; sourceTree = "<group>"; };
 		CBB88E5EC1BB0A076C6BFC5C /* Pods_Gardner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gardner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,6 +240,8 @@
 		08715A1B29EDEC7C002CB3F3 /* Gardner */ = {
 			isa = PBXGroup;
 			children = (
+				089E939A2A0FABE40034BA90 /* Component */,
+				089E93972A0F07960034BA90 /* Models */,
 				08AA55E52A07E67400F3F8CD /* Assets */,
 				08AA55CE2A06E8D000F3F8CD /* Session */,
 				089E61EB2A0453FA003B2CAB /* Extensions */,
@@ -246,6 +264,9 @@
 		08715A3029EDEC86002CB3F3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				08E84DB72A17CF5100DF8428 /* Address */,
+				08E84DB02A16B60100DF8428 /* Slot */,
+				0892BADC2A0FF7280074D5F3 /* Cart */,
 				089E93802A0EA4F40034BA90 /* ScheduleAdd */,
 				08AA56022A0C265500F3F8CD /* ServiceDetails */,
 				08AA55D12A07873300F3F8CD /* Home */,
@@ -284,6 +305,15 @@
 				08397EA529F18B90008F8F14 /* Authentication */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		0892BADC2A0FF7280074D5F3 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				0892BADD2A0FF7460074D5F3 /* CartViewController.swift */,
+				0892BADE2A0FF7460074D5F3 /* CartViewController.xib */,
+			);
+			path = Cart;
 			sourceTree = "<group>";
 		};
 		089E61DD2A01979F003B2CAB /* Components */ = {
@@ -340,6 +370,23 @@
 				089E93902A0EDF0C0034BA90 /* ScheduleTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		089E93972A0F07960034BA90 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				089E93982A0F07A60034BA90 /* Service.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		089E939A2A0FABE40034BA90 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				089E939B2A0FAC050034BA90 /* DropDownView.swift */,
+				089E939D2A0FAC380034BA90 /* DropDownView.xib */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 		08AA55CE2A06E8D000F3F8CD /* Session */ = {
@@ -425,7 +472,7 @@
 		08AA56022A0C265500F3F8CD /* ServiceDetails */ = {
 			isa = PBXGroup;
 			children = (
-				08AA56092A0D09F600F3F8CD /* Header */,
+				08AA56092A0D09F600F3F8CD /* Cell */,
 				08AA56032A0C267F00F3F8CD /* ServiceDetailsViewController.swift */,
 				08AA56042A0C267F00F3F8CD /* ServiceDetailsViewController.xib */,
 				08AA56072A0C26B900F3F8CD /* ServiceDetailsPresenter.swift */,
@@ -433,13 +480,30 @@
 			path = ServiceDetails;
 			sourceTree = "<group>";
 		};
-		08AA56092A0D09F600F3F8CD /* Header */ = {
+		08AA56092A0D09F600F3F8CD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				08AA560A2A0D0A2600F3F8CD /* DetailsTableViewHeader.swift */,
-				08AA560C2A0D0A3300F3F8CD /* DetailsTableViewHeader.xib */,
+				089E93932A0EECFB0034BA90 /* ServiceDetailsTableViewCell.swift */,
+				089E93942A0EECFB0034BA90 /* ServiceDetailsTableViewCell.xib */,
 			);
-			path = Header;
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		08E84DB02A16B60100DF8428 /* Slot */ = {
+			isa = PBXGroup;
+			children = (
+				08E84DB12A16B61600DF8428 /* SlotListingViewController.swift */,
+				08E84DB22A16B61600DF8428 /* SlotListingViewController.xib */,
+				08E84DB52A16B62400DF8428 /* SlotListingPresenter.swift */,
+			);
+			path = Slot;
+			sourceTree = "<group>";
+		};
+		08E84DB72A17CF5100DF8428 /* Address */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Address;
 			sourceTree = "<group>";
 		};
 		EEFE174929656FD049032B64 /* Pods */ = {
@@ -516,17 +580,20 @@
 				08397EBA29F97B98008F8F14 /* LoginViewController.xib in Resources */,
 				089E93842A0EA51A0034BA90 /* ScheduleAddViewController.xib in Resources */,
 				08715A2929EDEC7C002CB3F3 /* LaunchScreen.storyboard in Resources */,
+				08E84DB42A16B61600DF8428 /* SlotListingViewController.xib in Resources */,
 				08AA56062A0C267F00F3F8CD /* ServiceDetailsViewController.xib in Resources */,
 				08AA55EE2A07E75C00F3F8CD /* Poppins-SemiBold.ttf in Resources */,
 				089E93922A0EDF0C0034BA90 /* ScheduleTableViewCell.xib in Resources */,
 				08715A2629EDEC7C002CB3F3 /* Assets.xcassets in Resources */,
+				089E939E2A0FAC380034BA90 /* DropDownView.xib in Resources */,
 				08AA55E02A07CAD700F3F8CD /* ProfileTableViewCell.xib in Resources */,
 				08AA55FC2A08150600F3F8CD /* ServiceCollectionViewCell.xib in Resources */,
 				08AA55EC2A07E75C00F3F8CD /* Poppins-Bold.ttf in Resources */,
-				08AA560D2A0D0A3300F3F8CD /* DetailsTableViewHeader.xib in Resources */,
 				08715A2429EDEC7C002CB3F3 /* Main.storyboard in Resources */,
+				089E93962A0EECFB0034BA90 /* ServiceDetailsTableViewCell.xib in Resources */,
 				08AA55ED2A07E75C00F3F8CD /* Poppins-Medium.ttf in Resources */,
 				08397EBF2A004563008F8F14 /* OTPViewController.xib in Resources */,
+				0892BAE02A0FF7460074D5F3 /* CartViewController.xib in Resources */,
 				08AA55EB2A07E75C00F3F8CD /* Poppins-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -580,6 +647,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08E84DB32A16B61600DF8428 /* SlotListingViewController.swift in Sources */,
 				08397EBE2A004563008F8F14 /* OTPViewController.swift in Sources */,
 				08397EB929F97B98008F8F14 /* LoginViewController.swift in Sources */,
 				08AA55E42A07D34C00F3F8CD /* UIColor+Hex.swift in Sources */,
@@ -591,10 +659,11 @@
 				08715A3A29EDF2AB002CB3F3 /* APIRouteType.swift in Sources */,
 				08AA55F02A07FD6900F3F8CD /* HomePresenter.swift in Sources */,
 				089E93912A0EDF0C0034BA90 /* ScheduleTableViewCell.swift in Sources */,
-				08AA560B2A0D0A2600F3F8CD /* DetailsTableViewHeader.swift in Sources */,
 				08AA55C92A05698500F3F8CD /* LoginPresenter.swift in Sources */,
+				0892BADF2A0FF7460074D5F3 /* CartViewController.swift in Sources */,
 				089E938D2A0EDE470034BA90 /* ScheduleListingPresenter.swift in Sources */,
 				089E61EA2A044FF0003B2CAB /* ApplicationTheme.swift in Sources */,
+				089E939C2A0FAC050034BA90 /* DropDownView.swift in Sources */,
 				08AA55FB2A08150600F3F8CD /* ServiceCollectionViewCell.swift in Sources */,
 				08397EAC29F9140E008F8F14 /* ProfileViewController.swift in Sources */,
 				089E93862A0EA55B0034BA90 /* ScheduleAddPresenter.swift in Sources */,
@@ -603,12 +672,15 @@
 				08715A1F29EDEC7C002CB3F3 /* SceneDelegate.swift in Sources */,
 				08AA55E22A07CD9100F3F8CD /* ProfilePresenter.swift in Sources */,
 				089E938A2A0EDE350034BA90 /* ScheduleListingViewController.swift in Sources */,
+				08E84DB62A16B62400DF8428 /* SlotListingPresenter.swift in Sources */,
 				08715A3829EDF0F8002CB3F3 /* APIClientType.swift in Sources */,
 				08397EB429F9752B008F8F14 /* BaseService.swift in Sources */,
 				08397EA929F3DAAF008F8F14 /* NetworkError.swift in Sources */,
+				089E93952A0EECFB0034BA90 /* ServiceDetailsTableViewCell.swift in Sources */,
 				089E61ED2A045417003B2CAB /* UIView+Extension.swift in Sources */,
 				08715A3F29EEE568002CB3F3 /* AuthenticationService.swift in Sources */,
 				08397EAF29F91761008F8F14 /* OrderListingViewController.swift in Sources */,
+				089E93992A0F07A60034BA90 /* Service.swift in Sources */,
 				08397EA729F18BAB008F8F14 /* AuthenticationRoutes.swift in Sources */,
 				08AA55D02A06E8E800F3F8CD /* UserSession.swift in Sources */,
 				08AA55CD2A05B44000F3F8CD /* OTPPresenter.swift in Sources */,

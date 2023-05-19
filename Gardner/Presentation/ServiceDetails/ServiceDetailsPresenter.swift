@@ -7,26 +7,29 @@
 
 import Foundation
 
+struct ServiceResponse: Decodable {
+    let service: Service
+}
 protocol ServiceDetailsPresenterOutput: AnyObject {
     func serviceDetailsPresenter(updatedService: Service)
 }
 
 protocol ServiceDetailsPresenterType {
-    func loadDefaultData()
+    func getServiceDetails()
 }
 
 class ServiceDetailsPresenter: ServiceDetailsPresenterType {
-    private var apiClient: APIClientType
-    private var service: Service
+    private var service: ServicesServiceType
+    private var serviceEntity: Service
     
     weak var outputs: ServiceDetailsPresenterOutput?
     
-    init(apiClient: APIClientType, service: Service) {
-        self.apiClient = apiClient
+    init(service: ServicesServiceType, serviceEntity: Service) {
         self.service = service
+        self.serviceEntity = serviceEntity
     }
     
-    func loadDefaultData() {
-        self.outputs?.serviceDetailsPresenter(updatedService: self.service)
+    func getServiceDetails() {
+        self.outputs?.serviceDetailsPresenter(updatedService: self.serviceEntity)
     }
 }

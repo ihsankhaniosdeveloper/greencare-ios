@@ -13,5 +13,6 @@ target 'Gardner' do
   pod 'ProgressHUD', '2.70'
   pod "TTGSnackbar"
   pod 'SDWebImage'
+  pod 'ActionSheetPicker-3.0'
 
 end

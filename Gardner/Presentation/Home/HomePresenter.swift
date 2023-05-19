@@ -9,18 +9,25 @@ import Foundation
 
 enum ServicesAPIRoutes {
     case services
-    case service
+    case service(serviceId: String)
 }
 
 extension ServicesAPIRoutes: APIRouteType {
     var url: URL {
-        return URL(string: "http://18.212.71.66:4000/api/v1/")!
+        return URL(string: "http://3.84.7.206:4000/api/v1/")!
     }
     
     var path: String {
         switch self {
             case .services: return "service"
-            case .service: return ""
+            case .service: return "service"
+        }
+    }
+    
+    var pathVariables: [String]? {
+        switch self {
+            case .services: return nil
+            case .service(serviceId: let serviceId): return [serviceId]
         }
     }
     
@@ -40,15 +47,27 @@ struct HomeDataResponse: Decodable {
     let sliders: [String]?
 }
 
-protocol HomeServiceType {
-    func getHomeData<T: Decodable>(completion: @escaping CompletionClosure<T>)
+protocol ServicesServiceType {
+    func getAllServices<T: Decodable>(completion: @escaping CompletionClosure<T>)
+    func getService<T: Decodable>(serviceId: String, completion: @escaping CompletionClosure<T>)
 }
 
-class HomeService: BaseService, HomeServiceType {
+class ServicesService: BaseService, ServicesServiceType {
     
     
-    func getHomeData<T>(completion: @escaping CompletionClosure<T>) where T : Decodable {
+    func getAllServices<T>(completion: @escaping CompletionClosure<T>) where T : Decodable {
         self.request(route: ServicesAPIRoutes.services) { (data: T?, error: NetworkErrors?) in
+            if let data = data, error == nil {
+                completion(.success(data))
+                return
+            }
+            
+            completion(.failure(error ?? .unknown))
+        }
+    }
+    
+    func getService<T>(serviceId: String, completion: @escaping CompletionClosure<T>) where T : Decodable {
+        self.request(route: ServicesAPIRoutes.service(serviceId: serviceId)) { (data: T?, error: NetworkErrors?) in
             if let data = data, error == nil {
                 completion(.success(data))
                 return
@@ -75,18 +94,16 @@ protocol HomePresenterOutput: AnyObject, LoadingState {
 
 class HomePresenter: HomePresenterType {
     weak var outputs: HomePresenterOutput?
-    private var homeService: HomeServiceType
+    private var homeService: ServicesServiceType
     
-    init(homeService: HomeServiceType) {
+    init(homeService: ServicesServiceType) {
         self.homeService = homeService
     }
     
     func getServices() {
         self.outputs?.showLoader()
         
-//        let res = [[Service(id: nil, title: nil, description: nil, plants: nil, hours: nil, persons: nil, subType: nil, instructions: nil, type: nil, price: nil, promo: nil, isDeleted: nil, isActive: nil, image: nil, backgroundImage: nil, contactLink: nil, isContactOnly: nil, createdAt: nil, updatedAt: nil, v: nil)]]
-        
-        homeService.getHomeData { (result: Result<HomeDataResponse, NetworkErrors>) in
+        homeService.getAllServices { (result: Result<HomeDataResponse, NetworkErrors>) in
             self.outputs?.showLoader()
             
             switch result {

@@ -25,9 +25,12 @@ class ServiceDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.isHidden = false
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+
         self.title = "Details"
         
         tableView.register(UINib(nibName: "DetailsTableViewHeader", bundle: .main), forHeaderFooterViewReuseIdentifier: "DetailsTableViewHeader")
+        tableView.register(UINib(nibName: "ServiceDetailsTableViewCell", bundle: .main), forCellReuseIdentifier: "ServiceDetailsTableViewCell")
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -35,7 +38,7 @@ class ServiceDetailsViewController: UIViewController {
         viewTableBG.roundWithShadow(corners: [.layerMaxXMinYCorner, .layerMinXMinYCorner], radius: 16, withShadow: true)
         
         (self.presenter as! ServiceDetailsPresenter).outputs = self
-        self.presenter.loadDefaultData()
+        self.presenter.getServiceDetails()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -48,23 +51,21 @@ class ServiceDetailsViewController: UIViewController {
 
 extension ServiceDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "DetailsTableViewHeader") as! DetailsTableViewHeader
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ServiceDetailsTableViewCell", for: indexPath) as! ServiceDetailsTableViewCell
         
-        header.configure(service: self.service)
+        cell.configure(service: self.service)
         
-        header.continueButtonTap = { [weak self] in
+        cell.continueButtonTap = { [weak self] in
             let serviceAddVC = ScheduleAddViewController.make(presenter: ScheduleAddPresenter())
             self?.navigationController?.pushViewController(serviceAddVC, animated: true)
         }
-        return header
+        
+        
+        return cell
     }
 }
 

@@ -18,7 +18,7 @@ extension AuthenticationRoutes: APIRouteType {
     }
     
     var url: URL {
-        return URL(string: "http://18.212.71.66:4000/api/v1/")!
+        return URL(string: "http://3.84.7.206:4000/api/v1/")!
     }
     
     var path: String {
