@@ -10,6 +10,9 @@
 		082CAD732A17D5CD00D2B66D /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CAD712A17D5CD00D2B66D /* AddressTableViewCell.swift */; };
 		082CAD742A17D5CD00D2B66D /* AddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082CAD722A17D5CD00D2B66D /* AddressTableViewCell.xib */; };
 		082CAD762A17D74800D2B66D /* AddressRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CAD752A17D74800D2B66D /* AddressRoutes.swift */; };
+		082CAD792A17EAD900D2B66D /* AddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CAD772A17EAD900D2B66D /* AddAddressViewController.swift */; };
+		082CAD7A2A17EAD900D2B66D /* AddAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082CAD782A17EAD900D2B66D /* AddAddressViewController.xib */; };
+		082CAD7C2A17EAF100D2B66D /* AddAddressPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CAD7B2A17EAF100D2B66D /* AddAddressPresenter.swift */; };
 		08397EA729F18BAB008F8F14 /* AuthenticationRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EA629F18BAB008F8F14 /* AuthenticationRoutes.swift */; };
 		08397EA929F3DAAF008F8F14 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EA829F3DAAF008F8F14 /* NetworkError.swift */; };
 		08397EAC29F9140E008F8F14 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EAB29F9140E008F8F14 /* ProfileViewController.swift */; };
@@ -83,6 +86,9 @@
 		082CAD712A17D5CD00D2B66D /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
 		082CAD722A17D5CD00D2B66D /* AddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressTableViewCell.xib; sourceTree = "<group>"; };
 		082CAD752A17D74800D2B66D /* AddressRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressRoutes.swift; sourceTree = "<group>"; };
+		082CAD772A17EAD900D2B66D /* AddAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewController.swift; sourceTree = "<group>"; };
+		082CAD782A17EAD900D2B66D /* AddAddressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAddressViewController.xib; sourceTree = "<group>"; };
+		082CAD7B2A17EAF100D2B66D /* AddAddressPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressPresenter.swift; sourceTree = "<group>"; };
 		08397EA629F18BAB008F8F14 /* AuthenticationRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRoutes.swift; sourceTree = "<group>"; };
 		08397EA829F3DAAF008F8F14 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		08397EAB29F9140E008F8F14 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -535,6 +541,9 @@
 		08E84DBC2A17CFB500DF8428 /* Add */ = {
 			isa = PBXGroup;
 			children = (
+				082CAD772A17EAD900D2B66D /* AddAddressViewController.swift */,
+				082CAD782A17EAD900D2B66D /* AddAddressViewController.xib */,
+				082CAD7B2A17EAF100D2B66D /* AddAddressPresenter.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -633,6 +642,7 @@
 				082CAD742A17D5CD00D2B66D /* AddressTableViewCell.xib in Resources */,
 				08397EBA29F97B98008F8F14 /* LoginViewController.xib in Resources */,
 				089E93842A0EA51A0034BA90 /* ScheduleAddViewController.xib in Resources */,
+				082CAD7A2A17EAD900D2B66D /* AddAddressViewController.xib in Resources */,
 				08715A2929EDEC7C002CB3F3 /* LaunchScreen.storyboard in Resources */,
 				08E84DB42A16B61600DF8428 /* SlotListingViewController.xib in Resources */,
 				08AA56062A0C267F00F3F8CD /* ServiceDetailsViewController.xib in Resources */,
@@ -725,6 +735,7 @@
 				089E93862A0EA55B0034BA90 /* ScheduleAddPresenter.swift in Sources */,
 				08715A1D29EDEC7C002CB3F3 /* AppDelegate.swift in Sources */,
 				08715A3C29EDF2DF002CB3F3 /* APIResponseConvertible.swift in Sources */,
+				082CAD792A17EAD900D2B66D /* AddAddressViewController.swift in Sources */,
 				08E84DC22A17D0DD00DF8428 /* AddressService.swift in Sources */,
 				08715A1F29EDEC7C002CB3F3 /* SceneDelegate.swift in Sources */,
 				08AA55E22A07CD9100F3F8CD /* ProfilePresenter.swift in Sources */,
@@ -748,6 +759,7 @@
 				089E61DF2A0197C0003B2CAB /* CountryCodeView.swift in Sources */,
 				08AA55FF2A0845E800F3F8CD /* ServiceCollectionViewHeader.swift in Sources */,
 				08AA55DF2A07CAD700F3F8CD /* ProfileTableViewCell.swift in Sources */,
+				082CAD7C2A17EAF100D2B66D /* AddAddressPresenter.swift in Sources */,
 				08AA55CB2A05AC3100F3F8CD /* UIViewController+Snackbar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
