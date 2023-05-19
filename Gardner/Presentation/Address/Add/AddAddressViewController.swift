@@ -8,9 +8,11 @@
 import UIKit
 
 class AddAddressViewController: UIViewController {
+    @IBOutlet weak var tfTitle: UITextField!
     @IBOutlet weak var tfArea: UITextField!
-    @IBOutlet weak var tfStreetName: UITextField!
     @IBOutlet weak var tfBuildingName: UITextField!
+    @IBOutlet weak var tfStreetName: UITextField!
+    @IBOutlet weak var tfCity: UITextField!
     
     private var presenter: AddressAddPresenterType!
     
@@ -35,10 +37,28 @@ class AddAddressViewController: UIViewController {
     }
     
     @IBAction func confirmButtonTap(_ sender: Any) {
-        self.presenter.addAddress(area: self.tfArea.text, streetName: self.tfStreetName.text, buildingName: self.tfBuildingName.text)
+        self.presenter.addAddress(
+            title: self.tfTitle.text,
+            area: self.tfArea.text,
+            streetName: tfStreetName.text,
+            buildingName: tfBuildingName.text,
+            city: tfCity.text
+        )
     }
 }
 
 extension AddAddressViewController: AddressAddPresenterOutput {
+    func addressAddPresenter(addressAdded address: Address) {
+        self.dismiss(animated: true)
+    }
+    
+    func addressAddPresenter(addressAddingFailed message: String) {
+        self.showSnackBar(message: message)
+    }
+    
+    func addressAddPresenter(addressValidationError validationError: FieldValidationError) {
+        
+    }
+    
     
 }
