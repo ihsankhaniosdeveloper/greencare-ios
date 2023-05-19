@@ -287,8 +287,6 @@
 		08715A3029EDEC86002CB3F3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				08E84DBD2A17CFBD00DF8428 /* Listing */,
-				08E84DBC2A17CFB500DF8428 /* Add */,
 				08E84DB72A17CF5100DF8428 /* Address */,
 				08E84DB02A16B60100DF8428 /* Slot */,
 				0892BADC2A0FF7280074D5F3 /* Cart */,
@@ -528,6 +526,8 @@
 		08E84DB72A17CF5100DF8428 /* Address */ = {
 			isa = PBXGroup;
 			children = (
+				08E84DBD2A17CFBD00DF8428 /* Listing */,
+				08E84DBC2A17CFB500DF8428 /* Add */,
 			);
 			path = Address;
 			sourceTree = "<group>";
