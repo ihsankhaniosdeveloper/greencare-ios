@@ -7,22 +7,37 @@
 
 import Foundation
 
-struct Address: Decodable {
-    
+struct AddressResponse: Codable {
+    let addresses: [Address]?
 }
+
+struct Address: Codable {
+    let id, title: String?
+    let latitude, longitude: Double?
+    let instructions, createdAt: String?
+    let v: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case title, latitude, longitude, instructions, createdAt
+        case v = "__v"
+    }
+}
+
 
 protocol AddressServiceType {
-    func getAddresses(competion: @escaping CompletionClosure<[Address]>)
+    func getAddresses(completion: @escaping CompletionClosure<[Address]>)
 }
 
-class AddressService: AddressServiceType {
-    private var apiClient: APIClientType
-    
-    init(apiClient: APIClientType) {
-        self.apiClient = apiClient
-    }
-    
-    func getAddresses(competion: @escaping CompletionClosure<[Address]>) {
-        competion(.success([Address(), Address()]))
+class AddressService: BaseService, AddressServiceType {
+    func getAddresses(completion: @escaping CompletionClosure<[Address]>) {
+        self.request(route: AddressRoutes.addressAll) { (data: AddressResponse?, error: NetworkErrors?) in
+            if let data = data, error == nil {
+                completion(.success(data.addresses ?? []))
+                return
+            }
+            
+            completion(.failure(error ?? .unknown))
+        }
     }
 }

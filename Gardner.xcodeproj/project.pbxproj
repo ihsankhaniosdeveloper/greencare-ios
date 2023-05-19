@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		082CAD732A17D5CD00D2B66D /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CAD712A17D5CD00D2B66D /* AddressTableViewCell.swift */; };
 		082CAD742A17D5CD00D2B66D /* AddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082CAD722A17D5CD00D2B66D /* AddressTableViewCell.xib */; };
+		082CAD762A17D74800D2B66D /* AddressRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CAD752A17D74800D2B66D /* AddressRoutes.swift */; };
 		08397EA729F18BAB008F8F14 /* AuthenticationRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EA629F18BAB008F8F14 /* AuthenticationRoutes.swift */; };
 		08397EA929F3DAAF008F8F14 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EA829F3DAAF008F8F14 /* NetworkError.swift */; };
 		08397EAC29F9140E008F8F14 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EAB29F9140E008F8F14 /* ProfileViewController.swift */; };
@@ -81,6 +82,7 @@
 /* Begin PBXFileReference section */
 		082CAD712A17D5CD00D2B66D /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
 		082CAD722A17D5CD00D2B66D /* AddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressTableViewCell.xib; sourceTree = "<group>"; };
+		082CAD752A17D74800D2B66D /* AddressRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressRoutes.swift; sourceTree = "<group>"; };
 		08397EA629F18BAB008F8F14 /* AuthenticationRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRoutes.swift; sourceTree = "<group>"; };
 		08397EA829F3DAAF008F8F14 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		08397EAB29F9140E008F8F14 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -552,6 +554,7 @@
 			isa = PBXGroup;
 			children = (
 				08E84DC12A17D0DD00DF8428 /* AddressService.swift */,
+				082CAD752A17D74800D2B66D /* AddressRoutes.swift */,
 			);
 			path = Address;
 			sourceTree = "<group>";
@@ -715,6 +718,7 @@
 				0892BADF2A0FF7460074D5F3 /* CartViewController.swift in Sources */,
 				089E938D2A0EDE470034BA90 /* ScheduleListingPresenter.swift in Sources */,
 				089E61EA2A044FF0003B2CAB /* ApplicationTheme.swift in Sources */,
+				082CAD762A17D74800D2B66D /* AddressRoutes.swift in Sources */,
 				089E939C2A0FAC050034BA90 /* DropDownView.swift in Sources */,
 				08AA55FB2A08150600F3F8CD /* ServiceCollectionViewCell.swift in Sources */,
 				08397EAC29F9140E008F8F14 /* ProfileViewController.swift in Sources */,

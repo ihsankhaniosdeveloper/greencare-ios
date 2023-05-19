@@ -34,10 +34,6 @@ extension ServicesAPIRoutes: APIRouteType {
     var method: HTTPRequestMethod {
         return .get
     }
-    
-    var headers: [String : String] {
-        return ["Authorization": UserSession.instance.token]
-    }
 }
 
 struct HomeDataResponse: Decodable {

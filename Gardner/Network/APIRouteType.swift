@@ -83,6 +83,10 @@ extension APIRouteType {
 }
 
 extension APIRouteType {
+    var url: URL {
+        return URL(string: "http://3.84.7.206:4000/api/")!
+    }
+    
     var requestType: RequestType {
         return .json
     }
@@ -100,6 +104,6 @@ extension APIRouteType {
     }
     
     var headers: [String : String] {
-        return [:]
+        return UserSession.instance.isValid ? ["Authorization": UserSession.instance.token] : [:]
     }
 }
