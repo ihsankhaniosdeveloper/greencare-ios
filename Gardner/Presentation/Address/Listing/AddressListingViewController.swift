@@ -38,14 +38,12 @@ class AddressListingViewController: UIViewController {
         self.presenter.getAllAddresses()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        self.navigationController?.navigationBar.isHidden = true
-    }
-    
     @objc func addAddressTap(_ sender: Any) {
+        let addressAddVC = AddAddressViewController(nibName: "AddAddressViewController", bundle: .main)
         
+        let navVC = UINavigationController(rootViewController: addressAddVC)
+        navVC.modalPresentationStyle = .fullScreen
+        self.present(navVC, animated: true)
     }
 
 }

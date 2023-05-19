@@ -8,6 +8,7 @@
 import Foundation
 
 protocol AddressAddPresenterType {
+    func addAddress(area: String?, streetName: String?, buildingName: String?)
 }
 
 protocol AddressAddPresenterOutput: AnyObject {
@@ -17,9 +18,13 @@ protocol AddressAddPresenterOutput: AnyObject {
 class AddressAddPresenter: AddressAddPresenterType {
     private var service: AddressServiceType
     
-    weak var outputs: AddressListingPresenterOutput?
+    weak var outputs: AddressAddPresenterOutput?
     
     init(service: AddressServiceType) {
         self.service = service
+    }
+    
+    func addAddress(area: String?, streetName: String?, buildingName: String?) {
+        
     }
 }
