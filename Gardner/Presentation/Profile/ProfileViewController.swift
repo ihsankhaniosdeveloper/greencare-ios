@@ -73,7 +73,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             break
             
         case .myAddresses:
-            let vc = Address
+            
             break
             
         case .settings:

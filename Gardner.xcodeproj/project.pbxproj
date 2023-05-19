@@ -69,6 +69,9 @@
 		08E84DB32A16B61600DF8428 /* SlotListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E84DB12A16B61600DF8428 /* SlotListingViewController.swift */; };
 		08E84DB42A16B61600DF8428 /* SlotListingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08E84DB22A16B61600DF8428 /* SlotListingViewController.xib */; };
 		08E84DB62A16B62400DF8428 /* SlotListingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E84DB52A16B62400DF8428 /* SlotListingPresenter.swift */; };
+		08E84DBA2A17CFAF00DF8428 /* AddressListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E84DB82A17CFAF00DF8428 /* AddressListingViewController.swift */; };
+		08E84DBB2A17CFAF00DF8428 /* AddressListingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08E84DB92A17CFAF00DF8428 /* AddressListingViewController.xib */; };
+		08E84DBF2A17CFD300DF8428 /* AddressListingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E84DBE2A17CFD300DF8428 /* AddressListingPresenter.swift */; };
 		E3D6E6151DD76F67454531CC /* Pods_Gardner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB88E5EC1BB0A076C6BFC5C /* Pods_Gardner.framework */; };
 /* End PBXBuildFile section */
 
@@ -137,6 +140,9 @@
 		08E84DB12A16B61600DF8428 /* SlotListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotListingViewController.swift; sourceTree = "<group>"; };
 		08E84DB22A16B61600DF8428 /* SlotListingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlotListingViewController.xib; sourceTree = "<group>"; };
 		08E84DB52A16B62400DF8428 /* SlotListingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotListingPresenter.swift; sourceTree = "<group>"; };
+		08E84DB82A17CFAF00DF8428 /* AddressListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListingViewController.swift; sourceTree = "<group>"; };
+		08E84DB92A17CFAF00DF8428 /* AddressListingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressListingViewController.xib; sourceTree = "<group>"; };
+		08E84DBE2A17CFD300DF8428 /* AddressListingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListingPresenter.swift; sourceTree = "<group>"; };
 		3B05354632B17C414B599867 /* Pods-Gardner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardner.debug.xcconfig"; path = "Target Support Files/Pods-Gardner/Pods-Gardner.debug.xcconfig"; sourceTree = "<group>"; };
 		7D2184E8DDC5FEBD0422E0D8 /* Pods-Gardner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardner.release.xcconfig"; path = "Target Support Files/Pods-Gardner/Pods-Gardner.release.xcconfig"; sourceTree = "<group>"; };
 		CBB88E5EC1BB0A076C6BFC5C /* Pods_Gardner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gardner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -264,6 +270,8 @@
 		08715A3029EDEC86002CB3F3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				08E84DBD2A17CFBD00DF8428 /* Listing */,
+				08E84DBC2A17CFB500DF8428 /* Add */,
 				08E84DB72A17CF5100DF8428 /* Address */,
 				08E84DB02A16B60100DF8428 /* Slot */,
 				0892BADC2A0FF7280074D5F3 /* Cart */,
@@ -506,6 +514,23 @@
 			path = Address;
 			sourceTree = "<group>";
 		};
+		08E84DBC2A17CFB500DF8428 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		08E84DBD2A17CFBD00DF8428 /* Listing */ = {
+			isa = PBXGroup;
+			children = (
+				08E84DB82A17CFAF00DF8428 /* AddressListingViewController.swift */,
+				08E84DB92A17CFAF00DF8428 /* AddressListingViewController.xib */,
+				08E84DBE2A17CFD300DF8428 /* AddressListingPresenter.swift */,
+			);
+			path = Listing;
+			sourceTree = "<group>";
+		};
 		EEFE174929656FD049032B64 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -593,6 +618,7 @@
 				089E93962A0EECFB0034BA90 /* ServiceDetailsTableViewCell.xib in Resources */,
 				08AA55ED2A07E75C00F3F8CD /* Poppins-Medium.ttf in Resources */,
 				08397EBF2A004563008F8F14 /* OTPViewController.xib in Resources */,
+				08E84DBB2A17CFAF00DF8428 /* AddressListingViewController.xib in Resources */,
 				0892BAE02A0FF7460074D5F3 /* CartViewController.xib in Resources */,
 				08AA55EB2A07E75C00F3F8CD /* Poppins-Regular.ttf in Resources */,
 			);
@@ -680,11 +706,13 @@
 				089E61ED2A045417003B2CAB /* UIView+Extension.swift in Sources */,
 				08715A3F29EEE568002CB3F3 /* AuthenticationService.swift in Sources */,
 				08397EAF29F91761008F8F14 /* OrderListingViewController.swift in Sources */,
+				08E84DBA2A17CFAF00DF8428 /* AddressListingViewController.swift in Sources */,
 				089E93992A0F07A60034BA90 /* Service.swift in Sources */,
 				08397EA729F18BAB008F8F14 /* AuthenticationRoutes.swift in Sources */,
 				08AA55D02A06E8E800F3F8CD /* UserSession.swift in Sources */,
 				08AA55CD2A05B44000F3F8CD /* OTPPresenter.swift in Sources */,
 				08397EB229F97454008F8F14 /* ServiceType.swift in Sources */,
+				08E84DBF2A17CFD300DF8428 /* AddressListingPresenter.swift in Sources */,
 				089E61DF2A0197C0003B2CAB /* CountryCodeView.swift in Sources */,
 				08AA55FF2A0845E800F3F8CD /* ServiceCollectionViewHeader.swift in Sources */,
 				08AA55DF2A07CAD700F3F8CD /* ProfileTableViewCell.swift in Sources */,
