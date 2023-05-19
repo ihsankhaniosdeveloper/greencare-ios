@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		082CAD732A17D5CD00D2B66D /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CAD712A17D5CD00D2B66D /* AddressTableViewCell.swift */; };
+		082CAD742A17D5CD00D2B66D /* AddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082CAD722A17D5CD00D2B66D /* AddressTableViewCell.xib */; };
 		08397EA729F18BAB008F8F14 /* AuthenticationRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EA629F18BAB008F8F14 /* AuthenticationRoutes.swift */; };
 		08397EA929F3DAAF008F8F14 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EA829F3DAAF008F8F14 /* NetworkError.swift */; };
 		08397EAC29F9140E008F8F14 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EAB29F9140E008F8F14 /* ProfileViewController.swift */; };
@@ -77,6 +79,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		082CAD712A17D5CD00D2B66D /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
+		082CAD722A17D5CD00D2B66D /* AddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressTableViewCell.xib; sourceTree = "<group>"; };
 		08397EA629F18BAB008F8F14 /* AuthenticationRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRoutes.swift; sourceTree = "<group>"; };
 		08397EA829F3DAAF008F8F14 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		08397EAB29F9140E008F8F14 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +172,15 @@
 				CBB88E5EC1BB0A076C6BFC5C /* Pods_Gardner.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		082CAD702A17D5B300D2B66D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				082CAD712A17D5CD00D2B66D /* AddressTableViewCell.swift */,
+				082CAD722A17D5CD00D2B66D /* AddressTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		08397EA529F18B90008F8F14 /* Authentication */ = {
@@ -527,6 +540,7 @@
 		08E84DBD2A17CFBD00DF8428 /* Listing */ = {
 			isa = PBXGroup;
 			children = (
+				082CAD702A17D5B300D2B66D /* Cell */,
 				08E84DB82A17CFAF00DF8428 /* AddressListingViewController.swift */,
 				08E84DB92A17CFAF00DF8428 /* AddressListingViewController.xib */,
 				08E84DBE2A17CFD300DF8428 /* AddressListingPresenter.swift */,
@@ -613,6 +627,7 @@
 			files = (
 				08AA55DC2A07C31B00F3F8CD /* ProfileTableViewHeader.xib in Resources */,
 				089E61E12A0197E2003B2CAB /* CountryCodeView.xib in Resources */,
+				082CAD742A17D5CD00D2B66D /* AddressTableViewCell.xib in Resources */,
 				08397EBA29F97B98008F8F14 /* LoginViewController.xib in Resources */,
 				089E93842A0EA51A0034BA90 /* ScheduleAddViewController.xib in Resources */,
 				08715A2929EDEC7C002CB3F3 /* LaunchScreen.storyboard in Resources */,
@@ -710,6 +725,7 @@
 				08715A1F29EDEC7C002CB3F3 /* SceneDelegate.swift in Sources */,
 				08AA55E22A07CD9100F3F8CD /* ProfilePresenter.swift in Sources */,
 				089E938A2A0EDE350034BA90 /* ScheduleListingViewController.swift in Sources */,
+				082CAD732A17D5CD00D2B66D /* AddressTableViewCell.swift in Sources */,
 				08E84DB62A16B62400DF8428 /* SlotListingPresenter.swift in Sources */,
 				08715A3829EDF0F8002CB3F3 /* APIClientType.swift in Sources */,
 				08397EB429F9752B008F8F14 /* BaseService.swift in Sources */,
