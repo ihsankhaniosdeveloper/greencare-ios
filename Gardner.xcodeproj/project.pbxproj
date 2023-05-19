@@ -72,6 +72,7 @@
 		08E84DBA2A17CFAF00DF8428 /* AddressListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E84DB82A17CFAF00DF8428 /* AddressListingViewController.swift */; };
 		08E84DBB2A17CFAF00DF8428 /* AddressListingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08E84DB92A17CFAF00DF8428 /* AddressListingViewController.xib */; };
 		08E84DBF2A17CFD300DF8428 /* AddressListingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E84DBE2A17CFD300DF8428 /* AddressListingPresenter.swift */; };
+		08E84DC22A17D0DD00DF8428 /* AddressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E84DC12A17D0DD00DF8428 /* AddressService.swift */; };
 		E3D6E6151DD76F67454531CC /* Pods_Gardner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB88E5EC1BB0A076C6BFC5C /* Pods_Gardner.framework */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +144,7 @@
 		08E84DB82A17CFAF00DF8428 /* AddressListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListingViewController.swift; sourceTree = "<group>"; };
 		08E84DB92A17CFAF00DF8428 /* AddressListingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressListingViewController.xib; sourceTree = "<group>"; };
 		08E84DBE2A17CFD300DF8428 /* AddressListingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListingPresenter.swift; sourceTree = "<group>"; };
+		08E84DC12A17D0DD00DF8428 /* AddressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressService.swift; sourceTree = "<group>"; };
 		3B05354632B17C414B599867 /* Pods-Gardner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardner.debug.xcconfig"; path = "Target Support Files/Pods-Gardner/Pods-Gardner.debug.xcconfig"; sourceTree = "<group>"; };
 		7D2184E8DDC5FEBD0422E0D8 /* Pods-Gardner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardner.release.xcconfig"; path = "Target Support Files/Pods-Gardner/Pods-Gardner.release.xcconfig"; sourceTree = "<group>"; };
 		CBB88E5EC1BB0A076C6BFC5C /* Pods_Gardner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gardner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -307,6 +309,7 @@
 		08715A3D29EEE554002CB3F3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				08E84DC02A17D0CC00DF8428 /* Address */,
 				08AA56012A084B0A00F3F8CD /* Home */,
 				08397EB129F97454008F8F14 /* ServiceType.swift */,
 				08397EB329F9752B008F8F14 /* BaseService.swift */,
@@ -531,6 +534,14 @@
 			path = Listing;
 			sourceTree = "<group>";
 		};
+		08E84DC02A17D0CC00DF8428 /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				08E84DC12A17D0DD00DF8428 /* AddressService.swift */,
+			);
+			path = Address;
+			sourceTree = "<group>";
+		};
 		EEFE174929656FD049032B64 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -695,6 +706,7 @@
 				089E93862A0EA55B0034BA90 /* ScheduleAddPresenter.swift in Sources */,
 				08715A1D29EDEC7C002CB3F3 /* AppDelegate.swift in Sources */,
 				08715A3C29EDF2DF002CB3F3 /* APIResponseConvertible.swift in Sources */,
+				08E84DC22A17D0DD00DF8428 /* AddressService.swift in Sources */,
 				08715A1F29EDEC7C002CB3F3 /* SceneDelegate.swift in Sources */,
 				08AA55E22A07CD9100F3F8CD /* ProfilePresenter.swift in Sources */,
 				089E938A2A0EDE350034BA90 /* ScheduleListingViewController.swift in Sources */,
