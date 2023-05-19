@@ -6,3 +6,19 @@
 //
 
 import Foundation
+
+protocol AddressListingPresenterType {
+    
+}
+
+protocol AddressListingPresenterOutput {
+    
+}
+
+class AddressListingPresenter: AddressListingPresenterType {
+    private var service: AddressServiceType
+    
+    init(service: AddressServiceType) {
+        self.service = service
+    }
+}
