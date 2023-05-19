@@ -27,6 +27,7 @@ class AddressListingViewController: UIViewController {
         
         self.title = "My Addresses"
         self.navigationController?.navigationBar.isHidden = false
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addAddressTap(_ :)))
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -41,6 +42,10 @@ class AddressListingViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    @objc func addAddressTap(_ sender: Any) {
+        
     }
 
 }

@@ -14,7 +14,8 @@ struct AddressResponse: Codable {
 struct Address: Codable {
     let id, title: String?
     let latitude, longitude: Double?
-    let instructions, createdAt: String?
+    let instructions: String?
+    let createdAt: Date?
     let v: Int?
 
     enum CodingKeys: String, CodingKey {
