@@ -13,14 +13,10 @@ enum ServicesAPIRoutes {
 }
 
 extension ServicesAPIRoutes: APIRouteType {
-    var url: URL {
-        return URL(string: "http://3.84.7.206:4000/api/v1/")!
-    }
-    
     var path: String {
         switch self {
-            case .services: return "service"
-            case .service: return "service"
+            case .services: return "v1/service"
+            case .service: return "v1/service"
         }
     }
     

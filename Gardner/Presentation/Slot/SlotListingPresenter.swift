@@ -20,9 +20,9 @@ protocol SlotListingPresenterOutput {
 }
 
 class SlotListingPresenter: SlotListingPresenterType {
-    private var service: ServicesServiceType
+    private var service: SlotServiceType
     
-    init(service: ServicesServiceType) {
+    init(service: SlotServiceType) {
         self.service = service
     }
     

@@ -13,6 +13,11 @@
 		082CAD792A17EAD900D2B66D /* AddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CAD772A17EAD900D2B66D /* AddAddressViewController.swift */; };
 		082CAD7A2A17EAD900D2B66D /* AddAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082CAD782A17EAD900D2B66D /* AddAddressViewController.xib */; };
 		082CAD7C2A17EAF100D2B66D /* AddAddressPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CAD7B2A17EAF100D2B66D /* AddAddressPresenter.swift */; };
+		082CAD7F2A19395D00D2B66D /* SlotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CAD7E2A19395D00D2B66D /* SlotService.swift */; };
+		082CAD842A193C0D00D2B66D /* SlotsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CAD822A193C0D00D2B66D /* SlotsTableViewCell.swift */; };
+		082CAD852A193C0D00D2B66D /* SlotsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082CAD832A193C0D00D2B66D /* SlotsTableViewCell.xib */; };
+		082CAD882A193C4C00D2B66D /* SlotsTableSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CAD872A193C4C00D2B66D /* SlotsTableSectionHeader.swift */; };
+		082CAD8A2A193C5800D2B66D /* SlotsTableSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082CAD892A193C5800D2B66D /* SlotsTableSectionHeader.xib */; };
 		08397EA729F18BAB008F8F14 /* AuthenticationRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EA629F18BAB008F8F14 /* AuthenticationRoutes.swift */; };
 		08397EA929F3DAAF008F8F14 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EA829F3DAAF008F8F14 /* NetworkError.swift */; };
 		08397EAC29F9140E008F8F14 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EAB29F9140E008F8F14 /* ProfileViewController.swift */; };
@@ -89,6 +94,11 @@
 		082CAD772A17EAD900D2B66D /* AddAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewController.swift; sourceTree = "<group>"; };
 		082CAD782A17EAD900D2B66D /* AddAddressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAddressViewController.xib; sourceTree = "<group>"; };
 		082CAD7B2A17EAF100D2B66D /* AddAddressPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressPresenter.swift; sourceTree = "<group>"; };
+		082CAD7E2A19395D00D2B66D /* SlotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotService.swift; sourceTree = "<group>"; };
+		082CAD822A193C0D00D2B66D /* SlotsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotsTableViewCell.swift; sourceTree = "<group>"; };
+		082CAD832A193C0D00D2B66D /* SlotsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlotsTableViewCell.xib; sourceTree = "<group>"; };
+		082CAD872A193C4C00D2B66D /* SlotsTableSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotsTableSectionHeader.swift; sourceTree = "<group>"; };
+		082CAD892A193C5800D2B66D /* SlotsTableSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlotsTableSectionHeader.xib; sourceTree = "<group>"; };
 		08397EA629F18BAB008F8F14 /* AuthenticationRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRoutes.swift; sourceTree = "<group>"; };
 		08397EA829F3DAAF008F8F14 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		08397EAB29F9140E008F8F14 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +199,32 @@
 				082CAD722A17D5CD00D2B66D /* AddressTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		082CAD7D2A19394F00D2B66D /* Slot */ = {
+			isa = PBXGroup;
+			children = (
+				082CAD7E2A19395D00D2B66D /* SlotService.swift */,
+			);
+			path = Slot;
+			sourceTree = "<group>";
+		};
+		082CAD802A193BE400D2B66D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				082CAD822A193C0D00D2B66D /* SlotsTableViewCell.swift */,
+				082CAD832A193C0D00D2B66D /* SlotsTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		082CAD812A193BED00D2B66D /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				082CAD872A193C4C00D2B66D /* SlotsTableSectionHeader.swift */,
+				082CAD892A193C5800D2B66D /* SlotsTableSectionHeader.xib */,
+			);
+			path = Header;
 			sourceTree = "<group>";
 		};
 		08397EA529F18B90008F8F14 /* Authentication */ = {
@@ -328,6 +364,7 @@
 		08715A3D29EEE554002CB3F3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				082CAD7D2A19394F00D2B66D /* Slot */,
 				08E84DC02A17D0CC00DF8428 /* Address */,
 				08AA56012A084B0A00F3F8CD /* Home */,
 				08397EB129F97454008F8F14 /* ServiceType.swift */,
@@ -522,6 +559,8 @@
 		08E84DB02A16B60100DF8428 /* Slot */ = {
 			isa = PBXGroup;
 			children = (
+				082CAD812A193BED00D2B66D /* Header */,
+				082CAD802A193BE400D2B66D /* Cell */,
 				08E84DB12A16B61600DF8428 /* SlotListingViewController.swift */,
 				08E84DB22A16B61600DF8428 /* SlotListingViewController.xib */,
 				08E84DB52A16B62400DF8428 /* SlotListingPresenter.swift */,
@@ -647,6 +686,7 @@
 				08E84DB42A16B61600DF8428 /* SlotListingViewController.xib in Resources */,
 				08AA56062A0C267F00F3F8CD /* ServiceDetailsViewController.xib in Resources */,
 				08AA55EE2A07E75C00F3F8CD /* Poppins-SemiBold.ttf in Resources */,
+				082CAD8A2A193C5800D2B66D /* SlotsTableSectionHeader.xib in Resources */,
 				089E93922A0EDF0C0034BA90 /* ScheduleTableViewCell.xib in Resources */,
 				08715A2629EDEC7C002CB3F3 /* Assets.xcassets in Resources */,
 				089E939E2A0FAC380034BA90 /* DropDownView.xib in Resources */,
@@ -660,6 +700,7 @@
 				08E84DBB2A17CFAF00DF8428 /* AddressListingViewController.xib in Resources */,
 				0892BAE02A0FF7460074D5F3 /* CartViewController.xib in Resources */,
 				08AA55EB2A07E75C00F3F8CD /* Poppins-Regular.ttf in Resources */,
+				082CAD852A193C0D00D2B66D /* SlotsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,7 +756,9 @@
 				08E84DB32A16B61600DF8428 /* SlotListingViewController.swift in Sources */,
 				08397EBE2A004563008F8F14 /* OTPViewController.swift in Sources */,
 				08397EB929F97B98008F8F14 /* LoginViewController.swift in Sources */,
+				082CAD7F2A19395D00D2B66D /* SlotService.swift in Sources */,
 				08AA55E42A07D34C00F3F8CD /* UIColor+Hex.swift in Sources */,
+				082CAD842A193C0D00D2B66D /* SlotsTableViewCell.swift in Sources */,
 				08AA56082A0C26B900F3F8CD /* ServiceDetailsPresenter.swift in Sources */,
 				08715A2129EDEC7C002CB3F3 /* HomeViewController.swift in Sources */,
 				08AA55DA2A07C31000F3F8CD /* ProfileTableViewHeader.swift in Sources */,
@@ -749,6 +792,7 @@
 				089E61ED2A045417003B2CAB /* UIView+Extension.swift in Sources */,
 				08715A3F29EEE568002CB3F3 /* AuthenticationService.swift in Sources */,
 				08397EAF29F91761008F8F14 /* OrderListingViewController.swift in Sources */,
+				082CAD882A193C4C00D2B66D /* SlotsTableSectionHeader.swift in Sources */,
 				08E84DBA2A17CFAF00DF8428 /* AddressListingViewController.swift in Sources */,
 				089E93992A0F07A60034BA90 /* Service.swift in Sources */,
 				08397EA729F18BAB008F8F14 /* AuthenticationRoutes.swift in Sources */,
