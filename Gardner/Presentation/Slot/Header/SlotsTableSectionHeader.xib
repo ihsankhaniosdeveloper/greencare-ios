@@ -30,7 +30,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="5uA-BJ-YAl"/>
                         <constraint firstAttribute="trailing" secondItem="8dd-se-6vu" secondAttribute="trailing" constant="24" id="K7E-HP-O4c"/>
@@ -48,12 +48,18 @@
                 <constraint firstAttribute="bottom" secondItem="QRO-E9-b8B" secondAttribute="bottom" id="nTc-aY-9N0"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="lblDate" destination="8dd-se-6vu" id="nIp-4C-fir"/>
+            </connections>
             <point key="canvasLocation" x="139.69465648854961" y="-262.67605633802816"/>
         </view>
     </objects>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

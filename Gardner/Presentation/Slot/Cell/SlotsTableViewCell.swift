@@ -9,15 +9,18 @@ import UIKit
 
 class SlotsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var lblSlot: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.selectionStyle = .none
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func configure(timeSlot: Date) {
+        let startTime = timeSlot.toTimeString()
+        let endTime = Calendar.current.date(byAdding: .hour, value: 1, to: timeSlot)!.toTimeString()
+        
+        self.lblSlot.text = "\(startTime) to \(endTime)"
     }
     
 }
