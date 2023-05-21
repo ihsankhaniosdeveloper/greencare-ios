@@ -76,8 +76,8 @@ class ScheduleAddViewController: UIViewController {
         let navVC = UINavigationController(rootViewController: slotListingVC)
         navVC.modalPresentationStyle = .fullScreen
         
-        slotListingVC.slotSelected = { [weak self] slot in
-//            self?.lblSelectedAddress.text = address.instructions
+        slotListingVC.selectedSlotsHandler = { [weak self] slots in
+            print("selected slots >>> \(slots)")
         }
 
         

@@ -12,7 +12,12 @@ class SlotListingViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     private var presenter: SlotListingPresenterType!
     private var slots: [Slot] = []
-    var slotSelected: ((Slot)->())?
+    var selectedSlotsHandler: (([Slot])->())?
+    
+    private var selectedSlotsDictionary: [Date: [Date]] = [:]
+    private var selectedSlotsIndexPath: [IndexPath] = []
+    
+    private var expandedSection: Int?
     
     static func make(presenter: SlotListingPresenterType) -> SlotListingViewController {
         let vc = SlotListingViewController(nibName: "SlotListingViewController", bundle: .main)
@@ -40,6 +45,20 @@ class SlotListingViewController: UIViewController {
     @objc func closeTap(_ sender: Any) {
         self.dismiss(animated: true)
     }
+    
+    
+    @IBAction func doneButtonTap(_ sender: Any) {
+        if let selectedSlotsHandler = self.selectedSlotsHandler {
+            var selectedSlots: [Slot] = []
+            
+            for (key, value) in self.selectedSlotsDictionary {
+                selectedSlots.append(Slot(date: key, timeSlots: value))
+            }
+            
+            selectedSlotsHandler(selectedSlots)
+            dismiss(animated: true)
+        }
+    }
 }
 
 extension SlotListingViewController: UITableViewDelegate, UITableViewDataSource {
@@ -48,13 +67,14 @@ extension SlotListingViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.slots[section].timeSlots.count
+        return (slots[section].isExpanded ?? false) ? self.slots[section].timeSlots.count : 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SlotsTableViewCell", for: indexPath) as! SlotsTableViewCell
         
-        cell.configure(timeSlot: self.slots[indexPath.section].timeSlots[indexPath.row])
+        let isSelected = self.selectedSlotsIndexPath.contains(indexPath)
+        cell.configure(timeSlot: self.slots[indexPath.section].timeSlots[indexPath.row], isSelected: isSelected)
         
         return cell
     }
@@ -62,8 +82,55 @@ extension SlotListingViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SlotsTableSectionHeader") as! SlotsTableSectionHeader
         
-        header.configure(date: self.slots[section].date)
+        header.configure(date: self.slots[section].date, isExpanded: self.slots[section].isExpanded ?? false)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sectionHeaderTapped(_:)))
+                header.addGestureRecognizer(tapGestureRecognizer)
+                header.tag = section
+        
         return header
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let lastSelection = self.selectedSlotsIndexPath.last {
+            if indexPath.row != lastSelection.row + 1 && indexPath.section == lastSelection.section {
+                self.showSnackBar(message: "Please select consecutive slots")
+                return
+            }
+        }
+        
+        if self.selectedSlotsIndexPath.contains(indexPath) {
+            self.selectedSlotsIndexPath.removeAll { cIndexPath in
+                return cIndexPath == indexPath
+            }
+            
+            self.tableView.reloadRows(at: [indexPath], with: .none)
+            return
+        }
+        
+        let selectedDate = self.slots[indexPath.section].date
+        let selectedSlot = self.slots[indexPath.section].timeSlots[indexPath.row]
+
+        if self.selectedSlotsDictionary[selectedDate] != nil {
+            self.selectedSlotsDictionary[selectedDate]?.append(selectedSlot)
+        } else {
+            self.selectedSlotsDictionary[selectedDate] = [selectedSlot]
+        }
+        
+        self.selectedSlotsIndexPath.append(indexPath)
+        
+        self.tableView.reloadRows(at: [indexPath], with: .none)
+    }
+    
+    @objc func sectionHeaderTapped(_ gestureRecognizer: UITapGestureRecognizer) {
+        guard let section = gestureRecognizer.view?.tag else {
+            return
+        }
+        
+        slots[section].isExpanded = !(slots[section].isExpanded ?? false)
+        
+        self.tableView.reloadSections(IndexSet(integer: section), with: .none)
+        self.tableView.scrollToRow(at: IndexPath(row: 0, section: section), at: .middle, animated: true)
     }
 }
 

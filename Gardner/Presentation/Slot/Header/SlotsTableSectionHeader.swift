@@ -8,13 +8,18 @@
 import UIKit
 
 class SlotsTableSectionHeader: UITableViewHeaderFooterView {
+    
+    @IBOutlet weak var ivExpandedIcon: UIImageView!
+    
     @IBOutlet weak var lblDate: UILabel!
     override func awakeFromNib() {
         
     }
     
-    func configure(date: Date) {
+    func configure(date: Date, isExpanded: Bool) {
         self.lblDate.text = date.toDateString()
+        
+        self.ivExpandedIcon.image = isExpanded ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down")
     }
 
 }

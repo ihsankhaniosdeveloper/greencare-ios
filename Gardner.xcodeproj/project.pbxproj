@@ -416,6 +416,7 @@
 		089E93802A0EA4F40034BA90 /* ScheduleAdd */ = {
 			isa = PBXGroup;
 			children = (
+				08E84DB92A17CFAF00DF8428 /* AddressListingViewController.xib */,
 				089E93812A0EA51A0034BA90 /* ScheduleAddViewController.swift */,
 				089E93822A0EA51A0034BA90 /* ScheduleAddViewController.xib */,
 				089E93852A0EA55B0034BA90 /* ScheduleAddPresenter.swift */,
@@ -595,7 +596,6 @@
 			children = (
 				082CAD702A17D5B300D2B66D /* Cell */,
 				08E84DB82A17CFAF00DF8428 /* AddressListingViewController.swift */,
-				08E84DB92A17CFAF00DF8428 /* AddressListingViewController.xib */,
 				08E84DBE2A17CFD300DF8428 /* AddressListingPresenter.swift */,
 			);
 			path = Listing;

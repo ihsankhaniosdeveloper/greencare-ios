@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,17 +25,26 @@
                     <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 March 2023" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dd-se-6vu">
-                            <rect key="frame" x="24" y="12.333333333333334" width="345" height="25.333333333333329"/>
+                            <rect key="frame" x="24" y="12.333333333333334" width="132" height="25.333333333333329"/>
                             <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins Medium" pointSize="18"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" name="whiteColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kcZ-kN-VQu">
+                            <rect key="frame" x="349" y="15" width="20" height="20"/>
+                            <color key="tintColor" name="whiteColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="dL9-nZ-H6d"/>
+                                <constraint firstAttribute="width" constant="20" id="jnr-Dy-NVw"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                    <color key="backgroundColor" name="primaryColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="5uA-BJ-YAl"/>
-                        <constraint firstAttribute="trailing" secondItem="8dd-se-6vu" secondAttribute="trailing" constant="24" id="K7E-HP-O4c"/>
                         <constraint firstItem="8dd-se-6vu" firstAttribute="centerY" secondItem="QRO-E9-b8B" secondAttribute="centerY" id="LDq-Xf-eOD"/>
+                        <constraint firstItem="kcZ-kN-VQu" firstAttribute="centerY" secondItem="8dd-se-6vu" secondAttribute="centerY" id="lqi-VV-7kH"/>
+                        <constraint firstAttribute="trailing" secondItem="kcZ-kN-VQu" secondAttribute="trailing" constant="24" id="rJJ-vc-YfZ"/>
                         <constraint firstItem="8dd-se-6vu" firstAttribute="leading" secondItem="QRO-E9-b8B" secondAttribute="leading" constant="24" id="rgU-ID-qrH"/>
                     </constraints>
                 </view>
@@ -49,17 +59,21 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="lblDate" destination="8dd-se-6vu" id="nIp-4C-fir"/>
+                <outlet property="ivExpandedIcon" destination="kcZ-kN-VQu" id="C5o-7k-1cg"/>
+                <outlet property="lblDate" destination="8dd-se-6vu" id="cgt-Zf-yrL"/>
             </connections>
             <point key="canvasLocation" x="139.69465648854961" y="-262.67605633802816"/>
         </view>
     </objects>
     <resources>
+        <namedColor name="primaryColor">
+            <color red="0.62745098039215685" green="0.73333333333333328" blue="0.29019607843137257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="whiteColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
