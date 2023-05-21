@@ -92,13 +92,6 @@ extension SlotListingViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let lastSelection = self.selectedSlotsIndexPath.last {
-            if indexPath.row != lastSelection.row + 1 && indexPath.section == lastSelection.section {
-                self.showSnackBar(message: "Please select consecutive slots")
-                return
-            }
-        }
-        
         if self.selectedSlotsIndexPath.contains(indexPath) {
             self.selectedSlotsIndexPath.removeAll { cIndexPath in
                 return cIndexPath == indexPath
@@ -106,6 +99,13 @@ extension SlotListingViewController: UITableViewDelegate, UITableViewDataSource 
             
             self.tableView.reloadRows(at: [indexPath], with: .none)
             return
+        }
+        
+        if self.selectedSlotsIndexPath.count != 0 {
+            if self.selectedSlotsIndexPath.contains(IndexPath(row: indexPath.row + 1, section: indexPath.section)) == false && self.selectedSlotsIndexPath.contains(IndexPath(row: indexPath.row - 1, section: indexPath.section)) == false {
+                self.showSnackBar(message: "Please select consecutive slots")
+                return
+            }
         }
         
         let selectedDate = self.slots[indexPath.section].date
