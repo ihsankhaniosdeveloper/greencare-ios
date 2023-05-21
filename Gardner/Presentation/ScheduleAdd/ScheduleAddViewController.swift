@@ -14,13 +14,22 @@ class ScheduleAddViewController: UIViewController {
     @IBOutlet weak var viewTotalPlants: DropDownView!
     @IBOutlet weak var viewTotalHours: DropDownView!
     @IBOutlet weak var viewTotalPersons: UIView!
+    
     @IBOutlet weak var lblSelectedAddress: UILabel!
+    @IBOutlet weak var lblSelectedSlots: UILabel!
     
     private var presenter: ScheduleAddPresenterType!
+        
+    private var selectedAddress: Address?
+    private var selectedSlots: [Slot]?
+    private var serviceId: String?
     
-    static func make(presenter: ScheduleAddPresenterType) -> ScheduleAddViewController {
+    static func make(presenter: ScheduleAddPresenterType, serviceId: String?) -> ScheduleAddViewController {
         let vc = ScheduleAddViewController(nibName: "ScheduleAddViewController", bundle: .main)
+        
         vc.presenter = presenter
+        vc.serviceId = serviceId
+        
         return vc
     }
     
@@ -30,9 +39,9 @@ class ScheduleAddViewController: UIViewController {
         self.title = "Schedule"
         (self.presenter as! ScheduleAddPresenter).outputs = self
         
-        self.viewSelectDate.configure(title: "Select Date", data: [1, 2, 3, 4, 5, 6, 7, 8, 9], delegate: self)
-        self.viewTotalPlants.configure(title: "", data: [1, 2, 3, 4, 5, 6, 7, 8, 9], delegate: self)
-        self.viewTotalHours.configure(title: "", data: [1, 2, 3, 4, 5, 6, 7, 8, 9], delegate: self)
+        self.viewSelectDate.isHidden = true //configure(title: "Select Date", data: [1, 2, 3, 4, 5, 6, 7, 8, 9], delegate: self)
+        self.viewTotalPlants.isHidden = true //configure(title: "", data: [1, 2, 3, 4, 5, 6, 7, 8, 9], delegate: self)
+        self.viewTotalHours.isHidden = true //configure(title: "", data: [1, 2, 3, 4, 5, 6, 7, 8, 9], delegate: self)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectAddressTapped(_ :)))
         viewTotalPersons.addGestureRecognizer(tapGesture)
@@ -52,8 +61,11 @@ class ScheduleAddViewController: UIViewController {
     }
     
     @IBAction func continueButtonTap(_ sender: Any) {
-        let vc = CartViewController(nibName: "CartViewController", bundle: .main)
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        self.presenter.requestService(addressId: self.selectedAddress?.id, serviceId: serviceId, slots: self.selectedSlots)
+        
+//        let vc = CartViewController(nibName: "CartViewController", bundle: .main)
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func selectAddressTapped(_ sender: UITapGestureRecognizer) {
@@ -64,6 +76,7 @@ class ScheduleAddViewController: UIViewController {
         
         addressListingVC.addressSelected = { [weak self] address in
             self?.lblSelectedAddress.text = address.instructions
+            self?.selectedAddress = address
         }
 
         
@@ -77,10 +90,10 @@ class ScheduleAddViewController: UIViewController {
         navVC.modalPresentationStyle = .fullScreen
         
         slotListingVC.selectedSlotsHandler = { [weak self] slots in
-            print("selected slots >>> \(slots)")
+            self?.selectedSlots = slots
+            self?.lblSelectedSlots.text = "Slots selected"
         }
 
-        
         self.present(navVC, animated: true)
     }
     
@@ -96,5 +109,13 @@ extension ScheduleAddViewController: DropDownDelegate {
 }
 
 extension ScheduleAddViewController: ScheduleAddPresenterOutput {
+    func scheduleAddPresenter(scheduleRequestSuccess requestServiceResponse: RequestServiceResponse) {
+        
+    }
+    
+    func scheduleAddPresenter(scheduleRequestFailed message: String) {
+        self.showSnackBar(message: message)
+    }
+    
     
 }

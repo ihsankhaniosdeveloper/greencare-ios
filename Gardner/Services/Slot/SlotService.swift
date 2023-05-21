@@ -10,7 +10,7 @@ import Foundation
 struct SlotsResponse: Codable {
     let slots: [Slot]?
     let type: String?
-    let reservedSlots: [Slot]?
+    let reservedSlots: [ReservedSlot]?
     let startDate: Date?
     let endDate: Date?
 }
@@ -44,6 +44,30 @@ struct Slot: Codable {
         
         try container.encode(self.date, forKey: .date)
         try container.encode(self.timeSlots, forKey: .timeSlots)
+    }
+}
+
+struct ReservedSlot: Codable {
+    let id, serviceRequest: String?
+    let slots: [ReservedSlotSlot]?
+    let isReserved: Bool?
+    let v: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case serviceRequest, slots, isReserved
+        case v = "__v"
+    }
+}
+
+struct ReservedSlotSlot: Codable {
+    let date: String?
+    let timeSlots: [Date]?
+    let id: String?
+
+    enum CodingKeys: String, CodingKey {
+        case date, timeSlots
+        case id = "_id"
     }
 }
 

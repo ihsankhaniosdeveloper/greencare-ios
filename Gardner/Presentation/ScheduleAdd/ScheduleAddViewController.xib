@@ -18,6 +18,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScheduleAddViewController" customModule="Gardner" customModuleProvider="target">
             <connections>
                 <outlet property="lblSelectedAddress" destination="VHA-Tx-O7N" id="DaU-Re-DZ8"/>
+                <outlet property="lblSelectedSlots" destination="ONq-Bn-oEk" id="0aE-lG-PKh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewSelectDate" destination="yeB-Rv-MLk" id="Hzj-FT-0BU"/>
                 <outlet property="viewSelectSlots" destination="G8A-8h-9gs" id="t5n-LD-m51"/>

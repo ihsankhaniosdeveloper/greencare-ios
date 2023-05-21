@@ -60,7 +60,8 @@ extension ServiceDetailsViewController: UITableViewDelegate, UITableViewDataSour
         cell.configure(service: self.service)
         
         cell.continueButtonTap = { [weak self] in
-            let serviceAddVC = ScheduleAddViewController.make(presenter: ScheduleAddPresenter())
+            let serviceAddVC = ScheduleAddViewController.make(presenter: ScheduleAddPresenter(service: ServicesService(apiClient: APIClient(session: .default))), serviceId: self?.service.id)
+            
             self?.navigationController?.pushViewController(serviceAddVC, animated: true)
         }
         

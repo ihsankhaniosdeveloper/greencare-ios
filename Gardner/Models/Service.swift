@@ -7,7 +7,13 @@
 
 import Foundation
 
-struct Service: Decodable {
+struct ServiceAdd: Codable {
+    let service: String?
+    let address: String?
+    let slots: [Slot]?
+}
+
+struct Service: Codable {
     let id, title, description, subType: String?
     let instructions, type: String?
     let price: Int?

@@ -18,6 +18,7 @@ class SlotListingViewController: UIViewController {
     private var selectedSlotsIndexPath: [IndexPath] = []
     
     private var expandedSection: Int?
+    private var lastSelectedSection: Int = -1
     
     static func make(presenter: SlotListingPresenterType) -> SlotListingViewController {
         let vc = SlotListingViewController(nibName: "SlotListingViewController", bundle: .main)
@@ -52,7 +53,10 @@ class SlotListingViewController: UIViewController {
             var selectedSlots: [Slot] = []
             
             for (key, value) in self.selectedSlotsDictionary {
-                selectedSlots.append(Slot(date: key, timeSlots: value))
+                let sortedTimeSlots = value.sorted { date1, date2 in
+                    return date1 < date2
+                }
+                selectedSlots.append(Slot(date: key, timeSlots: sortedTimeSlots))
             }
             
             selectedSlotsHandler(selectedSlots)
@@ -102,7 +106,9 @@ extension SlotListingViewController: UITableViewDelegate, UITableViewDataSource 
         }
         
         if self.selectedSlotsIndexPath.count != 0 {
-            if self.selectedSlotsIndexPath.contains(IndexPath(row: indexPath.row + 1, section: indexPath.section)) == false && self.selectedSlotsIndexPath.contains(IndexPath(row: indexPath.row - 1, section: indexPath.section)) == false {
+            if self.selectedSlotsIndexPath.contains(IndexPath(row: indexPath.row + 1, section: indexPath.section)) == false
+                && self.selectedSlotsIndexPath.contains(IndexPath(row: indexPath.row - 1, section: indexPath.section)) == false
+                && indexPath.section == lastSelectedSection {
                 self.showSnackBar(message: "Please select consecutive slots")
                 return
             }
@@ -118,6 +124,7 @@ extension SlotListingViewController: UITableViewDelegate, UITableViewDataSource 
         }
         
         self.selectedSlotsIndexPath.append(indexPath)
+        self.lastSelectedSection = indexPath.section
         
         self.tableView.reloadRows(at: [indexPath], with: .none)
     }

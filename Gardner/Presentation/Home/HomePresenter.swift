@@ -7,9 +7,45 @@
 
 import Foundation
 
+struct RequestServiceResponse: Codable {
+    let service: Service?
+    let status: String?
+    let promo: [String]?
+    let address: Address?
+    let user: String?
+    let discount, totalPrice, discountAmount: Int?
+    let isDeleted: Bool?
+    let id, createdAt, updatedAt: String?
+    let v: Int?
+    let slot: ServiceRequestSlot?
+
+    enum CodingKeys: String, CodingKey {
+        case service, status, promo, address, user, discount, totalPrice, discountAmount, isDeleted
+        case id = "_id"
+        case createdAt, updatedAt
+        case v = "__v"
+        case slot
+    }
+}
+
+struct ServiceRequestSlot: Codable {
+    let serviceRequest: String?
+    let slots: [ReservedSlot]?
+    let isReserved: Bool?
+    let id: String?
+    let v: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case serviceRequest, slots, isReserved
+        case id = "_id"
+        case v = "__v"
+    }
+}
+
 enum ServicesAPIRoutes {
     case services
     case service(serviceId: String)
+    case requestService(addressId: String, serviceId: String, slots: [Slot])
 }
 
 extension ServicesAPIRoutes: APIRouteType {
@@ -17,6 +53,7 @@ extension ServicesAPIRoutes: APIRouteType {
         switch self {
             case .services: return "v1/service"
             case .service: return "v1/service"
+            case .requestService: return "v1/servicerequest"
         }
     }
     
@@ -24,11 +61,23 @@ extension ServicesAPIRoutes: APIRouteType {
         switch self {
             case .services: return nil
             case .service(serviceId: let serviceId): return [serviceId]
+            case .requestService: return nil
         }
     }
     
     var method: HTTPRequestMethod {
-        return .get
+        switch self {
+            case .services, .service: return .get
+            case .requestService: return .post
+        }
+    }
+    
+    var body: [String : Any]? {
+        switch self {
+            case .services, .service: return nil
+            case .requestService(let addressId, let serviceId, let slots):
+                return ServiceAdd(service: serviceId, address: addressId, slots: slots).dict
+        }
     }
 }
 
@@ -42,10 +91,10 @@ struct HomeDataResponse: Decodable {
 protocol ServicesServiceType {
     func getAllServices<T: Decodable>(completion: @escaping CompletionClosure<T>)
     func getService<T: Decodable>(serviceId: String, completion: @escaping CompletionClosure<T>)
+    func requestService(addressId: String, serviceId: String, slots: [Slot], completion: @escaping CompletionClosure<RequestServiceResponse>)
 }
 
 class ServicesService: BaseService, ServicesServiceType {
-    
     
     func getAllServices<T>(completion: @escaping CompletionClosure<T>) where T : Decodable {
         self.request(route: ServicesAPIRoutes.services) { (data: T?, error: NetworkErrors?) in
@@ -60,6 +109,19 @@ class ServicesService: BaseService, ServicesServiceType {
     
     func getService<T>(serviceId: String, completion: @escaping CompletionClosure<T>) where T : Decodable {
         self.request(route: ServicesAPIRoutes.service(serviceId: serviceId)) { (data: T?, error: NetworkErrors?) in
+            if let data = data, error == nil {
+                completion(.success(data))
+                return
+            }
+            
+            completion(.failure(error ?? .unknown))
+        }
+    }
+    
+    func requestService(addressId: String, serviceId: String, slots: [Slot], completion: @escaping CompletionClosure<RequestServiceResponse>) {
+        let route = ServicesAPIRoutes.requestService(addressId: addressId, serviceId: serviceId, slots: slots)
+        
+        self.request(route: route) { (data: RequestServiceResponse?, error: NetworkErrors?) in
             if let data = data, error == nil {
                 completion(.success(data))
                 return
