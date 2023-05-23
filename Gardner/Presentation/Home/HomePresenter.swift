@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct RequestServiceResponse: Codable {
+struct ServiceRequestReponse: Codable {
+    let serviceRequest: ServiceRequest
+}
+
+struct ServiceRequest: Codable {
+    let id: String?
     let service: Service?
     let status: String?
     let promo: [String]?
@@ -15,14 +20,13 @@ struct RequestServiceResponse: Codable {
     let user: String?
     let discount, totalPrice, discountAmount: Int?
     let isDeleted: Bool?
-    let id, createdAt, updatedAt: String?
+    let createdAt, updatedAt: Date?
     let v: Int?
     let slot: ServiceRequestSlot?
 
     enum CodingKeys: String, CodingKey {
-        case service, status, promo, address, user, discount, totalPrice, discountAmount, isDeleted
         case id = "_id"
-        case createdAt, updatedAt
+        case service, status, promo, address, user, discount, totalPrice, discountAmount, isDeleted, createdAt, updatedAt
         case v = "__v"
         case slot
     }
@@ -30,7 +34,7 @@ struct RequestServiceResponse: Codable {
 
 struct ServiceRequestSlot: Codable {
     let serviceRequest: String?
-    let slots: [ReservedSlot]?
+    let slots: [SlotElement]?
     let isReserved: Bool?
     let id: String?
     let v: Int?
@@ -39,6 +43,17 @@ struct ServiceRequestSlot: Codable {
         case serviceRequest, slots, isReserved
         case id = "_id"
         case v = "__v"
+    }
+}
+
+struct SlotElement: Codable {
+    let date: String?
+    let timeSlots: [Date]?
+    let id: String?
+
+    enum CodingKeys: String, CodingKey {
+        case date, timeSlots
+        case id = "_id"
     }
 }
 
@@ -91,7 +106,7 @@ struct HomeDataResponse: Decodable {
 protocol ServicesServiceType {
     func getAllServices<T: Decodable>(completion: @escaping CompletionClosure<T>)
     func getService<T: Decodable>(serviceId: String, completion: @escaping CompletionClosure<T>)
-    func requestService(addressId: String, serviceId: String, slots: [Slot], completion: @escaping CompletionClosure<RequestServiceResponse>)
+    func requestService(addressId: String, serviceId: String, slots: [Slot], completion: @escaping CompletionClosure<ServiceRequest>)
 }
 
 class ServicesService: BaseService, ServicesServiceType {
@@ -118,12 +133,12 @@ class ServicesService: BaseService, ServicesServiceType {
         }
     }
     
-    func requestService(addressId: String, serviceId: String, slots: [Slot], completion: @escaping CompletionClosure<RequestServiceResponse>) {
+    func requestService(addressId: String, serviceId: String, slots: [Slot], completion: @escaping CompletionClosure<ServiceRequest>) {
         let route = ServicesAPIRoutes.requestService(addressId: addressId, serviceId: serviceId, slots: slots)
         
-        self.request(route: route) { (data: RequestServiceResponse?, error: NetworkErrors?) in
+        self.request(route: route) { (data: ServiceRequestReponse?, error: NetworkErrors?) in
             if let data = data, error == nil {
-                completion(.success(data))
+                completion(.success(data.serviceRequest))
                 return
             }
             

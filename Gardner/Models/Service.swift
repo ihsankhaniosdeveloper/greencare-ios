@@ -14,18 +14,23 @@ struct ServiceAdd: Codable {
 }
 
 struct Service: Codable {
-    let id, title, description, subType: String?
-    let instructions, type: String?
-    let price: Int?
+    let id, title, description: String?
+    let plants, hours, days, persons: [Int]?
+    let subType, instructions, type: String?
+    let price, minHours: Int?
     let promo: [String]?
     let isDeleted, isActive: Bool?
     let image: String?
-    let backgroundImage: String?
-    let contactLink: String?
+    let backgroundImage, contactLink: String?
     let isContactOnly: Bool?
     let createdAt, updatedAt: Date?
     let v: Int?
-    let days, hours, persons, plants: [Int]?
+
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case title, description, plants, hours, days, persons, subType, instructions, type, price, minHours, promo, isDeleted, isActive, image, backgroundImage, contactLink, isContactOnly, createdAt, updatedAt
+        case v = "__v"
+    }
     
     var priceWithAED: String? {
         if let price = self.price {
@@ -35,10 +40,4 @@ struct Service: Codable {
         return nil
     }
 
-    enum CodingKeys: String, CodingKey {
-        case id = "_id"
-        case title, description, subType, instructions, type, price, promo, isDeleted, isActive, image, backgroundImage, contactLink, isContactOnly, createdAt, updatedAt
-        case v = "__v"
-        case days, hours, persons, plants
-    }
 }

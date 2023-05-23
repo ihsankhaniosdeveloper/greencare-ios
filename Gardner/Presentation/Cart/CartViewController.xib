@@ -20,6 +20,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CartViewController" customModule="Gardner" customModuleProvider="target">
             <connections>
+                <outlet property="ivServiceImage" destination="brb-qi-LuK" id="6z1-M9-at8"/>
+                <outlet property="lblDate" destination="E0l-qM-Dbe" id="OXe-7Q-djI"/>
+                <outlet property="lblDeliveryFee" destination="jPB-kl-SNM" id="80y-QS-e0T"/>
+                <outlet property="lblPrice" destination="ZOH-g5-EHm" id="xcR-dB-I82"/>
+                <outlet property="lblSubTotal" destination="SoQ-jp-NJj" id="TxK-cH-Oc3"/>
+                <outlet property="lblTitle" destination="Ic8-xc-dEh" id="wnm-IP-Yc6"/>
+                <outlet property="lblTotal" destination="HVq-T4-EqY" id="8MG-18-tvN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewPromoCode" destination="btD-nY-ASW" id="iO2-gy-bRd"/>
             </connections>

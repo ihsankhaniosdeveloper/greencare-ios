@@ -8,6 +8,19 @@
 import UIKit
 import ActionSheetPicker_3_0
 
+class ContentSizedTableView: UITableView {
+    override var contentSize: CGSize {
+        didSet {
+            self.invalidateIntrinsicContentSize()
+        }
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        self.layoutIfNeeded()
+        return CGSize(width: UIView.noIntrinsicMetric, height: UIView.noIntrinsicMetric)
+    }
+}
+
 class ScheduleAddViewController: UIViewController {
     @IBOutlet weak var viewSelectSlots: DropDownView!
     @IBOutlet weak var viewSelectDate: DropDownView!
@@ -18,10 +31,11 @@ class ScheduleAddViewController: UIViewController {
     @IBOutlet weak var lblSelectedAddress: UILabel!
     @IBOutlet weak var lblSelectedSlots: UILabel!
     
+    @IBOutlet weak var selectedSlotsTableView: ContentSizedTableView!
     private var presenter: ScheduleAddPresenterType!
         
     private var selectedAddress: Address?
-    private var selectedSlots: [Slot]?
+    private var selectedSlots: [Slot] = []
     private var serviceId: String?
     
     static func make(presenter: ScheduleAddPresenterType, serviceId: String?) -> ScheduleAddViewController {
@@ -48,6 +62,13 @@ class ScheduleAddViewController: UIViewController {
         
         let tapGestureSelectSlot = UITapGestureRecognizer(target: self, action: #selector(selectSlotsTap(_ :)))
         viewSelectSlots.addGestureRecognizer(tapGestureSelectSlot)
+        
+        self.selectedSlotsTableView.register(UINib(nibName: "SelectedSlotsTableViewCell", bundle: .main), forCellReuseIdentifier: "SelectedSlotsTableViewCell")
+        
+        self.selectedSlotsTableView.delegate = self
+        self.selectedSlotsTableView.dataSource = self
+        
+        self.selectedSlotsTableView.contentInsetAdjustmentBehavior = .never
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,11 +82,7 @@ class ScheduleAddViewController: UIViewController {
     }
     
     @IBAction func continueButtonTap(_ sender: Any) {
-        
         self.presenter.requestService(addressId: self.selectedAddress?.id, serviceId: serviceId, slots: self.selectedSlots)
-        
-//        let vc = CartViewController(nibName: "CartViewController", bundle: .main)
-//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func selectAddressTapped(_ sender: UITapGestureRecognizer) {
@@ -92,6 +109,7 @@ class ScheduleAddViewController: UIViewController {
         slotListingVC.selectedSlotsHandler = { [weak self] slots in
             self?.selectedSlots = slots
             self?.lblSelectedSlots.text = "Slots selected"
+            self?.selectedSlotsTableView.reloadData()
         }
 
         self.present(navVC, animated: true)
@@ -109,13 +127,46 @@ extension ScheduleAddViewController: DropDownDelegate {
 }
 
 extension ScheduleAddViewController: ScheduleAddPresenterOutput {
-    func scheduleAddPresenter(scheduleRequestSuccess requestServiceResponse: RequestServiceResponse) {
-        
+    func scheduleAddPresenter(scheduleRequestSuccess requestServiceResponse: ServiceRequest) {
+        let vc = CartViewController.make(serviceRequest: requestServiceResponse)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func scheduleAddPresenter(scheduleRequestValidationFailed message: String) {
+        self.showSnackBar(message: message)
     }
     
     func scheduleAddPresenter(scheduleRequestFailed message: String) {
         self.showSnackBar(message: message)
     }
-    
-    
 }
+
+extension ScheduleAddViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.selectedSlots.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedSlotsTableViewCell", for: indexPath) as! SelectedSlotsTableViewCell
+        
+        cell.configure(slot: self.selectedSlots[indexPath.row])
+        return cell
+    }
+}
+//extension ScheduleAddViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return self.selectedSlots.count
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSlotCollectionViewCell", for: indexPath) as! SelectedSlotCollectionViewCell
+//        
+//        cell.configure(date: self.selectedSlots[indexPath.row])
+//        return cell
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsets(top: 0, left: 24, bottom: 10, right: 24)
+//    }
+//
+//}

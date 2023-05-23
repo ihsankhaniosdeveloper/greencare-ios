@@ -8,8 +8,9 @@
 import Foundation
 
 protocol ScheduleAddPresenterOutput: AnyObject {
-    func scheduleAddPresenter(scheduleRequestSuccess requestServiceResponse: RequestServiceResponse)
+    func scheduleAddPresenter(scheduleRequestSuccess requestServiceResponse: ServiceRequest)
     func scheduleAddPresenter(scheduleRequestFailed message: String)
+    func scheduleAddPresenter(scheduleRequestValidationFailed message: String)
 }
 
 protocol ScheduleAddPresenterType: AnyObject {
@@ -26,9 +27,15 @@ class ScheduleAddPresenter: ScheduleAddPresenterType {
     }
     
     func requestService(addressId: String?, serviceId: String?, slots: [Slot]?) {
-        guard let addressId = addressId else { return }
+        guard let addressId = addressId else {
+            self.outputs?.scheduleAddPresenter(scheduleRequestValidationFailed: "Address is required, please select address and then continue.")
+            return
+        }
         guard let serviceId = serviceId else { return }
-        guard let slots = slots else { return }
+        guard let slots = slots else {
+            self.outputs?.scheduleAddPresenter(scheduleRequestValidationFailed: "Slots required, please select slots and then continue.")
+            return
+        }
         
         self.service.requestService(addressId: addressId, serviceId: serviceId, slots: slots) { result in
             switch result {
