@@ -6,43 +6,33 @@
 //
 
 import UIKit
-import ActionSheetPicker_3_0
-
-class ContentSizedTableView: UITableView {
-    override var contentSize: CGSize {
-        didSet {
-            self.invalidateIntrinsicContentSize()
-        }
-    }
-    
-    override var intrinsicContentSize: CGSize {
-        self.layoutIfNeeded()
-        return CGSize(width: UIView.noIntrinsicMetric, height: UIView.noIntrinsicMetric)
-    }
-}
+import HMSegmentedControl
 
 class ScheduleAddViewController: UIViewController {
-    @IBOutlet weak var viewSelectSlots: DropDownView!
-    @IBOutlet weak var viewSelectDate: DropDownView!
-    @IBOutlet weak var viewTotalPlants: DropDownView!
-    @IBOutlet weak var viewTotalHours: DropDownView!
-    @IBOutlet weak var viewTotalPersons: UIView!
-    
+    @IBOutlet weak var viewSelectAddress: UIView!
     @IBOutlet weak var lblSelectedAddress: UILabel!
-    @IBOutlet weak var lblSelectedSlots: UILabel!
+    @IBOutlet weak var segmentedView: HMSegmentedControl!
+    @IBOutlet weak var selectedSlotsCollectionView: UICollectionView!
     
-    @IBOutlet weak var selectedSlotsTableView: ContentSizedTableView!
     private var presenter: ScheduleAddPresenterType!
-        
-    private var selectedAddress: Address?
-    private var selectedSlots: [Slot] = []
-    private var serviceId: String?
     
-    static func make(presenter: ScheduleAddPresenterType, serviceId: String?) -> ScheduleAddViewController {
+    // Available slots
+    private var availableSlots: [Slot] = []
+    private var selectedAddress: Address?
+    private var service: Service?
+    
+    private var selectedSlots: [Slot] = []
+    private var selectedDateIndex = 0
+    private var selectedSlotsIndexes: [IndexPath] = []
+    private var selectedSlotsDictionary: [Date: [Date]] = [:]
+    
+    private let cellIdentifier = "SelectedSlotCollectionViewCell"
+    
+    static func make(presenter: ScheduleAddPresenterType, service: Service) -> ScheduleAddViewController {
         let vc = ScheduleAddViewController(nibName: "ScheduleAddViewController", bundle: .main)
         
         vc.presenter = presenter
-        vc.serviceId = serviceId
+        vc.service = service
         
         return vc
     }
@@ -53,28 +43,48 @@ class ScheduleAddViewController: UIViewController {
         self.title = "Schedule"
         (self.presenter as! ScheduleAddPresenter).outputs = self
         
-        self.viewSelectDate.isHidden = true //configure(title: "Select Date", data: [1, 2, 3, 4, 5, 6, 7, 8, 9], delegate: self)
-        self.viewTotalPlants.isHidden = true //configure(title: "", data: [1, 2, 3, 4, 5, 6, 7, 8, 9], delegate: self)
-        self.viewTotalHours.isHidden = true //configure(title: "", data: [1, 2, 3, 4, 5, 6, 7, 8, 9], delegate: self)
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectAddressTapped(_ :)))
-        viewTotalPersons.addGestureRecognizer(tapGesture)
+        self.selectedSlotsCollectionView.delegate = self
+        self.selectedSlotsCollectionView.dataSource = self
         
-        let tapGestureSelectSlot = UITapGestureRecognizer(target: self, action: #selector(selectSlotsTap(_ :)))
-        viewSelectSlots.addGestureRecognizer(tapGestureSelectSlot)
+        self.selectedSlotsCollectionView.register(UINib(nibName: cellIdentifier, bundle: .main), forCellWithReuseIdentifier: cellIdentifier)
         
-        self.selectedSlotsTableView.register(UINib(nibName: "SelectedSlotsTableViewCell", bundle: .main), forCellReuseIdentifier: "SelectedSlotsTableViewCell")
         
-        self.selectedSlotsTableView.delegate = self
-        self.selectedSlotsTableView.dataSource = self
+        segmentedView.backgroundColor = UIColor(named: "GreyColor")!
+        segmentedView.selectionStyle = .box
+        segmentedView.selectionIndicatorBoxColor = UIColor(named: "primaryColor")!
+        segmentedView.selectionIndicatorColor = UIColor(named: "primaryColor")!
+        segmentedView.selectionIndicatorBoxOpacity = 1.0
         
-        self.selectedSlotsTableView.contentInsetAdjustmentBehavior = .never
+        segmentedView.indexChangeBlock = { index in
+            self.selectedDateIndex = Int(index)
+            self.selectedSlotsCollectionView.reloadData()
+        }
+        
+        self.viewSelectAddress.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.navigateToAddressListing(_ :))))
+    }
+    
+    @objc func navigateToAddressListing(_ sender: UITapGestureRecognizer) {
+        let addressListingVC = AddressListingViewController.make(presenter: AddressListingPresenter(service: AddressService(apiClient: APIClient(session: .default))), isPresented: true)
+        
+        let navVC = UINavigationController(rootViewController: addressListingVC)
+        navVC.modalPresentationStyle = .fullScreen
+        
+        addressListingVC.addressSelected = { [weak self] selectedAddress in
+            self?.lblSelectedAddress.text = selectedAddress.instructions
+            self?.selectedAddress = selectedAddress
+        }
+
+        self.present(navVC, animated: true)
+
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationController?.navigationBar.isHidden = false
+        self.presenter.getServiceSlots(serviceId: self.service?.id, serviceType: self.service?.type)
     }
     
     @IBAction func cancelButtonTap(_ sender: Any) {
@@ -82,91 +92,93 @@ class ScheduleAddViewController: UIViewController {
     }
     
     @IBAction func continueButtonTap(_ sender: Any) {
-        self.presenter.requestService(addressId: self.selectedAddress?.id, serviceId: serviceId, slots: self.selectedSlots)
-    }
-    
-    @objc func selectAddressTapped(_ sender: UITapGestureRecognizer) {
-        let addressListingVC = AddressListingViewController.make(presenter: AddressListingPresenter(service: AddressService(apiClient: APIClient(session: .default))), isPresented: true)
-        
-        let navVC = UINavigationController(rootViewController: addressListingVC)
-        navVC.modalPresentationStyle = .fullScreen
-        
-        addressListingVC.addressSelected = { [weak self] address in
-            self?.lblSelectedAddress.text = address.instructions
-            self?.selectedAddress = address
-        }
-
-        
-        self.present(navVC, animated: true)
-    }
-    
-    @objc func selectSlotsTap(_ sender: UITapGestureRecognizer) {
-        let slotListingVC = SlotListingViewController.make(presenter: SlotListingPresenter(service: SlotService(apiClient: APIClient(session: .default))))
-        
-        let navVC = UINavigationController(rootViewController: slotListingVC)
-        navVC.modalPresentationStyle = .fullScreen
-        
-        slotListingVC.selectedSlotsHandler = { [weak self] slots in
-            self?.selectedSlots = slots
-            self?.lblSelectedSlots.text = "Slots selected"
-            self?.selectedSlotsTableView.reloadData()
-        }
-
-        self.present(navVC, animated: true)
+        let selectedSlots: [Slot] = self.selectedSlotsDictionary.map { Slot(date: $0, timeSlots: $1) }
+        self.presenter.requestService(addressId: self.selectedAddress?.id, serviceId: service?.id, slots: selectedSlots)
     }
     
     @objc func closeTap(_ sender: Any) {
         self.dismiss(animated: true)
     }
-}
-
-extension ScheduleAddViewController: DropDownDelegate {
-    func dropDown(itemSelected item: Int) {
-        
-    }
+    
 }
 
 extension ScheduleAddViewController: ScheduleAddPresenterOutput {
+    func scheduleAddPresenter(slotsFetchingSuccess slots: [Slot]) {
+        let titles: [String] = slots.map { $0.date.toDateString(format: "dd MMM yyyy") }
+        segmentedView.sectionTitles = titles
+        self.availableSlots = slots
+        
+        self.selectedSlotsCollectionView.reloadData()
+    }
+    
     func scheduleAddPresenter(scheduleRequestSuccess requestServiceResponse: ServiceRequest) {
         let vc = CartViewController.make(serviceRequest: requestServiceResponse)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func scheduleAddPresenter(scheduleRequestValidationFailed message: String) {
+    func scheduleAddPresenter(operationFailed message: String) {
         self.showSnackBar(message: message)
     }
     
-    func scheduleAddPresenter(scheduleRequestFailed message: String) {
+    func scheduleAddPresenter(scheduleRequestValidationFailed message: String) {
         self.showSnackBar(message: message)
     }
 }
 
-extension ScheduleAddViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.selectedSlots.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedSlotsTableViewCell", for: indexPath) as! SelectedSlotsTableViewCell
+
+extension ScheduleAddViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if self.availableSlots.isEmpty {
+            return 0
+        }
         
-        cell.configure(slot: self.selectedSlots[indexPath.row])
+        return availableSlots[selectedDateIndex].timeSlots.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! SelectedSlotCollectionViewCell
+
+        let selectedDate = availableSlots[selectedDateIndex].date
+        let selectedTimeSlot = availableSlots[selectedDateIndex].timeSlots[indexPath.row]
+        
+        // remove item
+        let isSelected = self.selectedSlotsDictionary[selectedDate] != nil && self.selectedSlotsDictionary[selectedDate]?.contains(selectedTimeSlot) == true
+        cell.configure(timeSlot: self.availableSlots[selectedDateIndex].timeSlots[indexPath.row], isSelected: isSelected)
+        
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (collectionView.frame.width - 32) / 2, height: 45)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedSlot = availableSlots[self.selectedDateIndex]
+        
+        let selectedDate = selectedSlot.date
+        let selectedTimeSlot = selectedSlot.timeSlots[indexPath.row]
+        
+        // remove item
+        if let test = self.selectedSlotsDictionary[selectedDate], test.contains(selectedTimeSlot) {
+            self.selectedSlotsDictionary[selectedDate]?.removeAll(where: { cDate in
+                return cDate == selectedTimeSlot
+            })
+            self.selectedSlotsCollectionView.reloadItems(at: [indexPath])
+            return
+        }
+
+        // Add item
+        if self.selectedSlotsDictionary[selectedDate] != nil && self.selectedSlotsDictionary[selectedDate]?.isEmpty == false {
+            self.selectedSlotsDictionary[selectedDate]?.append(selectedTimeSlot)
+        } else {
+            self.selectedSlotsDictionary[selectedDate] = [selectedTimeSlot]
+        }
+        
+        self.selectedSlotsCollectionView.reloadItems(at: [indexPath])
+        
+    }
 }
-//extension ScheduleAddViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return self.selectedSlots.count
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSlotCollectionViewCell", for: indexPath) as! SelectedSlotCollectionViewCell
-//        
-//        cell.configure(date: self.selectedSlots[indexPath.row])
-//        return cell
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: 0, left: 24, bottom: 10, right: 24)
-//    }
-//
-//}

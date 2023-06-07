@@ -21,6 +21,7 @@ extension UIViewController {
     }
     
     func startLoader() {
+        ProgressHUD.colorBackground(.red)
         ProgressHUD.show("Loading ... ")
     }
 

@@ -84,7 +84,7 @@ extension APIRouteType {
 
 extension APIRouteType {
     var url: URL {
-        return URL(string: "http://3.84.7.206:4000/api/")!
+        return URL(string: "https://api.greencare.ae/api/")!
     }
     
     var requestType: RequestType {

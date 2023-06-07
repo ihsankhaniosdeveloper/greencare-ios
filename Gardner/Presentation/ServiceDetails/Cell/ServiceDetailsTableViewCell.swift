@@ -28,6 +28,7 @@ class ServiceDetailsTableViewCell: UITableViewCell {
         lblPrice.text = service.priceWithAED
         lblMinHours.text = String(service.hours?.first ?? 0)
         lblMinPersons.text = String(service.persons?.first ?? 0)
+        lblMinHours.text = String(service.minHours ?? 0)
         
     }
     

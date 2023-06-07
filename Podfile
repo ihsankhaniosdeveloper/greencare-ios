@@ -10,9 +10,10 @@ target 'Gardner' do
   pod 'IQKeyboardManagerSwift'
   pod 'SKCountryPicker'
   pod 'CHIOTPField', '0.1'
-  pod 'ProgressHUD', '2.70'
+  pod 'ProgressHUD'
   pod "TTGSnackbar"
   pod 'SDWebImage'
   pod 'ActionSheetPicker-3.0'
+  pod 'HMSegmentedControl'
 
 end

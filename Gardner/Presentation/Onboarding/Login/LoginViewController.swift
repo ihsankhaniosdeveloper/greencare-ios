@@ -7,12 +7,10 @@
 
 import UIKit
 import SKCountryPicker
-import ProgressHUD
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var tfPhoneNumber: UITextField!
     @IBOutlet weak var viewCountryCode: UIStackView!
-    
     @IBOutlet weak var lblCountryCode: UILabel!
     @IBOutlet weak var ivCountryFlag: UIImageView!
     
@@ -65,6 +63,14 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginPresenterOutput {
+    func showLoader() {
+        self.startLoader()
+    }
+    
+    func hideLoader() {
+        self.stopLoader()
+    }
+    
     func loginPresenter(otpSendingFailedWith message: String) {
         self.showSnackBar(message: message)
     }
@@ -83,13 +89,5 @@ extension LoginViewController: LoginPresenterOutput {
     
     func loginPresenter(phoneNumberValidationFailed message: String) {
         self.showSnackBar(message: message)
-    }
-    
-    func hideLoader() {
-        ProgressHUD.dismiss()
-    }
-    
-    func showLoader() {
-        ProgressHUD.show("Loading ... ")
     }
 }

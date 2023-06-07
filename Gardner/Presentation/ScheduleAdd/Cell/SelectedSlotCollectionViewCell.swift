@@ -8,13 +8,20 @@
 import UIKit
 
 class SelectedSlotCollectionViewCell: UICollectionViewCell {
-
+    @IBOutlet weak var viewBG: UIView!
+    @IBOutlet weak var lblSlotTime: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    func configure(date: Date) {
+    
+    func configure(timeSlot: Date, isSelected: Bool) {
+        viewBG.backgroundColor = isSelected ? UIColor(named: "primaryColor") : UIColor(named: "borderColor")
+        lblSlotTime.textColor = isSelected ? .white : UIColor(named: "lightBlackColor")
         
+        
+        let endTime = Calendar.current.date(byAdding: .hour, value: 3, to: timeSlot)!.toTimeString()
+        lblSlotTime.text = "\(timeSlot.toTimeString()) to \(endTime)"
     }
 }

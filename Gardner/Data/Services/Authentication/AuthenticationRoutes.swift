@@ -17,14 +17,10 @@ extension AuthenticationRoutes: APIRouteType {
         return .post
     }
     
-    var url: URL {
-        return URL(string: "http://3.84.7.206:4000/api/v1/")!
-    }
-    
     var path: String {
         switch self {
-            case .sendOTP:   return "auth/login"
-            case .verifyOTP: return "auth/verify-otp"
+            case .sendOTP:   return "v1/auth/login"
+            case .verifyOTP: return "v1/auth/verify-otp"
         }
     }
     
