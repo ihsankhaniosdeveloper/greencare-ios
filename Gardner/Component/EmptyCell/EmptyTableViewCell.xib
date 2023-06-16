@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="KGk-i7-Jjw" customClass="EmptyTableViewCell" customModule="Gardner" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FDh-jh-u70">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2e-6S-KOZ">
+                                <rect key="frame" x="24" y="38.666666666666664" width="272" height="22.666666666666664"/>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins Medium" pointSize="16"/>
+                                <color key="textColor" name="lightBlackColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="w2e-6S-KOZ" firstAttribute="centerY" secondItem="FDh-jh-u70" secondAttribute="centerY" id="E2k-cN-GBs"/>
+                            <constraint firstItem="w2e-6S-KOZ" firstAttribute="leading" secondItem="FDh-jh-u70" secondAttribute="leading" constant="24" id="SPl-j5-Sm8"/>
+                            <constraint firstAttribute="trailing" secondItem="w2e-6S-KOZ" secondAttribute="trailing" constant="24" id="YCS-28-Xma"/>
+                            <constraint firstAttribute="height" constant="100" id="Yuj-MV-mFl"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="FDh-jh-u70" secondAttribute="bottom" id="PyR-pP-RaC"/>
+                    <constraint firstAttribute="trailing" secondItem="FDh-jh-u70" secondAttribute="trailing" id="gla-eO-xYR"/>
+                    <constraint firstItem="FDh-jh-u70" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="juY-E4-shC"/>
+                    <constraint firstItem="FDh-jh-u70" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="zHd-ni-s1U"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="lblError" destination="w2e-6S-KOZ" id="COh-Wt-Sbe"/>
+            </connections>
+            <point key="canvasLocation" x="24.427480916030532" y="66.197183098591552"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="lightBlackColor">
+            <color red="0.10980392156862745" green="0.12156862745098039" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

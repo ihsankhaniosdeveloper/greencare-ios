@@ -75,7 +75,7 @@
                             </subviews>
                         </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YPK-KJ-FWN">
-                            <rect key="frame" x="16" y="16" width="361" height="194"/>
+                            <rect key="frame" x="16" y="16" width="361" height="174"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wct-5H-0Lb" customClass="HMSegmentedControl">
                                     <rect key="frame" x="0.0" y="0.0" width="361" height="50"/>
@@ -85,10 +85,10 @@
                                     </constraints>
                                 </view>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="eKz-Dh-a8b">
-                                    <rect key="frame" x="0.0" y="54" width="361" height="140"/>
+                                    <rect key="frame" x="0.0" y="54" width="361" height="120"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="140" id="2xq-ja-gPd"/>
+                                        <constraint firstAttribute="height" constant="120" id="2xq-ja-gPd"/>
                                     </constraints>
                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Uk9-eJ-j57">
                                         <size key="itemSize" width="128" height="128"/>
@@ -121,7 +121,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Em-pG-pNs">
-                            <rect key="frame" x="16" y="226" width="361" height="51"/>
+                            <rect key="frame" x="16" y="206" width="361" height="51"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgW-nt-6wk">
                                     <rect key="frame" x="16.000000000000007" y="15.666666666666687" width="104.66666666666669" height="19.666666666666671"/>

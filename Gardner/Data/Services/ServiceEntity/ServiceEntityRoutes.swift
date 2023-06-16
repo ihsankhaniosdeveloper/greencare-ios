@@ -10,8 +10,9 @@ import Foundation
 enum ServicesAPIRoutes {
     case services
     case service(serviceId: String)
-    case requestService(addressId: String, serviceId: String, slots: [Slot])
+    case calculateAmount(addressId: String, serviceId: String, slots: [Slot])
     case slots(serviceId: String, serviceType: String)
+    case serviceRequest(serviceRequestParams: ServiceRequestParams)
 }
 
 extension ServicesAPIRoutes: APIRouteType {
@@ -19,14 +20,15 @@ extension ServicesAPIRoutes: APIRouteType {
         switch self {
             case .services: return "v1/service"
             case .service: return "v1/service"
-            case .requestService: return "v1/servicerequest"
             case .slots: return "v1/slots"
+            case .calculateAmount: return "v1/servicerequest/calculate-amount"
+            case .serviceRequest: return "v1/servicerequest"
         }
     }
     
     var pathVariables: [String]? {
         switch self {
-            case .services, .requestService, .slots: return nil
+            case .services, .slots, .calculateAmount, .serviceRequest: return nil
             case .service(serviceId: let serviceId): return [serviceId]
         }
     }
@@ -34,7 +36,7 @@ extension ServicesAPIRoutes: APIRouteType {
     var method: HTTPRequestMethod {
         switch self {
             case .services, .service: return .get
-            case .requestService, .slots: return .post
+            case .slots, .calculateAmount, .serviceRequest: return .post
         }
     }
     
@@ -43,11 +45,14 @@ extension ServicesAPIRoutes: APIRouteType {
             case .services, .service:
                 return nil
             
-            case .requestService(let addressId, let serviceId, let slots):
+            case .calculateAmount(let addressId, let serviceId, let slots):
                 return ServiceAdd(service: serviceId, address: addressId, slots: slots).dict
             
             case .slots(let serviceId, let serviceType):
                 return ["serviceType": serviceType, "serviceId": serviceId]
+            
+            case .serviceRequest(let serviceRequestParams):
+                return serviceRequestParams.dict
         }
     }
 }

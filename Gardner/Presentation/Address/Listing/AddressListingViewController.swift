@@ -12,6 +12,7 @@ class AddressListingViewController: UIViewController {
     
     private var addressList: [Address] = []
     private var isPresented: Bool = false
+    private var isLoaded: Bool = false
     
     private var presenter: AddressListingPresenterType!
     
@@ -41,6 +42,7 @@ class AddressListingViewController: UIViewController {
         self.tableView.dataSource = self
         
         self.tableView.register(UINib(nibName: "AddressTableViewCell", bundle: .main), forCellReuseIdentifier: "AddressTableViewCell")
+        self.tableView.register(UINib(nibName: "EmptyTableViewCell", bundle: .main), forCellReuseIdentifier: "EmptyTableViewCell")
         
         (self.presenter as! AddressListingPresenter).outputs = self
     }
@@ -69,10 +71,16 @@ class AddressListingViewController: UIViewController {
 
 extension AddressListingViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.addressList.count
+        return self.addressList.isEmpty && isLoaded ? 1 : self.addressList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if self.addressList.isEmpty && isLoaded {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
+            cell.configure(message: "No address found, press + buttton to add address.")
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddressTableViewCell", for: indexPath) as! AddressTableViewCell
         
         cell.configure(address: self.addressList[indexPath.row])
@@ -90,11 +98,15 @@ extension AddressListingViewController: UITableViewDataSource, UITableViewDelega
 
 extension AddressListingViewController: AddressListingPresenterOutput {
     func addressListingPresenter(addressesFetchingSuccess addresses: [Address]) {
+        self.isLoaded = true
         self.addressList = addresses
         self.tableView.reloadData()
     }
     
     func addressListingPresenter(addressesFetchingFailed message: String) {
+        self.isLoaded = true
         self.showSnackBar(message: message)
+        self.isLoaded = true
+        self.tableView.reloadData()
     }
 }

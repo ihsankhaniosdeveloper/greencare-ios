@@ -25,7 +25,7 @@ class ServiceDetailsTableViewCell: UITableViewCell {
     func configure(service: Service) {
         lblTitle.text = service.title
         lblDescription.text = service.description
-        lblPrice.text = service.priceWithAED
+        lblPrice.text = service.price?.formattedAmountWithAED
         lblMinHours.text = String(service.hours?.first ?? 0)
         lblMinPersons.text = String(service.persons?.first ?? 0)
         lblMinHours.text = String(service.minHours ?? 0)

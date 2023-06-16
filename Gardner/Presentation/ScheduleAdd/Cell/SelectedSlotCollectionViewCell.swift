@@ -16,12 +16,12 @@ class SelectedSlotCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-    func configure(timeSlot: Date, isSelected: Bool) {
+    func configure(timeSlot: Date, isSelected: Bool, minHours: Int) {
         viewBG.backgroundColor = isSelected ? UIColor(named: "primaryColor") : UIColor(named: "borderColor")
         lblSlotTime.textColor = isSelected ? .white : UIColor(named: "lightBlackColor")
         
         
-        let endTime = Calendar.current.date(byAdding: .hour, value: 3, to: timeSlot)!.toTimeString()
+        let endTime = Calendar.current.date(byAdding: .hour, value: minHours, to: timeSlot)!.toTimeString()
         lblSlotTime.text = "\(timeSlot.toTimeString()) to \(endTime)"
     }
 }

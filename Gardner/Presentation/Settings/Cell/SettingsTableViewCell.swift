@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileTableViewCell: UITableViewCell {
+class SettingsTableViewCell: UITableViewCell {
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var viewIcon: UIView!
     

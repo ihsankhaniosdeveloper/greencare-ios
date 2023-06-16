@@ -8,14 +8,14 @@
 import Foundation
 
 protocol ScheduleAddPresenterOutput: AnyObject {
-    func scheduleAddPresenter(scheduleRequestSuccess requestServiceResponse: ServiceRequest)
+    func scheduleAddPresenter(scheduleRequestSuccess requestServiceResponse: CalculateAmountResponse)
     func scheduleAddPresenter(operationFailed message: String)
     func scheduleAddPresenter(scheduleRequestValidationFailed message: String)
     func scheduleAddPresenter(slotsFetchingSuccess slots: [Slot])
 }
 
 protocol ScheduleAddPresenterType: AnyObject {
-    func requestService(addressId: String?, serviceId: String?, slots: [Slot]?)
+    func calculateAmount(addressId: String?, serviceId: String?, slots: [Slot]?)
     func getServiceSlots(serviceId: String?, serviceType: String?)
 }
 
@@ -28,7 +28,7 @@ class ScheduleAddPresenter: ScheduleAddPresenterType {
         self.service = service
     }
     
-    func requestService(addressId: String?, serviceId: String?, slots: [Slot]?) {
+    func calculateAmount(addressId: String?, serviceId: String?, slots: [Slot]?) {
         guard let addressId = addressId else {
             self.outputs?.scheduleAddPresenter(scheduleRequestValidationFailed: "Address is required, please select address and then continue.")
             return
@@ -46,7 +46,7 @@ class ScheduleAddPresenter: ScheduleAddPresenterType {
             sortedSlots.append(Slot(date: slot.date, timeSlots: slot.timeSlots.sorted { $0 < $1 }))
         }
         
-        self.service.requestService(addressId: addressId, serviceId: serviceId, slots: sortedSlots) { result in
+        self.service.calculateAmount(addressId: addressId, serviceId: serviceId, slots: sortedSlots) { result in
             switch result {
                 
             case .success(let data):
@@ -56,7 +56,7 @@ class ScheduleAddPresenter: ScheduleAddPresenterType {
             case .failure(let error):
                 self.outputs?.scheduleAddPresenter(operationFailed: error.errorDescription ?? error.localizedDescription)
                 break
-            }
+            }   
         }
     }
     

@@ -17,7 +17,8 @@ struct Service: Codable {
     let id, title, description: String?
     let plants, hours, days, persons: [Int]?
     let subType, instructions, type: String?
-    let price, minHours: Int?
+    let price: Double?
+    let minHours: Int?
     let promo: [String]?
     let isDeleted, isActive: Bool?
     let image: String?
@@ -31,13 +32,4 @@ struct Service: Codable {
         case title, description, plants, hours, days, persons, subType, instructions, type, price, minHours, promo, isDeleted, isActive, image, backgroundImage, contactLink, isContactOnly, createdAt, updatedAt
         case v = "__v"
     }
-    
-    var priceWithAED: String? {
-        if let price = self.price {
-            return "AED " + String(price)
-        }
-        
-        return nil
-    }
-
 }

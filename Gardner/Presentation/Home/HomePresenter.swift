@@ -40,7 +40,7 @@ class HomePresenter: HomePresenterType {
         self.outputs?.showLoader()
         
         homeService.getAllServices { (result: Result<HomeDataResponse, NetworkErrors>) in
-            self.outputs?.showLoader()
+            self.outputs?.hideLoader()
             
             switch result {
                 

@@ -41,6 +41,8 @@ class ScheduleAddViewController: UIViewController {
         super.viewDidLoad()
 
         self.title = "Schedule"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
         (self.presenter as! ScheduleAddPresenter).outputs = self
         
         
@@ -93,7 +95,7 @@ class ScheduleAddViewController: UIViewController {
     
     @IBAction func continueButtonTap(_ sender: Any) {
         let selectedSlots: [Slot] = self.selectedSlotsDictionary.map { Slot(date: $0, timeSlots: $1) }
-        self.presenter.requestService(addressId: self.selectedAddress?.id, serviceId: service?.id, slots: selectedSlots)
+        self.presenter.calculateAmount(addressId: self.selectedAddress?.id, serviceId: service?.id, slots: selectedSlots)
     }
     
     @objc func closeTap(_ sender: Any) {
@@ -103,17 +105,18 @@ class ScheduleAddViewController: UIViewController {
 }
 
 extension ScheduleAddViewController: ScheduleAddPresenterOutput {
+    func scheduleAddPresenter(scheduleRequestSuccess requestServiceResponse: CalculateAmountResponse) {
+        let selectedSlots: [Slot] = self.selectedSlotsDictionary.map { Slot(date: $0, timeSlots: $1) }
+        let vc = CartViewController.make(serviceRequest: requestServiceResponse, selectedSlots: selectedSlots)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func scheduleAddPresenter(slotsFetchingSuccess slots: [Slot]) {
         let titles: [String] = slots.map { $0.date.toDateString(format: "dd MMM yyyy") }
         segmentedView.sectionTitles = titles
         self.availableSlots = slots
         
         self.selectedSlotsCollectionView.reloadData()
-    }
-    
-    func scheduleAddPresenter(scheduleRequestSuccess requestServiceResponse: ServiceRequest) {
-        let vc = CartViewController.make(serviceRequest: requestServiceResponse)
-        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func scheduleAddPresenter(operationFailed message: String) {
@@ -143,7 +146,7 @@ extension ScheduleAddViewController: UICollectionViewDelegate, UICollectionViewD
         
         // remove item
         let isSelected = self.selectedSlotsDictionary[selectedDate] != nil && self.selectedSlotsDictionary[selectedDate]?.contains(selectedTimeSlot) == true
-        cell.configure(timeSlot: self.availableSlots[selectedDateIndex].timeSlots[indexPath.row], isSelected: isSelected)
+        cell.configure(timeSlot: self.availableSlots[selectedDateIndex].timeSlots[indexPath.row], isSelected: isSelected, minHours: self.service?.minHours ?? 0)
         
         return cell
     }
@@ -158,10 +161,10 @@ extension ScheduleAddViewController: UICollectionViewDelegate, UICollectionViewD
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedSlot = availableSlots[self.selectedDateIndex]
-        
+
         let selectedDate = selectedSlot.date
         let selectedTimeSlot = selectedSlot.timeSlots[indexPath.row]
-        
+
         // remove item
         if let test = self.selectedSlotsDictionary[selectedDate], test.contains(selectedTimeSlot) {
             self.selectedSlotsDictionary[selectedDate]?.removeAll(where: { cDate in
@@ -177,8 +180,7 @@ extension ScheduleAddViewController: UICollectionViewDelegate, UICollectionViewD
         } else {
             self.selectedSlotsDictionary[selectedDate] = [selectedTimeSlot]
         }
-        
+
         self.selectedSlotsCollectionView.reloadItems(at: [indexPath])
-        
     }
 }

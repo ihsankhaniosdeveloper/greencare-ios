@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileTableViewHeader: UITableViewHeaderFooterView {
+class SettingsTableViewHeader: UITableViewHeaderFooterView {
 
     /*
     // Only override draw() if you perform custom drawing.

@@ -1,5 +1,5 @@
 //
-//  ProfileViewController.swift
+//  SettingsViewController.swift
 //  Gardner
 //
 //  Created by Rashid Khan on 26/04/2023.
@@ -21,16 +21,16 @@ enum ProfileCellType {
     case logout
 }
 
-class ProfileViewController: UIViewController {
+class SettingsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var models: [ProfileCell] = []
-    private var presenter: ProfilePresenterType!
+    private var presenter: SettingsPresenterType!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.presenter = ProfilePresenter(profileService: ProfileService())
+        self.presenter = ProfilePresenter(profileService: SettingsService())
         (self.presenter as! ProfilePresenter).outputs = self
         
         self.presenter.getTableData()
@@ -38,18 +38,18 @@ class ProfileViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        self.tableView.register(UINib(nibName: "ProfileTableViewCell", bundle: .main), forCellReuseIdentifier: "ProfileTableViewCell")
-        self.tableView.register(UINib(nibName: "ProfileTableViewHeader", bundle: .main), forHeaderFooterViewReuseIdentifier: "ProfileTableViewHeader")
+        self.tableView.register(UINib(nibName: "SettingsTableViewCell", bundle: .main), forCellReuseIdentifier: "SettingsTableViewCell")
+        self.tableView.register(UINib(nibName: "SettingsTableViewHeader", bundle: .main), forHeaderFooterViewReuseIdentifier: "SettingsTableViewHeader")
     }
 }
 
-extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
+extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTableViewCell", for: indexPath) as! SettingsTableViewCell
         
         cell.configure(for: self.models[indexPath.row])
         cell.selectionStyle = .none
@@ -57,7 +57,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProfileTableViewHeader") as! ProfileTableViewHeader
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SettingsTableViewHeader") as! SettingsTableViewHeader
         
         return header
     }
@@ -103,7 +103,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension ProfileViewController: ProfilePresenterOutput {
+extension SettingsViewController: SettingsPresenterOutput {
     func profilePresenter(profileTableData: [ProfileCell]) {
         self.models = profileTableData
         self.tableView.reloadData()

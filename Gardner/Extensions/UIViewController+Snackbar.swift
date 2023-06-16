@@ -9,6 +9,31 @@ import UIKit
 import TTGSnackbar
 import ProgressHUD
 
+class Loader {
+    static let shared = Loader()
+    private var loader: LoaderViewController?
+    private var viewContorller: UIViewController?
+    private var isPresenterd: Bool = false
+    
+    func start(_ viewContorller: UIViewController) {
+        if loader == nil {
+            loader = LoaderViewController(nibName: "LoaderViewController", bundle: .main)
+        }
+        self.viewContorller = viewContorller
+        loader?.modalPresentationStyle = .overFullScreen
+        
+        if self.isPresenterd == false {
+            viewContorller.present(loader!, animated: false)
+            self.isPresenterd = true
+        }
+    }
+    
+    func hides() {
+        viewContorller?.dismiss(animated: false)
+        self.isPresenterd = false
+    }
+}
+
 extension UIViewController {
     func showSnackBar(message: String) {
         let snackbar = TTGSnackbar(message: message, duration: .middle)
@@ -17,12 +42,11 @@ extension UIViewController {
     }
     
     func stopLoader() {
-        ProgressHUD.dismiss()
+        Loader.shared.hides()
     }
     
     func startLoader() {
-        ProgressHUD.colorBackground(.red)
-        ProgressHUD.show("Loading ... ")
+//        Loader.shared.start(self)
     }
 
     func showConfirmationAlert(title: String, message: String, positiveActionTitle: String = "OK", positiveAction: @escaping ()->()) {

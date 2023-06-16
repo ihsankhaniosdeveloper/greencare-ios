@@ -7,23 +7,23 @@
 
 import Foundation
 
-protocol ProfileServiceType { }
+protocol SettingsServiceType { }
 
-class ProfileService: ProfileServiceType { }
+class SettingsService: SettingsServiceType { }
 
-protocol ProfilePresenterOutput: AnyObject {
+protocol SettingsPresenterOutput: AnyObject {
     func profilePresenter(profileTableData models: [ProfileCell])
 }
 
-protocol ProfilePresenterType {
+protocol SettingsPresenterType {
     func getTableData()
 }
 
-class ProfilePresenter: ProfilePresenterType {
-    weak var outputs: ProfilePresenterOutput?
-    private var profileService: ProfileServiceType
+class ProfilePresenter: SettingsPresenterType {
+    weak var outputs: SettingsPresenterOutput?
+    private var profileService: SettingsServiceType
     
-    init(profileService: ProfileServiceType) {
+    init(profileService: SettingsServiceType) {
         self.profileService = profileService
     }
     
