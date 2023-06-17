@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		081004062A3D0D3400A56638 /* OrderSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081004042A3D0D3400A56638 /* OrderSuccessViewController.swift */; };
 		081004072A3D0D3400A56638 /* OrderSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 081004052A3D0D3400A56638 /* OrderSuccessViewController.xib */; };
+		0810040A2A3DF40000A56638 /* ServiceRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081004092A3DF40000A56638 /* ServiceRequestService.swift */; };
+		0810040C2A3DF43900A56638 /* ServiceRequestRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0810040B2A3DF43900A56638 /* ServiceRequestRoutes.swift */; };
 		081A78002A3044880099D446 /* CalculateAmountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081A77FF2A3044880099D446 /* CalculateAmountResponse.swift */; };
 		081A78022A3092770099D446 /* CartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081A78012A3092770099D446 /* CartPresenter.swift */; };
 		082405152A1D454E005E941E /* ServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082405142A1D454E005E941E /* ServiceRequest.swift */; };
@@ -103,6 +105,8 @@
 /* Begin PBXFileReference section */
 		081004042A3D0D3400A56638 /* OrderSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSuccessViewController.swift; sourceTree = "<group>"; };
 		081004052A3D0D3400A56638 /* OrderSuccessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderSuccessViewController.xib; sourceTree = "<group>"; };
+		081004092A3DF40000A56638 /* ServiceRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestService.swift; sourceTree = "<group>"; };
+		0810040B2A3DF43900A56638 /* ServiceRequestRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestRoutes.swift; sourceTree = "<group>"; };
 		081A77FF2A3044880099D446 /* CalculateAmountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateAmountResponse.swift; sourceTree = "<group>"; };
 		081A78012A3092770099D446 /* CartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPresenter.swift; sourceTree = "<group>"; };
 		082405142A1D454E005E941E /* ServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequest.swift; sourceTree = "<group>"; };
@@ -225,6 +229,15 @@
 				081004052A3D0D3400A56638 /* OrderSuccessViewController.xib */,
 			);
 			path = OrderSuccess;
+			sourceTree = "<group>";
+		};
+		081004082A3DF3DF00A56638 /* ServiceRequests */ = {
+			isa = PBXGroup;
+			children = (
+				081004092A3DF40000A56638 /* ServiceRequestService.swift */,
+				0810040B2A3DF43900A56638 /* ServiceRequestRoutes.swift */,
+			);
+			path = ServiceRequests;
 			sourceTree = "<group>";
 		};
 		0824051D2A1EA138005E941E /* SegmentedView */ = {
@@ -415,6 +428,7 @@
 		08715A3D29EEE554002CB3F3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				081004082A3DF3DF00A56638 /* ServiceRequests */,
 				08E84DC02A17D0CC00DF8428 /* Address */,
 				08AA56012A084B0A00F3F8CD /* ServiceEntity */,
 				08397EB129F97454008F8F14 /* ServiceType.swift */,
@@ -841,6 +855,7 @@
 				08C5896C2A235C84007417CE /* ServiceEntityService.swift in Sources */,
 				089E93832A0EA51A0034BA90 /* ScheduleAddViewController.swift in Sources */,
 				08AA56052A0C267F00F3F8CD /* ServiceDetailsViewController.swift in Sources */,
+				0810040A2A3DF40000A56638 /* ServiceRequestService.swift in Sources */,
 				08715A3A29EDF2AB002CB3F3 /* APIRouteType.swift in Sources */,
 				08AA55F02A07FD6900F3F8CD /* HomePresenter.swift in Sources */,
 				089E93912A0EDF0C0034BA90 /* ScheduleTableViewCell.swift in Sources */,
@@ -852,6 +867,7 @@
 				089E939C2A0FAC050034BA90 /* DropDownView.swift in Sources */,
 				08AA55FB2A08150600F3F8CD /* ServiceCollectionViewCell.swift in Sources */,
 				08397EAC29F9140E008F8F14 /* SettingsViewController.swift in Sources */,
+				0810040C2A3DF43900A56638 /* ServiceRequestRoutes.swift in Sources */,
 				089E93862A0EA55B0034BA90 /* ScheduleAddPresenter.swift in Sources */,
 				08715A1D29EDEC7C002CB3F3 /* AppDelegate.swift in Sources */,
 				08715A3C29EDF2DF002CB3F3 /* APIResponseConvertible.swift in Sources */,

@@ -11,14 +11,20 @@ struct ServiceRequestReponse: Codable {
     let serviceRequest: ServiceRequest
 }
 
+// Ask backend for other statuses
+enum Status: String, Codable {
+    case pending = "pending"
+    case schedulled = "schedulled"
+}
+
 struct ServiceRequest: Codable {
     let id: String?
     let service: Service?
-    let status: String?
+    let status: Status
     let promo: [String]?
     let address: Address?
     let user: String?
-    let discount, totalPrice, discountAmount: Int?
+    let discount, totalPrice, discountAmount: Double?
     let isDeleted: Bool?
     let createdAt, updatedAt: Date?
     let v: Int?
@@ -47,7 +53,7 @@ struct ServiceRequestSlot: Codable {
 }
 
 struct SlotElement: Codable {
-    let date: String?
+    let date: Date
     let timeSlots: [Date]?
     let id: String?
 

@@ -12,7 +12,8 @@ protocol ScheduleListingPresenterType {
 }
 
 protocol ScheduleListingPresenterOutput: AnyObject {
-    func scheduleListingPresenter(scheduleOrderFetchSuccess services: [Service])
+    func scheduleListingPresenter(scheduleOrderFetchSuccess requests: [ServiceRequest])
+    func scheduleListingPresenter(scheduleOrderFetchFailed message: String)
 }
 
 class ScheduleListingPresenter {
@@ -20,17 +21,28 @@ class ScheduleListingPresenter {
         
     }
     
-    private var service: ServicesServiceType
+    private var service: ServiceRequestServiceType
     
     weak var outputs: ScheduleListingPresenterOutput?
     
-    init(service: ServicesServiceType) {
+    init(service: ServiceRequestServiceType) {
         self.service = service
     }
 }
 
 extension ScheduleListingPresenter: ScheduleListingPresenterType {
     func fetchScheduleSlots() {
-        
+        self.service.getServiceRequest { result in
+            switch result {
+                
+            case .success(let requests):
+                self.outputs?.scheduleListingPresenter(scheduleOrderFetchSuccess: requests)
+                break
+                
+            case .failure(let error):
+                self.outputs?.scheduleListingPresenter(scheduleOrderFetchFailed: error.errorDescription ?? error.localizedDescription)
+                break
+            }
+        }
     }
 }

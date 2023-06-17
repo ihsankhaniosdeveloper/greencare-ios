@@ -41,6 +41,12 @@
                             <color key="textColor" name="blackColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhU-ow-PWB">
+                            <rect key="frame" x="257" y="14" width="152" height="142"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="ic"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" name="GreyColor"/>
                     <constraints>
@@ -64,6 +70,7 @@
         </view>
     </objects>
     <resources>
+        <image name="ic" width="128" height="128"/>
         <image name="tick_mark" width="110" height="110"/>
         <namedColor name="GreyColor">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

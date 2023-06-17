@@ -52,8 +52,8 @@
                                     <constraint firstAttribute="height" constant="12" id="Iyb-rY-Y8b"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="May 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceu-2G-rYN">
-                                <rect key="frame" x="20" y="81.333333333333329" width="49" height="22.666666666666671"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="May 4" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceu-2G-rYN">
+                                <rect key="frame" x="20" y="81.333333333333329" width="171.66666666666666" height="22.666666666666671"/>
                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins Medium" pointSize="16"/>
                                 <color key="textColor" name="primaryColor"/>
                                 <nil key="highlightedColor"/>
@@ -84,7 +84,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AED 14.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYE-Sa-R5b">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="AED 14.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYE-Sa-R5b">
                                 <rect key="frame" x="207.66666666666666" y="80" width="86.333333333333343" height="25.333333333333329"/>
                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins SemiBold" pointSize="18"/>
                                 <color key="textColor" name="blackColor"/>
@@ -109,6 +109,7 @@
                             <constraint firstAttribute="bottom" secondItem="y9G-jj-Gnr" secondAttribute="bottom" constant="8" id="R7Q-Jz-zMY"/>
                             <constraint firstItem="ceu-2G-rYN" firstAttribute="leading" secondItem="wAv-i2-tQN" secondAttribute="leading" constant="20" id="Tw2-pU-oIF"/>
                             <constraint firstItem="I3A-lG-eH1" firstAttribute="leading" secondItem="wAv-i2-tQN" secondAttribute="leading" constant="20" id="fds-pY-puF"/>
+                            <constraint firstItem="iYE-Sa-R5b" firstAttribute="leading" secondItem="ceu-2G-rYN" secondAttribute="trailing" constant="16" id="kF2-ix-i3R"/>
                             <constraint firstItem="7wP-Qj-jDq" firstAttribute="leading" secondItem="I3A-lG-eH1" secondAttribute="leading" id="mlG-6Y-c36"/>
                             <constraint firstItem="3ut-mX-Kiu" firstAttribute="centerY" secondItem="y9G-jj-Gnr" secondAttribute="centerY" id="ove-Oh-DcD"/>
                             <constraint firstItem="ceu-2G-rYN" firstAttribute="top" secondItem="7wP-Qj-jDq" secondAttribute="bottom" constant="4" id="pdX-qR-4ZO"/>
@@ -138,6 +139,14 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="lblCreatedAt" destination="y9G-jj-Gnr" id="3la-qL-gdc"/>
+                <outlet property="lblDate" destination="ceu-2G-rYN" id="Yh3-yR-pbm"/>
+                <outlet property="lblPersonsAndHours" destination="3ut-mX-Kiu" id="uDE-nm-SAn"/>
+                <outlet property="lblPrice" destination="iYE-Sa-R5b" id="mAi-YY-mvw"/>
+                <outlet property="lblSubtitle" destination="L7s-zw-2N5" id="vn7-f9-7Es"/>
+                <outlet property="lblTitle" destination="I3A-lG-eH1" id="u1d-RZ-bEy"/>
+            </connections>
             <point key="canvasLocation" x="119.08396946564885" y="63.028169014084511"/>
         </tableViewCell>
     </objects>
