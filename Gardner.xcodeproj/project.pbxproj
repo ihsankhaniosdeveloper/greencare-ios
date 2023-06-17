@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		081004062A3D0D3400A56638 /* OrderSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081004042A3D0D3400A56638 /* OrderSuccessViewController.swift */; };
-		081004072A3D0D3400A56638 /* OrderSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 081004052A3D0D3400A56638 /* OrderSuccessViewController.xib */; };
+		081004062A3D0D3400A56638 /* ServiceRequestSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081004042A3D0D3400A56638 /* ServiceRequestSuccessViewController.swift */; };
+		081004072A3D0D3400A56638 /* ServiceRequestSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 081004052A3D0D3400A56638 /* ServiceRequestSuccessViewController.xib */; };
 		0810040A2A3DF40000A56638 /* ServiceRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081004092A3DF40000A56638 /* ServiceRequestService.swift */; };
 		0810040C2A3DF43900A56638 /* ServiceRequestRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0810040B2A3DF43900A56638 /* ServiceRequestRoutes.swift */; };
 		081A78002A3044880099D446 /* CalculateAmountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081A77FF2A3044880099D446 /* CalculateAmountResponse.swift */; };
@@ -103,8 +103,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		081004042A3D0D3400A56638 /* OrderSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSuccessViewController.swift; sourceTree = "<group>"; };
-		081004052A3D0D3400A56638 /* OrderSuccessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderSuccessViewController.xib; sourceTree = "<group>"; };
+		081004042A3D0D3400A56638 /* ServiceRequestSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestSuccessViewController.swift; sourceTree = "<group>"; };
+		081004052A3D0D3400A56638 /* ServiceRequestSuccessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceRequestSuccessViewController.xib; sourceTree = "<group>"; };
 		081004092A3DF40000A56638 /* ServiceRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestService.swift; sourceTree = "<group>"; };
 		0810040B2A3DF43900A56638 /* ServiceRequestRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestRoutes.swift; sourceTree = "<group>"; };
 		081A77FF2A3044880099D446 /* CalculateAmountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateAmountResponse.swift; sourceTree = "<group>"; };
@@ -225,8 +225,8 @@
 		081004032A3D0D0600A56638 /* OrderSuccess */ = {
 			isa = PBXGroup;
 			children = (
-				081004042A3D0D3400A56638 /* OrderSuccessViewController.swift */,
-				081004052A3D0D3400A56638 /* OrderSuccessViewController.xib */,
+				081004042A3D0D3400A56638 /* ServiceRequestSuccessViewController.swift */,
+				081004052A3D0D3400A56638 /* ServiceRequestSuccessViewController.xib */,
 			);
 			path = OrderSuccess;
 			sourceTree = "<group>";
@@ -781,7 +781,7 @@
 				08AA55EC2A07E75C00F3F8CD /* Poppins-Bold.ttf in Resources */,
 				08715A2429EDEC7C002CB3F3 /* Main.storyboard in Resources */,
 				08D2B7542A347BAD002D9822 /* LoaderViewController.xib in Resources */,
-				081004072A3D0D3400A56638 /* OrderSuccessViewController.xib in Resources */,
+				081004072A3D0D3400A56638 /* ServiceRequestSuccessViewController.xib in Resources */,
 				089E93962A0EECFB0034BA90 /* ServiceDetailsTableViewCell.xib in Resources */,
 				08C279C52A3BADDF008678DA /* EmptyTableViewCell.xib in Resources */,
 				08AA55ED2A07E75C00F3F8CD /* Poppins-Medium.ttf in Resources */,
@@ -843,7 +843,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				081A78022A3092770099D446 /* CartPresenter.swift in Sources */,
-				081004062A3D0D3400A56638 /* OrderSuccessViewController.swift in Sources */,
+				081004062A3D0D3400A56638 /* ServiceRequestSuccessViewController.swift in Sources */,
 				08E84DB32A16B61600DF8428 /* SlotListingViewController.swift in Sources */,
 				08397EBE2A004563008F8F14 /* OTPViewController.swift in Sources */,
 				08397EB929F97B98008F8F14 /* LoginViewController.swift in Sources */,

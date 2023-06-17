@@ -53,7 +53,7 @@ extension CartViewController: CartPresenterOutput {
         
         self.navigationController?.popToRootViewController(animated: false)
         
-        let orderSuccessVC = OrderSuccessViewController(nibName: "OrderSuccessViewController", bundle: .main)
+        let orderSuccessVC = ServiceRequestSuccessViewController(nibName: "ServiceRequestSuccessViewController", bundle: .main)
         orderSuccessVC.modalPresentationStyle = .fullScreen
         self.present(orderSuccessVC, animated: true)
     }

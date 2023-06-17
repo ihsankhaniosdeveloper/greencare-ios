@@ -1,5 +1,5 @@
 //
-//  OrderSuccessViewController.swift
+//  ServiceRequestSuccessViewController.swift
 //  Gardner
 //
 //  Created by Rashid Khan on 17/06/2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OrderSuccessViewController: UIViewController {
+class ServiceRequestSuccessViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
