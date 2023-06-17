@@ -12,15 +12,16 @@ struct ServiceRequestReponse: Codable {
 }
 
 // Ask backend for other statuses
-enum Status: String, Codable {
+enum ServiceRequestStatus: String, Codable {
     case pending = "pending"
     case schedulled = "schedulled"
+    case completed = "completed"
 }
 
 struct ServiceRequest: Codable {
     let id: String?
     let service: Service?
-    let status: Status
+    let status: ServiceRequestStatus
     let promo: [String]?
     let address: Address?
     let user: String?

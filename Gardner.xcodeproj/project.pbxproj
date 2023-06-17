@@ -11,6 +11,11 @@
 		081004072A3D0D3400A56638 /* ServiceRequestSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 081004052A3D0D3400A56638 /* ServiceRequestSuccessViewController.xib */; };
 		0810040A2A3DF40000A56638 /* ServiceRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081004092A3DF40000A56638 /* ServiceRequestService.swift */; };
 		0810040C2A3DF43900A56638 /* ServiceRequestRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0810040B2A3DF43900A56638 /* ServiceRequestRoutes.swift */; };
+		081004102A3E192B00A56638 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0810040E2A3E192B00A56638 /* HistoryViewController.swift */; };
+		081004112A3E192B00A56638 /* HistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0810040F2A3E192B00A56638 /* HistoryViewController.xib */; };
+		081004152A3E234B00A56638 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081004132A3E234B00A56638 /* HistoryTableViewCell.swift */; };
+		081004162A3E234B00A56638 /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 081004142A3E234B00A56638 /* HistoryTableViewCell.xib */; };
+		081004182A3E270B00A56638 /* HistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081004172A3E270B00A56638 /* HistoryPresenter.swift */; };
 		081A78002A3044880099D446 /* CalculateAmountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081A77FF2A3044880099D446 /* CalculateAmountResponse.swift */; };
 		081A78022A3092770099D446 /* CartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081A78012A3092770099D446 /* CartPresenter.swift */; };
 		082405152A1D454E005E941E /* ServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082405142A1D454E005E941E /* ServiceRequest.swift */; };
@@ -107,6 +112,11 @@
 		081004052A3D0D3400A56638 /* ServiceRequestSuccessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceRequestSuccessViewController.xib; sourceTree = "<group>"; };
 		081004092A3DF40000A56638 /* ServiceRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestService.swift; sourceTree = "<group>"; };
 		0810040B2A3DF43900A56638 /* ServiceRequestRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestRoutes.swift; sourceTree = "<group>"; };
+		0810040E2A3E192B00A56638 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		0810040F2A3E192B00A56638 /* HistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryViewController.xib; sourceTree = "<group>"; };
+		081004132A3E234B00A56638 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		081004142A3E234B00A56638 /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
+		081004172A3E270B00A56638 /* HistoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPresenter.swift; sourceTree = "<group>"; };
 		081A77FF2A3044880099D446 /* CalculateAmountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateAmountResponse.swift; sourceTree = "<group>"; };
 		081A78012A3092770099D446 /* CartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPresenter.swift; sourceTree = "<group>"; };
 		082405142A1D454E005E941E /* ServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequest.swift; sourceTree = "<group>"; };
@@ -240,6 +250,26 @@
 			path = ServiceRequests;
 			sourceTree = "<group>";
 		};
+		0810040D2A3E18FF00A56638 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				081004122A3E22BF00A56638 /* Cell */,
+				0810040F2A3E192B00A56638 /* HistoryViewController.xib */,
+				081004172A3E270B00A56638 /* HistoryPresenter.swift */,
+				0810040E2A3E192B00A56638 /* HistoryViewController.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		081004122A3E22BF00A56638 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				081004132A3E234B00A56638 /* HistoryTableViewCell.swift */,
+				081004142A3E234B00A56638 /* HistoryTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		0824051D2A1EA138005E941E /* SegmentedView */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +334,7 @@
 		08397EAA29F913E1008F8F14 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				0810040D2A3E18FF00A56638 /* History */,
 				08AA55D82A07C2F300F3F8CD /* Cell */,
 				08AA55D72A07C2EB00F3F8CD /* Header */,
 				08397EAB29F9140E008F8F14 /* SettingsViewController.swift */,
@@ -776,6 +807,7 @@
 				089E93922A0EDF0C0034BA90 /* ScheduleTableViewCell.xib in Resources */,
 				08715A2629EDEC7C002CB3F3 /* Assets.xcassets in Resources */,
 				089E939E2A0FAC380034BA90 /* DropDownView.xib in Resources */,
+				081004162A3E234B00A56638 /* HistoryTableViewCell.xib in Resources */,
 				08AA55E02A07CAD700F3F8CD /* SettingsTableViewCell.xib in Resources */,
 				08AA55FC2A08150600F3F8CD /* ServiceCollectionViewCell.xib in Resources */,
 				08AA55EC2A07E75C00F3F8CD /* Poppins-Bold.ttf in Resources */,
@@ -784,6 +816,7 @@
 				081004072A3D0D3400A56638 /* ServiceRequestSuccessViewController.xib in Resources */,
 				089E93962A0EECFB0034BA90 /* ServiceDetailsTableViewCell.xib in Resources */,
 				08C279C52A3BADDF008678DA /* EmptyTableViewCell.xib in Resources */,
+				081004112A3E192B00A56638 /* HistoryViewController.xib in Resources */,
 				08AA55ED2A07E75C00F3F8CD /* Poppins-Medium.ttf in Resources */,
 				08397EBF2A004563008F8F14 /* OTPViewController.xib in Resources */,
 				08E84DBB2A17CFAF00DF8428 /* AddressListingViewController.xib in Resources */,
@@ -881,6 +914,7 @@
 				08715A3829EDF0F8002CB3F3 /* APIClientType.swift in Sources */,
 				08397EB429F9752B008F8F14 /* BaseService.swift in Sources */,
 				08D2B7532A347BAD002D9822 /* LoaderViewController.swift in Sources */,
+				081004102A3E192B00A56638 /* HistoryViewController.swift in Sources */,
 				08397EA929F3DAAF008F8F14 /* NetworkError.swift in Sources */,
 				089E93952A0EECFB0034BA90 /* ServiceDetailsTableViewCell.swift in Sources */,
 				089E61ED2A045417003B2CAB /* UIView+Extension.swift in Sources */,
@@ -895,6 +929,8 @@
 				08AA55D02A06E8E800F3F8CD /* UserSession.swift in Sources */,
 				08AA55CD2A05B44000F3F8CD /* OTPPresenter.swift in Sources */,
 				08397EB229F97454008F8F14 /* ServiceType.swift in Sources */,
+				081004152A3E234B00A56638 /* HistoryTableViewCell.swift in Sources */,
+				081004182A3E270B00A56638 /* HistoryPresenter.swift in Sources */,
 				082405152A1D454E005E941E /* ServiceRequest.swift in Sources */,
 				08C589702A235DFA007417CE /* Slot.swift in Sources */,
 				08E84DBF2A17CFD300DF8428 /* AddressListingPresenter.swift in Sources */,
