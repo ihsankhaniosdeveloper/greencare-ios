@@ -24,4 +24,9 @@ class SelectedSlotCollectionViewCell: UICollectionViewCell {
         let endTime = Calendar.current.date(byAdding: .hour, value: minHours, to: timeSlot)!.toTimeString()
         lblSlotTime.text = "\(timeSlot.toTimeString()) to \(endTime)"
     }
+    
+    func configureForEmptyView() {
+        self.lblSlotTime.text = "No Slots Available"
+        viewBG.backgroundColor = .white
+    }
 }

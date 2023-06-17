@@ -24,6 +24,16 @@ class UserSession {
         UserDefaults.standard.set(false, forKey: "is.verified")
     }
     
+    var name: String {
+        set {
+            UserDefaults.standard.set(newValue, forKey: "name")
+        }
+        
+        get {
+            return UserDefaults.standard.string(forKey: "name") ?? ""
+        }
+    }
+    
     var token: String {
         return UserDefaults.standard.string(forKey: "token") ?? ""
     }

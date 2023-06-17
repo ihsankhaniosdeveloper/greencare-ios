@@ -14,7 +14,8 @@ struct ServiceAdd: Codable {
 }
 
 struct Service: Codable {
-    let id, title, description: String?
+    let id: String
+    let title, description: String?
     let plants, hours, days, persons: [Int]?
     let subType, instructions, type: String?
     let price: Double?

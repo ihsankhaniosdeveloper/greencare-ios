@@ -11,6 +11,9 @@ import Alamofire
 class HomeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var lblMsgWithName: UILabel!
+    @IBOutlet weak var lblMobileNumber: UILabel!
+    
     private var model: [SectionItemsData] = []
     private var presenter: HomePresenterType!
     
@@ -25,6 +28,9 @@ class HomeViewController: UIViewController {
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        
+        self.lblMsgWithName.text = "Hello \(UserSession.instance.name)"
+        self.lblMobileNumber.text = UserSession.instance.contact
         
         self.presenter = HomePresenter(homeService: ServicesService(apiClient: APIClient(session: .default)))
         (self.presenter as! HomePresenter).outputs = self

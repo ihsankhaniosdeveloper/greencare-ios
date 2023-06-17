@@ -28,7 +28,7 @@ protocol ServicesServiceType {
 
 class ServicesService: BaseService, ServicesServiceType {
     func requestService(params: ServiceRequestParams, completion: @escaping CompletionClosure<Bool>) {
-        self.request(route: ServicesAPIRoutes.serviceRequest(serviceRequestParams: params)) { (data: CalculateAmountResponse?, error: NetworkErrors?) in
+        self.request(route: ServicesAPIRoutes.serviceRequest(serviceRequestParams: params)) { (data: EmptyResonseDecodable?, error: NetworkErrors?) in
             if let _ = data, error == nil {
                 completion(.success(true))
                 return

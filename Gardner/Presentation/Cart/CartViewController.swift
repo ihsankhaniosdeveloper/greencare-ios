@@ -20,47 +20,67 @@ class CartViewController: UIViewController {
     @IBOutlet weak var lblPersons: UILabel!
     @IBOutlet weak var lblPromoCode: UILabel!
     
-    private var serviceRequest: CalculateAmountResponse!
-    private var selectedSlots: [Slot] = []
+    private var calculateAmoutResponse: CalculateAmountResponse!
+//    private var selectedSlots: [Slot] = []
+    private var presenter: CartPresenterType!
     
-    static func make(serviceRequest: CalculateAmountResponse, selectedSlots: [Slot]) -> CartViewController {
+    static func make(presenter: CartPresenterType, calculateAmoutResponse: CalculateAmountResponse) -> CartViewController {
         let vc = CartViewController(nibName: "CartViewController", bundle: .main)
-        vc.serviceRequest = serviceRequest
-        vc.selectedSlots = selectedSlots
+        
+        vc.calculateAmoutResponse = calculateAmoutResponse
+        vc.presenter = presenter
+        
         return vc
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        (self.presenter as? CartPresenter)?.outputs = self
+        
         self.title = "Invoice"
         self.populateData()
-        
-        self.navigationController?.popToRootViewController(animated: false)
     }
+    
+    
+    @IBAction func checkoutButtonTap(_ sender: Any) {
+        self.presenter.requestService(paymentMethod: .cash)
+    }
+}
+
+extension CartViewController: CartPresenterOutput {
+    func cartPresenter(serviceRequestSuccess isSuccess: Bool) {
+        let orderSuccessVC = OrderSuccessViewController(nibName: "OrderSuccessViewController", bundle: .main)
+        self.navigationController?.pushViewController(orderSuccessVC, animated: true)
+    }
+    
+    func cartPresenter(serviceRequestFailed message: String) {
+        
+    }
+    
 }
 
 fileprivate extension CartViewController {
     func populateData() {
-        self.ivServiceImage.sd_setImage(with: URL(string: self.serviceRequest.service?.image ?? ""), placeholderImage: nil, context: nil)
-        self.lblTitle.text = self.serviceRequest.service?.title
-        self.lblPrice.text = serviceRequest.service?.price?.formattedAmountWithAED
+        self.ivServiceImage.sd_setImage(with: URL(string: self.calculateAmoutResponse.service?.image ?? ""), placeholderImage: nil, context: nil)
+        self.lblTitle.text = self.calculateAmoutResponse.service?.title
+        self.lblPrice.text = calculateAmoutResponse.service?.price?.formattedAmountWithAED
         self.lblHours.text = "Hours: \(self.getTotalHours())"
         self.lblPersons.text = "Persons: 2"
         self.lblDate.text = Date().toDateString()
-        self.lblSubTotal.text = serviceRequest.totalPrice.formattedAmountWithAED
-        self.lblDeliveryFee.text = serviceRequest.deliveryFee.formattedAmountWithAED
-        self.lblTotal.text = (serviceRequest.totalPrice + serviceRequest.deliveryFee).formattedAmountWithAED
+        self.lblSubTotal.text = calculateAmoutResponse.totalPrice.formattedAmountWithAED
+        self.lblDeliveryFee.text = calculateAmoutResponse.deliveryFee.formattedAmountWithAED
+        self.lblTotal.text = (calculateAmoutResponse.totalPrice + calculateAmoutResponse.deliveryFee).formattedAmountWithAED
     }
     
     func getTotalHours() -> Int {
         var selectedSlotsCount = 0
         
-        self.selectedSlots.forEach { slot in
+        (self.presenter as! CartPresenter).selectedSlots.forEach { slot in
             selectedSlotsCount += slot.timeSlots.count
         }
         
-        return selectedSlotsCount * (self.serviceRequest.service?.minHours ?? 0)
+        return selectedSlotsCount * (self.calculateAmoutResponse.service?.minHours ?? 0)
     }
 }
 

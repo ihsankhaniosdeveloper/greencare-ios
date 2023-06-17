@@ -19,7 +19,7 @@ class ScheduleAddViewController: UIViewController {
     // Available slots
     private var availableSlots: [Slot] = []
     private var selectedAddress: Address?
-    private var service: Service?
+    private var service: Service!
     
     private var selectedSlots: [Slot] = []
     private var selectedDateIndex = 0
@@ -106,8 +106,23 @@ class ScheduleAddViewController: UIViewController {
 
 extension ScheduleAddViewController: ScheduleAddPresenterOutput {
     func scheduleAddPresenter(scheduleRequestSuccess requestServiceResponse: CalculateAmountResponse) {
-        let selectedSlots: [Slot] = self.selectedSlotsDictionary.map { Slot(date: $0, timeSlots: $1) }
-        let vc = CartViewController.make(serviceRequest: requestServiceResponse, selectedSlots: selectedSlots)
+        guard let selectedAddressId = self.selectedAddress?.id else {
+            self.showSnackBar(message: "Plese select the address and then continue ...")
+            return
+        }
+        
+        let sortedSelectedSlots: [Slot] = self.selectedSlotsDictionary.map { Slot(date: $0, timeSlots: $1) }
+        
+        let vc = CartViewController.make(
+            presenter: CartPresenter(
+                service: ServicesService(apiClient: APIClient(session: .default)),
+                selectedSlots: sortedSelectedSlots,
+                selectedServiceId: self.service.id,
+                selectedAddressId: selectedAddressId
+            ),
+            calculateAmoutResponse: requestServiceResponse
+        )
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -131,8 +146,8 @@ extension ScheduleAddViewController: ScheduleAddPresenterOutput {
 
 extension ScheduleAddViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if self.availableSlots.isEmpty {
-            return 0
+        if self.availableSlots.isEmpty || self.availableSlots[selectedDateIndex].timeSlots.isEmpty {
+            return 1
         }
         
         return availableSlots[selectedDateIndex].timeSlots.count
@@ -140,6 +155,12 @@ extension ScheduleAddViewController: UICollectionViewDelegate, UICollectionViewD
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! SelectedSlotCollectionViewCell
+        
+        if self.availableSlots.isEmpty || self.availableSlots[selectedDateIndex].timeSlots.isEmpty {
+            cell.configureForEmptyView()
+            
+            return cell
+        }
 
         let selectedDate = availableSlots[selectedDateIndex].date
         let selectedTimeSlot = availableSlots[selectedDateIndex].timeSlots[indexPath.row]
@@ -152,6 +173,9 @@ extension ScheduleAddViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if self.availableSlots.isEmpty || self.availableSlots[selectedDateIndex].timeSlots.isEmpty {
+            return CGSize(width: collectionView.frame.width - 32, height: 45)
+        }
         return CGSize(width: (collectionView.frame.width - 32) / 2, height: 45)
     }
 
@@ -160,6 +184,11 @@ extension ScheduleAddViewController: UICollectionViewDelegate, UICollectionViewD
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if self.availableSlots.isEmpty || self.availableSlots[selectedDateIndex].timeSlots.isEmpty {
+            return
+        }
+        
+        
         let selectedSlot = availableSlots[self.selectedDateIndex]
 
         let selectedDate = selectedSlot.date
