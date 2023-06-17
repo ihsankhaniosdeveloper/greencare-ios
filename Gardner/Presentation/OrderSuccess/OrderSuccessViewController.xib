@@ -41,11 +41,18 @@
                             <color key="textColor" name="blackColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhU-ow-PWB">
-                            <rect key="frame" x="257" y="14" width="152" height="142"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhU-ow-PWB">
+                            <rect key="frame" x="327" y="67" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="GQH-N7-faG"/>
+                                <constraint firstAttribute="height" constant="50" id="gUl-nV-8eZ"/>
+                            </constraints>
+                            <color key="tintColor" name="primaryColor"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="ic"/>
+                            <buttonConfiguration key="configuration" style="plain" image="xmark.circle.fill" catalog="system" title=""/>
+                            <connections>
+                                <action selector="closeButtonTap:" destination="-1" eventType="touchUpInside" id="Nal-zS-ZfX"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" name="GreyColor"/>
@@ -53,6 +60,7 @@
                         <constraint firstItem="vsF-xC-QsE" firstAttribute="centerY" secondItem="RcT-gM-ZKI" secondAttribute="centerY" constant="-32" id="78w-SR-zma"/>
                         <constraint firstItem="soo-S2-10R" firstAttribute="leading" secondItem="RcT-gM-ZKI" secondAttribute="leading" constant="64" id="TRY-8b-gET"/>
                         <constraint firstItem="vsF-xC-QsE" firstAttribute="centerX" secondItem="RcT-gM-ZKI" secondAttribute="centerX" id="X5v-WQ-zuZ"/>
+                        <constraint firstAttribute="trailing" secondItem="mhU-ow-PWB" secondAttribute="trailing" constant="16" id="eeJ-Jo-WbE"/>
                         <constraint firstAttribute="trailing" secondItem="soo-S2-10R" secondAttribute="trailing" constant="64" id="fZN-Bl-P4a"/>
                         <constraint firstItem="soo-S2-10R" firstAttribute="top" secondItem="vsF-xC-QsE" secondAttribute="bottom" constant="16" id="xig-w5-Py0"/>
                     </constraints>
@@ -61,6 +69,7 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="mhU-ow-PWB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="0I9-NP-Bzn"/>
                 <constraint firstItem="RcT-gM-ZKI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="0X1-Gp-TsZ"/>
                 <constraint firstItem="RcT-gM-ZKI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Deh-jI-huR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="RcT-gM-ZKI" secondAttribute="trailing" id="c5M-4z-1gI"/>
@@ -70,13 +79,16 @@
         </view>
     </objects>
     <resources>
-        <image name="ic" width="128" height="128"/>
         <image name="tick_mark" width="110" height="110"/>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
         <namedColor name="GreyColor">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="blackColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryColor">
+            <color red="0.62745098039215685" green="0.73333333333333328" blue="0.29019607843137257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

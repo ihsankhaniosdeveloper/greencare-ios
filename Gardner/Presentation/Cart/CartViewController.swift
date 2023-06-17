@@ -50,8 +50,12 @@ class CartViewController: UIViewController {
 
 extension CartViewController: CartPresenterOutput {
     func cartPresenter(serviceRequestSuccess isSuccess: Bool) {
+        
+        self.navigationController?.popToRootViewController(animated: false)
+        
         let orderSuccessVC = OrderSuccessViewController(nibName: "OrderSuccessViewController", bundle: .main)
-        self.navigationController?.pushViewController(orderSuccessVC, animated: true)
+        orderSuccessVC.modalPresentationStyle = .fullScreen
+        self.present(orderSuccessVC, animated: true)
     }
     
     func cartPresenter(serviceRequestFailed message: String) {
