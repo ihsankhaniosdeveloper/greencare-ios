@@ -7,13 +7,13 @@
 
 import UIKit
 
-struct ProfileCell {
+struct SettingsCell {
     let title: String
     let color: String
-    let type: ProfileCellType
+    let type: SettingsCellType
 }
 
-enum ProfileCellType {
+enum SettingsCellType {
     case profileDetails
     case myAddresses
     case orderHistory
@@ -24,14 +24,15 @@ enum ProfileCellType {
 class SettingsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    private var models: [ProfileCell] = []
+    private var models: [SettingsCell] = []
     private var presenter: SettingsPresenterType!
+    private var userProfile: UserProfile?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.presenter = ProfilePresenter(profileService: SettingsService())
-        (self.presenter as! ProfilePresenter).outputs = self
+        self.presenter = SettingsPresenter(profileService: SettingsService())
+        (self.presenter as! SettingsPresenter).outputs = self
         
         self.presenter.getTableData()
         self.navigationController?.navigationBar.isHidden = true
@@ -40,6 +41,19 @@ class SettingsViewController: UIViewController {
         
         self.tableView.register(UINib(nibName: "SettingsTableViewCell", bundle: .main), forCellReuseIdentifier: "SettingsTableViewCell")
         self.tableView.register(UINib(nibName: "SettingsTableViewHeader", bundle: .main), forHeaderFooterViewReuseIdentifier: "SettingsTableViewHeader")
+    }
+    
+    private func navigateToProfile() {
+        let profileVC = ProfileViewController.make(
+            presenter: ProfilePresenter(
+                service: AuthenticationService(
+                    apiClient: APIClient(session: .default)
+                )
+            )
+        )
+        
+        profileVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(profileVC, animated: true)
     }
 }
 
@@ -59,6 +73,13 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SettingsTableViewHeader") as! SettingsTableViewHeader
         
+        if let userProfile = UserSession.instance.profile {
+            header.configure(userProfile: userProfile)
+        }
+        
+        header.editButtonTapHandler = { [weak self] in
+            self?.navigateToProfile()
+        }
         return header
     }
     
@@ -70,6 +91,7 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
         switch self.models[indexPath.row].type {
             
         case .profileDetails:
+            self.navigateToProfile()
             break
             
         case .myAddresses:
@@ -88,6 +110,10 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
             break
             
         case .support:
+            let supportVC = SupportViewController(nibName: "SupportViewController", bundle: .main)
+            supportVC.modalPresentationStyle = .custom
+            supportVC.modalTransitionStyle = .crossDissolve
+            present(supportVC, animated: true)
             break
             
         case .logout:
@@ -111,7 +137,7 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension SettingsViewController: SettingsPresenterOutput {
-    func profilePresenter(profileTableData: [ProfileCell]) {
+    func profilePresenter(profileTableData: [SettingsCell]) {
         self.models = profileTableData
         self.tableView.reloadData()
     }

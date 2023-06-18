@@ -20,13 +20,16 @@ enum NetworkErrors: LocalizedError {
     case unknown
 
     struct InternalServerError: Codable {
-        let errors: [ServerError]
-        
-        struct ServerError: Codable {
-            public let code: String
-            public let message: String
-        }
+        let statusCode: Int
+        let message: String
+//        let errors: [ServerError]
+//        {"statusCode":400,"errors":{"slots":"Slot should be consecutive for 4 hours"},"message":"Slot should be consecutive for 4 hours"}
+//        struct ServerError: Codable {
+//            public let code: String
+//            public let message: String
+//        }
     }
+    
 
     struct AuthError: Codable {
         let error: AuthErrorDetail
@@ -47,7 +50,7 @@ extension NetworkErrors {
         case .notFound: return "Resource Not Found"
         case .forbidden: return "You don't have access to this information"
         case .internalServerError(let serverErrors):
-            if let error = serverErrors?.errors.first { return error.message }
+            if let error = serverErrors { return error.message }
             else { return "Sorry, that doesn't look right." }
         case .serverError(_, let message): return message
         case .authError(let authError):
@@ -69,13 +72,13 @@ class NetworkErrorHandler {
 
     static func mapError(_ code: Int, data: Data) -> NetworkErrors {
         switch code {
-        case 401:
-            let authError: NetworkErrors.AuthError? = try? decode(data: data)
-            return .authError(authError)
-        case 403:
-            return .forbidden
-        case 404:
-            return .notFound
+//        case 401:
+//            let authError: NetworkErrors.AuthError? = try? decode(data: data)
+//            return .authError(authError)
+//        case 403:
+//            return .forbidden
+//        case 404:
+//            return .notFound
         case 400...499:
             let serverErrors: NetworkErrors.InternalServerError? = try? decode(data: data)
             return .internalServerError(serverErrors)

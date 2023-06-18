@@ -11,6 +11,7 @@ import Alamofire
 class HomeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var ivProfileAvaror: UIImageView!
     @IBOutlet weak var lblMsgWithName: UILabel!
     @IBOutlet weak var lblMobileNumber: UILabel!
     
@@ -29,12 +30,41 @@ class HomeViewController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
-        self.lblMsgWithName.text = "Hello \(UserSession.instance.name)"
-        self.lblMobileNumber.text = UserSession.instance.contact
+        self.presenter = HomePresenter(
+            homeService: ServicesService(
+                apiClient: APIClient(session: .default)
+            ),
+            userService: AuthenticationService(
+                apiClient:APIClient(session: .default)
+            )
+        )
         
-        self.presenter = HomePresenter(homeService: ServicesService(apiClient: APIClient(session: .default)))
         (self.presenter as! HomePresenter).outputs = self
+        
+        // add tap gesture to profile image view
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.profileTapped(_:)))
+        self.ivProfileAvaror.isUserInteractionEnabled = true
+        self.ivProfileAvaror.addGestureRecognizer(tap)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.presenter.getServices()
+        self.presenter.fetchUserProfile()
+    }
+    
+    @objc func profileTapped(_ sender: UITapGestureRecognizer) {
+        let profileVC = ProfileViewController.make(
+            presenter: ProfilePresenter(
+                service: AuthenticationService(
+                    apiClient: APIClient(session: .default)
+                )
+            )
+        )
+        
+        profileVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(profileVC, animated: true)
     }
 }
 
@@ -101,6 +131,17 @@ extension HomeViewController: HomePresenterOutput {
     
     func homePresenter(homeDataFetchFail message: String) {
         self.showSnackBar(message: message)
+    }
+    
+    func homePresenter(userProfileFetchSuccess profile: UserProfile) {
+        if let firstName = UserSession.instance.profile?.firstName {
+            self.lblMsgWithName.text = "Hello \(firstName) \(UserSession.instance.profile?.lastName ?? "")"
+        } else {
+            self.lblMsgWithName.text = "Hello"
+        }
+        
+        self.lblMobileNumber.text = UserSession.instance.contact
+        self.ivProfileAvaror.sd_setImage(with: URL(string: profile.profilePicture ?? ""), placeholderImage: UIImage(named: "ic_profile"), context: nil)
     }
     
     func showLoader() {

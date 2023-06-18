@@ -8,13 +8,23 @@
 import UIKit
 
 class SettingsTableViewHeader: UITableViewHeaderFooterView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var ivPrifile: UIImageView!
+    
+    var editButtonTapHandler: (()->())?
+    func configure(userProfile: UserProfile) {
+        if let firstName = userProfile.firstName {
+            self.lblName.text = "\(firstName) \(userProfile.lastName ?? "")"
+        } else {
+            self.lblName.text = ""
+        }
+        
+        self.ivPrifile.sd_setImage(with: URL(string: userProfile.profilePicture ?? ""), placeholderImage: UIImage(named: "ic_profile"), context: nil)
     }
-    */
-
+    
+    @IBAction func editProfileButtonTap(_ sender: Any) {
+        if let editButtonTapHandler = self.editButtonTapHandler {
+            editButtonTapHandler()
+        }
+    }
 }

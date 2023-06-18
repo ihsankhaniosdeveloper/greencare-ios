@@ -24,13 +24,15 @@ class UserSession {
         UserDefaults.standard.set(false, forKey: "is.verified")
     }
     
-    var name: String {
+    var profile: UserProfile? {
         set {
-            UserDefaults.standard.set(newValue, forKey: "name")
+            let data = try? JSONEncoder().encode(newValue)
+            UserDefaults.standard.set(data, forKey: "user.profile")
         }
         
         get {
-            return UserDefaults.standard.string(forKey: "name") ?? ""
+            guard let data = UserDefaults.standard.data(forKey: "user.profile") else { return nil }
+            return try? JSONDecoder().decode(UserProfile.self, from: data)
         }
     }
     

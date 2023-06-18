@@ -73,6 +73,9 @@ extension HistoryViewController: HistoryPresenterOutput {
     
     func historyPresenter(serviceRequestFetchFailed message: String) {
         self.showSnackBar(message: message)
+        
+        self.requests = []
+        self.tableView.reloadData()
     }
 }
 
@@ -84,7 +87,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryTableViewCell", for: indexPath) as! HistoryTableViewCell
         
-        cell.selectionStyle = .none
+        cell.configure(serviceRequest: self.requests[indexPath.row])
         
         return cell
     }

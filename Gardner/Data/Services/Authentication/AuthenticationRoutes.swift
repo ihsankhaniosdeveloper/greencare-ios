@@ -7,20 +7,26 @@
 
 import Foundation
 
+// Rename this to User Routes
 enum AuthenticationRoutes {
     case sendOTP(mobileNumber: String)
     case verifyOTP(mobileNumber: String, otp: String)
+    case getUser
 }
 
 extension AuthenticationRoutes: APIRouteType {
     var method: HTTPRequestMethod {
-        return .post
+        switch self {
+            case .sendOTP, .verifyOTP: return .post
+            case .getUser: return .get
+        }
     }
     
     var path: String {
         switch self {
             case .sendOTP:   return "v1/auth/login"
             case .verifyOTP: return "v1/auth/verify-otp"
+            case .getUser:   return "v1/auth/profile"
         }
     }
     
@@ -28,6 +34,7 @@ extension AuthenticationRoutes: APIRouteType {
         switch self {
             case .sendOTP(let mobileNumber): return ["contact": mobileNumber]
             case .verifyOTP(let mobileNumber, let otp): return ["contact": mobileNumber, "otp": otp]
+            case .getUser: return nil
         }
     }
 }

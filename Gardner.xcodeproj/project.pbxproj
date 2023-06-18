@@ -16,6 +16,13 @@
 		081004152A3E234B00A56638 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081004132A3E234B00A56638 /* HistoryTableViewCell.swift */; };
 		081004162A3E234B00A56638 /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 081004142A3E234B00A56638 /* HistoryTableViewCell.xib */; };
 		081004182A3E270B00A56638 /* HistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081004172A3E270B00A56638 /* HistoryPresenter.swift */; };
+		0810041C2A3E459100A56638 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0810041A2A3E459100A56638 /* ProfileViewController.swift */; };
+		0810041D2A3E459100A56638 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0810041B2A3E459100A56638 /* ProfileViewController.xib */; };
+		081004202A3E45FD00A56638 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0810041E2A3E45FD00A56638 /* ProfileTableViewCell.swift */; };
+		081004212A3E45FD00A56638 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0810041F2A3E45FD00A56638 /* ProfileTableViewCell.xib */; };
+		081004242A3E4CCE00A56638 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081004232A3E4CCE00A56638 /* ProfilePresenter.swift */; };
+		081004282A3E569C00A56638 /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081004262A3E569C00A56638 /* SupportViewController.swift */; };
+		081004292A3E569C00A56638 /* SupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 081004272A3E569C00A56638 /* SupportViewController.xib */; };
 		081A78002A3044880099D446 /* CalculateAmountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081A77FF2A3044880099D446 /* CalculateAmountResponse.swift */; };
 		081A78022A3092770099D446 /* CartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081A78012A3092770099D446 /* CartPresenter.swift */; };
 		082405152A1D454E005E941E /* ServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082405142A1D454E005E941E /* ServiceRequest.swift */; };
@@ -77,7 +84,7 @@
 		08AA55DC2A07C31B00F3F8CD /* SettingsTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AA55DB2A07C31B00F3F8CD /* SettingsTableViewHeader.xib */; };
 		08AA55DF2A07CAD700F3F8CD /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA55DD2A07CAD700F3F8CD /* SettingsTableViewCell.swift */; };
 		08AA55E02A07CAD700F3F8CD /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AA55DE2A07CAD700F3F8CD /* SettingsTableViewCell.xib */; };
-		08AA55E22A07CD9100F3F8CD /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA55E12A07CD9100F3F8CD /* ProfilePresenter.swift */; };
+		08AA55E22A07CD9100F3F8CD /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA55E12A07CD9100F3F8CD /* SettingsPresenter.swift */; };
 		08AA55E42A07D34C00F3F8CD /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA55E32A07D34C00F3F8CD /* UIColor+Hex.swift */; };
 		08AA55EB2A07E75C00F3F8CD /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08AA55E72A07E75C00F3F8CD /* Poppins-Regular.ttf */; };
 		08AA55EC2A07E75C00F3F8CD /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08AA55E82A07E75C00F3F8CD /* Poppins-Bold.ttf */; };
@@ -117,6 +124,13 @@
 		081004132A3E234B00A56638 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		081004142A3E234B00A56638 /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
 		081004172A3E270B00A56638 /* HistoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPresenter.swift; sourceTree = "<group>"; };
+		0810041A2A3E459100A56638 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		0810041B2A3E459100A56638 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		0810041E2A3E45FD00A56638 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		0810041F2A3E45FD00A56638 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
+		081004232A3E4CCE00A56638 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		081004262A3E569C00A56638 /* SupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
+		081004272A3E569C00A56638 /* SupportViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SupportViewController.xib; sourceTree = "<group>"; };
 		081A77FF2A3044880099D446 /* CalculateAmountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateAmountResponse.swift; sourceTree = "<group>"; };
 		081A78012A3092770099D446 /* CartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPresenter.swift; sourceTree = "<group>"; };
 		082405142A1D454E005E941E /* ServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequest.swift; sourceTree = "<group>"; };
@@ -180,7 +194,7 @@
 		08AA55DB2A07C31B00F3F8CD /* SettingsTableViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewHeader.xib; sourceTree = "<group>"; };
 		08AA55DD2A07CAD700F3F8CD /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		08AA55DE2A07CAD700F3F8CD /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
-		08AA55E12A07CD9100F3F8CD /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		08AA55E12A07CD9100F3F8CD /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		08AA55E32A07D34C00F3F8CD /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		08AA55E72A07E75C00F3F8CD /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		08AA55E82A07E75C00F3F8CD /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
@@ -270,6 +284,35 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		081004192A3E457400A56638 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				081004222A3E461B00A56638 /* Cell */,
+				0810041A2A3E459100A56638 /* ProfileViewController.swift */,
+				0810041B2A3E459100A56638 /* ProfileViewController.xib */,
+				081004232A3E4CCE00A56638 /* ProfilePresenter.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		081004222A3E461B00A56638 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0810041E2A3E45FD00A56638 /* ProfileTableViewCell.swift */,
+				0810041F2A3E45FD00A56638 /* ProfileTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		081004252A3E567900A56638 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				081004262A3E569C00A56638 /* SupportViewController.swift */,
+				081004272A3E569C00A56638 /* SupportViewController.xib */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		0824051D2A1EA138005E941E /* SegmentedView */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,11 +377,10 @@
 		08397EAA29F913E1008F8F14 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				0810040D2A3E18FF00A56638 /* History */,
 				08AA55D82A07C2F300F3F8CD /* Cell */,
 				08AA55D72A07C2EB00F3F8CD /* Header */,
 				08397EAB29F9140E008F8F14 /* SettingsViewController.swift */,
-				08AA55E12A07CD9100F3F8CD /* ProfilePresenter.swift */,
+				08AA55E12A07CD9100F3F8CD /* SettingsPresenter.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -423,6 +465,9 @@
 		08715A3029EDEC86002CB3F3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				081004252A3E567900A56638 /* Support */,
+				081004192A3E457400A56638 /* Profile */,
+				0810040D2A3E18FF00A56638 /* History */,
 				081004032A3D0D0600A56638 /* OrderSuccess */,
 				08E84DB72A17CF5100DF8428 /* Address */,
 				08E84DB02A16B60100DF8428 /* Slot */,
@@ -812,14 +857,17 @@
 				08AA55FC2A08150600F3F8CD /* ServiceCollectionViewCell.xib in Resources */,
 				08AA55EC2A07E75C00F3F8CD /* Poppins-Bold.ttf in Resources */,
 				08715A2429EDEC7C002CB3F3 /* Main.storyboard in Resources */,
+				081004212A3E45FD00A56638 /* ProfileTableViewCell.xib in Resources */,
 				08D2B7542A347BAD002D9822 /* LoaderViewController.xib in Resources */,
 				081004072A3D0D3400A56638 /* ServiceRequestSuccessViewController.xib in Resources */,
 				089E93962A0EECFB0034BA90 /* ServiceDetailsTableViewCell.xib in Resources */,
 				08C279C52A3BADDF008678DA /* EmptyTableViewCell.xib in Resources */,
 				081004112A3E192B00A56638 /* HistoryViewController.xib in Resources */,
 				08AA55ED2A07E75C00F3F8CD /* Poppins-Medium.ttf in Resources */,
+				0810041D2A3E459100A56638 /* ProfileViewController.xib in Resources */,
 				08397EBF2A004563008F8F14 /* OTPViewController.xib in Resources */,
 				08E84DBB2A17CFAF00DF8428 /* AddressListingViewController.xib in Resources */,
+				081004292A3E569C00A56638 /* SupportViewController.xib in Resources */,
 				0892BAE02A0FF7460074D5F3 /* CartViewController.xib in Resources */,
 				08AA55EB2A07E75C00F3F8CD /* Poppins-Regular.ttf in Resources */,
 				082CAD852A193C0D00D2B66D /* SlotsTableViewCell.xib in Resources */,
@@ -907,10 +955,11 @@
 				082CAD792A17EAD900D2B66D /* AddAddressViewController.swift in Sources */,
 				08E84DC22A17D0DD00DF8428 /* AddressService.swift in Sources */,
 				08715A1F29EDEC7C002CB3F3 /* SceneDelegate.swift in Sources */,
-				08AA55E22A07CD9100F3F8CD /* ProfilePresenter.swift in Sources */,
+				08AA55E22A07CD9100F3F8CD /* SettingsPresenter.swift in Sources */,
 				089E938A2A0EDE350034BA90 /* ScheduleListingViewController.swift in Sources */,
 				082CAD732A17D5CD00D2B66D /* AddressTableViewCell.swift in Sources */,
 				08E84DB62A16B62400DF8428 /* SlotListingPresenter.swift in Sources */,
+				0810041C2A3E459100A56638 /* ProfileViewController.swift in Sources */,
 				08715A3829EDF0F8002CB3F3 /* APIClientType.swift in Sources */,
 				08397EB429F9752B008F8F14 /* BaseService.swift in Sources */,
 				08D2B7532A347BAD002D9822 /* LoaderViewController.swift in Sources */,
@@ -919,7 +968,10 @@
 				089E93952A0EECFB0034BA90 /* ServiceDetailsTableViewCell.swift in Sources */,
 				089E61ED2A045417003B2CAB /* UIView+Extension.swift in Sources */,
 				08715A3F29EEE568002CB3F3 /* AuthenticationService.swift in Sources */,
+				081004202A3E45FD00A56638 /* ProfileTableViewCell.swift in Sources */,
 				08397EAF29F91761008F8F14 /* OrderListingViewController.swift in Sources */,
+				081004242A3E4CCE00A56638 /* ProfilePresenter.swift in Sources */,
+				081004282A3E569C00A56638 /* SupportViewController.swift in Sources */,
 				082CAD882A193C4C00D2B66D /* SlotsTableSectionHeader.swift in Sources */,
 				082CAD8C2A19895B00D2B66D /* Date+Formatter.swift in Sources */,
 				08E84DBA2A17CFAF00DF8428 /* AddressListingViewController.swift in Sources */,

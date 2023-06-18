@@ -16,6 +16,7 @@ struct HomeDataResponse: Decodable {
 
 protocol HomePresenterType {
     func getServices()
+    func fetchUserProfile()
 }
 
 struct SectionItemsData {
@@ -25,15 +26,19 @@ struct SectionItemsData {
 
 protocol HomePresenterOutput: AnyObject, LoadingState {
     func homePresenter(homeDataFetchSuccess model: [SectionItemsData])
+    func homePresenter(userProfileFetchSuccess profile: UserProfile)
     func homePresenter(homeDataFetchFail message: String)
 }
 
 class HomePresenter: HomePresenterType {
     weak var outputs: HomePresenterOutput?
-    private var homeService: ServicesServiceType
     
-    init(homeService: ServicesServiceType) {
+    private var homeService: ServicesServiceType
+    private var userService: AuthenticationServiceType
+    
+    init(homeService: ServicesServiceType, userService: AuthenticationServiceType) {
         self.homeService = homeService
+        self.userService = userService
     }
     
     func getServices() {
@@ -66,6 +71,25 @@ class HomePresenter: HomePresenterType {
             case .failure(let error):
                 self.outputs?.homePresenter(homeDataFetchFail: error.localizedDescription)
                 break
+            }
+        }
+    }
+    
+    func fetchUserProfile() {
+        if let userProfile = UserSession.instance.profile {
+            self.outputs?.homePresenter(userProfileFetchSuccess: userProfile)
+            return
+        }
+        
+        self.userService.getUser { result in
+            switch result {
+                
+            case .success(let profile):
+                UserSession.instance.profile = profile
+                self.outputs?.homePresenter(userProfileFetchSuccess: profile)
+                
+            case .failure(let error):
+                self.outputs?.homePresenter(homeDataFetchFail: error.errorDescription ?? error.localizedDescription)
             }
         }
     }

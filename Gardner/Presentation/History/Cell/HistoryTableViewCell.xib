@@ -97,6 +97,13 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="ivServiceImage" destination="Ihx-PW-yTo" id="UoS-4R-J9R"/>
+                <outlet property="lblHours" destination="cph-yW-ZkR" id="J2Z-MY-D0K"/>
+                <outlet property="lblPersons" destination="9KU-JC-Wlk" id="gjc-RX-i4I"/>
+                <outlet property="lblPrice" destination="kLv-RE-maO" id="JXP-g6-sDO"/>
+                <outlet property="lblTitle" destination="HtO-1A-IyD" id="NXE-A7-MDF"/>
+            </connections>
             <point key="canvasLocation" x="140.45801526717557" y="71.478873239436624"/>
         </tableViewCell>
     </objects>

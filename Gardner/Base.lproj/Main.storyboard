@@ -46,13 +46,13 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Z0C-ry-EJa">
                                                 <rect key="frame" x="86" y="9" width="176" height="42.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello Ahmed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEZ-Fn-95L">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEZ-Fn-95L">
                                                         <rect key="frame" x="0.0" y="0.0" width="176" height="22.5"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins Medium" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72R-U6-KNf">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- - - - - " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72R-U6-KNf">
                                                         <rect key="frame" x="0.0" y="22.5" width="176" height="20"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                                         <color key="textColor" systemColor="systemGrayColor"/>
@@ -183,6 +183,7 @@
                     <navigationItem key="navigationItem" id="VfC-tD-jPu"/>
                     <connections>
                         <outlet property="collectionView" destination="HiO-Jd-DT2" id="K1M-NW-3Xt"/>
+                        <outlet property="ivProfileAvaror" destination="x25-wI-wY8" id="8l9-jG-0xh"/>
                         <outlet property="lblMobileNumber" destination="72R-U6-KNf" id="EnS-7s-aRV"/>
                         <outlet property="lblMsgWithName" destination="BEZ-Fn-95L" id="5pU-ai-U3q"/>
                     </connections>

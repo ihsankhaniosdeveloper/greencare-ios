@@ -29,6 +29,7 @@ struct LoginResponse: Decodable {
 protocol AuthenticationServiceType {
     func requestOTP<T: Decodable>(mobileNumber: String, completion: @escaping CompletionClosure<T>)
     func verifyOTP<T: Decodable>(mobileNumber: String, otp: String, completion: @escaping CompletionClosure<T>)
+    func getUser(completion: @escaping CompletionClosure<UserProfile>)
 }
 
 class AuthenticationService: BaseService, AuthenticationServiceType {
@@ -58,8 +59,17 @@ class AuthenticationService: BaseService, AuthenticationServiceType {
         }
     }
     
-}
-
-func test() {
+    func getUser(completion: @escaping CompletionClosure<UserProfile>) {
+        let route = AuthenticationRoutes.getUser
+        
+        self.request(route: route) { (profile: UserProfile?, error: NetworkErrors?) in
+            if let profile = profile, error == nil {
+                completion(.success(profile))
+                return
+            }
+            
+            completion(.failure(error ?? .unknown))
+        }
+    }
     
 }

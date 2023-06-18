@@ -16,7 +16,7 @@ class SettingsTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    func configure(for model: ProfileCell) {
+    func configure(for model: SettingsCell) {
         self.viewIcon.backgroundColor = UIColor(hex: model.color)
         self.lblTitle.text = model.title
     }

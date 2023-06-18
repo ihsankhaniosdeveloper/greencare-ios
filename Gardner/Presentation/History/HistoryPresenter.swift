@@ -19,6 +19,7 @@ protocol HistoryPresenterOutput: AnyObject {
 class HistoryPresenter: HistoryPresenterType {
     private var service: ServiceRequestServiceType
     
+    private var requests: [ServiceRequest] = []
     weak var outputs: HistoryPresenterOutput?
     
     init(service: ServiceRequestServiceType) {
@@ -26,10 +27,17 @@ class HistoryPresenter: HistoryPresenterType {
     }
     
     func fetchServiceRequest(_for status: ServiceRequestStatus) {
+        if !self.requests.isEmpty {
+            let filteredSR = self.requests.filter { $0.status == status }
+            self.outputs?.historyPresenter(serviceRequestFetchSuccess: filteredSR)
+            return
+        }
+        
         self.service.getServiceRequest { result in
             switch result {
                 
             case .success(let serviceRequests):
+                self.requests = serviceRequests
                 let filteredSR = serviceRequests.filter { $0.status == status }
                 self.outputs?.historyPresenter(serviceRequestFetchSuccess: filteredSR)
                 

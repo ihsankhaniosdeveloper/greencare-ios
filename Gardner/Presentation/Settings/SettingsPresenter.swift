@@ -12,14 +12,14 @@ protocol SettingsServiceType { }
 class SettingsService: SettingsServiceType { }
 
 protocol SettingsPresenterOutput: AnyObject {
-    func profilePresenter(profileTableData models: [ProfileCell])
+    func profilePresenter(profileTableData models: [SettingsCell])
 }
 
 protocol SettingsPresenterType {
     func getTableData()
 }
 
-class ProfilePresenter: SettingsPresenterType {
+class SettingsPresenter: SettingsPresenterType {
     weak var outputs: SettingsPresenterOutput?
     private var profileService: SettingsServiceType
     
@@ -28,12 +28,12 @@ class ProfilePresenter: SettingsPresenterType {
     }
     
     func getTableData() {
-        let profileCells: [ProfileCell] = [
-            ProfileCell(title: "Personal Details", color: "#E1EADCFF", type: .profileDetails),
-            ProfileCell(title: "My Addresses", color: "#D8E5E6FF", type: .myAddresses),
-            ProfileCell(title: "Order History", color: "#D6D9DAFF", type: .orderHistory),
-            ProfileCell(title: "Support", color: "#D6DBFFFF", type: .support),
-            ProfileCell(title: "Logout", color: "#FBF4E2FF", type: .logout),
+        let profileCells: [SettingsCell] = [
+            SettingsCell(title: "Personal Details", color: "#E1EADCFF", type: .profileDetails),
+            SettingsCell(title: "My Addresses", color: "#D8E5E6FF", type: .myAddresses),
+            SettingsCell(title: "Order History", color: "#D6D9DAFF", type: .orderHistory),
+            SettingsCell(title: "Support", color: "#D6DBFFFF", type: .support),
+            SettingsCell(title: "Logout", color: "#FBF4E2FF", type: .logout),
         ]
         
         self.outputs?.profilePresenter(profileTableData: profileCells)
