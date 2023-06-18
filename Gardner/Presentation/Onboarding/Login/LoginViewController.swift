@@ -7,6 +7,7 @@
 
 import UIKit
 import SKCountryPicker
+import ProgressHUD
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var tfPhoneNumber: UITextField!
@@ -64,11 +65,12 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: LoginPresenterOutput {
     func showLoader() {
-        self.startLoader()
+//        ProgressHUD.show("Hello")
+                                
     }
     
     func hideLoader() {
-        self.stopLoader()
+//        self.stopLoader()
     }
     
     func loginPresenter(otpSendingFailedWith message: String) {
@@ -79,9 +81,7 @@ extension LoginViewController: LoginPresenterOutput {
         let otpVC = OTPViewController.make(
             mobileNumber: mobileNumber,
             presenter: OTPPresenter(
-                authService: AuthenticationService(
-                    apiClient: APIClient(session: .default)
-                )
+                authService: AuthenticationService(apiClient: APIClient(session: .default))
             )
         )
         self.navigationController?.pushViewController(otpVC, animated: true)

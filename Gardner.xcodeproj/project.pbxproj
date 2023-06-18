@@ -39,7 +39,7 @@
 		082CAD8C2A19895B00D2B66D /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CAD8B2A19895B00D2B66D /* Date+Formatter.swift */; };
 		082CAD902A1C04D200D2B66D /* SelectedSlotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CAD8E2A1C04D200D2B66D /* SelectedSlotCollectionViewCell.swift */; };
 		082CAD912A1C04D200D2B66D /* SelectedSlotCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082CAD8F2A1C04D200D2B66D /* SelectedSlotCollectionViewCell.xib */; };
-		08397EA729F18BAB008F8F14 /* AuthenticationRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EA629F18BAB008F8F14 /* AuthenticationRoutes.swift */; };
+		08397EA729F18BAB008F8F14 /* UserRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EA629F18BAB008F8F14 /* UserRoutes.swift */; };
 		08397EA929F3DAAF008F8F14 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EA829F3DAAF008F8F14 /* NetworkError.swift */; };
 		08397EAC29F9140E008F8F14 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EAB29F9140E008F8F14 /* SettingsViewController.swift */; };
 		08397EAF29F91761008F8F14 /* OrderListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EAE29F91761008F8F14 /* OrderListingViewController.swift */; };
@@ -147,7 +147,7 @@
 		082CAD8B2A19895B00D2B66D /* Date+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatter.swift"; sourceTree = "<group>"; };
 		082CAD8E2A1C04D200D2B66D /* SelectedSlotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedSlotCollectionViewCell.swift; sourceTree = "<group>"; };
 		082CAD8F2A1C04D200D2B66D /* SelectedSlotCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedSlotCollectionViewCell.xib; sourceTree = "<group>"; };
-		08397EA629F18BAB008F8F14 /* AuthenticationRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRoutes.swift; sourceTree = "<group>"; };
+		08397EA629F18BAB008F8F14 /* UserRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRoutes.swift; sourceTree = "<group>"; };
 		08397EA829F3DAAF008F8F14 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		08397EAB29F9140E008F8F14 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		08397EAE29F91761008F8F14 /* OrderListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListingViewController.swift; sourceTree = "<group>"; };
@@ -365,13 +365,13 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		08397EA529F18B90008F8F14 /* Authentication */ = {
+		08397EA529F18B90008F8F14 /* User */ = {
 			isa = PBXGroup;
 			children = (
 				08715A3E29EEE568002CB3F3 /* AuthenticationService.swift */,
-				08397EA629F18BAB008F8F14 /* AuthenticationRoutes.swift */,
+				08397EA629F18BAB008F8F14 /* UserRoutes.swift */,
 			);
-			path = Authentication;
+			path = User;
 			sourceTree = "<group>";
 		};
 		08397EAA29F913E1008F8F14 /* Settings */ = {
@@ -509,7 +509,7 @@
 				08AA56012A084B0A00F3F8CD /* ServiceEntity */,
 				08397EB129F97454008F8F14 /* ServiceType.swift */,
 				08397EB329F9752B008F8F14 /* BaseService.swift */,
-				08397EA529F18B90008F8F14 /* Authentication */,
+				08397EA529F18B90008F8F14 /* User */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -977,7 +977,7 @@
 				08E84DBA2A17CFAF00DF8428 /* AddressListingViewController.swift in Sources */,
 				089E93992A0F07A60034BA90 /* Service.swift in Sources */,
 				081A78002A3044880099D446 /* CalculateAmountResponse.swift in Sources */,
-				08397EA729F18BAB008F8F14 /* AuthenticationRoutes.swift in Sources */,
+				08397EA729F18BAB008F8F14 /* UserRoutes.swift in Sources */,
 				08AA55D02A06E8E800F3F8CD /* UserSession.swift in Sources */,
 				08AA55CD2A05B44000F3F8CD /* OTPPresenter.swift in Sources */,
 				08397EB229F97454008F8F14 /* ServiceType.swift in Sources */,

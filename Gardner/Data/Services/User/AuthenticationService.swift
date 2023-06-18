@@ -34,7 +34,7 @@ protocol AuthenticationServiceType {
 
 class AuthenticationService: BaseService, AuthenticationServiceType {
     func requestOTP<T>(mobileNumber: String, completion: @escaping CompletionClosure<T>) where T : Decodable {
-        let route = AuthenticationRoutes.sendOTP(mobileNumber: mobileNumber)
+        let route = UserRoutes.sendOTP(mobileNumber: mobileNumber)
         
         self.request(route: route) { (data: T?, error: NetworkErrors?) in
             if let data = data, error == nil {
@@ -47,7 +47,7 @@ class AuthenticationService: BaseService, AuthenticationServiceType {
     }
     
     func verifyOTP<T>(mobileNumber: String, otp: String, completion: @escaping CompletionClosure<T>) where T : Decodable {
-        let route = AuthenticationRoutes.verifyOTP(mobileNumber: mobileNumber, otp: otp)
+        let route = UserRoutes.verifyOTP(mobileNumber: mobileNumber, otp: otp)
         
         self.request(route: route) { (data: T?, error: NetworkErrors?) in
             if let data = data, error == nil {
@@ -60,7 +60,7 @@ class AuthenticationService: BaseService, AuthenticationServiceType {
     }
     
     func getUser(completion: @escaping CompletionClosure<UserProfile>) {
-        let route = AuthenticationRoutes.getUser
+        let route = UserRoutes.getUser
         
         self.request(route: route) { (profile: UserProfile?, error: NetworkErrors?) in
             if let profile = profile, error == nil {

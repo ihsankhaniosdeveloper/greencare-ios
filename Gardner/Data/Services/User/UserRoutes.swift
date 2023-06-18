@@ -8,13 +8,13 @@
 import Foundation
 
 // Rename this to User Routes
-enum AuthenticationRoutes {
+enum UserRoutes {
     case sendOTP(mobileNumber: String)
     case verifyOTP(mobileNumber: String, otp: String)
     case getUser
 }
 
-extension AuthenticationRoutes: APIRouteType {
+extension UserRoutes: APIRouteType {
     var method: HTTPRequestMethod {
         switch self {
             case .sendOTP, .verifyOTP: return .post
