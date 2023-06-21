@@ -11,7 +11,7 @@ protocol CartPresenterType {
     func requestService(paymentMethod: PaymentMethod)
 }
 
-protocol CartPresenterOutput: AnyObject {
+protocol CartPresenterOutput: AnyObject, LoadingOutputs {
     func cartPresenter(serviceRequestSuccess isSuccess: Bool)
     func cartPresenter(serviceRequestFailed message: String)
 }
@@ -40,7 +40,10 @@ class CartPresenter: CartPresenterType {
             slots: self.selectedSlots
         )
         
+        self.outputs?.startLoading()
         self.service.requestService(params: params) { result in
+            self.outputs?.stopLoading()
+            
             switch result {
                 
             case .success(let isSuccess):

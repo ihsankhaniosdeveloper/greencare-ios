@@ -7,7 +7,7 @@
 
 import UIKit
 import SKCountryPicker
-import ProgressHUD
+//import ProgressHUD
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var tfPhoneNumber: UITextField!
@@ -64,13 +64,12 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginPresenterOutput {
-    func showLoader() {
-//        ProgressHUD.show("Hello")
-                                
+    func startLoading() {
+        self.startActivityIndicator()
     }
     
-    func hideLoader() {
-//        self.stopLoader()
+    func stopLoading() {
+        self.stopActivityIndicator()
     }
     
     func loginPresenter(otpSendingFailedWith message: String) {

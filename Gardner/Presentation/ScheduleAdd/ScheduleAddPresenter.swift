@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ScheduleAddPresenterOutput: AnyObject {
+protocol ScheduleAddPresenterOutput: AnyObject, LoadingOutputs {
     func scheduleAddPresenter(scheduleRequestSuccess requestServiceResponse: CalculateAmountResponse)
     func scheduleAddPresenter(operationFailed message: String)
     func scheduleAddPresenter(scheduleRequestValidationFailed message: String)
@@ -46,7 +46,11 @@ class ScheduleAddPresenter: ScheduleAddPresenterType {
             sortedSlots.append(Slot(date: slot.date, timeSlots: slot.timeSlots.sorted { $0 < $1 }))
         }
         
+        self.outputs?.startLoading()
         self.service.calculateAmount(addressId: addressId, serviceId: serviceId, slots: sortedSlots) { result in
+            
+            self.outputs?.stopLoading()
+            
             switch result {
                 
             case .success(let data):
@@ -66,7 +70,12 @@ class ScheduleAddPresenter: ScheduleAddPresenterType {
             return
         }
         
+        self.outputs?.startLoading()
+        
         self.service.getSlots(serviceId: serviceId, serviceType: serviceType) { result in
+            
+            self.outputs?.stopLoading()
+            
             switch result {
                 
             case .success(let slots):

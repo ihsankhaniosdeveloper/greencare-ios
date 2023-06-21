@@ -7,7 +7,7 @@
 
 import UIKit
 import TTGSnackbar
-import ProgressHUD
+import KRProgressHUD
 
 extension UIViewController {
     func showSnackBar(message: String) {
@@ -16,21 +16,27 @@ extension UIViewController {
         snackbar.show()
     }
     
-    func stopLoader() {
-        ProgressHUD.dismiss()
+    func startActivityIndicator() {
+        KRProgressHUD
+            .set(style: .white)
+            .set(maskType: .black)
+            .show()
     }
     
-    func startLoader() {
-        ProgressHUD.show("Loading")
+    func stopActivityIndicator() {
+        KRProgressHUD.dismiss()
     }
 
-    func showConfirmationAlert(title: String, message: String, positiveActionTitle: String = "OK", positiveAction: @escaping ()->()) {
+    func showConfirmationAlert(title: String, message: String, positiveActionTitle: String = "OK", positiveAction: (()->())?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .default))
-        alert.addAction(UIAlertAction(title: positiveActionTitle, style: .destructive, handler: { action in
-            positiveAction()
-        }))
+        
+        if let positiveAction = positiveAction {
+            alert.addAction(UIAlertAction(title: positiveActionTitle, style: .destructive, handler: { action in
+                positiveAction()
+            }))
+        }
         
         self.present(alert, animated: true)
     }

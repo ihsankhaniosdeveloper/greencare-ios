@@ -7,6 +7,13 @@
 
 import Foundation
 
+struct ProfilePictureDocument: DocumentDataConvertible {
+    var data: Data
+    var name: String
+    var fileName: String
+    var mimeType: String
+}
+
 class BaseService: ServiceType {
     var apiClient: APIClientType
     
@@ -23,6 +30,23 @@ class BaseService: ServiceType {
             
             do {
                 let object: ServerReponse<T> = try self.decode(data: apiResponse.data)
+                completion(object.data, nil)
+            } catch {
+                completion(nil, .parsingError(error))
+            }
+        }
+    }
+    
+    func upload<T: Decodable>(document: ProfilePictureDocument, route: APIRouteType, otherFormValues: [String: String], completion: @escaping (T?, NetworkErrors?) -> Void) {
+        self.apiClient.upload(documents: [document], route: route, otherFormValues: otherFormValues) { progress in
+        } completion: { response in
+            guard 200...299 ~= response.statusCode else {
+                completion(nil, NetworkErrorHandler.mapError(response.statusCode, data: response.data))
+                return
+            }
+            
+            do {
+                let object: ServerReponse<T> = try self.decode(data: response.data)
                 completion(object.data, nil)
             } catch {
                 completion(nil, .parsingError(error))

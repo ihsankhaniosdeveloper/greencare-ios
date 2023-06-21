@@ -60,8 +60,12 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.configure(profile: self.userProfile)
         
+        cell.saveButtonTapHandler = { [weak self] (image, fName, lName) in
+            guard let self = self else { return }
+            
+            self.presenter.updateProfile(imageData: image?.pngData(), fName: fName, lName: lName)
+        }
+        
         return cell
     }
-    
-    
 }

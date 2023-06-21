@@ -83,7 +83,26 @@ extension AddressListingViewController: UITableViewDataSource, UITableViewDelega
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddressTableViewCell", for: indexPath) as! AddressTableViewCell
         
-        cell.configure(address: self.addressList[indexPath.row])
+        cell.configure(address: self.addressList[indexPath.row], indexPath: indexPath)
+        
+        cell.editButtonTapHandler = { [weak self] cIndexPath in
+            let selectedAddress = self?.addressList[cIndexPath.row]
+            
+            let vc = AddAddressViewController.make(
+                presenter: AddressAddPresenter(
+                    service: AddressService(
+                        apiClient: APIClient(session: .default)
+                    )
+                ), mode: .update, address: selectedAddress)
+            
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        cell.deleteButtonTapHandler = { [weak self] cIndexPath in
+            guard let selectedAddressId = self?.addressList[cIndexPath.row].id else { return }
+            
+            self?.presenter.deleteAddress(addressId: selectedAddressId)
+        }
         
         return cell
     }
@@ -108,5 +127,17 @@ extension AddressListingViewController: AddressListingPresenterOutput {
         self.showSnackBar(message: message)
         self.isLoaded = true
         self.tableView.reloadData()
+    }
+    
+    func addressListingPresenter(addressesDeleteSuccess message: String) {
+        self.presenter.getAllAddresses()
+    }
+    
+    func startLoading() {
+        self.startActivityIndicator()
+    }
+    
+    func stopLoading() {
+        self.stopActivityIndicator()
     }
 }

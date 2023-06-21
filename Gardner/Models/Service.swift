@@ -13,11 +13,19 @@ struct ServiceAdd: Codable {
     let slots: [Slot]?
 }
 
+enum ServiceEntityType: String, Codable {
+    case recurring = "recurring"
+    case oneTime = "oneTime"
+    case contactOnly = "contactOnly"
+}
+
 struct Service: Codable {
     let id: String
     let title, description: String?
     let plants, hours, days, persons: [Int]?
-    let subType, instructions, type: String?
+    let subType: String
+    let instructions: String
+    let type: ServiceEntityType
     let price: Double?
     let minHours: Int?
     let promo: [String]?

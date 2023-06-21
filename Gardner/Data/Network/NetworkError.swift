@@ -72,13 +72,6 @@ class NetworkErrorHandler {
 
     static func mapError(_ code: Int, data: Data) -> NetworkErrors {
         switch code {
-//        case 401:
-//            let authError: NetworkErrors.AuthError? = try? decode(data: data)
-//            return .authError(authError)
-//        case 403:
-//            return .forbidden
-//        case 404:
-//            return .notFound
         case 400...499:
             let serverErrors: NetworkErrors.InternalServerError? = try? decode(data: data)
             return .internalServerError(serverErrors)

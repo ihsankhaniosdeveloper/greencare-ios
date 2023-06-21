@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var ivProfileAvaror: UIImageView!
     @IBOutlet weak var lblMsgWithName: UILabel!
     @IBOutlet weak var lblMobileNumber: UILabel!
+    @IBOutlet weak var lblWelcomeMsg: UILabel!
     
     private var model: [SectionItemsData] = []
     private var presenter: HomePresenterType!
@@ -45,6 +46,14 @@ class HomeViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.profileTapped(_:)))
         self.ivProfileAvaror.isUserInteractionEnabled = true
         self.ivProfileAvaror.addGestureRecognizer(tap)
+        
+        let message = "Welcomen to GreenCare"
+        let range = (message as NSString).range(of: "GreenCare")
+        
+        let mutableAttributedString = NSMutableAttributedString.init(string: message)
+        mutableAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(named: "primaryColor")!, range: range)
+        lblWelcomeMsg.attributedText = mutableAttributedString
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -115,11 +124,28 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let service = self.model[indexPath.section].data[indexPath.row]
         
-        let serviceDetailsPresenter = ServiceDetailsPresenter(service: ServicesService(apiClient: APIClient(session: .default)), serviceEntity: service)
-        let serviceDetailsVC = ServiceDetailsViewController.make(presenter: serviceDetailsPresenter)
-        
-        serviceDetailsVC.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(serviceDetailsVC, animated: true)
+        if service.type == .contactOnly {
+            let phoneNumber = "1234567890" // Replace with the recipient's phone number
+            
+            let message = "Hello, I need services for following for: \n \(service.title ?? "") \n\n \(service.description ?? "") \n Service ID: \(service.id)"
+            let encodedMessage = message.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+                
+            let url = URL(string: "whatsapp://send?phone=\(phoneNumber)&text=\(encodedMessage)")!
+                
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                self.showConfirmationAlert(title: "What's App Not Installed", message: "Contact only services required you what's app to contact out egent.", positiveAction: nil)
+            }
+        } else {
+            let service = self.model[indexPath.section].data[indexPath.row]
+            
+            let serviceDetailsPresenter = ServiceDetailsPresenter(service: ServicesService(apiClient: APIClient(session: .default)), serviceEntity: service)
+            let serviceDetailsVC = ServiceDetailsViewController.make(presenter: serviceDetailsPresenter)
+            
+            serviceDetailsVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(serviceDetailsVC, animated: true)
+        }
     }
 }
 
@@ -144,11 +170,11 @@ extension HomeViewController: HomePresenterOutput {
         self.ivProfileAvaror.sd_setImage(with: URL(string: profile.profilePicture ?? ""), placeholderImage: UIImage(named: "ic_profile"), context: nil)
     }
     
-    func showLoader() {
-        self.startLoader()
+    func startLoading() {
+        self.startActivityIndicator()
     }
     
-    func hideLoader() {
-        self.stopLoader()
+    func stopLoading() {
+        self.stopActivityIndicator()
     }
 }

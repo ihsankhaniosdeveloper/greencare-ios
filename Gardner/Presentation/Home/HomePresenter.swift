@@ -24,7 +24,7 @@ struct SectionItemsData {
     let data: [Service]
 }
 
-protocol HomePresenterOutput: AnyObject, LoadingState {
+protocol HomePresenterOutput: AnyObject, LoadingOutputs {
     func homePresenter(homeDataFetchSuccess model: [SectionItemsData])
     func homePresenter(userProfileFetchSuccess profile: UserProfile)
     func homePresenter(homeDataFetchFail message: String)
@@ -42,10 +42,10 @@ class HomePresenter: HomePresenterType {
     }
     
     func getServices() {
-        self.outputs?.showLoader()
+        self.outputs?.startLoading()
         
         homeService.getAllServices { (result: Result<HomeDataResponse, NetworkErrors>) in
-            self.outputs?.hideLoader()
+            self.outputs?.stopLoading()
             
             switch result {
                 

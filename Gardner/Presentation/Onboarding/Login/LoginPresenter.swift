@@ -7,27 +7,26 @@
 
 import Foundation
 
-protocol LoginPresenterOutput: AnyObject, LoadingState {
+protocol LoginPresenterOutput: AnyObject, LoadingOutputs {
     func loginPresenter(otpSendingSuccessWith message: String, mobileNumber: String)
     func loginPresenter(otpSendingFailedWith message: String)
     func loginPresenter(phoneNumberValidationFailed message: String)
 }
 
-protocol LoadingState {
-    func showLoader()
-    func hideLoader()
+protocol LoadingOutputs {
+    func startLoading()
+    func stopLoading()
 }
 
-extension LoadingState {
-    func showLoader() { }
-    func hideLoader() { }
+extension LoadingOutputs {
+    func startLoading() { }
+    
+    func stopLoading() { }
 }
 
 protocol LoginPresenterType: AnyObject {
     func login(countryCode: String?, mobileNumber: String?)
 }
-
-
 
 class LoginPresenter: LoginPresenterType {
     weak var outputs: LoginPresenterOutput?
@@ -44,11 +43,11 @@ class LoginPresenter: LoginPresenterType {
             return
         }
         
-        self.outputs?.showLoader()
+        self.outputs?.startLoading()
         let mobileNumberCountryCode = countryCode + mobileNumber
         
         authService.requestOTP(mobileNumber: mobileNumberCountryCode) { (result: Result<EmptyResonseDecodable, NetworkErrors>) in
-            self.outputs?.hideLoader()
+            self.outputs?.stopLoading()
             
             switch result {
             case .success(_):

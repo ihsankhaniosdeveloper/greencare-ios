@@ -12,6 +12,7 @@ enum UserRoutes {
     case sendOTP(mobileNumber: String)
     case verifyOTP(mobileNumber: String, otp: String)
     case getUser
+    case updateProfile(firstName: String, lastName: String)
 }
 
 extension UserRoutes: APIRouteType {
@@ -19,6 +20,7 @@ extension UserRoutes: APIRouteType {
         switch self {
             case .sendOTP, .verifyOTP: return .post
             case .getUser: return .get
+            case .updateProfile: return .put
         }
     }
     
@@ -26,7 +28,7 @@ extension UserRoutes: APIRouteType {
         switch self {
             case .sendOTP:   return "v1/auth/login"
             case .verifyOTP: return "v1/auth/verify-otp"
-            case .getUser:   return "v1/auth/profile"
+            case .getUser, .updateProfile:   return "v1/auth/profile"
         }
     }
     
@@ -35,6 +37,7 @@ extension UserRoutes: APIRouteType {
             case .sendOTP(let mobileNumber): return ["contact": mobileNumber]
             case .verifyOTP(let mobileNumber, let otp): return ["contact": mobileNumber, "otp": otp]
             case .getUser: return nil
+            case .updateProfile: return nil
         }
     }
 }

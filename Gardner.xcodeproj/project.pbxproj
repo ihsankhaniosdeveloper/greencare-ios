@@ -61,6 +61,8 @@
 		08715A3F29EEE568002CB3F3 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08715A3E29EEE568002CB3F3 /* AuthenticationService.swift */; };
 		0892BADF2A0FF7460074D5F3 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0892BADD2A0FF7460074D5F3 /* CartViewController.swift */; };
 		0892BAE02A0FF7460074D5F3 /* CartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0892BADE2A0FF7460074D5F3 /* CartViewController.xib */; };
+		0899851D2A4396A900E8B8C8 /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0899851B2A4396A900E8B8C8 /* EmptyCell.swift */; };
+		0899851E2A4396A900E8B8C8 /* EmptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0899851C2A4396A900E8B8C8 /* EmptyCell.xib */; };
 		089E61DF2A0197C0003B2CAB /* CountryCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E61DE2A0197C0003B2CAB /* CountryCodeView.swift */; };
 		089E61E12A0197E2003B2CAB /* CountryCodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089E61E02A0197E2003B2CAB /* CountryCodeView.xib */; };
 		089E61ED2A045417003B2CAB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E61EC2A045417003B2CAB /* UIView+Extension.swift */; };
@@ -171,6 +173,8 @@
 		08715A3E29EEE568002CB3F3 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		0892BADD2A0FF7460074D5F3 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		0892BADE2A0FF7460074D5F3 /* CartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartViewController.xib; sourceTree = "<group>"; };
+		0899851B2A4396A900E8B8C8 /* EmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCell.swift; sourceTree = "<group>"; };
+		0899851C2A4396A900E8B8C8 /* EmptyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyCell.xib; sourceTree = "<group>"; };
 		089E61DE2A0197C0003B2CAB /* CountryCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeView.swift; sourceTree = "<group>"; };
 		089E61E02A0197E2003B2CAB /* CountryCodeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryCodeView.xib; sourceTree = "<group>"; };
 		089E61EC2A045417003B2CAB /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -524,9 +528,19 @@
 			path = Cart;
 			sourceTree = "<group>";
 		};
+		0899851A2A43968300E8B8C8 /* EmptyCell */ = {
+			isa = PBXGroup;
+			children = (
+				0899851B2A4396A900E8B8C8 /* EmptyCell.swift */,
+				0899851C2A4396A900E8B8C8 /* EmptyCell.xib */,
+			);
+			path = EmptyCell;
+			sourceTree = "<group>";
+		};
 		089E61DD2A01979F003B2CAB /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0899851A2A43968300E8B8C8 /* EmptyCell */,
 				08D2B7502A347B87002D9822 /* Loader */,
 				089E61DE2A0197C0003B2CAB /* CountryCodeView.swift */,
 				089E61E02A0197E2003B2CAB /* CountryCodeView.xib */,
@@ -853,6 +867,7 @@
 				08715A2629EDEC7C002CB3F3 /* Assets.xcassets in Resources */,
 				089E939E2A0FAC380034BA90 /* DropDownView.xib in Resources */,
 				081004162A3E234B00A56638 /* HistoryTableViewCell.xib in Resources */,
+				0899851E2A4396A900E8B8C8 /* EmptyCell.xib in Resources */,
 				08AA55E02A07CAD700F3F8CD /* SettingsTableViewCell.xib in Resources */,
 				08AA55FC2A08150600F3F8CD /* ServiceCollectionViewCell.xib in Resources */,
 				08AA55EC2A07E75C00F3F8CD /* Poppins-Bold.ttf in Resources */,
@@ -945,6 +960,7 @@
 				089E938D2A0EDE470034BA90 /* ScheduleListingPresenter.swift in Sources */,
 				082CAD902A1C04D200D2B66D /* SelectedSlotCollectionViewCell.swift in Sources */,
 				082CAD762A17D74800D2B66D /* AddressRoutes.swift in Sources */,
+				0899851D2A4396A900E8B8C8 /* EmptyCell.swift in Sources */,
 				089E939C2A0FAC050034BA90 /* DropDownView.swift in Sources */,
 				08AA55FB2A08150600F3F8CD /* ServiceCollectionViewCell.swift in Sources */,
 				08397EAC29F9140E008F8F14 /* SettingsViewController.swift in Sources */,

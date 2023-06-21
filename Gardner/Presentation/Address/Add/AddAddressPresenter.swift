@@ -13,14 +13,21 @@ enum FieldValidationError {
     case streetName
     case buildingName
 }
+
 protocol AddressAddPresenterType {
     func addAddress(title: String?, area: String?, streetName: String?, buildingName: String?, city: String?)
+    func updateAddress(address: Address)
 }
 
-protocol AddressAddPresenterOutput: AnyObject {
+enum Operation {
+    case updateAddress, deleteAddress
+}
+
+protocol AddressAddPresenterOutput: AnyObject, LoadingOutputs {
     func addressAddPresenter(addressValidationError validationError: FieldValidationError)
     func addressAddPresenter(addressAdded address: Address)
     func addressAddPresenter(addressAddingFailed message: String)
+    func addressPresenter(addressUpdated message: String)
 }
 
 class AddressAddPresenter: AddressAddPresenterType {
@@ -53,11 +60,16 @@ class AddressAddPresenter: AddressAddPresenterType {
             return
         }
         
-        let instructions = "\(streetName), \(buildingName), \(area)"
+        let instructions = title
         
         let address = AddressAdd(title: title, area: area, streetName: streetName, buildingName: buildingName, city: city, instructions: instructions)
         
+        self.outputs?.startLoading()
+        
         self.service.addAddress(address: address) { result in
+            
+            self.outputs?.stopLoading()
+            
             switch result {
                 
             case .success(let address):
@@ -71,5 +83,25 @@ class AddressAddPresenter: AddressAddPresenterType {
             }
         }
         
+    }
+    
+    func updateAddress(address: Address) {
+        self.outputs?.startLoading()
+        
+        self.service.update(address: address) { result in
+            
+            self.outputs?.stopLoading()
+            
+            switch result {
+                
+            case .success(_):
+                self.outputs?.addressPresenter(addressUpdated: "")
+                break
+                
+            case .failure(let error):
+                self.outputs?.addressAddPresenter(addressAddingFailed: error.errorDescription ?? error.localizedDescription)
+                break
+            }
+        }
     }
 }

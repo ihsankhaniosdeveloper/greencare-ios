@@ -64,6 +64,9 @@ class ScheduleAddViewController: UIViewController {
         }
         
         self.viewSelectAddress.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.navigateToAddressListing(_ :))))
+        
+        // MARK: Fetch slots
+        self.presenter.getServiceSlots(serviceId: self.service?.id, serviceType: self.service?.type.rawValue)
     }
     
     @objc func navigateToAddressListing(_ sender: UITapGestureRecognizer) {
@@ -86,7 +89,6 @@ class ScheduleAddViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.navigationBar.isHidden = false
-        self.presenter.getServiceSlots(serviceId: self.service?.id, serviceType: self.service?.type)
     }
     
     @IBAction func cancelButtonTap(_ sender: Any) {
@@ -140,6 +142,14 @@ extension ScheduleAddViewController: ScheduleAddPresenterOutput {
     
     func scheduleAddPresenter(scheduleRequestValidationFailed message: String) {
         self.showSnackBar(message: message)
+    }
+    
+    func startLoading() {
+        self.startActivityIndicator()
+    }
+    
+    func stopLoading() {
+        self.stopActivityIndicator()
     }
 }
 

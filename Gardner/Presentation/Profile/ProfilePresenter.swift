@@ -25,6 +25,7 @@ struct UserProfile: Codable {
 
 protocol ProfilePresenterType {
     func fetchUserProfile()
+    func updateProfile(imageData: Data?, fName: String?, lName: String?)
 }
 
 protocol ProfilePresenterOutput: AnyObject {
@@ -51,6 +52,18 @@ class ProfilePresenter: ProfilePresenterType {
             case .failure(let error):
                 self.outputs?.profilePresenter(profileFetchFailed: error.errorDescription ?? error.localizedDescription)
             }
+        }
+    }
+    
+    func updateProfile(imageData: Data?, fName: String?, lName: String?) {
+        guard let imageData = imageData else { return }
+        guard let firstName = fName else { return }
+        guard let lastName = lName else { return }
+        
+        let profilePicture = ProfilePictureDocument(data: imageData, name: "profile", fileName: "profile", mimeType: "")
+        
+        self.service.update(profilePicture: profilePicture, fName: firstName, lName: lastName) { result in
+            print("result >>> \(result)")
         }
     }
 }

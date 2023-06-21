@@ -42,6 +42,12 @@ class OTPViewController: UIViewController {
         self.startTimer()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.otpView.becomeFirstResponder()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -131,11 +137,11 @@ extension OTPViewController: OTPPresenterOutput {
         self.showSnackBar(message: message)
     }
     
-    func showLoader() {
-        self.startLoader()
+    func startLoading() {
+        self.startActivityIndicator()
     }
     
-    func hideLoader() {
-        self.stopLoader()
+    func stopLoading() {
+        self.stopActivityIndicator()
     }
 }

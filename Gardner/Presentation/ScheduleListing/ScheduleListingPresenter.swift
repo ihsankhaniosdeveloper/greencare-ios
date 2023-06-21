@@ -11,7 +11,7 @@ protocol ScheduleListingPresenterType {
     func fetchScheduleSlots()
 }
 
-protocol ScheduleListingPresenterOutput: AnyObject {
+protocol ScheduleListingPresenterOutput: AnyObject, LoadingOutputs {
     func scheduleListingPresenter(scheduleOrderFetchSuccess requests: [ServiceRequest])
     func scheduleListingPresenter(scheduleOrderFetchFailed message: String)
 }
@@ -32,7 +32,11 @@ class ScheduleListingPresenter {
 
 extension ScheduleListingPresenter: ScheduleListingPresenterType {
     func fetchScheduleSlots() {
+        self.outputs?.startLoading()
+        
         self.service.getServiceRequest { result in
+            self.outputs?.stopLoading()
+            
             switch result {
                 
             case .success(let requests):

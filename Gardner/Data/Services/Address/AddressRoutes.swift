@@ -10,6 +10,8 @@ import Foundation
 enum AddressRoutes {
     case addressAll
     case addAddress(address: AddressAdd)
+    case update(address: Address)
+    case delete(addressId: String)
 }
 
 extension AddressRoutes: APIRouteType {
@@ -17,13 +19,15 @@ extension AddressRoutes: APIRouteType {
         switch self {
             case .addressAll: return "v1/address/get"
             case .addAddress: return "v1/address"
+            case .update: return "v1/address/update"
+            case .delete: return "v1/address/delete"
         }
     }
     
     var method: HTTPRequestMethod {
         switch self {
             case .addressAll: return .get
-            case .addAddress: return .post
+            case .addAddress, .delete, .update: return .post
         }
     }
     
@@ -31,6 +35,8 @@ extension AddressRoutes: APIRouteType {
         switch self {
             case .addressAll: return nil
             case .addAddress(let address): return address.dict
+            case .update(let address): return address.dict
+            case .delete(let addressId): return ["addressId": addressId]
         }
     }
 }

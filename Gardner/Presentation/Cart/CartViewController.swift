@@ -58,8 +58,16 @@ extension CartViewController: CartPresenterOutput {
         self.present(orderSuccessVC, animated: true)
     }
     
+    func startLoading() {
+        self.startActivityIndicator()
+    }
+    
+    func stopLoading() {
+        self.stopActivityIndicator()
+    }
+    
     func cartPresenter(serviceRequestFailed message: String) {
-        
+        self.showSnackBar(message: message)
     }
     
 }

@@ -13,6 +13,9 @@ class ProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var tfLastName: UITextField!
     @IBOutlet weak var tfPhoneNumber: UITextField!
     
+    var saveButtonTapHandler: ((_ image: UIImage?, _ fName: String?, _ lName: String?)->())?
+    var changeAvatarButtonTapHandler: (()->())?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -26,6 +29,12 @@ class ProfileTableViewCell: UITableViewCell {
         self.tfPhoneNumber.text = profile?.contact
     }
     
+    @IBAction func saveButtonTap(_ sender: Any) {
+        if let saveButtonTapHandler = self.saveButtonTapHandler {
+            saveButtonTapHandler(self.ivAvatar.image, self.tfFirstName.text, self.tfLastName.text)
+        }
+        
+    }
     
     @IBAction func changeAvatarButtonTap(_ sender: Any) {
     }

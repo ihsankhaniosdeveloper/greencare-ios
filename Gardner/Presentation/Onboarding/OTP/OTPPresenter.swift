@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol OTPPresenterOutput: AnyObject, LoadingState {
+protocol OTPPresenterOutput: AnyObject, LoadingOutputs {
     func otpPresenter(_otpVerificationSuccess loginResponse: LoginResponse)
     func otpPresenter(_otpVerificationFailed message: String)
     func otpPresenter(_otpResendSuccess message: String)
@@ -32,9 +32,9 @@ class OTPPresenter: OTPPreseneterType {
             return
         }
         
-        self.outputs?.showLoader()
+        self.outputs?.startLoading()
         self.authService.verifyOTP(mobileNumber: mobileNumber, otp: otp) { (result: Result<LoginResponseWrapper, NetworkErrors>) in
-            self.outputs?.hideLoader()
+            self.outputs?.stopLoading()
 
             switch result {
 
@@ -58,9 +58,9 @@ class OTPPresenter: OTPPreseneterType {
             return
         }
         
-        self.outputs?.showLoader()
+        self.outputs?.startLoading()
         self.authService.requestOTP(mobileNumber: mobileNumber) { (result: Result<EmptyResonseDecodable, NetworkErrors>) in
-            self.outputs?.hideLoader()
+            self.outputs?.stopLoading()
             
             switch result {
                 
