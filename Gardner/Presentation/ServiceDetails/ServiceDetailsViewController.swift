@@ -62,20 +62,47 @@ extension ServiceDetailsViewController: UITableViewDelegate, UITableViewDataSour
         cell.continueButtonTap = { [weak self] in
             guard let self = self else { return }
             
-            let serviceAddVC = ScheduleAddViewController.make(
-                presenter: ScheduleAddPresenter(
-                    service: ServicesService(
-                        apiClient: APIClient(session: .default)
-                    )
-                ),
-                service: self.service
-            )
-            
-            self.navigationController?.pushViewController(serviceAddVC, animated: true)
+            if self.service.type == .contactOnly {
+                self.openWhatsApp()
+            } else {
+                self.navigateToServiceAddVC()
+            }
         }
         
         
         return cell
+    }
+    
+    private func openWhatsApp() {
+        let phoneNumber = "1234567890"
+        
+        let message = "Hello, I need services for following for: \n \(service.title ?? "") \n\n \(service.description ?? "") \n Service ID: \(service.id)"
+        let encodedMessage = message.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            
+        let url = URL(string: "whatsapp://send?phone=\(phoneNumber)&text=\(encodedMessage)")!
+            
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            self.showConfirmationAlert(
+                title: "What's App Not Installed",
+                message: "Contact only services required you what's app to contact out egent.",
+                positiveAction: nil
+            )
+        }
+    }
+    
+    private func navigateToServiceAddVC() {
+        let serviceAddVC = ScheduleAddViewController.make(
+            presenter: ScheduleAddPresenter(
+                service: ServicesService(
+                    apiClient: APIClient(session: .default)
+                )
+            ),
+            service: self.service
+        )
+        
+        self.navigationController?.pushViewController(serviceAddVC, animated: true)
     }
 }
 
