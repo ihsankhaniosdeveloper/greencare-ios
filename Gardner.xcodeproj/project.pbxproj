@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		080CA2D22A44DE9E00983D6D /* NotificationListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080CA2D02A44DE9E00983D6D /* NotificationListingViewController.swift */; };
+		080CA2D32A44DE9E00983D6D /* NotificationListingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 080CA2D12A44DE9E00983D6D /* NotificationListingViewController.xib */; };
 		081004062A3D0D3400A56638 /* ServiceRequestSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081004042A3D0D3400A56638 /* ServiceRequestSuccessViewController.swift */; };
 		081004072A3D0D3400A56638 /* ServiceRequestSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 081004052A3D0D3400A56638 /* ServiceRequestSuccessViewController.xib */; };
 		0810040A2A3DF40000A56638 /* ServiceRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081004092A3DF40000A56638 /* ServiceRequestService.swift */; };
@@ -117,6 +119,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		080CA2D02A44DE9E00983D6D /* NotificationListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListingViewController.swift; sourceTree = "<group>"; };
+		080CA2D12A44DE9E00983D6D /* NotificationListingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationListingViewController.xib; sourceTree = "<group>"; };
 		081004042A3D0D3400A56638 /* ServiceRequestSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestSuccessViewController.swift; sourceTree = "<group>"; };
 		081004052A3D0D3400A56638 /* ServiceRequestSuccessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceRequestSuccessViewController.xib; sourceTree = "<group>"; };
 		081004092A3DF40000A56638 /* ServiceRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestService.swift; sourceTree = "<group>"; };
@@ -248,6 +252,15 @@
 				CBB88E5EC1BB0A076C6BFC5C /* Pods_Gardner.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		080CA2CF2A44DE8000983D6D /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				080CA2D02A44DE9E00983D6D /* NotificationListingViewController.swift */,
+				080CA2D12A44DE9E00983D6D /* NotificationListingViewController.xib */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 		081004032A3D0D0600A56638 /* OrderSuccess */ = {
@@ -469,6 +482,7 @@
 		08715A3029EDEC86002CB3F3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				080CA2CF2A44DE8000983D6D /* Notifications */,
 				081004252A3E567900A56638 /* Support */,
 				081004192A3E457400A56638 /* Profile */,
 				0810040D2A3E18FF00A56638 /* History */,
@@ -857,6 +871,7 @@
 				08397EBA29F97B98008F8F14 /* LoginViewController.xib in Resources */,
 				089E93842A0EA51A0034BA90 /* ScheduleAddViewController.xib in Resources */,
 				082CAD7A2A17EAD900D2B66D /* AddAddressViewController.xib in Resources */,
+				080CA2D32A44DE9E00983D6D /* NotificationListingViewController.xib in Resources */,
 				08715A2929EDEC7C002CB3F3 /* LaunchScreen.storyboard in Resources */,
 				082CAD912A1C04D200D2B66D /* SelectedSlotCollectionViewCell.xib in Resources */,
 				08E84DB42A16B61600DF8428 /* SlotListingViewController.xib in Resources */,
@@ -988,6 +1003,7 @@
 				08397EAF29F91761008F8F14 /* OrderListingViewController.swift in Sources */,
 				081004242A3E4CCE00A56638 /* ProfilePresenter.swift in Sources */,
 				081004282A3E569C00A56638 /* SupportViewController.swift in Sources */,
+				080CA2D22A44DE9E00983D6D /* NotificationListingViewController.swift in Sources */,
 				082CAD882A193C4C00D2B66D /* SlotsTableSectionHeader.swift in Sources */,
 				082CAD8C2A19895B00D2B66D /* Date+Formatter.swift in Sources */,
 				08E84DBA2A17CFAF00DF8428 /* AddressListingViewController.swift in Sources */,
