@@ -25,7 +25,7 @@ class AddressTableViewCell: UITableViewCell {
         self.indexPath = indexPath
         
         self.lblTitle.text = address.title?.capitalized
-        self.lblInstructions.text = address.instructions
+        self.lblInstructions.text = address.completeAddress
     }
     
     @IBAction func deleteButtonTap(_ sender: Any) {

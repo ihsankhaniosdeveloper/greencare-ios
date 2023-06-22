@@ -22,9 +22,27 @@ struct Address: Codable {
     let createdAt: Date?
     let v: Int?
     let addressId:String?
-    
+
     var completeAddress: String {
-        return "\(area ?? ""), \(city ?? "")"
+        var address = ""
+        
+        if let buildingName = self.buildingName {
+            address += "\(buildingName), "
+        }
+        
+        if let streetName = self.streetName {
+            address += "\(streetName), "
+        }
+        
+        if let area = self.area {
+            address += "\(area), "
+        }
+        
+        if let city = self.city {
+            address += "\(city)"
+        }
+        
+        return address
     }
 
     enum CodingKeys: String, CodingKey {

@@ -48,7 +48,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CTm-FV-YYP">
                             <rect key="frame" x="24" y="16" width="345" height="160"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_service" translatesAutoresizingMaskIntoConstraints="NO" id="brb-qi-LuK">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="brb-qi-LuK">
                                     <rect key="frame" x="16.000000000000007" y="16" width="113.66666666666669" height="128"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="brb-qi-LuK" secondAttribute="height" multiplier="110:124" id="uEn-4a-tYv"/>
@@ -313,7 +313,6 @@
         </view>
     </objects>
     <resources>
-        <image name="test_service" width="28" height="28"/>
         <namedColor name="lightGreyColor">
             <color red="0.96078431372549022" green="0.96862745098039216" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

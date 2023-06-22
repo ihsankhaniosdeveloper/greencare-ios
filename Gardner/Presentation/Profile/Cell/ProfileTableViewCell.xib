@@ -27,7 +27,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1NH-fd-Shk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="585"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile" translatesAutoresizingMaskIntoConstraints="NO" id="anu-GN-zlo">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="anu-GN-zlo">
                                 <rect key="frame" x="120" y="60" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Meh-Hc-oYi"/>
@@ -169,7 +169,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="ic_profile" width="22.333333969116211" height="22.333333969116211"/>
+        <image name="profile_placeholder" width="43" height="43"/>
         <namedColor name="GreyColor">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -19,7 +19,7 @@ class SettingsTableViewHeader: UITableViewHeaderFooterView {
             self.lblName.text = ""
         }
         
-        self.ivPrifile.sd_setImage(with: URL(string: userProfile.profilePicture ?? ""), placeholderImage: UIImage(named: "ic_profile"), context: nil)
+        self.ivPrifile.sd_setImage(with: URL(string: userProfile.profilePicture ?? ""), placeholderImage: UIImage(named: "profile_placeholder"), context: nil)
     }
     
     @IBAction func editProfileButtonTap(_ sender: Any) {

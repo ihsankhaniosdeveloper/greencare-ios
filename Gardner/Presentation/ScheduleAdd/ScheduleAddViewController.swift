@@ -76,7 +76,7 @@ class ScheduleAddViewController: UIViewController {
         navVC.modalPresentationStyle = .fullScreen
         
         addressListingVC.addressSelected = { [weak self] selectedAddress in
-            self?.lblSelectedAddress.text = selectedAddress.instructions
+            self?.lblSelectedAddress.text = selectedAddress.completeAddress
             self?.selectedAddress = selectedAddress
         }
 

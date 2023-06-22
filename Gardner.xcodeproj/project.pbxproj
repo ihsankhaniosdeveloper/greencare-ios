@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		080CA2D22A44DE9E00983D6D /* NotificationListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080CA2D02A44DE9E00983D6D /* NotificationListingViewController.swift */; };
 		080CA2D32A44DE9E00983D6D /* NotificationListingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 080CA2D12A44DE9E00983D6D /* NotificationListingViewController.xib */; };
+		080CA2D72A44DFEE00983D6D /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080CA2D52A44DFEE00983D6D /* NotificationsTableViewCell.swift */; };
+		080CA2D82A44DFEE00983D6D /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 080CA2D62A44DFEE00983D6D /* NotificationsTableViewCell.xib */; };
+		080CA2DA2A44E2A000983D6D /* NotificationListingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080CA2D92A44E2A000983D6D /* NotificationListingPresenter.swift */; };
+		080CA2DD2A44E32C00983D6D /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080CA2DC2A44E32C00983D6D /* NotificationService.swift */; };
 		081004062A3D0D3400A56638 /* ServiceRequestSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081004042A3D0D3400A56638 /* ServiceRequestSuccessViewController.swift */; };
 		081004072A3D0D3400A56638 /* ServiceRequestSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 081004052A3D0D3400A56638 /* ServiceRequestSuccessViewController.xib */; };
 		0810040A2A3DF40000A56638 /* ServiceRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081004092A3DF40000A56638 /* ServiceRequestService.swift */; };
@@ -121,6 +125,10 @@
 /* Begin PBXFileReference section */
 		080CA2D02A44DE9E00983D6D /* NotificationListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListingViewController.swift; sourceTree = "<group>"; };
 		080CA2D12A44DE9E00983D6D /* NotificationListingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationListingViewController.xib; sourceTree = "<group>"; };
+		080CA2D52A44DFEE00983D6D /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
+		080CA2D62A44DFEE00983D6D /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsTableViewCell.xib; sourceTree = "<group>"; };
+		080CA2D92A44E2A000983D6D /* NotificationListingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListingPresenter.swift; sourceTree = "<group>"; };
+		080CA2DC2A44E32C00983D6D /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		081004042A3D0D3400A56638 /* ServiceRequestSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestSuccessViewController.swift; sourceTree = "<group>"; };
 		081004052A3D0D3400A56638 /* ServiceRequestSuccessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceRequestSuccessViewController.xib; sourceTree = "<group>"; };
 		081004092A3DF40000A56638 /* ServiceRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestService.swift; sourceTree = "<group>"; };
@@ -257,8 +265,27 @@
 		080CA2CF2A44DE8000983D6D /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				080CA2D42A44DFCA00983D6D /* Cell */,
 				080CA2D02A44DE9E00983D6D /* NotificationListingViewController.swift */,
 				080CA2D12A44DE9E00983D6D /* NotificationListingViewController.xib */,
+				080CA2D92A44E2A000983D6D /* NotificationListingPresenter.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		080CA2D42A44DFCA00983D6D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				080CA2D52A44DFEE00983D6D /* NotificationsTableViewCell.swift */,
+				080CA2D62A44DFEE00983D6D /* NotificationsTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		080CA2DB2A44E31B00983D6D /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				080CA2DC2A44E32C00983D6D /* NotificationService.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -522,6 +549,7 @@
 		08715A3D29EEE554002CB3F3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				080CA2DB2A44E31B00983D6D /* Notifications */,
 				081004082A3DF3DF00A56638 /* ServiceRequests */,
 				08E84DC02A17D0CC00DF8428 /* Address */,
 				08AA56012A084B0A00F3F8CD /* ServiceEntity */,
@@ -882,6 +910,7 @@
 				08715A2629EDEC7C002CB3F3 /* Assets.xcassets in Resources */,
 				089E939E2A0FAC380034BA90 /* DropDownView.xib in Resources */,
 				081004162A3E234B00A56638 /* HistoryTableViewCell.xib in Resources */,
+				080CA2D82A44DFEE00983D6D /* NotificationsTableViewCell.xib in Resources */,
 				0899851E2A4396A900E8B8C8 /* EmptyCell.xib in Resources */,
 				08AA55E02A07CAD700F3F8CD /* SettingsTableViewCell.xib in Resources */,
 				08AA55FC2A08150600F3F8CD /* ServiceCollectionViewCell.xib in Resources */,
@@ -993,8 +1022,10 @@
 				0810041C2A3E459100A56638 /* ProfileViewController.swift in Sources */,
 				08715A3829EDF0F8002CB3F3 /* APIClientType.swift in Sources */,
 				08397EB429F9752B008F8F14 /* BaseService.swift in Sources */,
+				080CA2DA2A44E2A000983D6D /* NotificationListingPresenter.swift in Sources */,
 				08D2B7532A347BAD002D9822 /* LoaderViewController.swift in Sources */,
 				081004102A3E192B00A56638 /* HistoryViewController.swift in Sources */,
+				080CA2DD2A44E32C00983D6D /* NotificationService.swift in Sources */,
 				08397EA929F3DAAF008F8F14 /* NetworkError.swift in Sources */,
 				089E93952A0EECFB0034BA90 /* ServiceDetailsTableViewCell.swift in Sources */,
 				089E61ED2A045417003B2CAB /* UIView+Extension.swift in Sources */,
@@ -1004,6 +1035,7 @@
 				081004242A3E4CCE00A56638 /* ProfilePresenter.swift in Sources */,
 				081004282A3E569C00A56638 /* SupportViewController.swift in Sources */,
 				080CA2D22A44DE9E00983D6D /* NotificationListingViewController.swift in Sources */,
+				080CA2D72A44DFEE00983D6D /* NotificationsTableViewCell.swift in Sources */,
 				082CAD882A193C4C00D2B66D /* SlotsTableSectionHeader.swift in Sources */,
 				082CAD8C2A19895B00D2B66D /* Date+Formatter.swift in Sources */,
 				08E84DBA2A17CFAF00DF8428 /* AddressListingViewController.swift in Sources */,

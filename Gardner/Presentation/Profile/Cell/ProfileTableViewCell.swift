@@ -23,7 +23,7 @@ class ProfileTableViewCell: UITableViewCell {
     }
     
     func configure(profile: UserProfile?) {
-        self.ivAvatar.sd_setImage(with: URL(string: profile?.profilePicture ?? ""), placeholderImage: UIImage(named: "ic_profile"), context: nil)
+        self.ivAvatar.sd_setImage(with: URL(string: profile?.profilePicture ?? ""), placeholderImage: UIImage(named: "profile_placeholder"), context: nil)
         self.tfFirstName.text = profile?.firstName
         self.tfLastName.text = profile?.lastName
         self.tfPhoneNumber.text = profile?.contact

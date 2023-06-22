@@ -23,7 +23,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        self.navigationController?.navigationBar.isHidden = true
         
         self.collectionView.register(UINib(nibName: "ServiceCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "ServiceCollectionViewCell")
         self.collectionView.register(UINib(nibName: "ServiceCollectionViewHeader", bundle: .main), forCellWithReuseIdentifier: "ServiceCollectionViewHeader")
@@ -59,6 +58,9 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationController?.navigationBar.isHidden = true
+        
+        // 
         self.presenter.getServices()
         self.presenter.fetchUserProfile()
     }
@@ -74,6 +76,14 @@ class HomeViewController: UIViewController {
         
         profileVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(profileVC, animated: true)
+    }
+    
+    
+    @IBAction func notificationsButtonTap(_ sender: Any) {
+        let presenter = NotificationListingPresetner(service: NotificationService(apiClient: APIClient(session: .default)))
+        let notificationListingVC = NotificationListingViewController.make(presenter: presenter)
+        notificationListingVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(notificationListingVC, animated: true)
     }
 }
 
@@ -151,7 +161,7 @@ extension HomeViewController: HomePresenterOutput {
         }
         
         self.lblMobileNumber.text = UserSession.instance.contact
-        self.ivProfileAvaror.sd_setImage(with: URL(string: profile.profilePicture ?? ""), placeholderImage: UIImage(named: "ic_profile"), context: nil)
+        self.ivProfileAvaror.sd_setImage(with: URL(string: profile.profilePicture ?? ""), placeholderImage: UIImage(named: "profile_placeholder"), context: nil)
     }
     
     func startLoading() {
