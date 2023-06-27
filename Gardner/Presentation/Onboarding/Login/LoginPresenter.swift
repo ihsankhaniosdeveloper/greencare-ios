@@ -16,12 +16,15 @@ protocol LoginPresenterOutput: AnyObject, LoadingOutputs {
 protocol LoadingOutputs {
     func startLoading()
     func stopLoading()
+    func startNonblockingLoading()
+    func stopNonblockingLoading()
 }
 
 extension LoadingOutputs {
     func startLoading() { }
-    
     func stopLoading() { }
+    func startNonblockingLoading() { }
+    func stopNonblockingLoading() { }
 }
 
 protocol LoginPresenterType: AnyObject {

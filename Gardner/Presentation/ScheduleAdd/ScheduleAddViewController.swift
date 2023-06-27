@@ -12,7 +12,7 @@ class ScheduleAddViewController: UIViewController {
     @IBOutlet weak var viewSelectAddress: UIView!
     @IBOutlet weak var lblSelectedAddress: UILabel!
     @IBOutlet weak var segmentedView: HMSegmentedControl!
-    @IBOutlet weak var selectedSlotsCollectionView: UICollectionView!
+    @IBOutlet weak var slotsCollectionView: UICollectionView!
     
     private var presenter: ScheduleAddPresenterType!
     
@@ -25,6 +25,18 @@ class ScheduleAddViewController: UIViewController {
     private var selectedDateIndex = 0
     private var selectedSlotsIndexes: [IndexPath] = []
     private var selectedSlotsDictionary: [Date: [Date]] = [:]
+    
+    private var isLoadingCompleted: Bool = false
+    private lazy var slotsLoader: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView()
+        
+        view.hidesWhenStopped = true
+        view.style = .large
+        view.color = UIColor(named: "primaryColor")
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
     
     private let cellIdentifier = "SelectedSlotCollectionViewCell"
     
@@ -46,10 +58,10 @@ class ScheduleAddViewController: UIViewController {
         (self.presenter as! ScheduleAddPresenter).outputs = self
         
         
-        self.selectedSlotsCollectionView.delegate = self
-        self.selectedSlotsCollectionView.dataSource = self
+        self.slotsCollectionView.delegate = self
+        self.slotsCollectionView.dataSource = self
         
-        self.selectedSlotsCollectionView.register(UINib(nibName: cellIdentifier, bundle: .main), forCellWithReuseIdentifier: cellIdentifier)
+        self.slotsCollectionView.register(UINib(nibName: cellIdentifier, bundle: .main), forCellWithReuseIdentifier: cellIdentifier)
         
         
         segmentedView.backgroundColor = UIColor(named: "GreyColor")!
@@ -60,13 +72,18 @@ class ScheduleAddViewController: UIViewController {
         
         segmentedView.indexChangeBlock = { index in
             self.selectedDateIndex = Int(index)
-            self.selectedSlotsCollectionView.reloadData()
+            self.slotsCollectionView.reloadData()
         }
         
         self.viewSelectAddress.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.navigateToAddressListing(_ :))))
         
         // MARK: Fetch slots
         self.presenter.getServiceSlots(serviceId: self.service?.id, serviceType: self.service?.type.rawValue)
+        
+        self.view.addSubview(self.slotsLoader)
+        
+        slotsLoader.centerXAnchor.constraint(equalTo: self.slotsCollectionView.centerXAnchor).isActive = true
+        slotsLoader.centerYAnchor.constraint(equalTo: self.slotsCollectionView.centerYAnchor).isActive = true
     }
     
     @objc func navigateToAddressListing(_ sender: UITapGestureRecognizer) {
@@ -133,15 +150,26 @@ extension ScheduleAddViewController: ScheduleAddPresenterOutput {
         segmentedView.sectionTitles = titles
         self.availableSlots = slots
         
-        self.selectedSlotsCollectionView.reloadData()
+        isLoadingCompleted = true
+        self.slotsCollectionView.reloadData()
     }
     
     func scheduleAddPresenter(operationFailed message: String) {
+        isLoadingCompleted = true
+        slotsCollectionView.reloadData()
         self.showSnackBar(message: message)
     }
     
     func scheduleAddPresenter(scheduleRequestValidationFailed message: String) {
         self.showSnackBar(message: message)
+    }
+    
+    func startNonblockingLoading() {
+        self.slotsLoader.startAnimating()
+    }
+    
+    func stopNonblockingLoading() {
+        self.slotsLoader.stopAnimating()
     }
     
     func startLoading() {
@@ -156,17 +184,17 @@ extension ScheduleAddViewController: ScheduleAddPresenterOutput {
 
 extension ScheduleAddViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if self.availableSlots.isEmpty || self.availableSlots[selectedDateIndex].timeSlots.isEmpty {
+        if (self.availableSlots.isEmpty || self.availableSlots[selectedDateIndex].timeSlots.isEmpty) && isLoadingCompleted {
             return 1
         }
         
-        return availableSlots[selectedDateIndex].timeSlots.count
+        return availableSlots.count > selectedDateIndex ? availableSlots[selectedDateIndex].timeSlots.count : 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! SelectedSlotCollectionViewCell
         
-        if self.availableSlots.isEmpty || self.availableSlots[selectedDateIndex].timeSlots.isEmpty {
+        if (self.availableSlots.isEmpty || self.availableSlots[selectedDateIndex].timeSlots.isEmpty) && isLoadingCompleted {
             cell.configureForEmptyView()
             
             return cell
@@ -209,7 +237,7 @@ extension ScheduleAddViewController: UICollectionViewDelegate, UICollectionViewD
             self.selectedSlotsDictionary[selectedDate]?.removeAll(where: { cDate in
                 return cDate == selectedTimeSlot
             })
-            self.selectedSlotsCollectionView.reloadItems(at: [indexPath])
+            self.slotsCollectionView.reloadItems(at: [indexPath])
             return
         }
 
@@ -220,6 +248,6 @@ extension ScheduleAddViewController: UICollectionViewDelegate, UICollectionViewD
             self.selectedSlotsDictionary[selectedDate] = [selectedTimeSlot]
         }
 
-        self.selectedSlotsCollectionView.reloadItems(at: [indexPath])
+        self.slotsCollectionView.reloadItems(at: [indexPath])
     }
 }

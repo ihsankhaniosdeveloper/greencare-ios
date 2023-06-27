@@ -133,7 +133,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-frame" translatesAutoresizingMaskIntoConstraints="NO" id="LpL-y6-xWv">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-frame" translatesAutoresizingMaskIntoConstraints="NO" id="LpL-y6-xWv">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="182"/>
                         </imageView>
                     </subviews>

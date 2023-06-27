@@ -50,12 +50,11 @@ class CartViewController: UIViewController {
 
 extension CartViewController: CartPresenterOutput {
     func cartPresenter(serviceRequestSuccess isSuccess: Bool) {
-        
-        self.navigationController?.popToRootViewController(animated: false)
-        
         let orderSuccessVC = ServiceRequestSuccessViewController(nibName: "ServiceRequestSuccessViewController", bundle: .main)
         orderSuccessVC.modalPresentationStyle = .fullScreen
-        self.present(orderSuccessVC, animated: true)
+        self.present(orderSuccessVC, animated: true) {
+            self.navigationController?.popToRootViewController(animated: false)
+        }
     }
     
     func startLoading() {

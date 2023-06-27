@@ -19,7 +19,7 @@
             <connections>
                 <outlet property="lblSelectedAddress" destination="CgW-nt-6wk" id="avJ-7S-ap7"/>
                 <outlet property="segmentedView" destination="wct-5H-0Lb" id="uOD-3P-F37"/>
-                <outlet property="selectedSlotsCollectionView" destination="eKz-Dh-a8b" id="fH2-79-8TV"/>
+                <outlet property="slotsCollectionView" destination="eKz-Dh-a8b" id="fH2-79-8TV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewSelectAddress" destination="8Em-pG-pNs" id="W3d-Vo-mQz"/>
             </connections>

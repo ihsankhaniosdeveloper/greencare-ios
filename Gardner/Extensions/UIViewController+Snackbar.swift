@@ -11,9 +11,13 @@ import KRProgressHUD
 
 extension UIViewController {
     func showSnackBar(message: String) {
-        let snackbar = TTGSnackbar(message: message, duration: .middle)
-
-        snackbar.show()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            let snackbar = TTGSnackbar(message: message, duration: .middle)
+            
+            
+            
+            snackbar.show()
+        }
     }
     
     func startActivityIndicator() {

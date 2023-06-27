@@ -29,15 +29,16 @@ class ScheduleAddPresenter: ScheduleAddPresenterType {
     }
     
     func calculateAmount(addressId: String?, serviceId: String?, slots: [Slot]?) {
+        guard let slots = slots, slots.count > 0 else {
+            self.outputs?.scheduleAddPresenter(scheduleRequestValidationFailed: "Slots required, please select slots and then continue.")
+            return
+        }
+        
         guard let addressId = addressId else {
             self.outputs?.scheduleAddPresenter(scheduleRequestValidationFailed: "Address is required, please select address and then continue.")
             return
         }
         guard let serviceId = serviceId else { return }
-        guard let slots = slots else {
-            self.outputs?.scheduleAddPresenter(scheduleRequestValidationFailed: "Slots required, please select slots and then continue.")
-            return
-        }
         
         var sortedSlots: [Slot] = []
         
@@ -70,12 +71,10 @@ class ScheduleAddPresenter: ScheduleAddPresenterType {
             return
         }
         
-        self.outputs?.startLoading()
-        
+        self.outputs?.startNonblockingLoading()
         self.service.getSlots(serviceId: serviceId, serviceType: serviceType) { result in
             
-            self.outputs?.stopLoading()
-            
+            self.outputs?.stopNonblockingLoading()
             switch result {
                 
             case .success(let slots):

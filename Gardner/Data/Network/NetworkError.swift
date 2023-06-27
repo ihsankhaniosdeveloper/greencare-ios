@@ -46,7 +46,7 @@ extension NetworkErrors {
         switch self {
         case .noInternet: return "Looks like you're offline. Please reconnect and refresh to continue using App."
         case .requestTimedOut: return "The request is timeout!"
-        case .badGateway: return "Bad Gateway"
+        case .badGateway: return "Opss, something went wrong please try again"
         case .notFound: return "Resource Not Found"
         case .forbidden: return "You don't have access to this information"
         case .internalServerError(let serverErrors):
@@ -72,11 +72,11 @@ class NetworkErrorHandler {
 
     static func mapError(_ code: Int, data: Data) -> NetworkErrors {
         switch code {
-        case 400...499:
+        case 400...599:
             let serverErrors: NetworkErrors.InternalServerError? = try? decode(data: data)
             return .internalServerError(serverErrors)
-        case 502:
-            return .badGateway
+//        case 500...599:
+//            return .badGateway
         case -1009:
             return .noInternet
         case -1001:

@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var lblMobileNumber: UILabel!
     @IBOutlet weak var lblWelcomeMsg: UILabel!
     
+    private var refreshControl = UIRefreshControl()
     private var model: [SectionItemsData] = []
     private var presenter: HomePresenterType!
     
@@ -29,6 +30,9 @@ class HomeViewController: UIViewController {
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        
+        self.collectionView.refreshControl = self.refreshControl
+        self.collectionView.refreshControl?.addTarget(self, action: #selector(pullToRefreshAction(_ :)), for: .valueChanged)
         
         self.presenter = HomePresenter(
             homeService: ServicesService(
@@ -53,6 +57,7 @@ class HomeViewController: UIViewController {
         mutableAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(named: "primaryColor")!, range: range)
         lblWelcomeMsg.attributedText = mutableAttributedString
 
+        self.presenter.getServices()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,8 +65,6 @@ class HomeViewController: UIViewController {
         
         self.navigationController?.navigationBar.isHidden = true
         
-        // 
-        self.presenter.getServices()
         self.presenter.fetchUserProfile()
     }
     
@@ -76,6 +79,10 @@ class HomeViewController: UIViewController {
         
         profileVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(profileVC, animated: true)
+    }
+    
+    @objc func pullToRefreshAction(_ sender: Any) {
+        self.presenter.getServices()
     }
     
     
@@ -165,10 +172,13 @@ extension HomeViewController: HomePresenterOutput {
     }
     
     func startLoading() {
-        self.startActivityIndicator()
+        if self.refreshControl.isRefreshing == false {
+            self.startActivityIndicator()
+        }
     }
     
     func stopLoading() {
         self.stopActivityIndicator()
+        self.refreshControl.endRefreshing()
     }
 }

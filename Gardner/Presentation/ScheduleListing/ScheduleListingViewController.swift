@@ -49,6 +49,7 @@ extension ScheduleListingViewController: ScheduleListingPresenterOutput {
         self.isLoadingCompleted = true
         self.tableView.reloadData()
         
+        self.showSnackBar(message: message)
     }
     
     func startLoading() {

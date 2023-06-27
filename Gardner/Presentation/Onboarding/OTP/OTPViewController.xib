@@ -99,7 +99,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </textField>
-                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-frame" translatesAutoresizingMaskIntoConstraints="NO" id="2ep-Iy-KKK">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-frame" translatesAutoresizingMaskIntoConstraints="NO" id="2ep-Iy-KKK">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="182"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0T-Nq-PbD">
@@ -107,7 +107,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="iUq-6x-zJw"/>
                             </constraints>
-                            <color key="tintColor" name="primaryColor"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" image="backward_arrow_white" title=""/>
                             <connections>
