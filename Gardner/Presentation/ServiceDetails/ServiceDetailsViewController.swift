@@ -93,16 +93,16 @@ extension ServiceDetailsViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     private func navigateToServiceAddVC() {
-        let serviceAddVC = ScheduleAddViewController.make(
-            presenter: ScheduleAddPresenter(
-                service: ServicesService(
-                    apiClient: APIClient(session: .default)
-                )
-            ),
-            service: self.service
-        )
-        
-        self.navigationController?.pushViewController(serviceAddVC, animated: true)
+//        let serviceAddVC = ScheduleAddViewController.make(
+//            presenter: ScheduleAddPresenter(
+//                service: ServicesService(
+//                    apiClient: APIClient(session: .default)
+//                )
+//            ),
+//            service: self.service
+//        )
+//        
+//        self.navigationController?.pushViewController(serviceAddVC, animated: true)
     }
 }
 

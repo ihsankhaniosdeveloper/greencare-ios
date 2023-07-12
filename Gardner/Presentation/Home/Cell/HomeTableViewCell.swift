@@ -1,13 +1,13 @@
 //
-//  ScheduleTableViewCell.swift
+//  HomeTableViewCell.swift
 //  Gardner
 //
-//  Created by Rashid Khan on 13/05/2023.
+//  Created by Rashid Khan on 04/07/2023.
 //
 
 import UIKit
 
-class ScheduleTableViewCell: UITableViewCell {
+class HomeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblDate: UILabel!
@@ -15,6 +15,8 @@ class ScheduleTableViewCell: UITableViewCell {
     @IBOutlet weak var lblPersonsAndHours: UILabel!
     @IBOutlet weak var lblCreatedAt: UILabel!
     @IBOutlet weak var lblPrice: UILabel!
+    @IBOutlet weak var lblStatus: UILabel!
+    @IBOutlet weak var lblAddress: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,6 +36,8 @@ class ScheduleTableViewCell: UITableViewCell {
         
         self.lblCreatedAt.text = "Created at: \(serviceRequest.createdAt?.toDateString() ?? "")"
         self.lblPrice.text = serviceRequest.totalPrice?.formattedAmountWithAED
+        self.lblStatus.text = serviceRequest.status.rawValue.capitalized
+        self.lblAddress.text = serviceRequest.address?.completeAddress
     }
     
     func getTotalHours(slots: [SlotElement], minHours: Int) -> Int {
@@ -45,4 +49,5 @@ class ScheduleTableViewCell: UITableViewCell {
         
         return selectedSlotsCount * minHours
     }
+    
 }

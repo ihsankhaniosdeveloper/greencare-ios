@@ -58,8 +58,10 @@ class OTPPresenter: OTPPreseneterType {
             return
         }
         
+        let pushToken = UserSession.instance.pushToken
+        
         self.outputs?.startLoading()
-        self.authService.requestOTP(mobileNumber: mobileNumber) { (result: Result<EmptyResonseDecodable, NetworkErrors>) in
+        self.authService.requestOTP(mobileNumber: mobileNumber, pushToken: pushToken, userType: .supplier) { (result: Result<EmptyResonseDecodable, NetworkErrors>) in
             self.outputs?.stopLoading()
             
             switch result {

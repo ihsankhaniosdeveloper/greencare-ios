@@ -6,18 +6,17 @@
 //
 
 import UIKit
-import Alamofire
+import SDWebImage
 
 class HomeViewController: UIViewController {
-    @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet weak var ivProfileAvaror: UIImageView!
     @IBOutlet weak var lblMsgWithName: UILabel!
     @IBOutlet weak var lblMobileNumber: UILabel!
     @IBOutlet weak var lblWelcomeMsg: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
+    private var serviceRequests: [ServiceRequest] = []
     private var refreshControl = UIRefreshControl()
-    private var model: [SectionItemsData] = []
     private var presenter: HomePresenterType!
     
     override func viewDidLoad() {
@@ -25,22 +24,15 @@ class HomeViewController: UIViewController {
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        self.collectionView.register(UINib(nibName: "ServiceCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "ServiceCollectionViewCell")
-        self.collectionView.register(UINib(nibName: "ServiceCollectionViewHeader", bundle: .main), forCellWithReuseIdentifier: "ServiceCollectionViewHeader")
-        
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
-        
-        self.collectionView.refreshControl = self.refreshControl
-        self.collectionView.refreshControl?.addTarget(self, action: #selector(pullToRefreshAction(_ :)), for: .valueChanged)
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.register(UINib(nibName: "HomeTableViewCell", bundle: .main), forCellReuseIdentifier: "HomeTableViewCell")
+        self.tableView.refreshControl = self.refreshControl
+        self.tableView.refreshControl?.addTarget(self, action: #selector(pullToRefreshAction(_ :)), for: .valueChanged)
         
         self.presenter = HomePresenter(
-            homeService: ServicesService(
-                apiClient: APIClient(session: .default)
-            ),
-            userService: AuthenticationService(
-                apiClient:APIClient(session: .default)
-            )
+            requestsService: ServiceRequestService(apiClient: APIClient(session: .default)),
+            userService: AuthenticationService(apiClient:APIClient(session: .default))
         )
         
         (self.presenter as! HomePresenter).outputs = self
@@ -57,7 +49,7 @@ class HomeViewController: UIViewController {
         mutableAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(named: "primaryColor")!, range: range)
         lblWelcomeMsg.attributedText = mutableAttributedString
 
-        self.presenter.getServices()
+        self.presenter.fetchServiceRequest()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,7 +74,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc func pullToRefreshAction(_ sender: Any) {
-        self.presenter.getServices()
+        self.presenter.fetchServiceRequest()
     }
     
     
@@ -94,73 +86,30 @@ class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.model.count
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.serviceRequests.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.model[section].data.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServiceCollectionViewCell", for: indexPath) as! ServiceCollectionViewCell
-        
-        cell.configure(service: self.model[indexPath.section].data[indexPath.row])
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
+        cell.configure(serviceRequest: self.serviceRequests[indexPath.row])
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        switch indexPath.section {
-            case 0: return CGSize(width: (collectionView.frame.size.width - 68) / 2, height: 100)
-            case 1: return CGSize(width: (collectionView.frame.size.width - 72) / 3, height: 80)
-            case 2: return CGSize(width: (collectionView.frame.size.width - 72) / 3, height: 80)
-            default: return CGSize(width: 0, height: 0)
-        }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 24, bottom: 10, right: 24)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {
-            case UICollectionView.elementKindSectionHeader:
-                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ServiceCollectionViewHeader",for: indexPath)
-            
-                guard let typedHeaderView = headerView as? ServiceCollectionViewHeader else { return headerView }
-            
-            typedHeaderView.configure(title: self.model[indexPath.section].title)
-                return typedHeaderView
-            default:
-                assert(false, "Invalid element type")
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let service = self.model[indexPath.section].data[indexPath.row]
-        
-        let serviceDetailsPresenter = ServiceDetailsPresenter(service: ServicesService(apiClient: APIClient(session: .default)), serviceEntity: service)
-        let serviceDetailsVC = ServiceDetailsViewController.make(presenter: serviceDetailsPresenter)
-        
-        serviceDetailsVC.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(serviceDetailsVC, animated: true)
-        
     }
 }
 
 extension HomeViewController: HomePresenterOutput {
-    func homePresenter(homeDataFetchSuccess model: [SectionItemsData]) {
-        self.model = model
-        self.collectionView.reloadData()
+    func homePresenter(serviceRequestsFetchingSuccess requests: [ServiceRequest]) {
+        self.serviceRequests = requests
+        self.tableView.reloadData()
     }
     
-    func homePresenter(homeDataFetchFail message: String) {
+    
+    func homePresenter(serviceRequestsFetchingFail message: String) {
         self.showSnackBar(message: message)
     }
     
-    func homePresenter(userProfileFetchSuccess profile: UserProfile) {
+    func homePresenter(userProfileFetchingSuccess profile: UserProfile) {
         if let firstName = UserSession.instance.profile?.firstName {
             self.lblMsgWithName.text = "Hello \(firstName) \(UserSession.instance.profile?.lastName ?? "")"
         } else {

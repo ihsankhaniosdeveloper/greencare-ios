@@ -17,7 +17,7 @@ class ScheduleListingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "My Schedule"
+        self.title = "Orders"
         
         self.presenter = ScheduleListingPresenter(service: ServiceRequestService(apiClient: APIClient(session: .default)))
         (self.presenter as? ScheduleListingPresenter)?.outputs = self

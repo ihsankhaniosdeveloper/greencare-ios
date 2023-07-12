@@ -7,69 +7,45 @@
 
 import Foundation
 
-struct HomeDataResponse: Decodable {
-    let recurringServices: [Service]?
-    let oneTimeServices: [Service]?
-    let contactOnlyServices: [Service]?
-    let sliders: [String]?
-}
-
 protocol HomePresenterType {
-    func getServices()
+    func fetchServiceRequest()
     func fetchUserProfile()
 }
 
-struct SectionItemsData {
-    let title: String
-    let data: [Service]
-}
-
 protocol HomePresenterOutput: AnyObject, LoadingOutputs {
-    func homePresenter(homeDataFetchSuccess model: [SectionItemsData])
-    func homePresenter(userProfileFetchSuccess profile: UserProfile)
-    func homePresenter(homeDataFetchFail message: String)
+    func homePresenter(serviceRequestsFetchingSuccess serviceRequests: [ServiceRequest])
+    func homePresenter(userProfileFetchingSuccess profile: UserProfile)
+    func homePresenter(serviceRequestsFetchingFail message: String)
 }
 
 class HomePresenter: HomePresenterType {
     weak var outputs: HomePresenterOutput?
     
-    private var homeService: ServicesServiceType
+    private var requestsService: ServiceRequestServiceType
     private var userService: AuthenticationServiceType
     
-    init(homeService: ServicesServiceType, userService: AuthenticationServiceType) {
-        self.homeService = homeService
+    init(requestsService: ServiceRequestServiceType, userService: AuthenticationServiceType) {
+        self.requestsService = requestsService
         self.userService = userService
     }
     
-    func getServices() {
+    func fetchServiceRequest() {
         self.outputs?.startLoading()
-        
-        homeService.getAllServices { (result: Result<HomeDataResponse, NetworkErrors>) in
+        self.requestsService.getServiceRequest { result in
             self.outputs?.stopLoading()
             
             switch result {
                 
-            case .success(let homeDataResponse):
-                var result: [SectionItemsData] = []
-                
-                if let recuringServices = homeDataResponse.recurringServices {
-                    result.append(SectionItemsData(title: "Recuring Services", data: recuringServices))
+            case .success(let serviceRequests):
+                let filtered = serviceRequests.filter {
+                    $0.status == .accepted || $0.status == .inProgress
                 }
                 
-                if let oneTimeServices = homeDataResponse.oneTimeServices {
-                    result.append(SectionItemsData(title: "One Time Services", data: oneTimeServices))
-                }
-                
-                if let contactOnlyServices = homeDataResponse.contactOnlyServices {
-                    result.append(SectionItemsData(title: "Contact Only Services", data: contactOnlyServices))
-                }
-                
-                
-                self.outputs?.homePresenter(homeDataFetchSuccess: result)
+                self.outputs?.homePresenter(serviceRequestsFetchingSuccess: filtered)
                 break
                 
             case .failure(let error):
-                self.outputs?.homePresenter(homeDataFetchFail: error.localizedDescription)
+                self.outputs?.homePresenter(serviceRequestsFetchingFail: error.errorDescription ?? error.localizedDescription)
                 break
             }
         }
@@ -77,7 +53,7 @@ class HomePresenter: HomePresenterType {
     
     func fetchUserProfile() {
         if let userProfile = UserSession.instance.profile {
-            self.outputs?.homePresenter(userProfileFetchSuccess: userProfile)
+            self.outputs?.homePresenter(userProfileFetchingSuccess: userProfile)
             return
         }
         
@@ -86,10 +62,10 @@ class HomePresenter: HomePresenterType {
                 
             case .success(let profile):
                 UserSession.instance.profile = profile
-                self.outputs?.homePresenter(userProfileFetchSuccess: profile)
+                self.outputs?.homePresenter(userProfileFetchingSuccess: profile)
                 
-            case .failure(let error):
-                self.outputs?.homePresenter(homeDataFetchFail: error.errorDescription ?? error.localizedDescription)
+            case .failure:
+                break
             }
         }
     }

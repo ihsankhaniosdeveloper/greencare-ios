@@ -8,9 +8,11 @@
 import Foundation
 
 protocol NotificationServiceType {
-    
+    func fetchNotification()
 }
 
 class NotificationService: BaseService, NotificationServiceType {
-    
+    func fetchNotification() {
+        
+    }
 }

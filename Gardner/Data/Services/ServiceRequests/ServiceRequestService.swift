@@ -7,6 +7,7 @@
 
 import Foundation
 
+//MARK: -- Service Request Service
 protocol ServiceRequestServiceType {
     func getServiceRequest(completion: @escaping CompletionClosure<[ServiceRequest]>)
 }
@@ -24,6 +25,25 @@ class ServiceRequestService: BaseService, ServiceRequestServiceType {
         
         struct ServiceRequestsResponse: Codable {
             let serviceRequests: [ServiceRequest]
+        }
+    }
+}
+
+//MARK: -- Service Request Routes
+enum ServiceRequestAPIRoutes {
+    case getAllServiceRequest
+}
+
+extension ServiceRequestAPIRoutes: APIRouteType {
+    var path: String {
+        switch self {
+            case .getAllServiceRequest: return "v1/servicerequest"
+        }
+    }
+    
+    var method: HTTPRequestMethod {
+        switch self {
+            case .getAllServiceRequest: return .get
         }
     }
 }
