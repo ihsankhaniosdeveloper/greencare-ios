@@ -145,10 +145,10 @@
             </objects>
             <point key="canvasLocation" x="-909" y="1671"/>
         </scene>
-        <!--Schedule Listing View Controller-->
+        <!--Orders Listing View Controller-->
         <scene sceneID="eAI-eO-dwN">
             <objects>
-                <viewController storyboardIdentifier="ProfileVC" id="cVj-cb-yCw" customClass="ScheduleListingViewController" customModule="Gardner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileVC" id="cVj-cb-yCw" customClass="OrdersListingViewController" customModule="Gardner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hkF-x8-clv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

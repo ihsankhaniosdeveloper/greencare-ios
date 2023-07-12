@@ -7,10 +7,10 @@
 
 import UIKit
 
-class ScheduleListingViewController: UIViewController {
+class OrdersListingViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    private var presenter: ScheduleListingPresenterType!
+    private var presenter: OrderListingPresenterType!
     private var schedulledRequests: [ServiceRequest] = []
     private var isLoadingCompleted: Bool = false
     
@@ -19,13 +19,13 @@ class ScheduleListingViewController: UIViewController {
 
         self.title = "Orders"
         
-        self.presenter = ScheduleListingPresenter(service: ServiceRequestService(apiClient: APIClient(session: .default)))
-        (self.presenter as? ScheduleListingPresenter)?.outputs = self
+        self.presenter = OrdersListingPresenter(service: ServiceRequestService(apiClient: APIClient(session: .default)))
+        (self.presenter as? OrdersListingPresenter)?.outputs = self
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        self.tableView.register(UINib(nibName: "ScheduleTableViewCell", bundle: .main), forCellReuseIdentifier: "ScheduleTableViewCell")
+        self.tableView.register(UINib(nibName: "OrdersTableViewCell", bundle: .main), forCellReuseIdentifier: "OrdersTableViewCell")
         self.tableView.register(UINib(nibName: "EmptyCell", bundle: .main), forCellReuseIdentifier: "EmptyCell")
     }
     
@@ -36,7 +36,7 @@ class ScheduleListingViewController: UIViewController {
     }
 }
 
-extension ScheduleListingViewController: ScheduleListingPresenterOutput {
+extension OrdersListingViewController: OrdersListingPresenterOutput {
     func scheduleListingPresenter(scheduleOrderFetchSuccess requests: [ServiceRequest]) {
         self.tableView.isScrollEnabled = !requests.isEmpty
         self.schedulledRequests = requests
@@ -61,7 +61,7 @@ extension ScheduleListingViewController: ScheduleListingPresenterOutput {
     }
 }
 
-extension ScheduleListingViewController: UITableViewDelegate, UITableViewDataSource {
+extension OrdersListingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.schedulledRequests.isEmpty && isLoadingCompleted ? 1 :  self.schedulledRequests.count
     }
@@ -74,7 +74,7 @@ extension ScheduleListingViewController: UITableViewDelegate, UITableViewDataSou
             return cell
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell", for: indexPath) as! ScheduleTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OrdersTableViewCell", for: indexPath) as! OrdersTableViewCell
         
         cell.configure(serviceRequest: self.schedulledRequests[indexPath.row])
         return cell

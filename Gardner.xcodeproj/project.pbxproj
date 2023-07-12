@@ -62,10 +62,10 @@
 		089E61DF2A0197C0003B2CAB /* CountryCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E61DE2A0197C0003B2CAB /* CountryCodeView.swift */; };
 		089E61E12A0197E2003B2CAB /* CountryCodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089E61E02A0197E2003B2CAB /* CountryCodeView.xib */; };
 		089E61ED2A045417003B2CAB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E61EC2A045417003B2CAB /* UIView+Extension.swift */; };
-		089E938A2A0EDE350034BA90 /* ScheduleListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E93882A0EDE350034BA90 /* ScheduleListingViewController.swift */; };
-		089E938D2A0EDE470034BA90 /* ScheduleListingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E938C2A0EDE470034BA90 /* ScheduleListingPresenter.swift */; };
-		089E93912A0EDF0C0034BA90 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E938F2A0EDF0C0034BA90 /* ScheduleTableViewCell.swift */; };
-		089E93922A0EDF0C0034BA90 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089E93902A0EDF0C0034BA90 /* ScheduleTableViewCell.xib */; };
+		089E938A2A0EDE350034BA90 /* OrdersListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E93882A0EDE350034BA90 /* OrdersListingViewController.swift */; };
+		089E938D2A0EDE470034BA90 /* OrdersListingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E938C2A0EDE470034BA90 /* OrdersListingPresenter.swift */; };
+		089E93912A0EDF0C0034BA90 /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E938F2A0EDF0C0034BA90 /* OrdersTableViewCell.swift */; };
+		089E93922A0EDF0C0034BA90 /* OrdersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089E93902A0EDF0C0034BA90 /* OrdersTableViewCell.xib */; };
 		089E93952A0EECFB0034BA90 /* ServiceDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E93932A0EECFB0034BA90 /* ServiceDetailsTableViewCell.swift */; };
 		089E93962A0EECFB0034BA90 /* ServiceDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089E93942A0EECFB0034BA90 /* ServiceDetailsTableViewCell.xib */; };
 		089E93992A0F07A60034BA90 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E93982A0F07A60034BA90 /* Service.swift */; };
@@ -163,10 +163,10 @@
 		089E61DE2A0197C0003B2CAB /* CountryCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeView.swift; sourceTree = "<group>"; };
 		089E61E02A0197E2003B2CAB /* CountryCodeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryCodeView.xib; sourceTree = "<group>"; };
 		089E61EC2A045417003B2CAB /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		089E93882A0EDE350034BA90 /* ScheduleListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListingViewController.swift; sourceTree = "<group>"; };
-		089E938C2A0EDE470034BA90 /* ScheduleListingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListingPresenter.swift; sourceTree = "<group>"; };
-		089E938F2A0EDF0C0034BA90 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
-		089E93902A0EDF0C0034BA90 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
+		089E93882A0EDE350034BA90 /* OrdersListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersListingViewController.swift; sourceTree = "<group>"; };
+		089E938C2A0EDE470034BA90 /* OrdersListingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersListingPresenter.swift; sourceTree = "<group>"; };
+		089E938F2A0EDF0C0034BA90 /* OrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewCell.swift; sourceTree = "<group>"; };
+		089E93902A0EDF0C0034BA90 /* OrdersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrdersTableViewCell.xib; sourceTree = "<group>"; };
 		089E93932A0EECFB0034BA90 /* ServiceDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		089E93942A0EECFB0034BA90 /* ServiceDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		089E93982A0F07A60034BA90 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -522,8 +522,8 @@
 			isa = PBXGroup;
 			children = (
 				089E938E2A0EDEE70034BA90 /* Cell */,
-				089E93882A0EDE350034BA90 /* ScheduleListingViewController.swift */,
-				089E938C2A0EDE470034BA90 /* ScheduleListingPresenter.swift */,
+				089E93882A0EDE350034BA90 /* OrdersListingViewController.swift */,
+				089E938C2A0EDE470034BA90 /* OrdersListingPresenter.swift */,
 			);
 			path = ScheduleListing;
 			sourceTree = "<group>";
@@ -531,8 +531,8 @@
 		089E938E2A0EDEE70034BA90 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				089E938F2A0EDF0C0034BA90 /* ScheduleTableViewCell.swift */,
-				089E93902A0EDF0C0034BA90 /* ScheduleTableViewCell.xib */,
+				089E938F2A0EDF0C0034BA90 /* OrdersTableViewCell.swift */,
+				089E93902A0EDF0C0034BA90 /* OrdersTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -787,7 +787,7 @@
 				08715A2929EDEC7C002CB3F3 /* LaunchScreen.storyboard in Resources */,
 				08AA56062A0C267F00F3F8CD /* ServiceDetailsViewController.xib in Resources */,
 				08AA55EE2A07E75C00F3F8CD /* Poppins-SemiBold.ttf in Resources */,
-				089E93922A0EDF0C0034BA90 /* ScheduleTableViewCell.xib in Resources */,
+				089E93922A0EDF0C0034BA90 /* OrdersTableViewCell.xib in Resources */,
 				08715A2629EDEC7C002CB3F3 /* Assets.xcassets in Resources */,
 				089E939E2A0FAC380034BA90 /* DropDownView.xib in Resources */,
 				081004162A3E234B00A56638 /* HistoryTableViewCell.xib in Resources */,
@@ -873,9 +873,9 @@
 				0810040A2A3DF40000A56638 /* ServiceRequestService.swift in Sources */,
 				08715A3A29EDF2AB002CB3F3 /* APIRouteType.swift in Sources */,
 				08AA55F02A07FD6900F3F8CD /* HomePresenter.swift in Sources */,
-				089E93912A0EDF0C0034BA90 /* ScheduleTableViewCell.swift in Sources */,
+				089E93912A0EDF0C0034BA90 /* OrdersTableViewCell.swift in Sources */,
 				08AA55C92A05698500F3F8CD /* LoginPresenter.swift in Sources */,
-				089E938D2A0EDE470034BA90 /* ScheduleListingPresenter.swift in Sources */,
+				089E938D2A0EDE470034BA90 /* OrdersListingPresenter.swift in Sources */,
 				082CAD762A17D74800D2B66D /* AddressRoutes.swift in Sources */,
 				0899851D2A4396A900E8B8C8 /* EmptyCell.swift in Sources */,
 				089E939C2A0FAC050034BA90 /* DropDownView.swift in Sources */,
@@ -886,7 +886,7 @@
 				08E84DC22A17D0DD00DF8428 /* AddressService.swift in Sources */,
 				08715A1F29EDEC7C002CB3F3 /* SceneDelegate.swift in Sources */,
 				08AA55E22A07CD9100F3F8CD /* SettingsPresenter.swift in Sources */,
-				089E938A2A0EDE350034BA90 /* ScheduleListingViewController.swift in Sources */,
+				089E938A2A0EDE350034BA90 /* OrdersListingViewController.swift in Sources */,
 				082CAD732A17D5CD00D2B66D /* AddressTableViewCell.swift in Sources */,
 				0810041C2A3E459100A56638 /* ProfileViewController.swift in Sources */,
 				08715A3829EDF0F8002CB3F3 /* APIClientType.swift in Sources */,

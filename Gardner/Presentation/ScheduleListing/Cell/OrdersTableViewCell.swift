@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ScheduleTableViewCell: UITableViewCell {
+class OrdersTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblDate: UILabel!

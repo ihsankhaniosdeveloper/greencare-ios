@@ -7,30 +7,30 @@
 
 import Foundation
 
-protocol ScheduleListingPresenterType {
+protocol OrderListingPresenterType {
     func fetchScheduleSlots()
 }
 
-protocol ScheduleListingPresenterOutput: AnyObject, LoadingOutputs {
+protocol OrdersListingPresenterOutput: AnyObject, LoadingOutputs {
     func scheduleListingPresenter(scheduleOrderFetchSuccess requests: [ServiceRequest])
     func scheduleListingPresenter(scheduleOrderFetchFailed message: String)
 }
 
-class ScheduleListingPresenter {
+class OrdersListingPresenter {
     func scheduleListingPresenter() {
         
     }
     
     private var service: ServiceRequestServiceType
     
-    weak var outputs: ScheduleListingPresenterOutput?
+    weak var outputs: OrdersListingPresenterOutput?
     
     init(service: ServiceRequestServiceType) {
         self.service = service
     }
 }
 
-extension ScheduleListingPresenter: ScheduleListingPresenterType {
+extension OrdersListingPresenter: OrderListingPresenterType {
     func fetchScheduleSlots() {
         self.outputs?.startLoading()
         
