@@ -63,8 +63,8 @@
 		089E938D2A0EDE470034BA90 /* OrdersListingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E938C2A0EDE470034BA90 /* OrdersListingPresenter.swift */; };
 		089E93912A0EDF0C0034BA90 /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E938F2A0EDF0C0034BA90 /* OrdersTableViewCell.swift */; };
 		089E93922A0EDF0C0034BA90 /* OrdersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089E93902A0EDF0C0034BA90 /* OrdersTableViewCell.xib */; };
-		089E93952A0EECFB0034BA90 /* ServiceDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E93932A0EECFB0034BA90 /* ServiceDetailsTableViewCell.swift */; };
-		089E93962A0EECFB0034BA90 /* ServiceDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089E93942A0EECFB0034BA90 /* ServiceDetailsTableViewCell.xib */; };
+		089E93952A0EECFB0034BA90 /* ServiceRequestDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E93932A0EECFB0034BA90 /* ServiceRequestDetailsTableViewCell.swift */; };
+		089E93962A0EECFB0034BA90 /* ServiceRequestDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089E93942A0EECFB0034BA90 /* ServiceRequestDetailsTableViewCell.xib */; };
 		089E93992A0F07A60034BA90 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E93982A0F07A60034BA90 /* Service.swift */; };
 		089E939C2A0FAC050034BA90 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E939B2A0FAC050034BA90 /* DropDownView.swift */; };
 		089E939E2A0FAC380034BA90 /* DropDownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089E939D2A0FAC380034BA90 /* DropDownView.xib */; };
@@ -83,9 +83,9 @@
 		08AA55ED2A07E75C00F3F8CD /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08AA55E92A07E75C00F3F8CD /* Poppins-Medium.ttf */; };
 		08AA55EE2A07E75C00F3F8CD /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08AA55EA2A07E75C00F3F8CD /* Poppins-SemiBold.ttf */; };
 		08AA55F02A07FD6900F3F8CD /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA55EF2A07FD6900F3F8CD /* HomePresenter.swift */; };
-		08AA56052A0C267F00F3F8CD /* ServiceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA56032A0C267F00F3F8CD /* ServiceDetailsViewController.swift */; };
-		08AA56062A0C267F00F3F8CD /* ServiceDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AA56042A0C267F00F3F8CD /* ServiceDetailsViewController.xib */; };
-		08AA56082A0C26B900F3F8CD /* ServiceDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA56072A0C26B900F3F8CD /* ServiceDetailsPresenter.swift */; };
+		08AA56052A0C267F00F3F8CD /* ServiceRequestDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA56032A0C267F00F3F8CD /* ServiceRequestDetailsViewController.swift */; };
+		08AA56062A0C267F00F3F8CD /* ServiceRequestDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08AA56042A0C267F00F3F8CD /* ServiceRequestDetailsViewController.xib */; };
+		08AA56082A0C26B900F3F8CD /* ServiceRequestDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA56072A0C26B900F3F8CD /* ServiceRequestDetailsPresenter.swift */; };
 		08C279C42A3BADDF008678DA /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C279C22A3BADDF008678DA /* EmptyTableViewCell.swift */; };
 		08C279C52A3BADDF008678DA /* EmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08C279C32A3BADDF008678DA /* EmptyTableViewCell.xib */; };
 		08C5896C2A235C84007417CE /* ServiceEntityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5896B2A235C84007417CE /* ServiceEntityService.swift */; };
@@ -161,8 +161,8 @@
 		089E938C2A0EDE470034BA90 /* OrdersListingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersListingPresenter.swift; sourceTree = "<group>"; };
 		089E938F2A0EDF0C0034BA90 /* OrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewCell.swift; sourceTree = "<group>"; };
 		089E93902A0EDF0C0034BA90 /* OrdersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrdersTableViewCell.xib; sourceTree = "<group>"; };
-		089E93932A0EECFB0034BA90 /* ServiceDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetailsTableViewCell.swift; sourceTree = "<group>"; };
-		089E93942A0EECFB0034BA90 /* ServiceDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceDetailsTableViewCell.xib; sourceTree = "<group>"; };
+		089E93932A0EECFB0034BA90 /* ServiceRequestDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		089E93942A0EECFB0034BA90 /* ServiceRequestDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceRequestDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		089E93982A0F07A60034BA90 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		089E939B2A0FAC050034BA90 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
 		089E939D2A0FAC380034BA90 /* DropDownView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownView.xib; sourceTree = "<group>"; };
@@ -181,9 +181,9 @@
 		08AA55E92A07E75C00F3F8CD /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		08AA55EA2A07E75C00F3F8CD /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		08AA55EF2A07FD6900F3F8CD /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
-		08AA56032A0C267F00F3F8CD /* ServiceDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetailsViewController.swift; sourceTree = "<group>"; };
-		08AA56042A0C267F00F3F8CD /* ServiceDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceDetailsViewController.xib; sourceTree = "<group>"; };
-		08AA56072A0C26B900F3F8CD /* ServiceDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetailsPresenter.swift; sourceTree = "<group>"; };
+		08AA56032A0C267F00F3F8CD /* ServiceRequestDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestDetailsViewController.swift; sourceTree = "<group>"; };
+		08AA56042A0C267F00F3F8CD /* ServiceRequestDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceRequestDetailsViewController.xib; sourceTree = "<group>"; };
+		08AA56072A0C26B900F3F8CD /* ServiceRequestDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestDetailsPresenter.swift; sourceTree = "<group>"; };
 		08C279C22A3BADDF008678DA /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
 		08C279C32A3BADDF008678DA /* EmptyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableViewCell.xib; sourceTree = "<group>"; };
 		08C5896B2A235C84007417CE /* ServiceEntityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceEntityService.swift; sourceTree = "<group>"; };
@@ -619,9 +619,9 @@
 			isa = PBXGroup;
 			children = (
 				08AA56092A0D09F600F3F8CD /* Cell */,
-				08AA56032A0C267F00F3F8CD /* ServiceDetailsViewController.swift */,
-				08AA56042A0C267F00F3F8CD /* ServiceDetailsViewController.xib */,
-				08AA56072A0C26B900F3F8CD /* ServiceDetailsPresenter.swift */,
+				08AA56032A0C267F00F3F8CD /* ServiceRequestDetailsViewController.swift */,
+				08AA56042A0C267F00F3F8CD /* ServiceRequestDetailsViewController.xib */,
+				08AA56072A0C26B900F3F8CD /* ServiceRequestDetailsPresenter.swift */,
 			);
 			path = ServiceDetails;
 			sourceTree = "<group>";
@@ -629,8 +629,8 @@
 		08AA56092A0D09F600F3F8CD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				089E93932A0EECFB0034BA90 /* ServiceDetailsTableViewCell.swift */,
-				089E93942A0EECFB0034BA90 /* ServiceDetailsTableViewCell.xib */,
+				089E93932A0EECFB0034BA90 /* ServiceRequestDetailsTableViewCell.swift */,
+				089E93942A0EECFB0034BA90 /* ServiceRequestDetailsTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -768,7 +768,7 @@
 				082CAD7A2A17EAD900D2B66D /* AddAddressViewController.xib in Resources */,
 				080CA2D32A44DE9E00983D6D /* NotificationListingViewController.xib in Resources */,
 				08715A2929EDEC7C002CB3F3 /* LaunchScreen.storyboard in Resources */,
-				08AA56062A0C267F00F3F8CD /* ServiceDetailsViewController.xib in Resources */,
+				08AA56062A0C267F00F3F8CD /* ServiceRequestDetailsViewController.xib in Resources */,
 				08AA55EE2A07E75C00F3F8CD /* Poppins-SemiBold.ttf in Resources */,
 				089E93922A0EDF0C0034BA90 /* OrdersTableViewCell.xib in Resources */,
 				08715A2629EDEC7C002CB3F3 /* Assets.xcassets in Resources */,
@@ -782,7 +782,7 @@
 				08715A2429EDEC7C002CB3F3 /* Main.storyboard in Resources */,
 				081004212A3E45FD00A56638 /* ProfileTableViewCell.xib in Resources */,
 				08D2B7542A347BAD002D9822 /* LoaderViewController.xib in Resources */,
-				089E93962A0EECFB0034BA90 /* ServiceDetailsTableViewCell.xib in Resources */,
+				089E93962A0EECFB0034BA90 /* ServiceRequestDetailsTableViewCell.xib in Resources */,
 				08C279C52A3BADDF008678DA /* EmptyTableViewCell.xib in Resources */,
 				08AA55ED2A07E75C00F3F8CD /* Poppins-Medium.ttf in Resources */,
 				0810041D2A3E459100A56638 /* ProfileViewController.xib in Resources */,
@@ -845,11 +845,11 @@
 				08397EBE2A004563008F8F14 /* OTPViewController.swift in Sources */,
 				08397EB929F97B98008F8F14 /* LoginViewController.swift in Sources */,
 				08AA55E42A07D34C00F3F8CD /* UIColor+Hex.swift in Sources */,
-				08AA56082A0C26B900F3F8CD /* ServiceDetailsPresenter.swift in Sources */,
+				08AA56082A0C26B900F3F8CD /* ServiceRequestDetailsPresenter.swift in Sources */,
 				08715A2129EDEC7C002CB3F3 /* HomeViewController.swift in Sources */,
 				08AA55DA2A07C31000F3F8CD /* SettingsTableViewHeader.swift in Sources */,
 				08C5896C2A235C84007417CE /* ServiceEntityService.swift in Sources */,
-				08AA56052A0C267F00F3F8CD /* ServiceDetailsViewController.swift in Sources */,
+				08AA56052A0C267F00F3F8CD /* ServiceRequestDetailsViewController.swift in Sources */,
 				0810040A2A3DF40000A56638 /* ServiceRequestService.swift in Sources */,
 				08715A3A29EDF2AB002CB3F3 /* APIRouteType.swift in Sources */,
 				08AA55F02A07FD6900F3F8CD /* HomePresenter.swift in Sources */,
@@ -876,7 +876,7 @@
 				081004102A3E192B00A56638 /* HistoryViewController.swift in Sources */,
 				080CA2DD2A44E32C00983D6D /* NotificationService.swift in Sources */,
 				08397EA929F3DAAF008F8F14 /* NetworkError.swift in Sources */,
-				089E93952A0EECFB0034BA90 /* ServiceDetailsTableViewCell.swift in Sources */,
+				089E93952A0EECFB0034BA90 /* ServiceRequestDetailsTableViewCell.swift in Sources */,
 				089E61ED2A045417003B2CAB /* UIView+Extension.swift in Sources */,
 				08715A3F29EEE568002CB3F3 /* AuthenticationService.swift in Sources */,
 				081004202A3E45FD00A56638 /* ProfileTableViewCell.swift in Sources */,

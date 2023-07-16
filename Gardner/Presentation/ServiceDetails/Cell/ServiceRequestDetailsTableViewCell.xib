@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
         <array key="Poppins-Regular.ttf">
             <string>Poppins-Regular</string>
         </array>
@@ -19,7 +22,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="366" id="KGk-i7-Jjw" customClass="ServiceDetailsTableViewCell" customModule="Gardner" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="366" id="KGk-i7-Jjw" customClass="ServiceRequestDetailsTableViewCell" customModule="Gardner" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="336" height="366"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -54,7 +57,7 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tY-QF-LL4">
                                 <rect key="frame" x="24" y="133.66666666666666" width="288" height="78.666666666666657"/>
-                                <mutableString key="text">":"gardenCare","instructions":"undefined","type":"recurring","price":250,"promo":[],"isDeleted":false,"isActive":true,"image":"https://s3.amazonaws.com/greencarebucket/public/image-1683748679132-748339934.jpg","backgroundImage":"","contactLink":"","isContactOnly":false,"createdAt":"2023-05-10T19:58:07.896Z","updatedAt":"2023-05-10T19:58:07.896Z","__v":0}],"contactOnlyServices":[{"_id":"645bf7a3123b0592f81fcf2f","title":"Custom Services","description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.","subType":"gardenCare","instructions":"undefined","type":"contactOnly","price":200,"promo":[],"isDeleted":false,"isActive":true,"image":"https://s3.amazonaws.com/greencarebucket/public/image-1683748762793-285236906.jpg","backgroundImage":"","contactLink":"https://chat.openai.com/","isContactOnly":true,"createdAt":"2023-05-10T19:59:31.826Z","updatedAt":"2023-05-10T19:59:31.826Z","__v":0}],"sliders":[]}}</mutableString>
+                                <string key="text">":"gardenCare","instructions":"undefined","type":"recurring","price":250,"promo":[],"isDeleted":false,"isActive":true,"image":"https://s3.amazonaws.com/greencarebucket/public/image-1683748679132-748339934.jpg","backgroundImage":"","contactLink":"","isContactOnly":false,"createdAt":"2023-05-10T19:58:07.896Z","updatedAt":"2023-05-10T19:58:07.896Z","__v":0}],"contactOnlyServices":[{"_id":"645bf7a3123b0592f81fcf2f","title":"Custom Services","description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.","subType":"gardenCare","instructions":"undefined","type":"contactOnly","price":200,"promo":[],"isDeleted":false,"isActive":true,"image":"https://s3.amazonaws.com/greencarebucket/public/image-1683748762793-285236906.jpg","backgroundImage":"","contactLink":"https://chat.openai.com/","isContactOnly":true,"createdAt":"2023-05-10T19:59:31.826Z","updatedAt":"2023-05-10T19:59:31.826Z","__v":0}],"sliders":[]}}</string>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                 <color key="textColor" red="0.71372549019999998" green="0.71764705880000002" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -90,14 +93,14 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minimum Hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iP8-Uo-amc">
-                                <rect key="frame" x="183.66666666666666" y="232.33333333333334" width="101.33333333333334" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iP8-Uo-amc">
+                                <rect key="frame" x="183.66666666666666" y="232.33333333333334" width="73.999999999999972" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" name="lightBlackColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJs-9h-0Cm">
-                                <rect key="frame" x="297" y="227" width="24" height="27.666666666666657"/>
+                                <rect key="frame" x="269.66666666666669" y="227" width="24" height="27.666666666666657"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T87-7M-yQ3">
                                         <rect key="frame" x="8" y="4" width="8" height="19.666666666666668"/>
@@ -154,9 +157,16 @@
                                     <action selector="continueButtonTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="llY-ap-cf3"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- - - -" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfH-yU-IMc">
+                                <rect key="frame" x="268" y="79" width="44" height="19.666666666666671"/>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins Medium" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="zfH-yU-IMc" firstAttribute="centerY" secondItem="reF-5D-NtO" secondAttribute="centerY" id="1Co-73-7eW"/>
                             <constraint firstItem="TD4-dE-i49" firstAttribute="leading" secondItem="nYV-Gf-F50" secondAttribute="leading" constant="24" id="1LH-po-Z4D"/>
                             <constraint firstItem="nws-2n-KrG" firstAttribute="top" secondItem="4tY-QF-LL4" secondAttribute="bottom" constant="20" id="6ai-VI-oQs"/>
                             <constraint firstItem="jmb-0G-lce" firstAttribute="leading" secondItem="TD4-dE-i49" secondAttribute="leading" id="6dZ-hu-XWc"/>
@@ -174,6 +184,7 @@
                             <constraint firstItem="XJs-9h-0Cm" firstAttribute="centerY" secondItem="iP8-Uo-amc" secondAttribute="centerY" id="edt-5O-PVa"/>
                             <constraint firstItem="G5n-WB-DnA" firstAttribute="centerY" secondItem="TD4-dE-i49" secondAttribute="centerY" id="kJw-mw-OPH"/>
                             <constraint firstItem="reF-5D-NtO" firstAttribute="leading" secondItem="O7k-JV-dhS" secondAttribute="leading" id="kOd-cA-Ppa"/>
+                            <constraint firstAttribute="trailing" secondItem="zfH-yU-IMc" secondAttribute="trailing" constant="24" id="n1d-WW-dg7"/>
                             <constraint firstItem="jmb-0G-lce" firstAttribute="top" secondItem="TD4-dE-i49" secondAttribute="bottom" id="nsF-tT-WSD"/>
                             <constraint firstItem="8qX-IK-gF5" firstAttribute="leading" secondItem="nws-2n-KrG" secondAttribute="trailing" constant="12" id="o4c-ss-eVa"/>
                             <constraint firstAttribute="trailing" secondItem="4tY-QF-LL4" secondAttribute="trailing" constant="24" id="orH-Si-mHI"/>
@@ -199,10 +210,12 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="btnContinue" destination="G5n-WB-DnA" id="Gu1-9f-rrJ"/>
                 <outlet property="lblDescription" destination="4tY-QF-LL4" id="PGa-M2-nvB"/>
-                <outlet property="lblMinHours" destination="T87-7M-yQ3" id="p0Y-9j-mZb"/>
+                <outlet property="lblMinHours" destination="T87-7M-yQ3" id="Rs9-TE-Ci7"/>
                 <outlet property="lblMinPersons" destination="00F-2p-TnY" id="GnZ-qn-xWV"/>
                 <outlet property="lblPrice" destination="TD4-dE-i49" id="JFA-Wq-mDr"/>
+                <outlet property="lblSlot" destination="zfH-yU-IMc" id="mNv-eJ-CBA"/>
                 <outlet property="lblTitle" destination="O7k-JV-dhS" id="d5y-X7-8kg"/>
             </connections>
             <point key="canvasLocation" x="-112.97709923664122" y="133.09859154929578"/>

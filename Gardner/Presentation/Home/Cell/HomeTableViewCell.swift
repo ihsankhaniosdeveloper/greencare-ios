@@ -32,7 +32,7 @@ class HomeTableViewCell: UITableViewCell {
             .map { $0.date.toDateString(format: "d MMM") }
             .joined(separator: ", ")
         
-        self.lblPersonsAndHours.text = "2 Persons/\(getTotalHours(slots: serviceRequest.slot?.slots ?? [], minHours: serviceRequest.service?.minHours ?? 0)) Hours"
+        self.lblPersonsAndHours.text = "2 Persons/\(serviceRequest.totalHours) Hours"
         
         self.lblCreatedAt.text = "Created at: \(serviceRequest.createdAt?.toDateString() ?? "")"
         self.lblPrice.text = serviceRequest.totalPrice?.formattedAmountWithAED

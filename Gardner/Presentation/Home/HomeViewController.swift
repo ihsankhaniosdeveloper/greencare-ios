@@ -48,8 +48,6 @@ class HomeViewController: UIViewController {
         let mutableAttributedString = NSMutableAttributedString.init(string: message)
         mutableAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(named: "primaryColor")!, range: range)
         lblWelcomeMsg.attributedText = mutableAttributedString
-
-        self.presenter.fetchServiceRequest()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +55,7 @@ class HomeViewController: UIViewController {
         
         self.navigationController?.navigationBar.isHidden = true
         
+        self.presenter.fetchServiceRequest()
         self.presenter.fetchUserProfile()
     }
     
@@ -95,6 +94,16 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
         cell.configure(serviceRequest: self.serviceRequests[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailsVC = ServiceRequestDetailsViewController.make(
+            presenter: ServiceRequestDetailsPresenter(service: ServiceRequestService(apiClient: APIClient(session: .default))),
+            serviceRequest: self.serviceRequests[indexPath.row]
+        )
+        
+        self.navigationController?.pushViewController(detailsVC, animated: true)
+        
     }
 }
 

@@ -7,10 +7,6 @@
 
 import Foundation
 
-struct ServiceRequestReponse: Codable {
-    let serviceRequest: ServiceRequest
-}
-
 enum ServiceRequestStatus: String, Codable {
     case pending = "pending"
     case inProgress = "inProgress"
@@ -23,7 +19,7 @@ enum ServiceRequestStatus: String, Codable {
 struct ServiceRequest: Codable {
     let id: String
     let service: Service?
-    let status: ServiceRequestStatus
+    var status: ServiceRequestStatus
     let promo: [String]?
     let address: Address?
     let user: String?
@@ -38,6 +34,16 @@ struct ServiceRequest: Codable {
         case service, status, promo, address, user, discount, totalPrice, discountAmount, isDeleted, createdAt, updatedAt
         case v = "__v"
         case slot
+    }
+    
+    var totalHours: Int {
+        var slotCount = 0
+        
+        self.slot?.slots?.forEach({ slot in
+            slotCount += slot.timeSlots?.count ?? 0
+        })
+        
+        return slotCount * (self.service?.minHours ?? 0)
     }
 }
 
