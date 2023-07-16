@@ -11,7 +11,7 @@ class OrdersListingViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var presenter: OrderListingPresenterType!
-    private var schedulledRequests: [ServiceRequest] = []
+    private var requests: [ServiceRequest] = []
     private var isLoadingCompleted: Bool = false
     
     override func viewDidLoad() {
@@ -32,24 +32,31 @@ class OrdersListingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.presenter.fetchScheduleSlots()
+        self.presenter.fetchPendingServiceRequests()
     }
 }
 
 extension OrdersListingViewController: OrdersListingPresenterOutput {
-    func scheduleListingPresenter(scheduleOrderFetchSuccess requests: [ServiceRequest]) {
+    func ordersListingPresenter(pendingRequestsFetchingSuccess requests: [ServiceRequest]) {
         self.tableView.isScrollEnabled = !requests.isEmpty
-        self.schedulledRequests = requests
         self.isLoadingCompleted = true
+        
+        self.requests = requests
         self.tableView.reloadData()
     }
     
-    func scheduleListingPresenter(scheduleOrderFetchFailed message: String) {
+    func ordersListingPresenter(pendingRequestsFetchingFailure message: String) {
         tableView.isScrollEnabled = false
         self.isLoadingCompleted = true
         self.tableView.reloadData()
         
         self.showSnackBar(message: message)
+    }
+    
+    
+    func ordersListingPresenter(requestStatusUpdated requestId: String) {
+        self.requests.removeAll(where: { $0.id == requestId })
+        self.tableView.reloadData()
     }
     
     func startLoading() {
@@ -63,12 +70,12 @@ extension OrdersListingViewController: OrdersListingPresenterOutput {
 
 extension OrdersListingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.schedulledRequests.isEmpty && isLoadingCompleted ? 1 :  self.schedulledRequests.count
+        return self.requests.isEmpty && isLoadingCompleted ? 1 :  self.requests.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if self.schedulledRequests.isEmpty && isLoadingCompleted {
+        if self.requests.isEmpty && isLoadingCompleted {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyCell", for: indexPath) as! EmptyCell
             cell.configure(message: "No schedule request found")
             return cell
@@ -76,9 +83,21 @@ extension OrdersListingViewController: UITableViewDelegate, UITableViewDataSourc
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrdersTableViewCell", for: indexPath) as! OrdersTableViewCell
         
-        cell.configure(serviceRequest: self.schedulledRequests[indexPath.row])
+        cell.acceptButtonTapHandler = { [weak self] indexPath in
+            guard let self = self else { return }
+            
+            let requestId = self.requests[indexPath.row].id
+            self.presenter.updateRequestStatus(requestId: requestId, status: .accepted)
+        }
+        
+        cell.rejectButtonTapHandler = { [weak self] indexPath in
+            guard let self = self else { return }
+            
+            let requestId = self.requests[indexPath.row].id
+            self.presenter.updateRequestStatus(requestId: requestId, status: .rejected)
+        }
+        
+        cell.configure(serviceRequest: self.requests[indexPath.row], indexPath: indexPath)
         return cell
     }
-    
-    
 }

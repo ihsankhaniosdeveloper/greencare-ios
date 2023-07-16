@@ -212,7 +212,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6O9-xw-MM7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -276,17 +276,32 @@
             </objects>
             <point key="canvasLocation" x="1131" y="1671"/>
         </scene>
-        <!--View Controller-->
+        <!--History View Controller-->
         <scene sceneID="sQQ-FK-cm6">
             <objects>
-                <viewController id="Kc5-BX-2Q3" sceneMemberID="viewController">
+                <viewController id="Kc5-BX-2Q3" customClass="HistoryViewController" customModule="Gardner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D4K-7B-pD9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Bu4-eZ-9uT">
+                                <rect key="frame" x="0.0" y="44" width="320" height="475"/>
+                                <color key="backgroundColor" name="lightGreyColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="1SP-4Q-AXe"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="lightGreyColor"/>
+                        <constraints>
+                            <constraint firstItem="Bu4-eZ-9uT" firstAttribute="trailing" secondItem="1SP-4Q-AXe" secondAttribute="trailing" id="1Yz-4C-jit"/>
+                            <constraint firstItem="Bu4-eZ-9uT" firstAttribute="leading" secondItem="1SP-4Q-AXe" secondAttribute="leading" id="GPe-nQ-uQB"/>
+                            <constraint firstItem="1SP-4Q-AXe" firstAttribute="bottom" secondItem="Bu4-eZ-9uT" secondAttribute="bottom" id="LIq-Cu-5Pg"/>
+                            <constraint firstItem="Bu4-eZ-9uT" firstAttribute="top" secondItem="1SP-4Q-AXe" secondAttribute="top" id="xFt-65-egG"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5FF-q1-lyd"/>
+                    <connections>
+                        <outlet property="tableView" destination="Bu4-eZ-9uT" id="3ms-5L-eUk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bop-bv-ZfE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -299,7 +314,7 @@
                     <tabBarItem key="tabBarItem" title="Profile" image="ic_profile" id="TVT-Rc-WkB"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iym-DQ-dbS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -315,10 +330,10 @@
         <scene sceneID="4JA-d6-liu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zUS-cB-aOM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="History" id="DF6-Xp-sMn"/>
+                    <tabBarItem key="tabBarItem" title="History" image="ic_history_tab" id="DF6-Xp-sMn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="j3A-vo-A4B">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -334,6 +349,7 @@
     <resources>
         <image name="ic_bell" width="20" height="22"/>
         <image name="ic_cart_green" width="22.5" height="22.5"/>
+        <image name="ic_history_tab" width="21" height="22.5"/>
         <image name="ic_home" width="22.5" height="22.5"/>
         <image name="ic_profile" width="22.5" height="22.5"/>
         <image name="profile_placeholder" width="43" height="43"/>

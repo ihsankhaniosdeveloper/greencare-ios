@@ -31,7 +31,6 @@ class SettingsPresenter: SettingsPresenterType {
         let profileCells: [SettingsCell] = [
             SettingsCell(title: "Personal Details", color: "#E1EADCFF", type: .profileDetails),
             SettingsCell(title: "My Addresses", color: "#D8E5E6FF", type: .myAddresses),
-            SettingsCell(title: "Order History", color: "#D6D9DAFF", type: .orderHistory),
             SettingsCell(title: "Support", color: "#D6DBFFFF", type: .support),
             SettingsCell(title: "Logout", color: "#FBF4E2FF", type: .logout),
         ]

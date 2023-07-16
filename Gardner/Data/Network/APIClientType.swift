@@ -68,6 +68,7 @@ class APIClient: APIClientType {
             print("Initiating request: \(requestUrl)")
             print("HEADERS")
             urlRequest?.allHTTPHeaderFields?.forEach { print("\($0.key) : \($0.value)") }
+            print("body >> \(route.body)")
         }
         #endif
         

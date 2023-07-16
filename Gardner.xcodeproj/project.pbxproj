@@ -14,11 +14,8 @@
 		080CA2DA2A44E2A000983D6D /* NotificationListingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080CA2D92A44E2A000983D6D /* NotificationListingPresenter.swift */; };
 		080CA2DD2A44E32C00983D6D /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080CA2DC2A44E32C00983D6D /* NotificationService.swift */; };
 		080D3C672A4AF2DF00832DAA /* Double+CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080D3C662A4AF2DF00832DAA /* Double+CurrencyFormatter.swift */; };
-		081004062A3D0D3400A56638 /* ServiceRequestSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081004042A3D0D3400A56638 /* ServiceRequestSuccessViewController.swift */; };
-		081004072A3D0D3400A56638 /* ServiceRequestSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 081004052A3D0D3400A56638 /* ServiceRequestSuccessViewController.xib */; };
 		0810040A2A3DF40000A56638 /* ServiceRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081004092A3DF40000A56638 /* ServiceRequestService.swift */; };
 		081004102A3E192B00A56638 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0810040E2A3E192B00A56638 /* HistoryViewController.swift */; };
-		081004112A3E192B00A56638 /* HistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0810040F2A3E192B00A56638 /* HistoryViewController.xib */; };
 		081004152A3E234B00A56638 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081004132A3E234B00A56638 /* HistoryTableViewCell.swift */; };
 		081004162A3E234B00A56638 /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 081004142A3E234B00A56638 /* HistoryTableViewCell.xib */; };
 		081004182A3E270B00A56638 /* HistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081004172A3E270B00A56638 /* HistoryPresenter.swift */; };
@@ -113,11 +110,8 @@
 		080CA2D92A44E2A000983D6D /* NotificationListingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListingPresenter.swift; sourceTree = "<group>"; };
 		080CA2DC2A44E32C00983D6D /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		080D3C662A4AF2DF00832DAA /* Double+CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+CurrencyFormatter.swift"; sourceTree = "<group>"; };
-		081004042A3D0D3400A56638 /* ServiceRequestSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestSuccessViewController.swift; sourceTree = "<group>"; };
-		081004052A3D0D3400A56638 /* ServiceRequestSuccessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceRequestSuccessViewController.xib; sourceTree = "<group>"; };
 		081004092A3DF40000A56638 /* ServiceRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestService.swift; sourceTree = "<group>"; };
 		0810040E2A3E192B00A56638 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
-		0810040F2A3E192B00A56638 /* HistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryViewController.xib; sourceTree = "<group>"; };
 		081004132A3E234B00A56638 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		081004142A3E234B00A56638 /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
 		081004172A3E270B00A56638 /* HistoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPresenter.swift; sourceTree = "<group>"; };
@@ -256,19 +250,9 @@
 			path = Notifications;
 			sourceTree = "<group>";
 		};
-		081004032A3D0D0600A56638 /* OrderSuccess */ = {
-			isa = PBXGroup;
-			children = (
-				081004042A3D0D3400A56638 /* ServiceRequestSuccessViewController.swift */,
-				081004052A3D0D3400A56638 /* ServiceRequestSuccessViewController.xib */,
-			);
-			path = OrderSuccess;
-			sourceTree = "<group>";
-		};
 		081004082A3DF3DF00A56638 /* ServiceRequests */ = {
 			isa = PBXGroup;
 			children = (
-				081004092A3DF40000A56638 /* ServiceRequestService.swift */,
 			);
 			path = ServiceRequests;
 			sourceTree = "<group>";
@@ -277,7 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				081004122A3E22BF00A56638 /* Cell */,
-				0810040F2A3E192B00A56638 /* HistoryViewController.xib */,
 				081004172A3E270B00A56638 /* HistoryPresenter.swift */,
 				0810040E2A3E192B00A56638 /* HistoryViewController.swift */,
 			);
@@ -443,12 +426,11 @@
 				081004252A3E567900A56638 /* Support */,
 				081004192A3E457400A56638 /* Profile */,
 				0810040D2A3E18FF00A56638 /* History */,
-				081004032A3D0D0600A56638 /* OrderSuccess */,
 				08E84DB72A17CF5100DF8428 /* Address */,
 				08AA56022A0C265500F3F8CD /* ServiceDetails */,
 				08AA55D12A07873300F3F8CD /* Home */,
 				08397EB529F97B3D008F8F14 /* Onboarding */,
-				089E93872A0EDE1E0034BA90 /* ScheduleListing */,
+				089E93872A0EDE1E0034BA90 /* OrdersListing */,
 				08397EAA29F913E1008F8F14 /* Settings */,
 			);
 			path = Presentation;
@@ -475,6 +457,7 @@
 		08715A3D29EEE554002CB3F3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				081004092A3DF40000A56638 /* ServiceRequestService.swift */,
 				080CA2DB2A44E31B00983D6D /* Notifications */,
 				081004082A3DF3DF00A56638 /* ServiceRequests */,
 				08E84DC02A17D0CC00DF8428 /* Address */,
@@ -518,14 +501,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		089E93872A0EDE1E0034BA90 /* ScheduleListing */ = {
+		089E93872A0EDE1E0034BA90 /* OrdersListing */ = {
 			isa = PBXGroup;
 			children = (
 				089E938E2A0EDEE70034BA90 /* Cell */,
 				089E93882A0EDE350034BA90 /* OrdersListingViewController.swift */,
 				089E938C2A0EDE470034BA90 /* OrdersListingPresenter.swift */,
 			);
-			path = ScheduleListing;
+			path = OrdersListing;
 			sourceTree = "<group>";
 		};
 		089E938E2A0EDEE70034BA90 /* Cell */ = {
@@ -799,10 +782,8 @@
 				08715A2429EDEC7C002CB3F3 /* Main.storyboard in Resources */,
 				081004212A3E45FD00A56638 /* ProfileTableViewCell.xib in Resources */,
 				08D2B7542A347BAD002D9822 /* LoaderViewController.xib in Resources */,
-				081004072A3D0D3400A56638 /* ServiceRequestSuccessViewController.xib in Resources */,
 				089E93962A0EECFB0034BA90 /* ServiceDetailsTableViewCell.xib in Resources */,
 				08C279C52A3BADDF008678DA /* EmptyTableViewCell.xib in Resources */,
-				081004112A3E192B00A56638 /* HistoryViewController.xib in Resources */,
 				08AA55ED2A07E75C00F3F8CD /* Poppins-Medium.ttf in Resources */,
 				0810041D2A3E459100A56638 /* ProfileViewController.xib in Resources */,
 				08397EBF2A004563008F8F14 /* OTPViewController.xib in Resources */,
@@ -861,7 +842,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				081004062A3D0D3400A56638 /* ServiceRequestSuccessViewController.swift in Sources */,
 				08397EBE2A004563008F8F14 /* OTPViewController.swift in Sources */,
 				08397EB929F97B98008F8F14 /* LoginViewController.swift in Sources */,
 				08AA55E42A07D34C00F3F8CD /* UIColor+Hex.swift in Sources */,

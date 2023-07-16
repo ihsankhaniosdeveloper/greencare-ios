@@ -8,38 +8,33 @@
 import Foundation
 
 protocol HistoryPresenterType {
-    func fetchServiceRequest(_for status: ServiceRequestStatus)
+    func fetchServiceRequest()
 }
 
-protocol HistoryPresenterOutput: AnyObject {
+protocol HistoryPresenterOutput: AnyObject, LoadingOutputs {
     func historyPresenter(serviceRequestFetchSuccess serviceRequests: [ServiceRequest])
     func historyPresenter(serviceRequestFetchFailed message: String)
 }
 
 class HistoryPresenter: HistoryPresenterType {
     private var service: ServiceRequestServiceType
-    
-    private var requests: [ServiceRequest] = []
     weak var outputs: HistoryPresenterOutput?
     
     init(service: ServiceRequestServiceType) {
         self.service = service
     }
     
-    func fetchServiceRequest(_for status: ServiceRequestStatus) {
-        if !self.requests.isEmpty {
-            let filteredSR = self.requests.filter { $0.status == status }
-            self.outputs?.historyPresenter(serviceRequestFetchSuccess: filteredSR)
-            return
-        }
+    func fetchServiceRequest() {
+        self.outputs?.startLoading()
         
         self.service.getServiceRequest { result in
+            self.outputs?.stopLoading()
+            
             switch result {
                 
             case .success(let serviceRequests):
-                self.requests = serviceRequests
-                let filteredSR = serviceRequests.filter { $0.status == status }
-                self.outputs?.historyPresenter(serviceRequestFetchSuccess: filteredSR)
+                let filtered = serviceRequests.filter { $0.status == .completed }
+                self.outputs?.historyPresenter(serviceRequestFetchSuccess: filtered)
                 
             case .failure(let error):
                 self.outputs?.historyPresenter(serviceRequestFetchFailed: error.errorDescription ?? error.localizedDescription)

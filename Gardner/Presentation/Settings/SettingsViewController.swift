@@ -16,7 +16,6 @@ struct SettingsCell {
 enum SettingsCellType {
     case profileDetails
     case myAddresses
-    case orderHistory
     case support
     case logout
 }
@@ -98,16 +97,6 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
             let addressListingVC = AddressListingViewController.make(presenter: AddressListingPresenter(service: AddressService(apiClient: APIClient(session: .default))))
             addressListingVC.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(addressListingVC, animated: true)
-            
-        case .orderHistory:
-            let historyVC = HistoryViewController.make(
-                presenter: HistoryPresenter(
-                    service: ServiceRequestService(apiClient: APIClient(session: .default))
-                )
-            )
-            historyVC.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(historyVC, animated: true)
-            break
             
         case .support:
             let supportVC = SupportViewController(nibName: "SupportViewController", bundle: .main)
