@@ -102,8 +102,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             serviceRequest: self.serviceRequests[indexPath.row]
         )
         
+        detailsVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(detailsVC, animated: true)
-        
     }
 }
 
