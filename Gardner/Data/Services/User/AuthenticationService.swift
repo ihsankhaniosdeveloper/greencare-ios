@@ -27,7 +27,7 @@ struct LoginResponse: Decodable {
 }
 
 protocol AuthenticationServiceType {
-    func requestOTP<T: Decodable>(mobileNumber: String, completion: @escaping CompletionClosure<T>)
+    func requestOTP<T: Decodable>(mobileNumber: String, pushToken: String, completion: @escaping CompletionClosure<T>)
     func verifyOTP<T: Decodable>(mobileNumber: String, otp: String, completion: @escaping CompletionClosure<T>)
     func getUser(completion: @escaping CompletionClosure<UserProfile>)
     func update(profilePicture: ProfilePictureDocument, fName: String, lName: String, completion: @escaping CompletionClosure<UserProfile>)
@@ -47,8 +47,8 @@ class AuthenticationService: BaseService, AuthenticationServiceType {
         }
     }
     
-    func requestOTP<T>(mobileNumber: String, completion: @escaping CompletionClosure<T>) where T : Decodable {
-        let route = UserRoutes.sendOTP(mobileNumber: mobileNumber)
+    func requestOTP<T>(mobileNumber: String, pushToken: String, completion: @escaping CompletionClosure<T>) where T : Decodable {
+        let route = UserRoutes.sendOTP(mobileNumber: mobileNumber, pushToken: pushToken, userType: .customer)
         
         self.request(route: route) { (data: T?, error: NetworkErrors?) in
             if let data = data, error == nil {

@@ -7,9 +7,12 @@
 
 import Foundation
 
-// Rename this to User Routes
+enum UserType: String {
+    case customer = "user"
+    case supplier = "supplier"
+}
 enum UserRoutes {
-    case sendOTP(mobileNumber: String)
+    case sendOTP(mobileNumber: String, pushToken: String, userType: UserType)
     case verifyOTP(mobileNumber: String, otp: String)
     case getUser
     case updateProfile(firstName: String, lastName: String)
@@ -34,7 +37,7 @@ extension UserRoutes: APIRouteType {
     
     var body: [String: Any]? {
         switch self {
-            case .sendOTP(let mobileNumber): return ["contact": mobileNumber]
+            case .sendOTP(let mobileNumber, let pushToken, let userType): return ["contact": mobileNumber, "deviceToken": pushToken, "type": userType.rawValue]
             case .verifyOTP(let mobileNumber, let otp): return ["contact": mobileNumber, "otp": otp]
             case .getUser: return nil
             case .updateProfile: return nil

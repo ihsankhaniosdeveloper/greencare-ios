@@ -36,6 +36,16 @@ class UserSession {
         }
     }
     
+    var pushToken: String {
+        set {
+            UserDefaults.standard.set("user.push.token", forKey: newValue)
+        }
+        
+        get {
+            return UserDefaults.standard.string(forKey: "user.push.token") ?? ""
+        }
+    }
+    
     var token: String {
         return UserDefaults.standard.string(forKey: "token") ?? ""
     }

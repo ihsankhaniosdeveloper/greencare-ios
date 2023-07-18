@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StripePaymentSheet
 
 class CartViewController: UIViewController {
     @IBOutlet weak var viewPromoCode: UIView!
@@ -19,6 +20,9 @@ class CartViewController: UIViewController {
     @IBOutlet weak var lblHours: UILabel!
     @IBOutlet weak var lblPersons: UILabel!
     @IBOutlet weak var lblPromoCode: UILabel!
+    
+    @IBOutlet weak var switchCOD: UISwitch!
+    @IBOutlet weak var switchPayUsingCard: UISwitch!
     
     private var calculateAmoutResponse: CalculateAmountResponse!
 //    private var selectedSlots: [Slot] = []
@@ -46,6 +50,34 @@ class CartViewController: UIViewController {
     @IBAction func checkoutButtonTap(_ sender: Any) {
         self.presenter.requestService(paymentMethod: .cash)
     }
+    
+    @IBAction func switchChanged(_ sender: UISwitch) {
+        switch sender {
+        case switchCOD:
+            switchPayUsingCard.isOn = false
+            
+        case switchPayUsingCard:
+            switchCOD.isOn = false
+            
+            self.showStipePaymentSheet()
+            
+        default:
+            break
+        }
+    }
+    
+    private func showStipePaymentSheet() {
+        STPAPIClient.shared.publishableKey = "pk_test_X98IxAl1lnYxGw7EcUDGztPt00sbJyTAmO"
+        var configuration = PaymentSheet.Configuration()
+        configuration.merchantDisplayName = "Example, Inc."
+        configuration.allowsDelayedPaymentMethods = true
+        
+        let sheet = PaymentSheet(paymentIntentClientSecret: "sk_test_hsDSA9gWnrdq5aBf4NC2IRQW00o40lDQ6f", configuration: configuration)
+        sheet.present(from: self) { result in
+            print("result >>> \(result)")
+        }
+    }
+    
 }
 
 extension CartViewController: CartPresenterOutput {

@@ -46,10 +46,12 @@ class LoginPresenter: LoginPresenterType {
             return
         }
         
+        let pushToken = UserSession.instance.pushToken
+        
         self.outputs?.startLoading()
         let mobileNumberCountryCode = countryCode + mobileNumber
         
-        authService.requestOTP(mobileNumber: mobileNumberCountryCode) { (result: Result<EmptyResonseDecodable, NetworkErrors>) in
+        authService.requestOTP(mobileNumber: mobileNumberCountryCode, pushToken: "dummy_push_token") { (result: Result<EmptyResonseDecodable, NetworkErrors>) in
             self.outputs?.stopLoading()
             
             switch result {
