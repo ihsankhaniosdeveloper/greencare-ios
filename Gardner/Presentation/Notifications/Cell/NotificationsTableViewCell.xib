@@ -44,13 +44,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" text="Your request for one time service against slot 2:00 - 7:00 accepted by our egent." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgw-Kj-AlX">
-                                <rect key="frame" x="16" y="38.666666666666664" width="272" height="25.666666666666664"/>
+                                <rect key="frame" x="16" y="38.666666666666671" width="272" height="42.666666666666671"/>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                 <color key="textColor" name="lightBlackColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Received at: 5 Mar 2023 5:00 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d69-6A-kyo">
-                                <rect key="frame" x="97.666666666666671" y="72.333333333333329" width="190.33333333333331" height="17"/>
+                                <rect key="frame" x="97.666666666666671" y="89.333333333333329" width="190.33333333333331" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="37x-wH-2O5"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -81,6 +84,10 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lblDescription" destination="cgw-Kj-AlX" id="DPy-5E-RM4"/>
+                <outlet property="lblTitle" destination="q26-Uc-xcT" id="8mv-EM-x61"/>
+            </connections>
             <point key="canvasLocation" x="88.549618320610676" y="39.7887323943662"/>
         </tableViewCell>
     </objects>

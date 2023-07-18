@@ -35,9 +35,7 @@ protocol AuthenticationServiceType {
 
 class AuthenticationService: BaseService, AuthenticationServiceType {
     func update(profilePicture: ProfilePictureDocument, fName: String, lName: String, completion: @escaping CompletionClosure<UserProfile>) {
-        let route = UserRoutes.updateProfile(firstName: fName, lastName: lName)
-        
-        self.upload(document: profilePicture, route: route, otherFormValues: ["firstName": fName, "lastName": lName]) { (data: UserProfile?, error: NetworkErrors?) in
+        self.upload(document: profilePicture, route: UserRoutes.updateProfile, otherFormValues: ["firstName": fName, "lastName": lName]) { (data: UserProfile?, error: NetworkErrors?) in
             if let data = data, error == nil {
                 completion(.success(data))
                 return

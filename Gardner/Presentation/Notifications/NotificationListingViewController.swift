@@ -10,6 +10,7 @@ import UIKit
 class NotificationListingViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
+    private var notifications: [Notification] = []
     private var presenter: NotificationListingPresetnerType!
     
     static func make(presenter: NotificationListingPresetnerType) -> NotificationListingViewController {
@@ -28,16 +29,40 @@ class NotificationListingViewController: UIViewController {
         self.tableView.dataSource = self
         
         tableView.register(UINib(nibName: "NotificationsTableViewCell", bundle: .main), forCellReuseIdentifier: "NotificationsTableViewCell")
+        
+        (self.presenter as? NotificationListingPresetner)?.outputs = self
+        
+        self.presenter.getNotification()
     }
 }
 
 extension NotificationListingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.notifications.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationsTableViewCell", for: indexPath) as! NotificationsTableViewCell
+        cell.configure(notification: self.notifications[indexPath.row])
         return cell
+    }
+}
+
+extension NotificationListingViewController: NotificationListingPresetnerOutput {
+    func notificationsListingPresenter(fetchingSuccess notifications: [Notification]) {
+        self.notifications = notifications
+        self.tableView.reloadData()
+    }
+    
+    func notificationsListingPresenter(fetchingFailed message: String) {
+        self.showSnackBar(message: message)
+    }
+    
+    func startLoading() {
+        self.startActivityIndicator()
+    }
+    
+    func stopLoading() {
+        self.stopActivityIndicator()
     }
 }

@@ -14,7 +14,7 @@ class ProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var tfPhoneNumber: UITextField!
     
     var saveButtonTapHandler: ((_ image: UIImage?, _ fName: String?, _ lName: String?)->())?
-    var changeAvatarButtonTapHandler: (()->())?
+    var changeAvatorTapHandler: (()->())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,11 +22,16 @@ class ProfileTableViewCell: UITableViewCell {
         self.selectionStyle = .none
     }
     
-    func configure(profile: UserProfile?) {
-        self.ivAvatar.sd_setImage(with: URL(string: profile?.profilePicture ?? ""), placeholderImage: UIImage(named: "profile_placeholder"), context: nil)
+    func configure(profile: UserProfile?, selectedImage: UIImage?) {
         self.tfFirstName.text = profile?.firstName
         self.tfLastName.text = profile?.lastName
         self.tfPhoneNumber.text = profile?.contact
+        
+        if let selectedImage = selectedImage {
+            self.ivAvatar.image = selectedImage
+        } else {
+            self.ivAvatar.sd_setImage(with: URL(string: profile?.profilePicture ?? ""), placeholderImage: UIImage(named: "profile_placeholder"), context: nil)
+        }
     }
     
     @IBAction func saveButtonTap(_ sender: Any) {
@@ -37,5 +42,8 @@ class ProfileTableViewCell: UITableViewCell {
     }
     
     @IBAction func changeAvatarButtonTap(_ sender: Any) {
+        if let changeAvatorTapHandler = self.changeAvatorTapHandler {
+            changeAvatorTapHandler()
+        }
     }
 }

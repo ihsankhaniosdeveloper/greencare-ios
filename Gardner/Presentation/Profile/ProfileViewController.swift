@@ -12,6 +12,7 @@ class ProfileViewController: UIViewController {
     
     private var presenter: ProfilePresenterType!
     private var userProfile: UserProfile?
+    private var image: UIImage?
     
     static func make(presenter: ProfilePresenterType) -> ProfileViewController {
         let vc = ProfileViewController(nibName: "ProfileViewController", bundle: .main)
@@ -47,7 +48,18 @@ extension ProfileViewController: ProfilePresenterOutput {
         self.showSnackBar(message: message)
     }
     
+    func profilePresenter(profileUpdateSuccess profile: UserProfile) {
+        self.showSnackBar(message: "Profile updated successfully")
+        UserSession.instance.profile = profile
+    }
     
+    func startLoading() {
+        self.startActivityIndicator()
+    }
+    
+    func stopLoading() {
+        self.stopActivityIndicator()
+    }
 }
 
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
@@ -58,14 +70,62 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
         
-        cell.configure(profile: self.userProfile)
+        cell.configure(profile: self.userProfile, selectedImage: self.image)
         
         cell.saveButtonTapHandler = { [weak self] (image, fName, lName) in
             guard let self = self else { return }
             
-            self.presenter.updateProfile(imageData: image?.pngData(), fName: fName, lName: lName)
+            if let imageData = image?.jpegData(compressionQuality: 0.3) {
+                self.presenter.updateProfile(imageData: imageData, fName: fName, lName: lName)
+            }
+        }
+        
+        cell.changeAvatorTapHandler = { [weak self] in
+            guard let self = self else { return }
+            
+            self.showImageSelectionActionSheet()
         }
         
         return cell
+    }
+    
+    private func showImageSelectionActionSheet() {
+        let actionsheet = UIAlertController(title: "Select Profile Photo", message: "", preferredStyle: .actionSheet)
+        
+        actionsheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { action in
+            self.openPhotoLibrary()
+        }))
+        
+        actionsheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { action in
+            self.openCamera()
+        }))
+        
+        actionsheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        self.present(actionsheet, animated: true)
+    }
+    
+    private func openPhotoLibrary() {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let photoPicker = UIImagePickerController()
+            photoPicker.delegate = self
+            photoPicker.sourceType = .photoLibrary
+            self.present(photoPicker, animated: true, completion: nil)
+        }
+    }
+    
+    private func openCamera() {
+        
+    }
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.originalImage] as? UIImage {
+            self.image = image
+            self.tableView.reloadData()
+        }
+          
+        self.dismiss(animated: true, completion: nil)
     }
 }

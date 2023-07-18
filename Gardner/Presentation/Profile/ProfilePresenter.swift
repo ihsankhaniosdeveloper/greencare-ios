@@ -28,9 +28,10 @@ protocol ProfilePresenterType {
     func updateProfile(imageData: Data?, fName: String?, lName: String?)
 }
 
-protocol ProfilePresenterOutput: AnyObject {
+protocol ProfilePresenterOutput: AnyObject, LoadingOutputs {
     func profilePresenter(profileFetchSuccess profile: UserProfile)
     func profilePresenter(profileFetchFailed message: String)
+    func profilePresenter(profileUpdateSuccess profile: UserProfile)
 }
 
 class ProfilePresenter: ProfilePresenterType {
@@ -43,7 +44,11 @@ class ProfilePresenter: ProfilePresenterType {
     }
     
     func fetchUserProfile() {
+        self.outputs?.startLoading()
+        
         self.service.getUser { result in
+            self.outputs?.stopLoading()
+            
             switch result {
                 
             case .success(let profile):
@@ -60,10 +65,19 @@ class ProfilePresenter: ProfilePresenterType {
         guard let firstName = fName else { return }
         guard let lastName = lName else { return }
         
-        let profilePicture = ProfilePictureDocument(data: imageData, name: "profile", fileName: "profile", mimeType: "")
+        let profilePicture = ProfilePictureDocument(data: imageData, name: "profilePicture", fileName: "profile.jpg", mimeType: "image/jpeg")
         
+        self.outputs?.startLoading()
         self.service.update(profilePicture: profilePicture, fName: firstName, lName: lastName) { result in
-            print("result >>> \(result)")
+            self.outputs?.stopLoading()
+            
+            switch result {
+            case .success(let profile):
+                self.outputs?.profilePresenter(profileUpdateSuccess: profile)
+                
+            case .failure(let error):
+                self.outputs?.profilePresenter(profileFetchFailed: error.errorDescription ?? error.localizedDescription)
+            }
         }
     }
 }

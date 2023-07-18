@@ -43,6 +43,13 @@ class SettingsViewController: UIViewController {
         self.tableView.register(UINib(nibName: "SettingsTableViewHeader", bundle: .main), forHeaderFooterViewReuseIdentifier: "SettingsTableViewHeader")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.userProfile = UserSession.instance.profile
+        self.tableView.reloadData()
+    }
+    
     private func navigateToProfile() {
         let profileVC = ProfileViewController.make(
             presenter: ProfilePresenter(

@@ -14,8 +14,11 @@ struct ServiceRequestReponse: Codable {
 // Ask backend for other statuses
 enum ServiceRequestStatus: String, Codable {
     case pending = "pending"
-    case schedulled = "schedulled"
+    case inProgress = "inProgress"
+    case accepted = "accepted"
+    case rejected = "rejected"
     case completed = "completed"
+    case cancelled = "cancelled"
 }
 
 struct ServiceRequest: Codable {

@@ -15,7 +15,7 @@ enum UserRoutes {
     case sendOTP(mobileNumber: String, pushToken: String, userType: UserType)
     case verifyOTP(mobileNumber: String, otp: String)
     case getUser
-    case updateProfile(firstName: String, lastName: String)
+    case updateProfile
 }
 
 extension UserRoutes: APIRouteType {

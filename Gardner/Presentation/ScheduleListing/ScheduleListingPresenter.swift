@@ -40,7 +40,8 @@ extension ScheduleListingPresenter: ScheduleListingPresenterType {
             switch result {
                 
             case .success(let requests):
-                self.outputs?.scheduleListingPresenter(scheduleOrderFetchSuccess: requests)
+                let filtered = requests.filter { $0.status == .pending || $0.status == .inProgress }
+                self.outputs?.scheduleListingPresenter(scheduleOrderFetchSuccess: filtered)
                 break
                 
             case .failure(let error):
