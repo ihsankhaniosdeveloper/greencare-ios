@@ -41,6 +41,8 @@
 		082CAD8C2A19895B00D2B66D /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CAD8B2A19895B00D2B66D /* Date+Formatter.swift */; };
 		082CAD902A1C04D200D2B66D /* SelectedSlotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CAD8E2A1C04D200D2B66D /* SelectedSlotCollectionViewCell.swift */; };
 		082CAD912A1C04D200D2B66D /* SelectedSlotCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082CAD8F2A1C04D200D2B66D /* SelectedSlotCollectionViewCell.xib */; };
+		082CC2C62A69782900E35332 /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CC2C52A69782900E35332 /* PaymentService.swift */; };
+		082CC2C82A69785A00E35332 /* PaymentIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082CC2C72A69785A00E35332 /* PaymentIntent.swift */; };
 		08397EA729F18BAB008F8F14 /* UserRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EA629F18BAB008F8F14 /* UserRoutes.swift */; };
 		08397EA929F3DAAF008F8F14 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EA829F3DAAF008F8F14 /* NetworkError.swift */; };
 		08397EAC29F9140E008F8F14 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397EAB29F9140E008F8F14 /* SettingsViewController.swift */; };
@@ -153,6 +155,8 @@
 		082CAD8B2A19895B00D2B66D /* Date+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatter.swift"; sourceTree = "<group>"; };
 		082CAD8E2A1C04D200D2B66D /* SelectedSlotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedSlotCollectionViewCell.swift; sourceTree = "<group>"; };
 		082CAD8F2A1C04D200D2B66D /* SelectedSlotCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedSlotCollectionViewCell.xib; sourceTree = "<group>"; };
+		082CC2C52A69782900E35332 /* PaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
+		082CC2C72A69785A00E35332 /* PaymentIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentIntent.swift; sourceTree = "<group>"; };
 		08397EA629F18BAB008F8F14 /* UserRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRoutes.swift; sourceTree = "<group>"; };
 		08397EA829F3DAAF008F8F14 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		08397EAB29F9140E008F8F14 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -530,6 +534,7 @@
 				08AA56012A084B0A00F3F8CD /* ServiceEntity */,
 				08397EB129F97454008F8F14 /* ServiceType.swift */,
 				08397EB329F9752B008F8F14 /* BaseService.swift */,
+				082CC2C52A69782900E35332 /* PaymentService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -614,6 +619,7 @@
 				081A77FF2A3044880099D446 /* CalculateAmountResponse.swift */,
 				083C6A442A6690E700FB04A1 /* Notification.swift */,
 				083C6A462A6692AF00FB04A1 /* Address.swift */,
+				082CC2C72A69785A00E35332 /* PaymentIntent.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -944,6 +950,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				082CC2C62A69782900E35332 /* PaymentService.swift in Sources */,
 				081A78022A3092770099D446 /* CartPresenter.swift in Sources */,
 				081004062A3D0D3400A56638 /* ServiceRequestSuccessViewController.swift in Sources */,
 				08397EBE2A004563008F8F14 /* OTPViewController.swift in Sources */,
@@ -978,6 +985,7 @@
 				08715A1F29EDEC7C002CB3F3 /* SceneDelegate.swift in Sources */,
 				08AA55E22A07CD9100F3F8CD /* SettingsPresenter.swift in Sources */,
 				089E938A2A0EDE350034BA90 /* ScheduleListingViewController.swift in Sources */,
+				082CC2C82A69785A00E35332 /* PaymentIntent.swift in Sources */,
 				082CAD732A17D5CD00D2B66D /* AddressTableViewCell.swift in Sources */,
 				0810041C2A3E459100A56638 /* ProfileViewController.swift in Sources */,
 				08715A3829EDF0F8002CB3F3 /* APIClientType.swift in Sources */,

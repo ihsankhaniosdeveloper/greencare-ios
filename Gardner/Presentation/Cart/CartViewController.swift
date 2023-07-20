@@ -25,8 +25,8 @@ class CartViewController: UIViewController {
     @IBOutlet weak var switchPayUsingCard: UISwitch!
     
     private var calculateAmoutResponse: CalculateAmountResponse!
-//    private var selectedSlots: [Slot] = []
     private var presenter: CartPresenterType!
+    private var selectedPaymentMethod: PaymentMethod?
     
     static func make(presenter: CartPresenterType, calculateAmoutResponse: CalculateAmountResponse) -> CartViewController {
         let vc = CartViewController(nibName: "CartViewController", bundle: .main)
@@ -48,39 +48,68 @@ class CartViewController: UIViewController {
     
     
     @IBAction func checkoutButtonTap(_ sender: Any) {
-        self.presenter.requestService(paymentMethod: .cash)
+        guard let selectedPaymentMethod = self.selectedPaymentMethod else {
+            self.showSnackBar(message: "Please select payment method and then continue")
+            return
+        }
+        
+        switch selectedPaymentMethod {
+            
+        case .cash:
+            self.presenter.requestService(paymentMethod: .cash)
+        case .card:
+            let totalAmount = self.calculateAmoutResponse.totalPrice + self.calculateAmoutResponse.deliveryFee
+            self.presenter.getPaymentIntent(serviceRequestId: "", amount: totalAmount)
+        }
     }
     
     @IBAction func switchChanged(_ sender: UISwitch) {
         switch sender {
-        case switchCOD:
-            switchPayUsingCard.isOn = false
+            case switchCOD:
+                switchPayUsingCard.isOn = false
+                self.selectedPaymentMethod = .cash
             
-        case switchPayUsingCard:
-            switchCOD.isOn = false
+            case switchPayUsingCard:
+                switchCOD.isOn = false
+                self.selectedPaymentMethod = .card
             
-            self.showStipePaymentSheet()
-            
-        default:
-            break
+            default:break
         }
     }
     
-    private func showStipePaymentSheet() {
-        STPAPIClient.shared.publishableKey = "pk_test_X98IxAl1lnYxGw7EcUDGztPt00sbJyTAmO"
+    private func showStipePaymentSheet(with _clientSecret: String) {
+        STPAPIClient.shared.publishableKey = Constatns.stripePublishableKey
         var configuration = PaymentSheet.Configuration()
         configuration.merchantDisplayName = "Example, Inc."
+//        configuration.customer = .init(id: customerId, ephemeralKeySecret: customerEphemeralKeySecret)
         configuration.allowsDelayedPaymentMethods = true
+        let paymentSheet = PaymentSheet(paymentIntentClientSecret: _clientSecret, configuration: configuration)
+
         
-        let sheet = PaymentSheet(paymentIntentClientSecret: "sk_test_hsDSA9gWnrdq5aBf4NC2IRQW00o40lDQ6f", configuration: configuration)
-        sheet.present(from: self) { result in
-            print("result >>> \(result)")
+        paymentSheet.present(from: self) { result in
+            switch result {
+                
+            case .completed:
+                self.presenter.requestService(paymentMethod: .card)
+                break
+                
+            case .canceled:
+                break
+                
+            case .failed(let error):
+                self.showSnackBar(message: error.localizedDescription)
+                break
+            }
         }
     }
     
 }
 
 extension CartViewController: CartPresenterOutput {
+    func cartPresenter(paymentIntentFetchSuccess paymentIntent: PaymentIntent) {
+        self.showStipePaymentSheet(with: paymentIntent.clientSecret)
+    }
+    
     func cartPresenter(serviceRequestSuccess isSuccess: Bool) {
         let orderSuccessVC = ServiceRequestSuccessViewController(nibName: "ServiceRequestSuccessViewController", bundle: .main)
         orderSuccessVC.modalPresentationStyle = .fullScreen
@@ -97,7 +126,7 @@ extension CartViewController: CartPresenterOutput {
         self.stopActivityIndicator()
     }
     
-    func cartPresenter(serviceRequestFailed message: String) {
+    func cartPresenter(operationFailed message: String) {
         self.showSnackBar(message: message)
     }
     

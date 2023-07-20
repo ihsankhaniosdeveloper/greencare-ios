@@ -136,6 +136,7 @@ extension ScheduleAddViewController: ScheduleAddPresenterOutput {
             presenter: CartPresenter(
                 service: ServicesService(apiClient: APIClient(session: .default)),
                 selectedSlots: sortedSelectedSlots,
+                paymentService: paymentService(apiClient: APIClient(session: .default)),
                 selectedServiceId: self.service.id,
                 selectedAddressId: selectedAddressId
             ),

@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = .black
         self.decideRootViewController()
         
-        StripeAPI.defaultPublishableKey = "pk_test_X98IxAl1lnYxGw7EcUDGztPt00sbJyTAmO"
+        StripeAPI.defaultPublishableKey = Constatns.stripePublishableKey
         
         // Push Notification Registration
         UNUserNotificationCenter.current().delegate = self

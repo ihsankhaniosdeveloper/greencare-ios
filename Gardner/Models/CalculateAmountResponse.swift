@@ -16,5 +16,5 @@ struct CalculateAmountResponse: Codable {
     let discount: Double
     let totalPrice: Double
     let discountAmount: Double
-    let deliveryFee: Double = 100
+    let deliveryFee: Double = 200
 }

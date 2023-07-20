@@ -22,7 +22,7 @@ enum ServiceRequestStatus: String, Codable {
 }
 
 struct ServiceRequest: Codable {
-    let id: String?
+    let id: String
     let service: Service?
     let status: ServiceRequestStatus
     let promo: [String]?

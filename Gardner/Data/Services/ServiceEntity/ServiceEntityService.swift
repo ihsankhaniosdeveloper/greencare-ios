@@ -9,6 +9,7 @@ import Foundation
 
 enum PaymentMethod: String, Codable {
     case cash = "cash"
+    case card = "card"
 }
 
 struct ServiceRequestParams: Codable {
