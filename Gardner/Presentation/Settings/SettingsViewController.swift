@@ -53,7 +53,7 @@ class SettingsViewController: UIViewController {
     private func navigateToProfile() {
         let profileVC = ProfileViewController.make(
             presenter: ProfilePresenter(
-                service: AuthenticationService(
+                service: UserService(
                     apiClient: APIClient(session: .default)
                 )
             )

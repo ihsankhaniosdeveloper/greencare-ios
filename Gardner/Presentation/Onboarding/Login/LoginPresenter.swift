@@ -33,9 +33,9 @@ protocol LoginPresenterType: AnyObject {
 
 class LoginPresenter: LoginPresenterType {
     weak var outputs: LoginPresenterOutput?
-    private var authService: AuthenticationServiceType
+    private var authService: UserServiceType
     
-    init(authService: AuthenticationServiceType) {
+    init(authService: UserServiceType) {
         self.authService = authService
     }
     

@@ -62,7 +62,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
-        let navigationController = UINavigationController(rootViewController: LoginViewController.make(presenter: LoginPresenter(authService: AuthenticationService(apiClient: APIClient(session: .default)))))
+        let navigationController = UINavigationController(rootViewController: LoginViewController.make(presenter: LoginPresenter(authService: UserService(apiClient: APIClient(session: .default)))))
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }

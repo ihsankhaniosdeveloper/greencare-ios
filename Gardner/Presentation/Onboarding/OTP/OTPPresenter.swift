@@ -21,9 +21,9 @@ protocol OTPPreseneterType: AnyObject {
 
 class OTPPresenter: OTPPreseneterType {
     weak var outputs: OTPPresenterOutput?
-    private var authService: AuthenticationServiceType
+    private var authService: UserServiceType
     
-    init(authService: AuthenticationServiceType) {
+    init(authService: UserServiceType) {
         self.authService = authService
     }
     

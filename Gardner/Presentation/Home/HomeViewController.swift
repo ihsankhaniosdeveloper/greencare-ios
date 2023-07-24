@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Alamofire
+import SDWebImage
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
@@ -38,7 +38,7 @@ class HomeViewController: UIViewController {
             homeService: ServicesService(
                 apiClient: APIClient(session: .default)
             ),
-            userService: AuthenticationService(
+            userService: UserService(
                 apiClient:APIClient(session: .default)
             )
         )
@@ -71,7 +71,7 @@ class HomeViewController: UIViewController {
     @objc func profileTapped(_ sender: UITapGestureRecognizer) {
         let profileVC = ProfileViewController.make(
             presenter: ProfilePresenter(
-                service: AuthenticationService(
+                service: UserService(
                     apiClient: APIClient(session: .default)
                 )
             )
@@ -168,7 +168,7 @@ extension HomeViewController: HomePresenterOutput {
         }
         
         self.lblMobileNumber.text = UserSession.instance.contact
-        self.ivProfileAvaror.sd_setImage(with: URL(string: profile.profilePicture ?? ""), placeholderImage: UIImage(named: "profile_placeholder"), context: nil)
+        self.ivProfileAvaror.sd_setImage(with: URL(string: profile.profilePicture ?? ""), placeholderImage: UIImage(named: "profile_placeholder"), options: SDWebImageOptions(rawValue: 7))
     }
     
     func startLoading() {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class HistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var ivServiceImage: UIImageView!
@@ -21,7 +22,7 @@ class HistoryTableViewCell: UITableViewCell {
     }
 
     func configure(serviceRequest: ServiceRequest) {
-        self.ivServiceImage.sd_setImage(with: URL(string: serviceRequest.service?.image ?? ""), placeholderImage: nil, context: nil)
+        self.ivServiceImage.sd_setImage(with: URL(string:serviceRequest.service?.image ?? ""), placeholderImage: UIImage(named: "profile_placeholder"), options: SDWebImageOptions(rawValue: 7))
         self.lblTitle.text = serviceRequest.service?.title
         self.lblPersons.text = "Persons: 2"
         self.lblHours.text = "Hours: \(self.getTotalHours(slots: serviceRequest.slot?.slots ?? [], minHours: serviceRequest.service?.minHours ?? 0))"

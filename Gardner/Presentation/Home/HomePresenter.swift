@@ -34,9 +34,9 @@ class HomePresenter: HomePresenterType {
     weak var outputs: HomePresenterOutput?
     
     private var homeService: ServicesServiceType
-    private var userService: AuthenticationServiceType
+    private var userService: UserServiceType
     
-    init(homeService: ServicesServiceType, userService: AuthenticationServiceType) {
+    init(homeService: ServicesServiceType, userService: UserServiceType) {
         self.homeService = homeService
         self.userService = userService
     }

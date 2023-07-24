@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class SettingsTableViewHeader: UITableViewHeaderFooterView {
     @IBOutlet weak var lblName: UILabel!
@@ -19,7 +20,7 @@ class SettingsTableViewHeader: UITableViewHeaderFooterView {
             self.lblName.text = ""
         }
         
-        self.ivPrifile.sd_setImage(with: URL(string: userProfile.profilePicture ?? ""), placeholderImage: UIImage(named: "profile_placeholder"), context: nil)
+        self.ivPrifile.sd_setImage(with: URL(string: userProfile.profilePicture ?? ""), placeholderImage: UIImage(named: "profile_placeholder"), options: SDWebImageOptions(rawValue: 7))
     }
     
     @IBAction func editProfileButtonTap(_ sender: Any) {

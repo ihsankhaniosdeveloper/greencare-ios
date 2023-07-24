@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var ivAvatar: UIImageView!
@@ -30,7 +31,7 @@ class ProfileTableViewCell: UITableViewCell {
         if let selectedImage = selectedImage {
             self.ivAvatar.image = selectedImage
         } else {
-            self.ivAvatar.sd_setImage(with: URL(string: profile?.profilePicture ?? ""), placeholderImage: UIImage(named: "profile_placeholder"), context: nil)
+            self.ivAvatar.sd_setImage(with: URL(string: profile?.profilePicture ?? ""), placeholderImage: UIImage(named: "profile_placeholder"), options: SDWebImageOptions(rawValue: 7))
         }
     }
     

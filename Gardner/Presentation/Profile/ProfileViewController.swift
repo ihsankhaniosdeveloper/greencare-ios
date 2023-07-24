@@ -75,7 +75,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         cell.saveButtonTapHandler = { [weak self] (image, fName, lName) in
             guard let self = self else { return }
             
-            if let imageData = image?.jpegData(compressionQuality: 0.3) {
+            if let imageData = image?.jpegData(compressionQuality: 0.1) {
                 self.presenter.updateProfile(imageData: imageData, fName: fName, lName: lName)
             }
         }

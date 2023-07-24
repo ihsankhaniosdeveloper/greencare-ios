@@ -21,6 +21,6 @@ class ServiceCollectionViewCell: UICollectionViewCell {
 
     func configure(service: Service) {
         self.lblTitle.text = service.title
-        self.ivIcon.sd_setImage(with: URL(string: service.image ?? ""), placeholderImage: UIImage(named: "test_service"), context: nil)
+        self.ivIcon.sd_setImage(with: URL(string: service.image ?? ""), placeholderImage: UIImage(named: "profile_placeholder"), options: SDWebImageOptions(rawValue: 7))
     }
 }

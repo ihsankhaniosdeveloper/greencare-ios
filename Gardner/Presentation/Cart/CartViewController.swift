@@ -7,6 +7,7 @@
 
 import UIKit
 import StripePaymentSheet
+import SDWebImage
 
 class CartViewController: UIViewController {
     @IBOutlet weak var viewPromoCode: UIView!
@@ -59,7 +60,7 @@ class CartViewController: UIViewController {
             self.presenter.requestService(paymentMethod: .cash)
         case .card:
             let totalAmount = self.calculateAmoutResponse.totalPrice + self.calculateAmoutResponse.deliveryFee
-            self.presenter.getPaymentIntent(serviceRequestId: "", amount: totalAmount)
+            self.presenter.getPaymentIntent(amount: totalAmount)
         }
     }
     
@@ -80,8 +81,8 @@ class CartViewController: UIViewController {
     private func showStipePaymentSheet(with _clientSecret: String) {
         STPAPIClient.shared.publishableKey = Constatns.stripePublishableKey
         var configuration = PaymentSheet.Configuration()
-        configuration.merchantDisplayName = "Example, Inc."
-//        configuration.customer = .init(id: customerId, ephemeralKeySecret: customerEphemeralKeySecret)
+        configuration.merchantDisplayName = "Green Care"
+//        configuration.customer = .init(id: UserSession.instance.profile, ephemeralKeySecret: customerEphemeralKeySecret)
         configuration.allowsDelayedPaymentMethods = true
         let paymentSheet = PaymentSheet(paymentIntentClientSecret: _clientSecret, configuration: configuration)
 
@@ -102,7 +103,6 @@ class CartViewController: UIViewController {
             }
         }
     }
-    
 }
 
 extension CartViewController: CartPresenterOutput {
@@ -134,7 +134,7 @@ extension CartViewController: CartPresenterOutput {
 
 fileprivate extension CartViewController {
     func populateData() {
-        self.ivServiceImage.sd_setImage(with: URL(string: self.calculateAmoutResponse.service?.image ?? ""), placeholderImage: nil, context: nil)
+        self.ivServiceImage.sd_setImage(with: URL(string: self.calculateAmoutResponse.service?.image ?? ""), placeholderImage: UIImage(named: "profile_placeholder"), options: SDWebImageOptions(rawValue: 7))
         self.lblTitle.text = self.calculateAmoutResponse.service?.title
         self.lblPrice.text = calculateAmoutResponse.service?.price?.formattedAmountWithAED
         self.lblHours.text = "Hours: \(self.getTotalHours())"

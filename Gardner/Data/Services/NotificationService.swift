@@ -26,7 +26,7 @@ class NotificationService: BaseService, NotificationServiceType {
 }
 
 // MARK: -- Notifications Routes
-enum NotificationRoutes {
+fileprivate enum NotificationRoutes {
     case getAll
 }
 

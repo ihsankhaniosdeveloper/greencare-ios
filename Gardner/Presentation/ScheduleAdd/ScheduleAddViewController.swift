@@ -134,9 +134,9 @@ extension ScheduleAddViewController: ScheduleAddPresenterOutput {
         
         let vc = CartViewController.make(
             presenter: CartPresenter(
-                service: ServicesService(apiClient: APIClient(session: .default)),
-                selectedSlots: sortedSelectedSlots,
+                service: ServiceRequestService(apiClient: APIClient(session: .default)),
                 paymentService: paymentService(apiClient: APIClient(session: .default)),
+                selectedSlots: sortedSelectedSlots,
                 selectedServiceId: self.service.id,
                 selectedAddressId: selectedAddressId
             ),

@@ -9,13 +9,13 @@ import Foundation
 
 // MARK: Payment Service
 protocol PaymentServiceType {
-    func createPaymentIntent(amount: Double, serviceRequestId: String, completion: @escaping CompletionClosure<PaymentIntent>)
+    func createPaymentIntent(amount: Double, completion: @escaping CompletionClosure<PaymentIntent>)
 }
 
 class paymentService: BaseService, PaymentServiceType {
-    func createPaymentIntent(amount: Double, serviceRequestId: String, completion: @escaping CompletionClosure<PaymentIntent>) {
+    func createPaymentIntent(amount: Double, completion: @escaping CompletionClosure<PaymentIntent>) {
         
-        self.request(route: PaymentRoutes.paymentIntent(amount: amount, serviceRequestId: serviceRequestId)) { (data: PaymentIntentResponse?, error: NetworkErrors?) in
+        self.request(route: PaymentRoutes.paymentIntent(amount: amount)) { (data: PaymentIntentResponse?, error: NetworkErrors?) in
             if let data = data, error == nil {
                 completion(.success(data.paymentIntent))
                 return
@@ -29,7 +29,7 @@ class paymentService: BaseService, PaymentServiceType {
 
 // MARK: -- Payment Routes
 enum PaymentRoutes {
-    case paymentIntent(amount: Double, serviceRequestId: String)
+    case paymentIntent(amount: Double)
 }
 
 extension PaymentRoutes: APIRouteType {
@@ -47,7 +47,7 @@ extension PaymentRoutes: APIRouteType {
     
     var body: [String : Any]? {
         switch self {
-            case .paymentIntent(let amount, let serviceRequestId): return ["amount": amount, "currency": serviceRequestId]
+            case .paymentIntent(let amount): return ["amount": amount]
         }
     }
 }

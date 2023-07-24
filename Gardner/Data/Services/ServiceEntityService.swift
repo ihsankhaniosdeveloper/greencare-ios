@@ -7,39 +7,16 @@
 
 import Foundation
 
-enum PaymentMethod: String, Codable {
-    case cash = "cash"
-    case card = "card"
-}
-
-struct ServiceRequestParams: Codable {
-    let service: String
-    let address: String
-    let paymentMethod: PaymentMethod
-    let slots: [Slot]
-}
-
+// MARK: Service Type
 protocol ServicesServiceType {
     func getAllServices<T: Decodable>(completion: @escaping CompletionClosure<T>)
     func getService<T: Decodable>(serviceId: String, completion: @escaping CompletionClosure<T>)
     func calculateAmount(addressId: String, serviceId: String, slots: [Slot], completion: @escaping CompletionClosure<CalculateAmountResponse>)
     func getSlots(serviceId: String, serviceType: String, completion: @escaping CompletionClosure<[Slot]>)
-    func requestService(params: ServiceRequestParams, completion: @escaping CompletionClosure<Bool>)
 }
 
+// MARK: Service Implementation
 class ServicesService: BaseService, ServicesServiceType {
-    func requestService(params: ServiceRequestParams, completion: @escaping CompletionClosure<Bool>) {
-        self.request(route: ServicesAPIRoutes.serviceRequest(serviceRequestParams: params)) { (data: EmptyResonseDecodable?, error: NetworkErrors?) in
-            if let _ = data, error == nil {
-                completion(.success(true))
-                return
-            }
-            
-            completion(.failure(error ?? .unknown))
-        }
-    }
-    
-    
     func getAllServices<T>(completion: @escaping CompletionClosure<T>) where T : Decodable {
         self.request(route: ServicesAPIRoutes.services) { (data: T?, error: NetworkErrors?) in
             if let data = data, error == nil {
@@ -83,6 +60,52 @@ class ServicesService: BaseService, ServicesServiceType {
             }
             
             completion(.failure(error ?? .unknown))
+        }
+    }
+}
+
+// MARK: Routes
+fileprivate enum ServicesAPIRoutes {
+    case services
+    case service(serviceId: String)
+    case calculateAmount(addressId: String, serviceId: String, slots: [Slot])
+    case slots(serviceId: String, serviceType: String)
+}
+
+extension ServicesAPIRoutes: APIRouteType {
+    var path: String {
+        switch self {
+            case .services: return "v1/service"
+            case .service: return "v1/service"
+            case .slots: return "v1/slots"
+            case .calculateAmount: return "v1/servicerequest/calculate-amount"
+        }
+    }
+    
+    var pathVariables: [String]? {
+        switch self {
+            case .services, .slots, .calculateAmount: return nil
+            case .service(serviceId: let serviceId): return [serviceId]
+        }
+    }
+    
+    var method: HTTPRequestMethod {
+        switch self {
+            case .services, .service: return .get
+            case .slots, .calculateAmount: return .post
+        }
+    }
+    
+    var body: [String : Any]? {
+        switch self {
+            case .services, .service:
+                return nil
+            
+            case .calculateAmount(let addressId, let serviceId, let slots):
+                return ServiceAdd(service: serviceId, address: addressId, slots: slots).dict
+            
+            case .slots(let serviceId, let serviceType):
+                return ["serviceType": serviceType, "serviceId": serviceId]
         }
     }
 }

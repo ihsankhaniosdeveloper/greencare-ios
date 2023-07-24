@@ -11,14 +11,11 @@ struct ServiceRequestReponse: Codable {
     let serviceRequest: ServiceRequest
 }
 
-// Ask backend for other statuses
-enum ServiceRequestStatus: String, Codable {
-    case pending = "pending"
-    case inProgress = "inProgress"
-    case accepted = "accepted"
-    case rejected = "rejected"
-    case completed = "completed"
-    case cancelled = "cancelled"
+struct ServiceRequestParams: Codable {
+    let service: String
+    let address: String
+    let paymentMethod: PaymentMethod
+    let slots: [Slot]
 }
 
 struct ServiceRequest: Codable {
@@ -65,4 +62,18 @@ struct SlotElement: Codable {
         case date, timeSlots
         case id = "_id"
     }
+}
+
+enum ServiceRequestStatus: String, Codable {
+    case pending = "pending"
+    case inProgress = "inProgress"
+    case accepted = "accepted"
+    case rejected = "rejected"
+    case completed = "completed"
+    case cancelled = "cancelled"
+}
+
+enum PaymentMethod: String, Codable {
+    case cash = "cash"
+    case card = "card"
 }

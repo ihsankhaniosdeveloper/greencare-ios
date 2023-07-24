@@ -80,7 +80,7 @@ extension LoginViewController: LoginPresenterOutput {
         let otpVC = OTPViewController.make(
             mobileNumber: mobileNumber,
             presenter: OTPPresenter(
-                authService: AuthenticationService(apiClient: APIClient(session: .default))
+                authService: UserService(apiClient: APIClient(session: .default))
             )
         )
         self.navigationController?.pushViewController(otpVC, animated: true)

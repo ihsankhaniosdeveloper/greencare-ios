@@ -7,12 +7,7 @@
 
 import Foundation
 
-struct ProfilePictureDocument: DocumentDataConvertible {
-    var data: Data
-    var name: String
-    var fileName: String
-    var mimeType: String
-}
+typealias CompletionClosure<T: Decodable> = (_ result: Result<T, NetworkErrors>) -> Void
 
 class BaseService: ServiceType {
     var apiClient: APIClientType

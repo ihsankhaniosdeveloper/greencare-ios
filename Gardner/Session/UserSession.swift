@@ -22,6 +22,8 @@ class UserSession {
         UserDefaults.standard.set("", forKey: "token")
         UserDefaults.standard.set("", forKey: "contact")
         UserDefaults.standard.set(false, forKey: "is.verified")
+        UserDefaults.standard.set("", forKey: "user.profile")
+        UserDefaults.standard.set("user.push.token", forKey: "")
     }
     
     var profile: UserProfile? {

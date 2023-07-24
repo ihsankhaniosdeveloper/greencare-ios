@@ -13,7 +13,7 @@ struct Constatns {
 
 protocol CartPresenterType {
     func requestService(paymentMethod: PaymentMethod)
-    func getPaymentIntent(serviceRequestId: String, amount: Double)
+    func getPaymentIntent(amount: Double)
 }
 
 protocol CartPresenterOutput: AnyObject, LoadingOutputs {
@@ -23,26 +23,7 @@ protocol CartPresenterOutput: AnyObject, LoadingOutputs {
 }
 
 class CartPresenter: CartPresenterType {
-    func getPaymentIntent(serviceRequestId: String, amount: Double) {
-        self.outputs?.startLoading()
-        
-        self.paymentService.createPaymentIntent(amount: amount, serviceRequestId: serviceRequestId) { result in
-            self.outputs?.stopLoading()
-            
-            switch result {
-                    
-            case .success(let paymentIntent):
-                self.outputs?.cartPresenter(paymentIntentFetchSuccess: paymentIntent)
-                break
-                
-            case .failure(let error):
-                self.outputs?.cartPresenter(operationFailed: error.errorDescription ?? error.localizedDescription)
-                break
-            }
-        }
-    }
-    
-    private var service: ServicesServiceType
+    private var service: ServiceRequestServiceType
     private var paymentService: PaymentServiceType
     
     private var selectedServiceId: String
@@ -51,7 +32,7 @@ class CartPresenter: CartPresenterType {
     
     weak var outputs: CartPresenterOutput?
     
-    init(service: ServicesServiceType, selectedSlots: [Slot], paymentService: PaymentServiceType, selectedServiceId: String, selectedAddressId: String) {
+    init(service: ServiceRequestServiceType, paymentService: PaymentServiceType, selectedSlots: [Slot], selectedServiceId: String, selectedAddressId: String) {
         self.service = service
         self.paymentService = paymentService
         
@@ -69,13 +50,32 @@ class CartPresenter: CartPresenterType {
         )
         
         self.outputs?.startLoading()
-        self.service.requestService(params: params) { result in
+        self.service.create(params: params) { result in
             self.outputs?.stopLoading()
             
             switch result {
                 
             case .success(let isSuccess):
                 self.outputs?.cartPresenter(serviceRequestSuccess: isSuccess)
+                break
+                
+            case .failure(let error):
+                self.outputs?.cartPresenter(operationFailed: error.errorDescription ?? error.localizedDescription)
+                break
+            }
+        }
+    }
+    
+    func getPaymentIntent(amount: Double) {
+        self.outputs?.startLoading()
+        
+        self.paymentService.createPaymentIntent(amount: amount) { result in
+            self.outputs?.stopLoading()
+            
+            switch result {
+                    
+            case .success(let paymentIntent):
+                self.outputs?.cartPresenter(paymentIntentFetchSuccess: paymentIntent)
                 break
                 
             case .failure(let error):

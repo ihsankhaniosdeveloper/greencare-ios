@@ -7,22 +7,6 @@
 
 import Foundation
 
-struct UserProfile: Codable {
-    let contact: String
-    let firstName: String?
-    let lastName: String?
-    let profilePicture: String?
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        self.contact = try container.decode(String.self, forKey: .contact)
-        self.firstName = try container.decodeIfPresent(String.self, forKey: .firstName)
-        self.lastName = try container.decodeIfPresent(String.self, forKey: .lastName)
-        self.profilePicture = try container.decodeIfPresent(String.self, forKey: .profilePicture)
-    }
-}
-
 protocol ProfilePresenterType {
     func fetchUserProfile()
     func updateProfile(imageData: Data?, fName: String?, lName: String?)
@@ -35,17 +19,21 @@ protocol ProfilePresenterOutput: AnyObject, LoadingOutputs {
 }
 
 class ProfilePresenter: ProfilePresenterType {
-    private var service: AuthenticationServiceType
+    private var service: UserServiceType
     
     weak var outputs: ProfilePresenterOutput?
     
-    init(service: AuthenticationServiceType) {
+    init(service: UserServiceType) {
         self.service = service
     }
     
     func fetchUserProfile() {
-        self.outputs?.startLoading()
+        if let profile = UserSession.instance.profile {
+            self.outputs?.profilePresenter(profileFetchSuccess: profile)
+            return
+        }
         
+        self.outputs?.startLoading()
         self.service.getUser { result in
             self.outputs?.stopLoading()
             
